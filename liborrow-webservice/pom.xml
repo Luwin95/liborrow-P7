@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.liborrow.liborrow-webservice</groupId>
+  <artifactId>liborrow-webservice</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>liborrow-webservice</name>
+  <description>Library information system web service</description>
+  <modules>
+	<module>liborrow-webservice-business</module>
+    <module>liborrow-webservice-consumer</module>
+    <module>liborrow-webservice-model</module>
+    <module>liborrow-webservice-webapp</module>
+  </modules>
+  
+  <properties>
+  	<javax-servlet-api.version>3.1.0</javax-servlet-api.version>
+  	<junit.version>3.8.1</junit.version>
+  </properties>
+  
+  <dependencyManagement>
+  	<dependencies>
+  	
+  		<!-- Modules -->
+  		<dependency>
+  			<groupId>com.liborrow.liborrow-webservice</groupId>
+  			<artifactId>liborrow-webservice-business</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.liborrow.liborrow-webservice</groupId>
+  			<artifactId>liborrow-webservice-consumer</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.liborrow.liborrow-webservice</groupId>
+  			<artifactId>liborrow-webservice-model</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.liborrow.liborrow-webservice</groupId>
+  			<artifactId>liborrow-webservice-webapp</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		
+  		<!-- Servlet & Jsp -->
+       <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax-servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>${junit.version}</version>
+	      <scope>test</scope>
+	    </dependency>
+  	</dependencies>
+  </dependencyManagement>
+  
+</project>

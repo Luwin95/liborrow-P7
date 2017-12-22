@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.liborrow.liborrow-callagainbatch</groupId>
+  <artifactId>liborrow-callagainbatch</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>liborrow-callagainbatch</name>
+  <description>Library information</description>
+  
+  <modules>
+  	<module>liborrow-callagainbatch-business</module>
+  	<module>liborrow-callagainbatch-model</module>
+  	<module>liborrow-callagainbatch-consumer</module>
+  	<module>liborrow-callagainbatch-batch</module>
+  </modules>
+  
+  <dependencyManagement>
+  	<dependencies>
+  	
+  		<!-- Modules -->
+  		<dependency>
+  			<groupId>com.liborrow.liborrow-callagainbatch</groupId>
+  			<artifactId>liborrow-callagainbatch-business</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.liborrow.liborrow-callagainbatch</groupId>
+  			<artifactId>liborrow-callagainbatch-model</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.liborrow.liborrow-callagainbatch</groupId>
+  			<artifactId>liborrow-callagainbatch-consumer</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.liborrow.liborrow-callagainbatch</groupId>
+  			<artifactId>liborrow-callagainbatch-batch</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		
+  		<!-- Junit -->
+  		<dependency>
+	     <groupId>junit</groupId>
+	     <artifactId>junit</artifactId>
+	     <version>3.8.1</version>
+	     <scope>test</scope>
+		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+  
+</project>

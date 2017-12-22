@@ -1,0 +1,34 @@
+# Eclipse
+.classpath
+.project
+.metadata
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
+
+#Properties
+*.properties
+
+#Images
+*.jpg
+*.jpeg
+*.png
+*.gif
+!uml/*.jpg
+!uml/*.jpeg
+!uml/*.png
+!uml/*.gif
+
+#Pdf
+*.pdf
+!uml/*.pdf
+
+#Meta-inf
+META-INF/
