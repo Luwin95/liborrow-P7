@@ -1,5 +1,7 @@
 package com.liborrow.webservice.business.impl.manager;
 
+import java.util.List;
+
 import org.liborrow.webservice.model.entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +14,15 @@ public class BookManagerImpl implements BookManager {
 	@Autowired
 	BookRepository bookRepository;
 	
-	public Book findBookById(Integer id)
+	@Override
+	public Book findBookById(long id)
 	{
 		return bookRepository.findOne(id);
+	}
+	
+	@Override
+	public List<Book> findAllBooks()
+	{
+		return bookRepository.findAll();
 	}
 }

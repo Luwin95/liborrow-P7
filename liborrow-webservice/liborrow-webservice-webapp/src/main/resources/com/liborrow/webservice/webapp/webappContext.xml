@@ -8,8 +8,10 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <context:property-placeholder location="/WEB-INF/spring/jdbc.properties" />
-
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:/com/liborrow/webservice/webapp/jdbc.properties"/>
+        <property name="ignoreUnresolvablePlaceholders" value="false"/>
+    </bean>
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
         p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
         p:username="${jdbc.username}" p:password="${jdbc.password}" />
@@ -38,6 +40,10 @@
 
     <tx:annotation-driven />
 
-    <jpa:repositories base-package="com.demo.data" />
-    <context:component-scan base-package="com.demo.svc" />
+    <jpa:repositories base-package="com.liborrow.webservice.consumer.repository" />
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="com.liborrow.webservice.AbstractService"/>
+        <property name="targetMethod" value="setManagerFactory"/>
+        <property name="arguments" ref="managerFactory"/>
+    </bean>
 </beans>

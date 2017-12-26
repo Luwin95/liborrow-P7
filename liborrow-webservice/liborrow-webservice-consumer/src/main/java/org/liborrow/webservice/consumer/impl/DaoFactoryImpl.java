@@ -1,5 +1,7 @@
 package org.liborrow.webservice.consumer.impl;
 
-public class DaoFactoryImpl {
+import org.liborrow.webservice.consumer.contract.DaoFactory;
+
+public class DaoFactoryImpl implements DaoFactory {
 
 }

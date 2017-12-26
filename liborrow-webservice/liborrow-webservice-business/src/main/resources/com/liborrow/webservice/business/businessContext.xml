@@ -2,6 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+	
+	<!-- Déclaration des Managers -->
+	<bean id="bookManager" class ="com.liborrow.webservice.business.impl.manager.BookManagerImpl"/>
+	
+	<!-- Manager Factory -->
+	<bean id="managerFactory" class ="com.liborrow.webservice.business.impl.ManagerFactoryImpl">
+		<property name="bookManager" ref="bookManager"/>
+	</bean>
 
 </beans>
