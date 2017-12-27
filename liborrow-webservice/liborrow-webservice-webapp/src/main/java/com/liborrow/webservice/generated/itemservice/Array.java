@@ -49,6 +49,7 @@ import org.w3c.dom.Element;
     "any"
 })
 @XmlSeeAlso({
+    GetListMagazineResponse.class,
     GetListBookResponse.class
 })
 public class Array {

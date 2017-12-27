@@ -65,11 +65,11 @@ public class Item_Service
     /**
      * 
      * @return
-     *     returns ItemServiceGetBook
+     *     returns ItemService
      */
-    @WebEndpoint(name = "ItemServicePortGetBook")
-    public ItemServiceGetBook getItemServicePortGetBook() {
-        return super.getPort(new QName("http://itemService/", "ItemServicePortGetBook"), ItemServiceGetBook.class);
+    @WebEndpoint(name = "ItemServicePort")
+    public ItemService getItemServicePort() {
+        return super.getPort(new QName("http://itemService/", "ItemServicePort"), ItemService.class);
     }
 
     /**
@@ -77,55 +77,11 @@ public class Item_Service
      * @param features
      *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
      * @return
-     *     returns ItemServiceGetBook
+     *     returns ItemService
      */
-    @WebEndpoint(name = "ItemServicePortGetBook")
-    public ItemServiceGetBook getItemServicePortGetBook(WebServiceFeature... features) {
-        return super.getPort(new QName("http://itemService/", "ItemServicePortGetBook"), ItemServiceGetBook.class, features);
-    }
-
-    /**
-     * 
-     * @return
-     *     returns ItemServiceGetAllBooks
-     */
-    @WebEndpoint(name = "ItemServicePortGetAllBooks")
-    public ItemServiceGetAllBooks getItemServicePortGetAllBooks() {
-        return super.getPort(new QName("http://itemService/", "ItemServicePortGetAllBooks"), ItemServiceGetAllBooks.class);
-    }
-
-    /**
-     * 
-     * @param features
-     *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
-     * @return
-     *     returns ItemServiceGetAllBooks
-     */
-    @WebEndpoint(name = "ItemServicePortGetAllBooks")
-    public ItemServiceGetAllBooks getItemServicePortGetAllBooks(WebServiceFeature... features) {
-        return super.getPort(new QName("http://itemService/", "ItemServicePortGetAllBooks"), ItemServiceGetAllBooks.class, features);
-    }
-
-    /**
-     * 
-     * @return
-     *     returns ItemServiceGetMagazine
-     */
-    @WebEndpoint(name = "ItemServicePortGetMagazine")
-    public ItemServiceGetMagazine getItemServicePortGetMagazine() {
-        return super.getPort(new QName("http://itemService/", "ItemServicePortGetMagazine"), ItemServiceGetMagazine.class);
-    }
-
-    /**
-     * 
-     * @param features
-     *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
-     * @return
-     *     returns ItemServiceGetMagazine
-     */
-    @WebEndpoint(name = "ItemServicePortGetMagazine")
-    public ItemServiceGetMagazine getItemServicePortGetMagazine(WebServiceFeature... features) {
-        return super.getPort(new QName("http://itemService/", "ItemServicePortGetMagazine"), ItemServiceGetMagazine.class, features);
+    @WebEndpoint(name = "ItemServicePort")
+    public ItemService getItemServicePort(WebServiceFeature... features) {
+        return super.getPort(new QName("http://itemService/", "ItemServicePort"), ItemService.class, features);
     }
 
     private static URL __getWsdlLocation() {

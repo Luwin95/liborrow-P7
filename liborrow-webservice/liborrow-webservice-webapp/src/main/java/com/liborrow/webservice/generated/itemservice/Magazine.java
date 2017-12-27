@@ -4,25 +4,24 @@ package com.liborrow.webservice.generated.itemservice;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * <p>Classe Java pour magazine complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="magazine">
  *   &lt;complexContent>
  *     &lt;extension base="{http://itemService/}item">
  *       &lt;sequence>
  *         &lt;element name="editionNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="publishDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
+ *         &lt;element name="publishDate" type="{http://www.w3.org/2001/XMLSchema}gYear"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -32,13 +31,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "magazine", namespace = "http://itemService/", propOrder = {
     "editionNumber",
     "name",
     "publishDate"
 })
-@XmlRootElement(name = "getMagazineResponse", namespace = "http://itemService/")
-public class GetMagazineResponse
+public class Magazine
     extends Item
 {
 
@@ -46,7 +44,7 @@ public class GetMagazineResponse
     @XmlElement(required = true)
     protected java.lang.String name;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "date")
+    @XmlSchemaType(name = "gYear")
     protected XMLGregorianCalendar publishDate;
 
     /**

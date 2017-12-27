@@ -4,19 +4,17 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "magazine")
+@Entity(name="Magazine")
 public class Magazine extends Item {
 	
-	@Column(name = "editionNumber")
+	@Column(name = "editionnumber")
 	private int editionNumber;
 	
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name="publishDate")
+	@Column(name="publishdate")
 	private Date publishDate;
 	
 	public Magazine() {}
@@ -51,6 +49,4 @@ public class Magazine extends Item {
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
-
-	
 }

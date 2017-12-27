@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlType;
     "place"
 })
 @XmlSeeAlso({
-    GetMagazineResponse.class,
-    GetBookResponse.class
+    Book.class,
+    Magazine.class
 })
 public class Item {
 

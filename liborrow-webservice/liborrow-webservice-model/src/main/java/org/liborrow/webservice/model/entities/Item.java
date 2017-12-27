@@ -4,26 +4,26 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.InheritanceType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
-import javax.persistence.Table;
 
 @Entity
-@Inheritance
-@Table(name = "item")
-public class Item {
+@Inheritance( strategy = InheritanceType.JOINED)
+public abstract class Item {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "item_id", updatable = false, nullable = false)
 	private Long id;
 	
-	@Column(name="itemRef")
+	@Column(name="itemref")
 	private String itemRef;
 	
-	@Column(name="totalCount")
+	@Column(name="totalcount")
 	private int totalCount;
 	
-	@Column(name="remainingCount")
+	@Column(name="remainingcount")
 	private int remainingCount;
 	
 	@Column(name="alley")

@@ -17,7 +17,11 @@
         p:username="${jdbc.username}" p:password="${jdbc.password}" />
 
     <bean id="hibernateJpaVendorAdapter"
-        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+        class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" >
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="true"/>
+        <property name="databasePlatform" value="${hibernate.dialect}"/>
+    </bean>
 
     <!-- Configure the entity manager factory bean -->
     <bean id="entityManagerFactory"
@@ -30,7 +34,7 @@
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
             </props>
         </property>
-        <property name="packagesToScan" value="com.demo.data" />
+        <property name="packagesToScan" value="org.liborrow.webservice.model.entities" />
     </bean>
 
     <!-- Configure the transaction manager bean -->

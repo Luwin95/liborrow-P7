@@ -4,19 +4,18 @@ package com.liborrow.webservice.generated.itemservice;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * <p>Classe Java pour book complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="book">
  *   &lt;complexContent>
  *     &lt;extension base="{http://itemService/}item">
  *       &lt;sequence>
@@ -34,15 +33,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "book", namespace = "http://itemService/", propOrder = {
     "title",
     "language",
     "release",
     "summary",
     "editor"
 })
-@XmlRootElement(name = "getBookResponse", namespace = "http://itemService/")
-public class GetBookResponse
+public class Book
     extends Item
 {
 

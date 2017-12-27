@@ -10,13 +10,37 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://itemService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/> 
-      <xsd:element name="getItem">
-        <xsd:complexType>
+      
+      <xsd:element name="getBook" type="tns:idInput"/>
+      <xsd:element name="getMagazine" type="tns:idInput"/>
+      <xsd:element name="getBookResponse" type="tns:book"/>
+      <xsd:element name="getMagazineResponse" type="tns:magazine"/>
+      <xsd:element name="getListBook"><xsd:complexType><xsd:sequence/></xsd:complexType></xsd:element>
+      <xsd:element name="getListBookResponse">
+    	  <xsd:complexType>
+      	  <xsd:complexContent>
+			  <xsd:restriction base="soapenc:Array">
+				  <xsd:attribute ref="soapenc:arrayType"  wsdl:arrayType="tns:getBookResponse[]"/>
+			  </xsd:restriction>
+		  </xsd:complexContent>
+     	  </xsd:complexType>	
+      </xsd:element>
+      <xsd:element name="getListMagazine"><xsd:complexType><xsd:sequence/></xsd:complexType></xsd:element>
+      <xsd:element name="getListMagazineResponse">
+    	  <xsd:complexType>
+      	  <xsd:complexContent>
+			  <xsd:restriction base="soapenc:Array">
+				  <xsd:attribute ref="soapenc:arrayType"  wsdl:arrayType="tns:getMagazineResponse[]"/>
+			  </xsd:restriction>
+		  </xsd:complexContent>
+      </xsd:complexType>	
+      </xsd:element>
+      
+      <xsd:complexType name="idInput">
           <xsd:sequence>
             <xsd:element name="arg0" type="xsd:int" minOccurs="1"/>
           </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
+      </xsd:complexType>
       <xsd:complexType name="item">
 	   		<xsd:sequence>
 	    		<xsd:element name="id" type="xsd:int"/>
@@ -27,8 +51,7 @@
 	        	<xsd:element name="place" type="xsd:string"/>
 	   		</xsd:sequence>
 	  </xsd:complexType>
-      <xsd:element name="getBookResponse">
-        <xsd:complexType>
+	  <xsd:complexType name="book">
         	<xsd:complexContent>
         		<xsd:extension base="tns:item">
 	        		<xsd:sequence>
@@ -41,74 +64,65 @@
 	        	</xsd:extension>
         	</xsd:complexContent>
         </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="getListBookResponse">
-      	<xsd:complexType>
-	      	<xsd:complexContent>
-				<xsd:restriction base="soapenc:Array">
-					<xsd:attribute ref="soapenc:arrayType"  wsdl:arrayType="tns:getBookResponse[]"/>
-				</xsd:restriction>
-			</xsd:complexContent>
-	    </xsd:complexType>	
-      </xsd:element>
-      
-      <xsd:element name="getMagazineResponse">
-        <xsd:complexType>
+        <xsd:complexType name="magazine">
         	<xsd:complexContent>
         		<xsd:extension base="tns:item">
 	        		<xsd:sequence>
 			            <xsd:element name="editionNumber" type="xsd:int"/>
 			            <xsd:element name="name" type="xsd:string"/>
-			            <xsd:element name="publishDate" type="xsd:date"/>
+			            <xsd:element name="publishDate" type="xsd:gYear"/>
 		          	</xsd:sequence>
 	        	</xsd:extension>
         	</xsd:complexContent>
         </xsd:complexType>
-      </xsd:element>
     </xsd:schema>
   </wsdl:types>
   
-  
   <wsdl:message name="getBook">
-    <wsdl:part element="tns:getItem" name="parameters"/>
+    <wsdl:part element="tns:getBook" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="getBookResponse">
     <wsdl:part element="tns:getBookResponse" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="getListBook">
+  	<wsdl:part element="tns:getListBook" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="getListBookResponse">
     <wsdl:part element="tns:getListBookResponse" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="getMagazine">
-    <wsdl:part element="tns:getItem" name="parameters"/>
+    <wsdl:part element="tns:getMagazine" name="parameters"/>
   </wsdl:message>
   <wsdl:message name="getMagazineResponse">
     <wsdl:part element="tns:getMagazineResponse" name="parameters"/>
   </wsdl:message>
+  <wsdl:message name="getListMagazine">
+  	<wsdl:part element="tns:getListMagazine" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getListMagazineResponse">
+    <wsdl:part element="tns:getListMagazineResponse" name="parameters"/>
+  </wsdl:message>
   
-  <wsdl:portType name="ItemServiceGetBook">
+  <wsdl:portType name="ItemService">
     <wsdl:operation name="getBook">
       <wsdl:input message="tns:getBook"/>
       <wsdl:output message="tns:getBookResponse"/>
     </wsdl:operation>
-  </wsdl:portType>
-  
-  <wsdl:portType name="ItemServiceGetAllBooks">
     <wsdl:operation name="getAllBooks">
     	<wsdl:input message="tns:getListBook"/>
     	<wsdl:output message="tns:getListBookResponse"/>
     </wsdl:operation>
-  </wsdl:portType>
-  
-  <wsdl:portType name="ItemServiceGetMagazine">
-  	<wsdl:operation name="getMagazine">
+    <wsdl:operation name="getMagazine">
       <wsdl:input message="tns:getMagazine"/>
       <wsdl:output message="tns:getMagazineResponse"/>
     </wsdl:operation>
+    <wsdl:operation name="getAllMagazines">
+      <wsdl:input message="tns:getListMagazine"/>
+      <wsdl:output message="tns:getListMagazineResponse"/>
+    </wsdl:operation>
   </wsdl:portType>
   
-  <wsdl:binding name="ItemServicePortBindingGetBook" type="tns:ItemServiceGetBook">
+  <wsdl:binding name="ItemServicePortBinding" type="tns:ItemService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="getBook">
       <wsdl:input>
@@ -118,9 +132,6 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding >
-  <wsdl:binding name="ItemServicePortBindingGetAllBooks" type="tns:ItemServiceGetAllBooks">
-  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
   	<wsdl:operation name="getAllBooks">
       <wsdl:input>
         <soap:body use="literal"/>
@@ -129,9 +140,6 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="ItemServicePortBindingGetMagazine" type="tns:ItemServiceGetMagazine">
-  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
   	<wsdl:operation name="getMagazine">
       <wsdl:input>
         <soap:body use="literal"/>
@@ -140,16 +148,19 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllMagazines">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
+  
   <wsdl:service name="Item">
-    <wsdl:port binding="tns:ItemServicePortBindingGetBook" name="ItemServicePortGetBook">
-      <soap:address location="http://localhost:8080/Item/getBook"/>
-    </wsdl:port>
-    <wsdl:port binding="tns:ItemServicePortBindingGetAllBooks" name="ItemServicePortGetAllBooks">
-      <soap:address location="http://localhost:8080/Item/getAllBooks"/>
-    </wsdl:port>
-    <wsdl:port binding="tns:ItemServicePortBindingGetMagazine" name="ItemServicePortGetMagazine">
-      <soap:address location="http://localhost:8080/Item/getMagazine"/>
+    <wsdl:port binding="tns:ItemServicePortBinding" name="ItemServicePort">
+      <soap:address location="http://localhost:8080/ItemService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

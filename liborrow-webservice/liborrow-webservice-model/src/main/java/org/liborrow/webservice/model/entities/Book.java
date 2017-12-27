@@ -1,13 +1,17 @@
 package org.liborrow.webservice.model.entities;
 
-import java.time.Year;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 
-@Entity
-@Table(name="book")
+@Entity(name="Book")
 public class Book extends Item {
 	
 	@Column(name = "title")
@@ -17,7 +21,7 @@ public class Book extends Item {
 	private String language;
 	
 	@Column(name = "release")
-	private Year release;
+	private Date release;
 	
 	@Column(name = "summary")
 	private String summary;
@@ -25,9 +29,15 @@ public class Book extends Item {
 	@Column(name = "editor")
 	private String editor;
 	
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name="author_book",
+			joinColumns=@JoinColumn(name="book_id"),
+			inverseJoinColumns = @JoinColumn(name="author_id"))
+	private Set<Author> authors = new HashSet<>();
+	
 	public Book() {}
 	
-	public Book (String title, String language, Year release, String summary, String editor) 
+	public Book (String title, String language, Date release, String summary, String editor) 
 	{
 		this.title = title;
 		this.language = language;
@@ -52,11 +62,11 @@ public class Book extends Item {
 		this.language = language;
 	}
 
-	public Year getRelease() {
+	public Date getRelease() {
 		return release;
 	}
 
-	public void setRelease(Year release) {
+	public void setRelease(Date release) {
 		this.release = release;
 	}
 
@@ -74,5 +84,21 @@ public class Book extends Item {
 
 	public void setEditor(String editor) {
 		this.editor = editor;
+	}
+
+	public Set<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(Set<Author> authors) {
+		this.authors = authors;
+	}
+
+	public void addAuthor(Author author) {
+		authors.add(author);
+	}
+
+	public void removeAuthor(Author author) {
+		authors.remove(author);
 	}
 }

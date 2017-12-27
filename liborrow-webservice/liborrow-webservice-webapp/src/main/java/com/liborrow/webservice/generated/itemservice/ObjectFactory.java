@@ -23,53 +23,57 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static javax.xml.namespace.QName _Language_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "language");
     private final static javax.xml.namespace.QName _NonNegativeInteger_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "nonNegativeInteger");
+    private final static javax.xml.namespace.QName _Long_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "long");
+    private final static javax.xml.namespace.QName _Struct_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "Struct");
+    private final static javax.xml.namespace.QName _DateTime_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "dateTime");
+    private final static javax.xml.namespace.QName _String_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string");
+    private final static javax.xml.namespace.QName _IDREF_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "IDREF");
+    private final static javax.xml.namespace.QName _GMonthDay_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "gMonthDay");
+    private final static javax.xml.namespace.QName _Duration_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "duration");
+    private final static javax.xml.namespace.QName _ENTITY_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "ENTITY");
+    private final static javax.xml.namespace.QName _HexBinary_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "hexBinary");
+    private final static javax.xml.namespace.QName _GMonth_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "gMonth");
+    private final static javax.xml.namespace.QName _Int_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "int");
+    private final static javax.xml.namespace.QName _Token_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "token");
+    private final static javax.xml.namespace.QName _QName_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "QName");
+    private final static javax.xml.namespace.QName _UnsignedInt_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "unsignedInt");
+    private final static javax.xml.namespace.QName _Short_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "short");
+    private final static javax.xml.namespace.QName _Time_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "time");
+    private final static javax.xml.namespace.QName _GYearMonth_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "gYearMonth");
+    private final static javax.xml.namespace.QName _Array_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "Array");
+    private final static javax.xml.namespace.QName _NonPositiveInteger_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "nonPositiveInteger");
+    private final static javax.xml.namespace.QName _Boolean_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "boolean");
+    private final static javax.xml.namespace.QName _GetBook_QNAME = new javax.xml.namespace.QName("http://itemService/", "getBook");
+    private final static javax.xml.namespace.QName _PositiveInteger_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "positiveInteger");
+    private final static javax.xml.namespace.QName _Language_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "language");
     private final static javax.xml.namespace.QName _Integer_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "integer");
     private final static javax.xml.namespace.QName _Float_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "float");
     private final static javax.xml.namespace.QName _NormalizedString_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "normalizedString");
-    private final static javax.xml.namespace.QName _Long_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "long");
-    private final static javax.xml.namespace.QName _Struct_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "Struct");
     private final static javax.xml.namespace.QName _Name_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "Name");
     private final static javax.xml.namespace.QName _NCName_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "NCName");
-    private final static javax.xml.namespace.QName _DateTime_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "dateTime");
     private final static javax.xml.namespace.QName _Date_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "date");
-    private final static javax.xml.namespace.QName _String_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "string");
     private final static javax.xml.namespace.QName _AnyType_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "anyType");
     private final static javax.xml.namespace.QName _UnsignedByte_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "unsignedByte");
     private final static javax.xml.namespace.QName _GDay_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "gDay");
     private final static javax.xml.namespace.QName _ID_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "ID");
     private final static javax.xml.namespace.QName _ENTITIES_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "ENTITIES");
     private final static javax.xml.namespace.QName _UnsignedLong_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "unsignedLong");
-    private final static javax.xml.namespace.QName _IDREF_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "IDREF");
-    private final static javax.xml.namespace.QName _GMonthDay_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "gMonthDay");
     private final static javax.xml.namespace.QName _UnsignedShort_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "unsignedShort");
-    private final static javax.xml.namespace.QName _Duration_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "duration");
     private final static javax.xml.namespace.QName _GYear_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "gYear");
-    private final static javax.xml.namespace.QName _ENTITY_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "ENTITY");
-    private final static javax.xml.namespace.QName _HexBinary_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "hexBinary");
+    private final static javax.xml.namespace.QName _GetMagazine_QNAME = new javax.xml.namespace.QName("http://itemService/", "getMagazine");
     private final static javax.xml.namespace.QName _NegativeInteger_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "negativeInteger");
     private final static javax.xml.namespace.QName _AnyURI_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "anyURI");
-    private final static javax.xml.namespace.QName _GMonth_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "gMonth");
     private final static javax.xml.namespace.QName _IDREFS_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "IDREFS");
-    private final static javax.xml.namespace.QName _Int_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "int");
-    private final static javax.xml.namespace.QName _Token_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "token");
     private final static javax.xml.namespace.QName _Double_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "double");
-    private final static javax.xml.namespace.QName _QName_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "QName");
     private final static javax.xml.namespace.QName _Byte_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "byte");
     private final static javax.xml.namespace.QName _NOTATION_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "NOTATION");
-    private final static javax.xml.namespace.QName _UnsignedInt_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "unsignedInt");
-    private final static javax.xml.namespace.QName _Short_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "short");
-    private final static javax.xml.namespace.QName _Time_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "time");
     private final static javax.xml.namespace.QName _Decimal_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "decimal");
-    private final static javax.xml.namespace.QName _GYearMonth_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "gYearMonth");
-    private final static javax.xml.namespace.QName _Array_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "Array");
-    private final static javax.xml.namespace.QName _NonPositiveInteger_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "nonPositiveInteger");
-    private final static javax.xml.namespace.QName _Boolean_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "boolean");
+    private final static javax.xml.namespace.QName _GetMagazineResponse_QNAME = new javax.xml.namespace.QName("http://itemService/", "getMagazineResponse");
+    private final static javax.xml.namespace.QName _GetBookResponse_QNAME = new javax.xml.namespace.QName("http://itemService/", "getBookResponse");
     private final static javax.xml.namespace.QName _Base64Binary_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "base64Binary");
     private final static javax.xml.namespace.QName _NMTOKEN_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "NMTOKEN");
     private final static javax.xml.namespace.QName _NMTOKENS_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "NMTOKENS");
-    private final static javax.xml.namespace.QName _PositiveInteger_QNAME = new javax.xml.namespace.QName("http://schemas.xmlsoap.org/soap/encoding/", "positiveInteger");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.liborrow.webservice.generated.itemservice
@@ -79,19 +83,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetBookResponse }
+     * Create an instance of {@link Book }
      * 
      */
-    public GetBookResponse createGetBookResponse() {
-        return new GetBookResponse();
+    public Book createBook() {
+        return new Book();
     }
 
     /**
-     * Create an instance of {@link Item }
+     * Create an instance of {@link IdInput }
      * 
      */
-    public Item createItem() {
-        return new Item();
+    public IdInput createIdInput() {
+        return new IdInput();
+    }
+
+    /**
+     * Create an instance of {@link GetListMagazine }
+     * 
+     */
+    public GetListMagazine createGetListMagazine() {
+        return new GetListMagazine();
+    }
+
+    /**
+     * Create an instance of {@link Magazine }
+     * 
+     */
+    public Magazine createMagazine() {
+        return new Magazine();
     }
 
     /**
@@ -111,19 +131,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetMagazineResponse }
+     * Create an instance of {@link GetListMagazineResponse }
      * 
      */
-    public GetMagazineResponse createGetMagazineResponse() {
-        return new GetMagazineResponse();
+    public GetListMagazineResponse createGetListMagazineResponse() {
+        return new GetListMagazineResponse();
     }
 
     /**
-     * Create an instance of {@link GetItem }
+     * Create an instance of {@link GetListBook }
      * 
      */
-    public GetItem createGetItem() {
-        return new GetItem();
+    public GetListBook createGetListBook() {
+        return new GetListBook();
+    }
+
+    /**
+     * Create an instance of {@link Item }
+     * 
+     */
+    public Item createItem() {
+        return new Item();
     }
 
     /**
@@ -487,21 +515,219 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Language }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "language")
-    public JAXBElement<Language> createLanguage(Language value) {
-        return new JAXBElement<Language>(_Language_QNAME, Language.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NonNegativeInteger }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "nonNegativeInteger")
     public JAXBElement<NonNegativeInteger> createNonNegativeInteger(NonNegativeInteger value) {
         return new JAXBElement<NonNegativeInteger>(_NonNegativeInteger_QNAME, NonNegativeInteger.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "long")
+    public JAXBElement<Long> createLong(Long value) {
+        return new JAXBElement<Long>(_Long_QNAME, Long.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Struct }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "Struct")
+    public JAXBElement<Struct> createStruct(Struct value) {
+        return new JAXBElement<Struct>(_Struct_QNAME, Struct.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DateTime }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "dateTime")
+    public JAXBElement<DateTime> createDateTime(DateTime value) {
+        return new JAXBElement<DateTime>(_DateTime_QNAME, DateTime.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "string")
+    public JAXBElement<String> createString(String value) {
+        return new JAXBElement<String>(_String_QNAME, String.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IDREF }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "IDREF")
+    public JAXBElement<IDREF> createIDREF(IDREF value) {
+        return new JAXBElement<IDREF>(_IDREF_QNAME, IDREF.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GMonthDay }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "gMonthDay")
+    public JAXBElement<GMonthDay> createGMonthDay(GMonthDay value) {
+        return new JAXBElement<GMonthDay>(_GMonthDay_QNAME, GMonthDay.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Duration }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "duration")
+    public JAXBElement<Duration> createDuration(Duration value) {
+        return new JAXBElement<Duration>(_Duration_QNAME, Duration.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ENTITY }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "ENTITY")
+    public JAXBElement<ENTITY> createENTITY(ENTITY value) {
+        return new JAXBElement<ENTITY>(_ENTITY_QNAME, ENTITY.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link HexBinary }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "hexBinary")
+    public JAXBElement<HexBinary> createHexBinary(HexBinary value) {
+        return new JAXBElement<HexBinary>(_HexBinary_QNAME, HexBinary.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GMonth }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "gMonth")
+    public JAXBElement<GMonth> createGMonth(GMonth value) {
+        return new JAXBElement<GMonth>(_GMonth_QNAME, GMonth.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Int }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "int")
+    public JAXBElement<Int> createInt(Int value) {
+        return new JAXBElement<Int>(_Int_QNAME, Int.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Token }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "token")
+    public JAXBElement<Token> createToken(Token value) {
+        return new JAXBElement<Token>(_Token_QNAME, Token.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link com.liborrow.webservice.generated.itemservice.QName }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "QName")
+    public JAXBElement<com.liborrow.webservice.generated.itemservice.QName> createQName(com.liborrow.webservice.generated.itemservice.QName value) {
+        return new JAXBElement<com.liborrow.webservice.generated.itemservice.QName>(_QName_QNAME, com.liborrow.webservice.generated.itemservice.QName.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UnsignedInt }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "unsignedInt")
+    public JAXBElement<UnsignedInt> createUnsignedInt(UnsignedInt value) {
+        return new JAXBElement<UnsignedInt>(_UnsignedInt_QNAME, UnsignedInt.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Short }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "short")
+    public JAXBElement<Short> createShort(Short value) {
+        return new JAXBElement<Short>(_Short_QNAME, Short.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Time }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "time")
+    public JAXBElement<Time> createTime(Time value) {
+        return new JAXBElement<Time>(_Time_QNAME, Time.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GYearMonth }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "gYearMonth")
+    public JAXBElement<GYearMonth> createGYearMonth(GYearMonth value) {
+        return new JAXBElement<GYearMonth>(_GYearMonth_QNAME, GYearMonth.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Array }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "Array")
+    public JAXBElement<Array> createArray(Array value) {
+        return new JAXBElement<Array>(_Array_QNAME, Array.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NonPositiveInteger }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "nonPositiveInteger")
+    public JAXBElement<NonPositiveInteger> createNonPositiveInteger(NonPositiveInteger value) {
+        return new JAXBElement<NonPositiveInteger>(_NonPositiveInteger_QNAME, NonPositiveInteger.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "boolean")
+    public JAXBElement<Boolean> createBoolean(Boolean value) {
+        return new JAXBElement<Boolean>(_Boolean_QNAME, Boolean.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IdInput }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://itemService/", name = "getBook")
+    public JAXBElement<IdInput> createGetBook(IdInput value) {
+        return new JAXBElement<IdInput>(_GetBook_QNAME, IdInput.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "positiveInteger")
+    public JAXBElement<PositiveInteger> createPositiveInteger(PositiveInteger value) {
+        return new JAXBElement<PositiveInteger>(_PositiveInteger_QNAME, PositiveInteger.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Language }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "language")
+    public JAXBElement<Language> createLanguage(Language value) {
+        return new JAXBElement<Language>(_Language_QNAME, Language.class, null, value);
     }
 
     /**
@@ -532,24 +758,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "long")
-    public JAXBElement<Long> createLong(Long value) {
-        return new JAXBElement<Long>(_Long_QNAME, Long.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Struct }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "Struct")
-    public JAXBElement<Struct> createStruct(Struct value) {
-        return new JAXBElement<Struct>(_Struct_QNAME, Struct.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Name }{@code >}}
      * 
      */
@@ -568,30 +776,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DateTime }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "dateTime")
-    public JAXBElement<DateTime> createDateTime(DateTime value) {
-        return new JAXBElement<DateTime>(_DateTime_QNAME, DateTime.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Date }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "date")
     public JAXBElement<Date> createDate(Date value) {
         return new JAXBElement<Date>(_Date_QNAME, Date.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "string")
-    public JAXBElement<String> createString(String value) {
-        return new JAXBElement<String>(_String_QNAME, String.class, null, value);
     }
 
     /**
@@ -649,39 +839,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link IDREF }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "IDREF")
-    public JAXBElement<IDREF> createIDREF(IDREF value) {
-        return new JAXBElement<IDREF>(_IDREF_QNAME, IDREF.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GMonthDay }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "gMonthDay")
-    public JAXBElement<GMonthDay> createGMonthDay(GMonthDay value) {
-        return new JAXBElement<GMonthDay>(_GMonthDay_QNAME, GMonthDay.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UnsignedShort }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "unsignedShort")
     public JAXBElement<UnsignedShort> createUnsignedShort(UnsignedShort value) {
         return new JAXBElement<UnsignedShort>(_UnsignedShort_QNAME, UnsignedShort.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Duration }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "duration")
-    public JAXBElement<Duration> createDuration(Duration value) {
-        return new JAXBElement<Duration>(_Duration_QNAME, Duration.class, null, value);
     }
 
     /**
@@ -694,21 +857,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ENTITY }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link IdInput }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "ENTITY")
-    public JAXBElement<ENTITY> createENTITY(ENTITY value) {
-        return new JAXBElement<ENTITY>(_ENTITY_QNAME, ENTITY.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link HexBinary }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "hexBinary")
-    public JAXBElement<HexBinary> createHexBinary(HexBinary value) {
-        return new JAXBElement<HexBinary>(_HexBinary_QNAME, HexBinary.class, null, value);
+    @XmlElementDecl(namespace = "http://itemService/", name = "getMagazine")
+    public JAXBElement<IdInput> createGetMagazine(IdInput value) {
+        return new JAXBElement<IdInput>(_GetMagazine_QNAME, IdInput.class, null, value);
     }
 
     /**
@@ -730,15 +884,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GMonth }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "gMonth")
-    public JAXBElement<GMonth> createGMonth(GMonth value) {
-        return new JAXBElement<GMonth>(_GMonth_QNAME, GMonth.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IDREFS }{@code >}}
      * 
      */
@@ -748,39 +893,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Int }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "int")
-    public JAXBElement<Int> createInt(Int value) {
-        return new JAXBElement<Int>(_Int_QNAME, Int.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Token }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "token")
-    public JAXBElement<Token> createToken(Token value) {
-        return new JAXBElement<Token>(_Token_QNAME, Token.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Double }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "double")
     public JAXBElement<Double> createDouble(Double value) {
         return new JAXBElement<Double>(_Double_QNAME, Double.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link com.liborrow.webservice.generated.itemservice.QName }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "QName")
-    public JAXBElement<com.liborrow.webservice.generated.itemservice.QName> createQName(com.liborrow.webservice.generated.itemservice.QName value) {
-        return new JAXBElement<com.liborrow.webservice.generated.itemservice.QName>(_QName_QNAME, com.liborrow.webservice.generated.itemservice.QName.class, null, value);
     }
 
     /**
@@ -802,33 +920,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UnsignedInt }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "unsignedInt")
-    public JAXBElement<UnsignedInt> createUnsignedInt(UnsignedInt value) {
-        return new JAXBElement<UnsignedInt>(_UnsignedInt_QNAME, UnsignedInt.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Short }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "short")
-    public JAXBElement<Short> createShort(Short value) {
-        return new JAXBElement<Short>(_Short_QNAME, Short.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Time }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "time")
-    public JAXBElement<Time> createTime(Time value) {
-        return new JAXBElement<Time>(_Time_QNAME, Time.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Decimal }{@code >}}
      * 
      */
@@ -838,39 +929,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GYearMonth }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Magazine }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "gYearMonth")
-    public JAXBElement<GYearMonth> createGYearMonth(GYearMonth value) {
-        return new JAXBElement<GYearMonth>(_GYearMonth_QNAME, GYearMonth.class, null, value);
+    @XmlElementDecl(namespace = "http://itemService/", name = "getMagazineResponse")
+    public JAXBElement<Magazine> createGetMagazineResponse(Magazine value) {
+        return new JAXBElement<Magazine>(_GetMagazineResponse_QNAME, Magazine.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Array }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Book }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "Array")
-    public JAXBElement<Array> createArray(Array value) {
-        return new JAXBElement<Array>(_Array_QNAME, Array.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NonPositiveInteger }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "nonPositiveInteger")
-    public JAXBElement<NonPositiveInteger> createNonPositiveInteger(NonPositiveInteger value) {
-        return new JAXBElement<NonPositiveInteger>(_NonPositiveInteger_QNAME, NonPositiveInteger.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "boolean")
-    public JAXBElement<Boolean> createBoolean(Boolean value) {
-        return new JAXBElement<Boolean>(_Boolean_QNAME, Boolean.class, null, value);
+    @XmlElementDecl(namespace = "http://itemService/", name = "getBookResponse")
+    public JAXBElement<Book> createGetBookResponse(Book value) {
+        return new JAXBElement<Book>(_GetBookResponse_QNAME, Book.class, null, value);
     }
 
     /**
@@ -898,15 +971,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "NMTOKENS")
     public JAXBElement<NMTOKENS> createNMTOKENS(NMTOKENS value) {
         return new JAXBElement<NMTOKENS>(_NMTOKENS_QNAME, NMTOKENS.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PositiveInteger }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://schemas.xmlsoap.org/soap/encoding/", name = "positiveInteger")
-    public JAXBElement<PositiveInteger> createPositiveInteger(PositiveInteger value) {
-        return new JAXBElement<PositiveInteger>(_PositiveInteger_QNAME, PositiveInteger.class, null, value);
     }
 
 }
