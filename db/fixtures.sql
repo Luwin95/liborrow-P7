@@ -11,8 +11,8 @@ INSERT INTO item (itemref,totalcount, remainingcount, alley, place) VALUES
 	('escuhkfgvzeezcrvzf', 7, 5, 'D', '69H');
 
 INSERT INTO magazine(item_id, editionnumber, name, publishdate) VALUES 
-	(5,15, 'Le petit spirou', '2017-10-15'),
-	(6,250, 'Le monde', '2015-12-21');
+	(3,15, 'Le petit spirou', '2017-10-15'),
+	(4,250, 'Le monde', '2015-12-21');
 	
 INSERT INTO author(author_id, name, firstname, birth, death, biography) VALUES
 	(1, 'Proust', 'Marcel', 1871, 1922, E'Ecrivain d\'origine française'),
@@ -270,3 +270,6 @@ INSERT INTO author_book(author_id, item_id) VALUES
 	(1,3),
 	(2,3),
 	(1,4);
+	
+INSERT INTO user(user_id, email, password, firstname, lastname, address, postcode, phonenumber, citizenship_id)
+	(1, 'test@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'test', 'test', '10 Avenue du test', '95600', '0123456789', 75);

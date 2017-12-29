@@ -11,6 +11,7 @@
 	<bean id="bookManager" class ="com.liborrow.webservice.business.impl.manager.BookManagerImpl"/>
 	<bean id="itemManager" class ="com.liborrow.webservice.business.impl.manager.ItemManagerImpl"/>
 	<bean id="magazineManager" class ="com.liborrow.webservice.business.impl.manager.MagazineManagerImpl"/>
+	<bean id="borrowManager" class ="com.liborrow.webservice.business.impl.manager.BorrowManagerImpl"/>
 	
 	<!-- Manager Factory -->
 	<bean id="managerFactory" class ="com.liborrow.webservice.business.impl.ManagerFactoryImpl">

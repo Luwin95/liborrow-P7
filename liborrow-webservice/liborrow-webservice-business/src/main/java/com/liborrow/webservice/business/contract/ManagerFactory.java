@@ -1,6 +1,7 @@
 package com.liborrow.webservice.business.contract;
 
 import com.liborrow.webservice.business.contract.manager.BookManager;
+import com.liborrow.webservice.business.contract.manager.BorrowManager;
 import com.liborrow.webservice.business.contract.manager.ItemManager;
 import com.liborrow.webservice.business.contract.manager.MagazineManager;
 
@@ -11,4 +12,6 @@ public interface ManagerFactory {
 	void setItemManager(ItemManager itemManager);
 	MagazineManager getMagazineManager();
 	void setMagazineManager(MagazineManager magazineManager);
+	BorrowManager getBorrowManager();
+	void setBorrowManager(BorrowManager borrowManager);
 }

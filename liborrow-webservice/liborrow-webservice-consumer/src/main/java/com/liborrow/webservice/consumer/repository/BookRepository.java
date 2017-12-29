@@ -3,8 +3,6 @@ package com.liborrow.webservice.consumer.repository;
 import java.util.List;
 
 import org.liborrow.webservice.model.entities.Book;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 public interface BookRepository extends ItemBaseRepository<Book> {
 	@Override
