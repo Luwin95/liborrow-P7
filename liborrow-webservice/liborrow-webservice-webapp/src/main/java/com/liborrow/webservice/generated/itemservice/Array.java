@@ -34,8 +34,8 @@ import org.w3c.dom.Element;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;group ref="{http://schemas.xmlsoap.org/soap/encoding/}Array" minOccurs="0"/>
- *       &lt;attGroup ref="{http://schemas.xmlsoap.org/soap/encoding/}commonAttributes"/>
  *       &lt;attGroup ref="{http://schemas.xmlsoap.org/soap/encoding/}arrayAttributes"/>
+ *       &lt;attGroup ref="{http://schemas.xmlsoap.org/soap/encoding/}commonAttributes"/>
  *       &lt;anyAttribute processContents='lax' namespace='##other'/>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -49,6 +49,8 @@ import org.w3c.dom.Element;
     "any"
 })
 @XmlSeeAlso({
+    com.liborrow.webservice.generated.itemservice.Book.Authors.class,
+    com.liborrow.webservice.generated.itemservice.Author.Citizenships.class,
     GetListMagazineResponse.class,
     GetListBookResponse.class
 })
@@ -56,6 +58,10 @@ public class Array {
 
     @XmlAnyElement(lax = true)
     protected List<Object> any;
+    @XmlAttribute(name = "arrayType", namespace = "http://schemas.xmlsoap.org/soap/encoding/")
+    protected java.lang.String arrayType;
+    @XmlAttribute(name = "offset", namespace = "http://schemas.xmlsoap.org/soap/encoding/")
+    protected java.lang.String offset;
     @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
@@ -64,10 +70,6 @@ public class Array {
     @XmlAttribute(name = "href")
     @XmlSchemaType(name = "anyURI")
     protected java.lang.String href;
-    @XmlAttribute(name = "arrayType", namespace = "http://schemas.xmlsoap.org/soap/encoding/")
-    protected java.lang.String arrayType;
-    @XmlAttribute(name = "offset", namespace = "http://schemas.xmlsoap.org/soap/encoding/")
-    protected java.lang.String offset;
     @XmlAnyAttribute
     private Map<QName, java.lang.String> otherAttributes = new HashMap<QName, java.lang.String>();
 
@@ -89,8 +91,8 @@ public class Array {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Object }
      * {@link Element }
+     * {@link Object }
      * 
      * 
      */
@@ -99,54 +101,6 @@ public class Array {
             any = new ArrayList<Object>();
         }
         return this.any;
-    }
-
-    /**
-     * Obtient la valeur de la propriété id.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.String }
-     *     
-     */
-    public java.lang.String getId() {
-        return id;
-    }
-
-    /**
-     * Définit la valeur de la propriété id.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.String }
-     *     
-     */
-    public void setId(java.lang.String value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété href.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.String }
-     *     
-     */
-    public java.lang.String getHref() {
-        return href;
-    }
-
-    /**
-     * Définit la valeur de la propriété href.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.String }
-     *     
-     */
-    public void setHref(java.lang.String value) {
-        this.href = value;
     }
 
     /**
@@ -195,6 +149,54 @@ public class Array {
      */
     public void setOffset(java.lang.String value) {
         this.offset = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété id.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.String }
+     *     
+     */
+    public java.lang.String getId() {
+        return id;
+    }
+
+    /**
+     * Définit la valeur de la propriété id.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.String }
+     *     
+     */
+    public void setId(java.lang.String value) {
+        this.id = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété href.
+     * 
+     * @return
+     *     possible object is
+     *     {@link java.lang.String }
+     *     
+     */
+    public java.lang.String getHref() {
+        return href;
+    }
+
+    /**
+     * Définit la valeur de la propriété href.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link java.lang.String }
+     *     
+     */
+    public void setHref(java.lang.String value) {
+        this.href = value;
     }
 
     /**

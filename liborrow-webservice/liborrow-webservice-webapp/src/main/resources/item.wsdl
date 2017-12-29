@@ -60,6 +60,15 @@
 			            <xsd:element name="release" type="xsd:gYear"/>
 			            <xsd:element name="summary" type="xsd:string"/>
 			            <xsd:element name="editor" type="xsd:string"/>
+			            <xsd:element name="authors">
+				    	  <xsd:complexType>
+					      	  <xsd:complexContent>
+								  <xsd:restriction base="soapenc:Array">
+									  <xsd:attribute ref="soapenc:arrayType"  wsdl:arrayType="tns:author[]"/>
+								  </xsd:restriction>
+							  </xsd:complexContent>
+				      	 </xsd:complexType>	
+				       </xsd:element>
 		          	</xsd:sequence>
 	        	</xsd:extension>
         	</xsd:complexContent>
@@ -75,6 +84,31 @@
 	        	</xsd:extension>
         	</xsd:complexContent>
         </xsd:complexType>
+        <xsd:complexType name="author">
+	   		<xsd:sequence>
+	    		<xsd:element name="id" type="xsd:int"/>
+	        	<xsd:element name="name" type="xsd:string"/>
+	        	<xsd:element name="firstname" type="xsd:string"/>
+	        	<xsd:element name="birth" type="xsd:int"/>
+	        	<xsd:element name="death" type="xsd:int"/>
+	        	<xsd:element name="biography" type="xsd:string"/>
+	        	<xsd:element name="citizenships">
+		    	  <xsd:complexType>
+			      	  <xsd:complexContent>
+						  <xsd:restriction base="soapenc:Array">
+							  <xsd:attribute ref="soapenc:arrayType"  wsdl:arrayType="tns:citizenship[]"/>
+						  </xsd:restriction>
+					  </xsd:complexContent>
+		      	  </xsd:complexType>	
+				</xsd:element>
+	   		</xsd:sequence>
+	  	</xsd:complexType>
+	  	<xsd:complexType name="citizenship">
+	   		<xsd:sequence>
+	    		<xsd:element name="id" type="xsd:int"/>
+	        	<xsd:element name="countryName" type="xsd:string"/>
+	   		</xsd:sequence>
+	  </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   

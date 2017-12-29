@@ -37,13 +37,6 @@
         <property name="packagesToScan" value="org.liborrow.webservice.model.entities" />
     </bean>
 
-    <!-- Configure the transaction manager bean -->
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-    </bean>
-
-    <tx:annotation-driven />
-
     <jpa:repositories base-package="com.liborrow.webservice.consumer.repository" />
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="targetClass" value="com.liborrow.webservice.AbstractService"/>

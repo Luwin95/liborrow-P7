@@ -3,12 +3,14 @@ package org.liborrow.webservice.model.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity(name="Citizenship")
 public class Citizenship {
@@ -20,15 +22,17 @@ public class Citizenship {
 	@Column(name="countryname")
 	private String countryName;
 	
-	@ManyToMany(mappedBy= "citizenships")
+	@ManyToMany(cascade=CascadeType.ALL,mappedBy= "citizenships")
 	private Set<Author> authors = new HashSet<>();
 	
 	public Citizenship() {}
 	
-	public Citizenship(String countryName)
+	public Citizenship(String countryName,  Set<Author> authors)
 	{
 		this.countryName = countryName;
+		this.authors=authors;
 	}
+	
 
 	public String getCountryName() {
 		return countryName;
@@ -38,6 +42,7 @@ public class Citizenship {
 		this.countryName = countryName;
 	}
 	
+	@XmlTransient 
 	public Set<Author> getAuthors() {
 		return authors;
 	}

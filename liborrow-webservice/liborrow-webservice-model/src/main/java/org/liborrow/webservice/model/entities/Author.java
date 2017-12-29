@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity(name="Author")
 public class Author {
@@ -35,10 +36,10 @@ public class Author {
 	@Column(name="biography")
 	private String biography;
 	
-	@ManyToMany(mappedBy= "authors")
+	@ManyToMany(cascade=CascadeType.ALL, mappedBy= "authors")
 	private Set<Book> books = new HashSet<>(); 
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="author_citizenship",
 			joinColumns=@JoinColumn(name="author_id"),
 			inverseJoinColumns = @JoinColumn(name="citizenship_id"))
@@ -46,13 +47,15 @@ public class Author {
 	
 	public Author() {}
 	
-	public Author(String name, String firstname, int birth, int death, String biography)
+	public Author(String name, String firstname, int birth, int death, String biography, Set<Book> books, Set<Citizenship> citizenships)
 	{
 		this.name=name;
 		this.firstname=firstname;
 		this.birth=birth;
 		this.death=death;
 		this.biography=biography;
+		this.books=books;
+		this.citizenships=citizenships;
 	}
 
 	public Long getId() {
@@ -103,6 +106,7 @@ public class Author {
 		this.biography = biography;
 	}
 
+	@XmlTransient 
 	public Set<Book> getBooks() {
 		return books;
 	}
@@ -129,9 +133,11 @@ public class Author {
 	
 	public void addCitizenship(Citizenship citizenship) {
 		citizenships.add(citizenship);
+		citizenship.addAuthor(this);
 	}
 
 	public void removeCitizenship(Citizenship citizenship) {
 		citizenships.remove(citizenship);
+		citizenship.removeAuthor(this);
 	}
 }

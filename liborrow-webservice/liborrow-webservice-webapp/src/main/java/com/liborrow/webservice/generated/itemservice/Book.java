@@ -24,6 +24,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="release" type="{http://www.w3.org/2001/XMLSchema}gYear"/>
  *         &lt;element name="summary" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="editor" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="authors">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://schemas.xmlsoap.org/soap/encoding/}Array">
+ *                 &lt;attribute ref="{http://schemas.xmlsoap.org/soap/encoding/}arrayType"/>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -38,7 +47,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "language",
     "release",
     "summary",
-    "editor"
+    "editor",
+    "authors"
 })
 public class Book
     extends Item
@@ -55,6 +65,8 @@ public class Book
     protected java.lang.String summary;
     @XmlElement(required = true)
     protected java.lang.String editor;
+    @XmlElement(required = true)
+    protected Book.Authors authors;
 
     /**
      * Obtient la valeur de la propriété title.
@@ -174,6 +186,57 @@ public class Book
      */
     public void setEditor(java.lang.String value) {
         this.editor = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété authors.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Book.Authors }
+     *     
+     */
+    public Book.Authors getAuthors() {
+        return authors;
+    }
+
+    /**
+     * Définit la valeur de la propriété authors.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Book.Authors }
+     *     
+     */
+    public void setAuthors(Book.Authors value) {
+        this.authors = value;
+    }
+
+
+    /**
+     * <p>Classe Java pour anonymous complex type.
+     * 
+     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://schemas.xmlsoap.org/soap/encoding/}Array">
+     *       &lt;attribute ref="{http://schemas.xmlsoap.org/soap/encoding/}arrayType"/>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "")
+    public static class Authors
+        extends Array
+    {
+
+
     }
 
 }

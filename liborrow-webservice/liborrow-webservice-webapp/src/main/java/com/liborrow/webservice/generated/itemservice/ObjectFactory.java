@@ -83,6 +83,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Author }
+     * 
+     */
+    public Author createAuthor() {
+        return new Author();
+    }
+
+    /**
      * Create an instance of {@link Book }
      * 
      */
@@ -152,6 +160,14 @@ public class ObjectFactory {
      */
     public Item createItem() {
         return new Item();
+    }
+
+    /**
+     * Create an instance of {@link Citizenship }
+     * 
+     */
+    public Citizenship createCitizenship() {
+        return new Citizenship();
     }
 
     /**
@@ -512,6 +528,22 @@ public class ObjectFactory {
      */
     public GYearMonth createGYearMonth() {
         return new GYearMonth();
+    }
+
+    /**
+     * Create an instance of {@link Author.Citizenships }
+     * 
+     */
+    public Author.Citizenships createAuthorCitizenships() {
+        return new Author.Citizenships();
+    }
+
+    /**
+     * Create an instance of {@link Book.Authors }
+     * 
+     */
+    public Book.Authors createBookAuthors() {
+        return new Book.Authors();
     }
 
     /**

@@ -7,4 +7,5 @@ import org.liborrow.webservice.model.entities.Book;
 public interface BookManager {
 	Book findBookById(long id);
 	List<Book> findAllBooks();
+	void bookEntityHibernateInitialization(Book book);
 }

@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity(name="Book")
 public class Book extends Item {
@@ -29,21 +30,22 @@ public class Book extends Item {
 	@Column(name = "editor")
 	private String editor;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="author_book",
-			joinColumns=@JoinColumn(name="book_id"),
+			joinColumns=@JoinColumn(name="item_id"),
 			inverseJoinColumns = @JoinColumn(name="author_id"))
 	private Set<Author> authors = new HashSet<>();
 	
 	public Book() {}
 	
-	public Book (String title, String language, Date release, String summary, String editor) 
+	public Book (String title, String language, Date release, String summary, String editor, Set<Author> authors) 
 	{
 		this.title = title;
 		this.language = language;
 		this.release = release;
 		this.summary = summary;
 		this.editor = editor;
+		this.authors = authors;
 	}
 
 	public String getTitle() {
@@ -96,9 +98,11 @@ public class Book extends Item {
 
 	public void addAuthor(Author author) {
 		authors.add(author);
+		author.addBook(this);
 	}
 
 	public void removeAuthor(Author author) {
 		authors.remove(author);
+		author.removeBook(this);
 	}
 }

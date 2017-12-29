@@ -8,6 +8,7 @@ import javax.jws.WebService;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Item;
 import org.liborrow.webservice.model.entities.Magazine;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.liborrow.webservice.AbstractService;
 

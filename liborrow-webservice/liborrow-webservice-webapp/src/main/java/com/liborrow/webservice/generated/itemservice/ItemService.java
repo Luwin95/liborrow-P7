@@ -32,14 +32,15 @@ public interface ItemService {
      * @param editor
      * @param itemRef
      * @param release
-     * @param arg0
      * @param language
-     * @param id
-     * @param place
      * @param totalCount
-     * @param alley
      * @param title
      * @param remainingCount
+     * @param arg0
+     * @param id
+     * @param place
+     * @param alley
+     * @param authors
      */
     @WebMethod
     @RequestWrapper(localName = "getBook", targetNamespace = "http://itemService/", className = "com.liborrow.webservice.generated.itemservice.IdInput")
@@ -68,7 +69,9 @@ public interface ItemService {
         @WebParam(name = "summary", targetNamespace = "", mode = WebParam.Mode.OUT)
         Holder<java.lang.String> summary,
         @WebParam(name = "editor", targetNamespace = "", mode = WebParam.Mode.OUT)
-        Holder<java.lang.String> editor);
+        Holder<java.lang.String> editor,
+        @WebParam(name = "authors", targetNamespace = "", mode = WebParam.Mode.OUT)
+        Holder<com.liborrow.webservice.generated.itemservice.Book.Authors> authors);
 
     /**
      * 
