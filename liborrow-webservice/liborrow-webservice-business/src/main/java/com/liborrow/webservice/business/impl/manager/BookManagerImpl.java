@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
+import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.Citizenship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,10 @@ public class BookManagerImpl implements BookManager {
 				Hibernate.initialize(citizenship.getAuthors());
 			}
 		}
+		Hibernate.initialize(book.getBorrows());
+		/*for(Borrow borrow : book.getBorrows())
+		{
+			Hibernate.initialize();
+		}*/
 	}
 }

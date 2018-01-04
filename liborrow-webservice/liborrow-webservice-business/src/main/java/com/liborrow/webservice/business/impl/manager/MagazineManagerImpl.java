@@ -3,6 +3,8 @@ package com.liborrow.webservice.business.impl.manager;
 import java.util.List;
 
 import javax.annotation.Resource;
+
+import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.entities.Magazine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +23,25 @@ public class MagazineManagerImpl implements MagazineManager {
 	@Transactional(readOnly = true)
 	public Magazine findMagazineById(long id)
 	{
-		return magazineRepository.findOne(id);
+		Magazine magazine = magazineRepository.findOne(id);
+		magazineEntityHibernateInitialization(magazine);
+		return magazine;
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Magazine> findAllMagazines()
 	{
-		return magazineRepository.findAll();
+		List<Magazine> magazines = magazineRepository.findAll();
+		for(Magazine magazine : magazines)
+		{
+			magazineEntityHibernateInitialization(magazine);
+		}
+		return magazines;
+	}
+	
+	public void magazineEntityHibernateInitialization(Magazine magazine)
+	{
+		Hibernate.initialize(magazine.getBorrows());
 	}
 }

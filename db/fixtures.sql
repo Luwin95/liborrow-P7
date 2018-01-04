@@ -267,9 +267,21 @@ INSERT INTO author_citizenship(author_id, citizenship_id) VALUES
 	(2,84);
 	
 INSERT INTO author_book(author_id, item_id) VALUES
-	(1,3),
-	(2,3),
-	(1,4);
+	(1,1),
+	(2,1),
+	(1,2);
 	
-INSERT INTO user(user_id, email, password, firstname, lastname, address, postcode, phonenumber, citizenship_id)
+INSERT INTO user_account(user_id, email, password, firstname, lastname, address, postcode, phonenumber, citizenship_id) VALUES
 	(1, 'test@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'test', 'test', '10 Avenue du test', '95600', '0123456789', 75);
+	
+INSERT INTO borrow(borrow_id, startDate, extended, user_id) VALUES
+	(1, '2017-10-15', 'true', 1);
+	
+INSERT INTO borrow(borrow_id, startDate, getBackDate, extended, user_id) VALUES	
+	(2, '2017-11-15', '2017-12-15','true', 1);
+	
+INSERT INTO borrow_item(borrow_id, item_id) VALUES
+	(1,1),
+	(1,2),
+	(1,3),
+	(2,4);

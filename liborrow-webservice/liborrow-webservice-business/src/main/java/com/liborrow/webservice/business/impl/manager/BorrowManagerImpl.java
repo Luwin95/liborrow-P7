@@ -33,7 +33,7 @@ public class BorrowManagerImpl implements BorrowManager {
 			User user = userRepository.findOne(userId);
 			if(user != null)
 			{
-				return borrowRepository.findByBorrower(user);
+				return null; /*borrowRepository.findByBorrower(user);*/
 			}else
 			{
 				return null;

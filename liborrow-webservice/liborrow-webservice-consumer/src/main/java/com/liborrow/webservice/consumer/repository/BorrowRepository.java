@@ -10,5 +10,5 @@ public interface BorrowRepository extends CrudRepository<Borrow, Long> {
 	@Override
 	List<Borrow> findAll();
 	
-	List<Borrow> findByBorrower(User borrower);
+	//List<Borrow> findByBorrower(User borrower);
 }

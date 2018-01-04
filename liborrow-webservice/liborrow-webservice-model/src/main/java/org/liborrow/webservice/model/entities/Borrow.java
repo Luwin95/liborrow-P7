@@ -15,7 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity(name="Borrow")
 public class Borrow {
@@ -35,9 +36,9 @@ public class Borrow {
 	@Column(name="extended")
 	private Boolean extended;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "borrow_id")
-	private User borrower;
+	/*@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+	private User borrower;*/
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="borrow_item",
@@ -61,7 +62,7 @@ public class Borrow {
 			calendar.set(Calendar.MONTH, (calendar.get(Calendar.MONTH+2)));
 		}
 		this.endDate = calendar.getTime();
-		this.borrower=borrower;
+		//this.borrower=borrower;
 	}
 
 	public long getId() {
@@ -104,14 +105,15 @@ public class Borrow {
 		this.extended = extended;
 	}
 
-	public User getBorrower() {
+	/*public User getBorrower() {
 		return borrower;
 	}
 
 	public void setBorrower(User borrower) {
 		this.borrower = borrower;
-	}
+	}*/
 
+	@XmlTransient
 	public Set<Item> getItems() {
 		return items;
 	}

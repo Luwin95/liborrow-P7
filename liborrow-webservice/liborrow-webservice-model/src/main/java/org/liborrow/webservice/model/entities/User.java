@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity(name="User")
+@Table(name="user_account")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,8 +47,8 @@ public class User {
     @JoinColumn(name = "citizenship_id")
 	private Citizenship citizenship;
 	
-	@OneToMany(mappedBy="borrower")
-	private Set<Borrow> borrows = new HashSet<>();
+	/*@OneToMany(mappedBy="borrower")
+	private Set<Borrow> borrows = new HashSet<>();*/
 
 	public User() {}
 	
