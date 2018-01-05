@@ -18,6 +18,7 @@
 		<property name="bookManager" ref="bookManager"/>
 		<property name="itemManager" ref="itemManager"/>
 		<property name="magazineManager" ref="magazineManager"/>
+		<property name="borrowManager" ref="borrowManager"/>
 	</bean>
 	
 	<!-- Configure the transaction manager bean -->

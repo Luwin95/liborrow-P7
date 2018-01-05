@@ -15,9 +15,13 @@
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
 
-        <action name="helloWorld" class="helloWorldAction">
+        <action name="helloWorld" class="com.liborrow.webinterface.webapp.helloWorldAction">
             <result name="input">/jsp/index.jsp</result>
             <result>/WEB-INF/jsp/helloWorld.jsp</result>
+        </action>
+        
+        <action name="book" class="com.liborrow.webinterface.webapp.actions.BookAction">
+        	<result name="success">/WEB-INF/jsp/book.jsp</result>
         </action>
 
     </package>

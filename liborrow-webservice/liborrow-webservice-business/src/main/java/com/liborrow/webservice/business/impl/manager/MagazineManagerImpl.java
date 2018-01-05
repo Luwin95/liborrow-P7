@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.hibernate.Hibernate;
+import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.Magazine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,12 @@ public class MagazineManagerImpl implements MagazineManager {
 	public void magazineEntityHibernateInitialization(Magazine magazine)
 	{
 		Hibernate.initialize(magazine.getBorrows());
+		for(Borrow borrow : magazine.getBorrows())
+		{
+			Hibernate.initialize(borrow.getBorrower());
+			Hibernate.initialize(borrow.getBorrower().getBorrows());
+			Hibernate.initialize(borrow.getItems());
+			Hibernate.initialize(borrow.getBorrower().getCitizenship());
+		}
 	}
 }

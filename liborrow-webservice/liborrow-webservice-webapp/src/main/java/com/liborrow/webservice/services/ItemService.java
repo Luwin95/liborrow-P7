@@ -11,7 +11,8 @@ import org.liborrow.webservice.model.entities.Magazine;
 
 import com.liborrow.webservice.AbstractService;
 
-@WebService(serviceName="itemService")
+@WebService(name = "itemClient", serviceName = "ItemService", portName = "ItemPort")
+
 public class ItemService extends AbstractService{
 	
 	@WebMethod

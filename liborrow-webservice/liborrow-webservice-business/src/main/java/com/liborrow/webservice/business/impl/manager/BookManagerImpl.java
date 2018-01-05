@@ -54,9 +54,11 @@ public class BookManagerImpl implements BookManager {
 			}
 		}
 		Hibernate.initialize(book.getBorrows());
-		/*for(Borrow borrow : book.getBorrows())
+		for(Borrow borrow : book.getBorrows())
 		{
-			Hibernate.initialize();
-		}*/
+			Hibernate.initialize(borrow.getBorrower());
+			Hibernate.initialize(borrow.getBorrower().getBorrows());
+			Hibernate.initialize(borrow.getItems());
+		}
 	}
 }

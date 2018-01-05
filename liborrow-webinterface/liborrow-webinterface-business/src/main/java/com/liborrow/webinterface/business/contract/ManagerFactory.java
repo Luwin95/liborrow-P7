@@ -1,5 +1,8 @@
 package com.liborrow.webinterface.business.contract;
 
-public interface ManagerFactory {
+import com.liborrow.webinterface.business.contract.manager.BookManager;
 
+public interface ManagerFactory {
+	BookManager getBookManager();
+	void setBookManager(BookManager bookManager);
 }

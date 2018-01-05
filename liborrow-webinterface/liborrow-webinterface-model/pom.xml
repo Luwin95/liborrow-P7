@@ -21,4 +21,28 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.codehaus.mojo</groupId>
+  			<artifactId>jaxws-maven-plugin</artifactId>
+  			<version>2.5</version>
+  			<executions>
+  				<execution>
+  					<goals>
+  						<goal>wsimport</goal>
+  					</goals>
+  				</execution>
+  			</executions>
+  			<configuration>
+  				<wsdlUrls>
+  					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/ItemService?wsdl</wsdlUrl>
+  					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/borrowService?wsdl</wsdlUrl>
+  				</wsdlUrls>
+  				<packageName>com.liborrow.webinterface.generated.model</packageName>
+  				<sourcesDestDir>./src/main/java</sourcesDestDir>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
 </project>

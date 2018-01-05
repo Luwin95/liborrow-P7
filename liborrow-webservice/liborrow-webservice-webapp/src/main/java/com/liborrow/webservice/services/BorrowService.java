@@ -8,7 +8,7 @@ import javax.jws.WebService;
 import org.liborrow.webservice.model.entities.Borrow;
 import com.liborrow.webservice.AbstractService;
 
-@WebService
+@WebService(serviceName="borrowService")
 public class BorrowService extends AbstractService {
 	
 	@WebMethod

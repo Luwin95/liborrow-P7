@@ -2,14 +2,15 @@ package com.liborrow.webservice.business.impl.manager;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.entities.Borrow;
-import org.liborrow.webservice.model.entities.User;
+import org.liborrow.webservice.model.entities.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.liborrow.webservice.business.contract.manager.BorrowManager;
 import com.liborrow.webservice.consumer.repository.BorrowRepository;
-import com.liborrow.webservice.consumer.repository.UserRepository;
+import com.liborrow.webservice.consumer.repository.UserAccountRepository;
 
 @Transactional
 public class BorrowManagerImpl implements BorrowManager {
@@ -17,12 +18,14 @@ public class BorrowManagerImpl implements BorrowManager {
 	BorrowRepository borrowRepository;
 	
 	@Autowired
-	UserRepository userRepository;
+	UserAccountRepository userRepository;
 	
 	@Override
 	public Borrow findBorrowById(long id)
 	{
-		return borrowRepository.findOne(id);
+		Borrow borrow = borrowRepository.findOne(id);
+		borrowEntityHibernateInitialization(borrow);
+		return borrow;
 	}
 	
 	@Override
@@ -30,10 +33,16 @@ public class BorrowManagerImpl implements BorrowManager {
 	{
 		if(userId != 0)
 		{
-			User user = userRepository.findOne(userId);
+			UserAccount user = userRepository.findOne(userId);
+			userEntityHibernateInitialization(user);
 			if(user != null)
 			{
-				return null; /*borrowRepository.findByBorrower(user);*/
+				List<Borrow> borrows = borrowRepository.findByBorrower(user);
+				for(Borrow borrow : borrows)
+				{
+					borrowEntityHibernateInitialization(borrow);
+				}
+				return borrows;
 			}else
 			{
 				return null;
@@ -46,6 +55,25 @@ public class BorrowManagerImpl implements BorrowManager {
 	@Override
 	public List<Borrow> findAllBorrows()
 	{
-		return borrowRepository.findAll();
+		List<Borrow> borrows = borrowRepository.findAll();
+		for(Borrow borrow : borrows)
+		{
+			borrowEntityHibernateInitialization(borrow);
+		}
+		return borrows;
+	}
+	
+	public void borrowEntityHibernateInitialization(Borrow borrow)
+	{
+		Hibernate.initialize(borrow.getBorrower());
+		Hibernate.initialize(borrow.getBorrower().getBorrows());
+		Hibernate.initialize(borrow.getBorrower().getCitizenship());
+		Hibernate.initialize(borrow.getItems());
+	}
+	
+	public void userEntityHibernateInitialization(UserAccount user)
+	{
+		Hibernate.initialize(user.getBorrows());
+		Hibernate.initialize(user.getCitizenship());
 	}
 }

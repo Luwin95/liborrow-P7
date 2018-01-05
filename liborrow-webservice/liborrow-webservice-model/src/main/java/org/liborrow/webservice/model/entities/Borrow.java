@@ -36,9 +36,9 @@ public class Borrow {
 	@Column(name="extended")
 	private Boolean extended;
 	
-	/*@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-	private User borrower;*/
+	private UserAccount borrower;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="borrow_item",
@@ -48,7 +48,7 @@ public class Borrow {
 	
 	public Borrow() {}
 	
-	public Borrow(Date startDate, Date getBackDate, Boolean extended, User borrower)
+	public Borrow(Date startDate, Date getBackDate, Boolean extended, UserAccount borrower)
 	{
 		this.startDate=startDate;
 		this.getBackDate=getBackDate;
@@ -105,13 +105,13 @@ public class Borrow {
 		this.extended = extended;
 	}
 
-	/*public User getBorrower() {
+	public UserAccount getBorrower() {
 		return borrower;
 	}
 
-	public void setBorrower(User borrower) {
+	public void setBorrower(UserAccount borrower) {
 		this.borrower = borrower;
-	}*/
+	}
 
 	@XmlTransient
 	public Set<Item> getItems() {

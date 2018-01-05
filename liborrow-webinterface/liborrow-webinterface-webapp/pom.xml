@@ -11,12 +11,6 @@
     <name>liborrow-webinterface-webapp</name>
 	<description>Struts 2 Starter</description>
 
-    <properties>
-        <struts2.version>2.5.5</struts2.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <log4j2.version>2.8.2</log4j2.version>
-    </properties>
-
 	<dependencies>
 		<!-- Modules -->
 		<dependency>
@@ -80,7 +74,10 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
         </dependency>
-
+        <dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-api</artifactId>
+		</dependency>
 		<!-- Dwr -->
 		<dependency>
 			<groupId>uk.ltd.getahead</groupId>
@@ -118,7 +115,7 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webAppSourceDirectory>${basedir}/src/main/webapp/</webAppSourceDirectory>
                     <webAppConfig>
-                        <contextPath>/liborrow.liborrow-webinterface-webapp</contextPath>
+                        <contextPath>/testStruts</contextPath>
                         <descriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
                     </webAppConfig>
                 </configuration>
