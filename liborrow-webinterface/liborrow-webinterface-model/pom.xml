@@ -38,6 +38,7 @@
   				<wsdlUrls>
   					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/ItemService?wsdl</wsdlUrl>
   					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/borrowService?wsdl</wsdlUrl>
+  					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/UserService?wsdl</wsdlUrl>
   				</wsdlUrls>
   				<packageName>com.liborrow.webinterface.generated.model</packageName>
   				<sourcesDestDir>./src/main/java</sourcesDestDir>

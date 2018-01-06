@@ -66,14 +66,12 @@ public class BorrowManagerImpl implements BorrowManager {
 	public void borrowEntityHibernateInitialization(Borrow borrow)
 	{
 		Hibernate.initialize(borrow.getBorrower());
-		Hibernate.initialize(borrow.getBorrower().getBorrows());
 		Hibernate.initialize(borrow.getBorrower().getCitizenship());
 		Hibernate.initialize(borrow.getItems());
 	}
 	
 	public void userEntityHibernateInitialization(UserAccount user)
 	{
-		Hibernate.initialize(user.getBorrows());
 		Hibernate.initialize(user.getCitizenship());
 	}
 }

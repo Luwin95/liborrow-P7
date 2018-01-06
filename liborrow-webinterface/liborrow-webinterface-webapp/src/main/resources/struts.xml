@@ -7,11 +7,20 @@
 
     <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
 
-    <package name="myPackage" extends="struts-default">
+    <package name="home" namespace="/" extends="struts-default" >
 
-        <default-action-ref name="index" />
-
-        <action name="index" class="com.liborrow.webinterface.webapp.IndexAction">
+        <default-action-ref name="login" />
+        
+        <action name="login" class="com.liborrow.webinterface.webapp.actions.LoginAction">
+        	<result name="input">/WEB-INF/jsp/login.jsp</result>
+        	<result name="success" type="redirect">/liborrow/index.action</result>
+        </action>
+        
+    </package>
+    
+    <package name="logged" namespace="/liborrow" extends="struts-default">
+    
+    	<action name="index" class="com.liborrow.webinterface.webapp.IndexAction">
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
 
@@ -23,7 +32,6 @@
         <action name="book" class="com.liborrow.webinterface.webapp.actions.BookAction">
         	<result name="success">/WEB-INF/jsp/book.jsp</result>
         </action>
-
+        
     </package>
-
 </struts>

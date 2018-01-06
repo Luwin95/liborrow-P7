@@ -47,7 +47,6 @@ public class MagazineManagerImpl implements MagazineManager {
 		for(Borrow borrow : magazine.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
-			Hibernate.initialize(borrow.getBorrower().getBorrows());
 			Hibernate.initialize(borrow.getItems());
 			Hibernate.initialize(borrow.getBorrower().getCitizenship());
 		}

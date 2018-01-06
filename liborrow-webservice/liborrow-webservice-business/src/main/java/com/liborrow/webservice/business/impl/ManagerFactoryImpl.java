@@ -5,12 +5,14 @@ import com.liborrow.webservice.business.contract.manager.BookManager;
 import com.liborrow.webservice.business.contract.manager.BorrowManager;
 import com.liborrow.webservice.business.contract.manager.ItemManager;
 import com.liborrow.webservice.business.contract.manager.MagazineManager;
+import com.liborrow.webservice.business.contract.manager.UserManager;
 
 public class ManagerFactoryImpl implements ManagerFactory {
 	private BookManager bookManager;
 	private ItemManager itemManager;
 	private MagazineManager magazineManager;
 	private BorrowManager borrowManager;
+	private UserManager userManager;
 	
 	@Override
 	public BookManager getBookManager() {
@@ -50,6 +52,16 @@ public class ManagerFactoryImpl implements ManagerFactory {
 	@Override
 	public void setBorrowManager(BorrowManager borrowManager) {
 		this.borrowManager = borrowManager;
+	}
+
+	@Override
+	public UserManager getUserManager() {
+		return userManager;
+	}
+
+	@Override
+	public void setUserManager(UserManager userManager) {
+		this.userManager = userManager;
 	}
 	
 	

@@ -4,6 +4,7 @@ import com.liborrow.webservice.business.contract.manager.BookManager;
 import com.liborrow.webservice.business.contract.manager.BorrowManager;
 import com.liborrow.webservice.business.contract.manager.ItemManager;
 import com.liborrow.webservice.business.contract.manager.MagazineManager;
+import com.liborrow.webservice.business.contract.manager.UserManager;
 
 public interface ManagerFactory {
 	BookManager getBookManager();
@@ -14,4 +15,6 @@ public interface ManagerFactory {
 	void setMagazineManager(MagazineManager magazineManager);
 	BorrowManager getBorrowManager();
 	void setBorrowManager(BorrowManager borrowManager);
+	UserManager getUserManager();
+	void setUserManager(UserManager userManager);
 }

@@ -83,6 +83,10 @@
 			<groupId>uk.ltd.getahead</groupId>
 			<artifactId>dwr</artifactId>
 		</dependency>
+		<dependency>
+	      <groupId>commons-validator</groupId>
+	      <artifactId>commons-validator</artifactId>
+	    </dependency>
     </dependencies>
 	
     <build>

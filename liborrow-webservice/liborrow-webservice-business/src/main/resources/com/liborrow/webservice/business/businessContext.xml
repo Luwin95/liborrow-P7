@@ -12,6 +12,7 @@
 	<bean id="itemManager" class ="com.liborrow.webservice.business.impl.manager.ItemManagerImpl"/>
 	<bean id="magazineManager" class ="com.liborrow.webservice.business.impl.manager.MagazineManagerImpl"/>
 	<bean id="borrowManager" class ="com.liborrow.webservice.business.impl.manager.BorrowManagerImpl"/>
+	<bean id="userManager" class="com.liborrow.webservice.business.impl.manager.UserManagerImpl"/>
 	
 	<!-- Manager Factory -->
 	<bean id="managerFactory" class ="com.liborrow.webservice.business.impl.ManagerFactoryImpl">
@@ -19,6 +20,7 @@
 		<property name="itemManager" ref="itemManager"/>
 		<property name="magazineManager" ref="magazineManager"/>
 		<property name="borrowManager" ref="borrowManager"/>
+		<property name="userManager" ref="userManager"/>
 	</bean>
 	
 	<!-- Configure the transaction manager bean -->

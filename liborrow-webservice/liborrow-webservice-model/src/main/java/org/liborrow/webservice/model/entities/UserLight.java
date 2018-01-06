@@ -13,11 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlTransient;
 
-@Entity(name="User")
+@Entity(name="UserLight")
 @Table(name="user_account")
-public class UserAccount {
+public class UserLight {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id", updatable = false, nullable = false)
@@ -25,9 +25,6 @@ public class UserAccount {
 	
 	@Column(name="email")
 	private String email;
-	
-	@Column(name="password")
-	private String password;
 	
 	@Column(name="firstname")
 	private String firstname;
@@ -47,10 +44,13 @@ public class UserAccount {
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "citizenship_id")
 	private Citizenship citizenship;
-
-	public UserAccount() {}
 	
-	public UserAccount(String email, String firstname, String lastname, String address, String postCode, String phoneNumber, Citizenship citizenship)
+	@OneToMany(mappedBy="borrower")
+	private Set<Borrow> borrows = new HashSet<>();
+
+	public UserLight() {}
+	
+	public UserLight(String email, String firstname, String lastname, String address, String postCode, String phoneNumber, Citizenship citizenship)
 	{
 		this.email = email;
 		this.firstname = firstname;
@@ -77,13 +77,6 @@ public class UserAccount {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public String getFirstname() {
 		return firstname;
@@ -131,5 +124,13 @@ public class UserAccount {
 
 	public void setCitizenship(Citizenship citizenship) {
 		this.citizenship = citizenship;
+	}
+
+	public Set<Borrow> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(Set<Borrow> borrows) {
+		this.borrows = borrows;
 	}
 }

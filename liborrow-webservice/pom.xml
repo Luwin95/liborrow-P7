@@ -19,6 +19,7 @@
   	<junit.version>3.8.1</junit.version>
   	<javax-pesistence-api.version>1.0.2</javax-pesistence-api.version>
   	<spring.version>4.3.11.RELEASE</spring.version>
+  	<spring.security.version>4.2.3.RELEASE</spring.security.version>
   	<org.springframework.data-version>1.9.0.RELEASE</org.springframework.data-version>
   	<org.hibernate-em-version>4.3.8.Final</org.hibernate-em-version>
   	<postgresql.version>42.1.4</postgresql.version>
@@ -104,6 +105,13 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-bom -->
+          <dependency>
+              <groupId>org.springframework.security</groupId>
+              <artifactId>spring-security-bom</artifactId>
+              <version>${spring.security.version}</version>
+              <type>pom</type>
+          </dependency>
         
   	</dependencies>
   </dependencyManagement>
