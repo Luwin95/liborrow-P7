@@ -13,7 +13,7 @@ import com.liborrow.webservice.consumer.repository.BorrowRepository;
 import com.liborrow.webservice.consumer.repository.UserAccountRepository;
 
 @Transactional
-public class BorrowManagerImpl implements BorrowManager {
+public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowManager {
 	@Autowired
 	BorrowRepository borrowRepository;
 	

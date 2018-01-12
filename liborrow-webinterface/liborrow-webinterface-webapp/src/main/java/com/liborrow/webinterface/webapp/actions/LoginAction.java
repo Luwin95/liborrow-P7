@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.liborrow.webinterface.generated.model.UserLight;
+import com.liborrow.webinterface.generated.model.userservice.UserLight;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class LoginAction extends AbstractAction implements SessionAware {
@@ -54,7 +54,4 @@ public class LoginAction extends AbstractAction implements SessionAware {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-    
-    
-    
 }

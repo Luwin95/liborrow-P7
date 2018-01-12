@@ -14,7 +14,7 @@ import com.liborrow.webservice.consumer.repository.UserAccountRepository;
 import com.liborrow.webservice.consumer.repository.UserLightRepository;
 
 @Service
-public class UserManagerImpl implements UserManager{
+public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	
 	@Autowired
 	UserAccountRepository userAccountRepository;

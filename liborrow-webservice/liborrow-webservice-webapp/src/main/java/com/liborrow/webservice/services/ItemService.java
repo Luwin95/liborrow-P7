@@ -8,10 +8,12 @@ import javax.jws.WebService;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Item;
 import org.liborrow.webservice.model.entities.Magazine;
+import org.liborrow.webservice.model.utilsobject.ItemCriterias;
+import org.liborrow.webservice.model.utilsobject.SearchResponse;
 
 import com.liborrow.webservice.AbstractService;
 
-@WebService(name = "itemClient", serviceName = "ItemService", portName = "ItemPort")
+@WebService(name = "ItemClient", serviceName = "ItemService", portName = "ItemPort", targetNamespace="itemservice.model.generated.webinterface.liborrow.com")
 
 public class ItemService extends AbstractService{
 	
@@ -40,8 +42,10 @@ public class ItemService extends AbstractService{
 	}
 	
 	@WebMethod
-	public List<Item> searchItem()
+	public SearchResponse searchItem(ItemCriterias itemCriterias)
 	{
-		return null;
+		SearchResponse searchResponse = new SearchResponse();
+		searchResponse.setBooks(getManagerFactory().getBookManager().searchBook(itemCriterias));
+		return searchResponse;
 	}
 }

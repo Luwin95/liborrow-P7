@@ -11,10 +11,12 @@
     
     <bean id="bookDao" class="com.liborrow.webinterface.consumer.impl.dao.BookDaoImpl"/><!--  parent="abstractDao"-->
     <bean id="userDao" class="com.liborrow.webinterface.consumer.impl.dao.UserDaoImpl"/>
+    <bean id="itemDao" class="com.liborrow.webinterface.consumer.impl.dao.ItemDaoImpl"/>
     
     <bean id="daoFactory" class="com.liborrow.webinterface.consumer.impl.DaoFactoryImpl">
     	<property name="bookDao" ref="bookDao"/>
     	<property name="userDao" ref="userDao"/>
+    	<property name="itemDao" ref="itemDao"/>
     </bean>
     
 </beans>

@@ -15,7 +15,7 @@ import com.liborrow.webservice.business.contract.manager.MagazineManager;
 import com.liborrow.webservice.consumer.repository.MagazineRepository;
 
 @Service
-public class MagazineManagerImpl implements MagazineManager {
+public class MagazineManagerImpl extends AbstractManagerImpl implements MagazineManager {
 	@Autowired
 	@Resource
 	MagazineRepository magazineRepository;

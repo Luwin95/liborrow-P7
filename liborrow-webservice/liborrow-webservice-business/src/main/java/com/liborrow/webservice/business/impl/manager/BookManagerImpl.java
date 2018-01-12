@@ -7,6 +7,7 @@ import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.Citizenship;
+import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ import com.liborrow.webservice.business.contract.manager.BookManager;
 import com.liborrow.webservice.consumer.repository.BookRepository;
 
 @Service
-public class BookManagerImpl implements BookManager {
+public class BookManagerImpl extends AbstractManagerImpl implements BookManager {
 	@Autowired
 	BookRepository bookRepository;
 	
@@ -33,6 +34,16 @@ public class BookManagerImpl implements BookManager {
 	public List<Book> findAllBooks()
 	{
 		List<Book> books = bookRepository.findAll();
+		for(Book book : books)
+		{
+			bookEntityHibernateInitialization(book);
+		}
+		return books;
+	}
+	
+	@Override
+	public List<Book> searchBook(ItemCriterias itemCriterias) {
+		List<Book> books = getDaoFactory().getBookDao().searchBook(itemCriterias);
 		for(Book book : books)
 		{
 			bookEntityHibernateInitialization(book);

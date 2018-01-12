@@ -26,7 +26,6 @@
   		<plugin>
   			<groupId>org.codehaus.mojo</groupId>
   			<artifactId>jaxws-maven-plugin</artifactId>
-  			<version>2.5</version>
   			<executions>
   				<execution>
   					<goals>
@@ -35,13 +34,12 @@
   				</execution>
   			</executions>
   			<configuration>
+  				<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
   				<wsdlUrls>
   					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/ItemService?wsdl</wsdlUrl>
-  					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/borrowService?wsdl</wsdlUrl>
+  					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/BorrowService?wsdl</wsdlUrl>
   					<wsdlUrl>http://ben:8080/liborrow-webservice-webapp/UserService?wsdl</wsdlUrl>
   				</wsdlUrls>
-  				<packageName>com.liborrow.webinterface.generated.model</packageName>
-  				<sourcesDestDir>./src/main/java</sourcesDestDir>
   			</configuration>
   		</plugin>
   	</plugins>

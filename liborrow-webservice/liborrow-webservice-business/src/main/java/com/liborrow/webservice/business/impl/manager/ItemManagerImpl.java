@@ -12,7 +12,7 @@ import com.liborrow.webservice.consumer.repository.ItemRepository;
 
 
 @Service
-public class ItemManagerImpl implements ItemManager {
+public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager {
 	@Autowired
 	@Resource
 	ItemRepository itemRepository;

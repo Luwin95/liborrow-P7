@@ -1,9 +1,9 @@
 package com.liborrow.webinterface.consumer.impl.dao;
 
-import com.liborrow.webinterface.generated.itemService.ItemClient;
-import com.liborrow.webinterface.generated.itemService.ItemService;
-import com.liborrow.webinterface.generated.model.UserClient;
-import com.liborrow.webinterface.generated.model.UserService;
+import com.liborrow.webinterface.generated.model.itemservice.ItemClient;
+import com.liborrow.webinterface.generated.model.itemservice.ItemService;
+import com.liborrow.webinterface.generated.model.userservice.UserClient;
+import com.liborrow.webinterface.generated.model.userservice.UserService;
 
 public abstract class AbstractDao {
 	private ItemService itemService = new ItemService();

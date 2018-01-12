@@ -133,4 +133,15 @@
     	<module>liborrow-webinterface-model</module>
     	<module>liborrow-webinterface-webapp</module>
     </modules>
+    <build>
+    	<pluginManagement>
+	    	<plugins>
+	    		<plugin>
+		  			<groupId>org.codehaus.mojo</groupId>
+		  			<artifactId>jaxws-maven-plugin</artifactId>
+		  			<version>2.5</version>
+		  		</plugin>
+	    	</plugins>
+    	</pluginManagement>
+    </build>
 </project>

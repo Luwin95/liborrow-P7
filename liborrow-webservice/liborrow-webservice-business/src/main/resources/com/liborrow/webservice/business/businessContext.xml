@@ -7,12 +7,15 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
+	<bean id="abstractManager" abstract="true">
+		<property name="daoFactory" ref="daoFactory"/>
+	</bean>
 	<!-- Déclaration des Managers -->
-	<bean id="bookManager" class ="com.liborrow.webservice.business.impl.manager.BookManagerImpl"/>
-	<bean id="itemManager" class ="com.liborrow.webservice.business.impl.manager.ItemManagerImpl"/>
-	<bean id="magazineManager" class ="com.liborrow.webservice.business.impl.manager.MagazineManagerImpl"/>
-	<bean id="borrowManager" class ="com.liborrow.webservice.business.impl.manager.BorrowManagerImpl"/>
-	<bean id="userManager" class="com.liborrow.webservice.business.impl.manager.UserManagerImpl"/>
+	<bean id="bookManager" class ="com.liborrow.webservice.business.impl.manager.BookManagerImpl" parent="abstractManager"/>
+	<bean id="itemManager" class ="com.liborrow.webservice.business.impl.manager.ItemManagerImpl" parent="abstractManager"/>
+	<bean id="magazineManager" class ="com.liborrow.webservice.business.impl.manager.MagazineManagerImpl" parent="abstractManager"/>
+	<bean id="borrowManager" class ="com.liborrow.webservice.business.impl.manager.BorrowManagerImpl" parent="abstractManager"/>
+	<bean id="userManager" class="com.liborrow.webservice.business.impl.manager.UserManagerImpl" parent="abstractManager"/>
 	
 	<!-- Manager Factory -->
 	<bean id="managerFactory" class ="com.liborrow.webservice.business.impl.ManagerFactoryImpl">
