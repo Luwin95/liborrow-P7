@@ -5,8 +5,7 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-import org.liborrow.webservice.model.entities.Book;
-import org.liborrow.webservice.model.entities.Item;
+import org.liborrow.webservice.model.dto.BookDTO;
 import org.liborrow.webservice.model.entities.Magazine;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 import org.liborrow.webservice.model.utilsobject.SearchResponse;
@@ -18,13 +17,13 @@ import com.liborrow.webservice.AbstractService;
 public class ItemService extends AbstractService{
 	
 	@WebMethod
-	public Book getBook(Integer id)
+	public BookDTO getBook(Integer id)
 	{
 		return getManagerFactory().getBookManager().findBookById(id);
 	}
 	
 	@WebMethod
-	public List<Book> getAllBooks()
+	public List<BookDTO> getAllBooks()
 	{
 		return getManagerFactory().getBookManager().findAllBooks();
 	}

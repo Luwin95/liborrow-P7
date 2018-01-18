@@ -8,5 +8,6 @@
 	<import resource="classpath:/com/liborrow/webservice/webapp/webappContext.xml" />
     <import resource="classpath:/com/liborrow/webservice/consumer/consumerContext.xml" />
     <import resource="classpath:/com/liborrow/webservice/business/businessContext.xml" />
+    <import resource="classpath:/org/liborrow/webservice/model/modelContext.xml" />
     <tx:annotation-driven />
 </beans>

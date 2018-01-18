@@ -46,7 +46,6 @@ import javax.xml.bind.annotation.XmlType;
     "totalCount"
 })
 @XmlSeeAlso({
-    Book.class,
     Magazine.class
 })
 public abstract class Item {

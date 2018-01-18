@@ -9,6 +9,7 @@
 	
 	<bean id="abstractManager" abstract="true">
 		<property name="daoFactory" ref="daoFactory"/>
+		<property name="transformerFactory" ref="transformerFactory"/>
 	</bean>
 	<!-- Déclaration des Managers -->
 	<bean id="bookManager" class ="com.liborrow.webservice.business.impl.manager.BookManagerImpl" parent="abstractManager"/>

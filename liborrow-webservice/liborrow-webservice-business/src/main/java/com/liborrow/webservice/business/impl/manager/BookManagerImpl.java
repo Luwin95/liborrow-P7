@@ -1,8 +1,10 @@
 package com.liborrow.webservice.business.impl.manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.liborrow.webservice.model.dto.BookDTO;
 import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
@@ -22,32 +24,33 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 	
 	@Override
 	@Transactional
-	public Book findBookById(long id)
+	public BookDTO findBookById(long id)
 	{
 		Book book = bookRepository.findOne(id);
 		bookEntityHibernateInitialization(book);
-		return book;
+		BookDTO bookDTO = getTransformerFactory().getBookTransformer().toBookDTO(book, true);
+		return bookDTO;
 	}
 	
 	@Override
 	@Transactional
-	public List<Book> findAllBooks()
+	public List<BookDTO> findAllBooks()
 	{
 		List<Book> books = bookRepository.findAll();
+		List<BookDTO> booksDTO = new ArrayList<>();
 		for(Book book : books)
 		{
 			bookEntityHibernateInitialization(book);
+			BookDTO bookDTO = getTransformerFactory().getBookTransformer().toBookDTO(book, true);
+			booksDTO.add(bookDTO);
 		}
-		return books;
+		return booksDTO;
 	}
 	
 	@Override
-	public List<Book> searchBook(ItemCriterias itemCriterias) {
-		List<Book> books = getDaoFactory().getBookDao().searchBook(itemCriterias);
-		for(Book book : books)
-		{
-			bookEntityHibernateInitialization(book);
-		}
+	public List<BookDTO> searchBook(ItemCriterias itemCriterias) {
+		List<BookDTO> books = new ArrayList<>();
+		books.addAll(getDaoFactory().getBookDao().searchBook(itemCriterias));
 		return books;
 	}
 	

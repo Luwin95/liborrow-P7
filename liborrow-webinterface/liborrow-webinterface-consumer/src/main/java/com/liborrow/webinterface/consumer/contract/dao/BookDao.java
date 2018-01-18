@@ -1,7 +1,7 @@
 package com.liborrow.webinterface.consumer.contract.dao;
 
-import com.liborrow.webinterface.generated.model.itemservice.Book;
+import com.liborrow.webinterface.generated.model.itemservice.BookDTO;
 
 public interface BookDao {
-	Book find(Integer id);
+	BookDTO find(Integer id);
 }

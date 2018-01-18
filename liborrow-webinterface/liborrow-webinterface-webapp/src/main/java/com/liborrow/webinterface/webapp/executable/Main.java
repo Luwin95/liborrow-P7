@@ -7,6 +7,7 @@ import com.liborrow.webinterface.business.contract.ManagerFactory;
 import com.liborrow.webinterface.generated.model.itemservice.AuthorCriterias;
 import com.liborrow.webinterface.generated.model.itemservice.Book;
 import com.liborrow.webinterface.generated.model.itemservice.BookCriterias;
+import com.liborrow.webinterface.generated.model.itemservice.BookDTO;
 import com.liborrow.webinterface.generated.model.itemservice.ItemCriterias;
 import com.liborrow.webinterface.generated.model.itemservice.MagazineCriterias;
 import com.liborrow.webinterface.generated.model.itemservice.SearchResponse;
@@ -32,12 +33,10 @@ public class Main {
 				itemCriterias.getAuthorCriterias().setLastname("Hello");
 				itemCriterias.getMagazineCriterias().setName("Hello");
 				SearchResponse searchResponse = vManagerFactory.getItemManager().searchItem(itemCriterias);
-				for(Book book : searchResponse.getBooks())
+				for(BookDTO book : searchResponse.getBooks())
 				{
 					System.out.println(book.getTitle());
 				}
-				System.out.println("test");
-				
 	}
 
 }

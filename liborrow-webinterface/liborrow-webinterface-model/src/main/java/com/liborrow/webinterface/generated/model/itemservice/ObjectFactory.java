@@ -123,43 +123,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Author }
-     * 
-     */
-    public Author createAuthor() {
-        return new Author();
-    }
-
-    /**
-     * Create an instance of {@link Citizenship }
-     * 
-     */
-    public Citizenship createCitizenship() {
-        return new Citizenship();
-    }
-
-    /**
-     * Create an instance of {@link Book }
-     * 
-     */
-    public Book createBook() {
-        return new Book();
-    }
-
-    /**
      * Create an instance of {@link MagazineCriterias }
      * 
      */
     public MagazineCriterias createMagazineCriterias() {
         return new MagazineCriterias();
-    }
-
-    /**
-     * Create an instance of {@link ItemCriterias }
-     * 
-     */
-    public ItemCriterias createItemCriterias() {
-        return new ItemCriterias();
     }
 
     /**
@@ -176,6 +144,70 @@ public class ObjectFactory {
      */
     public AuthorCriterias createAuthorCriterias() {
         return new AuthorCriterias();
+    }
+
+    /**
+     * Create an instance of {@link BorrowDTO }
+     * 
+     */
+    public BorrowDTO createBorrowDTO() {
+        return new BorrowDTO();
+    }
+
+    /**
+     * Create an instance of {@link Citizenship }
+     * 
+     */
+    public Citizenship createCitizenship() {
+        return new Citizenship();
+    }
+
+    /**
+     * Create an instance of {@link AuthorDTO }
+     * 
+     */
+    public AuthorDTO createAuthorDTO() {
+        return new AuthorDTO();
+    }
+
+    /**
+     * Create an instance of {@link CitizenshipDTO }
+     * 
+     */
+    public CitizenshipDTO createCitizenshipDTO() {
+        return new CitizenshipDTO();
+    }
+
+    /**
+     * Create an instance of {@link BookDTO }
+     * 
+     */
+    public BookDTO createBookDTO() {
+        return new BookDTO();
+    }
+
+    /**
+     * Create an instance of {@link ItemDTO }
+     * 
+     */
+    public ItemDTO createItemDTO() {
+        return new ItemDTO();
+    }
+
+    /**
+     * Create an instance of {@link UserDTO }
+     * 
+     */
+    public UserDTO createUserDTO() {
+        return new UserDTO();
+    }
+
+    /**
+     * Create an instance of {@link ItemCriterias }
+     * 
+     */
+    public ItemCriterias createItemCriterias() {
+        return new ItemCriterias();
     }
 
     /**

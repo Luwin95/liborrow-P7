@@ -6,6 +6,7 @@ import java.util.List;
 import com.liborrow.webinterface.generated.model.itemservice.AuthorCriterias;
 import com.liborrow.webinterface.generated.model.itemservice.Book;
 import com.liborrow.webinterface.generated.model.itemservice.BookCriterias;
+import com.liborrow.webinterface.generated.model.itemservice.BookDTO;
 import com.liborrow.webinterface.generated.model.itemservice.ItemCriterias;
 import com.liborrow.webinterface.generated.model.itemservice.MagazineCriterias;
 import com.liborrow.webinterface.generated.model.itemservice.SearchResponse;
@@ -13,7 +14,7 @@ import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class SearchItemAction extends AbstractAction{
 	private String search;
-	private List<Book> bookResponse = new ArrayList<Book>();
+	private List<BookDTO> bookResponse;
 	
 	public String execute() throws Exception {
 		ItemCriterias itemCriterias = new ItemCriterias();
@@ -21,12 +22,16 @@ public class SearchItemAction extends AbstractAction{
 		itemCriterias.setBookCriterias(new BookCriterias());
 		itemCriterias.setMagazineCriterias(new MagazineCriterias());
 		itemCriterias.getBookCriterias().setTitle(search);
-		itemCriterias.getBookCriterias().setEditor(search);
+		//itemCriterias.getBookCriterias().setEditor(search);
 		itemCriterias.getAuthorCriterias().setFirstname(search);
 		itemCriterias.getAuthorCriterias().setLastname(search);
 		itemCriterias.getMagazineCriterias().setName(search);
 		SearchResponse searchResponse =getManagerFactory().getItemManager().searchItem(itemCriterias);
 		setBookResponse(searchResponse.getBooks());
+		for(BookDTO bookDTO : bookResponse)
+		{
+			System.out.println(bookDTO.getTitle());
+		}
     	return SUCCESS;
 	}
 
@@ -38,15 +43,11 @@ public class SearchItemAction extends AbstractAction{
 		this.search = search;
 	}
 
-	public List<Book> getBookResponse() {
+	public List<BookDTO> getBookResponse() {
 		return bookResponse;
 	}
 
-	public void setBookResponse(List<Book> bookResponse) {
+	public void setBookResponse(List<BookDTO> bookResponse) {
 		this.bookResponse = bookResponse;
 	}
-	
-	
-	
-	
 }

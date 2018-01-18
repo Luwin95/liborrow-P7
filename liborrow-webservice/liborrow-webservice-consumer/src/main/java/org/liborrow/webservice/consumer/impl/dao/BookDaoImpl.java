@@ -1,13 +1,17 @@
 package org.liborrow.webservice.consumer.impl.dao;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.hibernate.Hibernate;
 import org.liborrow.webservice.consumer.contract.dao.BookDao;
+import org.liborrow.webservice.model.dto.BookDTO;
 import org.liborrow.webservice.model.entities.Book;
+import org.liborrow.webservice.model.transformer.impl.BookTransformerImpl;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 
 public class BookDaoImpl implements BookDao {
@@ -20,26 +24,26 @@ public class BookDaoImpl implements BookDao {
 		em.persist(book);
 	}
 	
-	public List<Book> listBooks()
+	public Set<Book> listBooks()
 	{
 		return null;
 	}
 	
 	@Override
-	public List<Book> searchBook(ItemCriterias itemCriterias) {
+	public Set<BookDTO> searchBook(ItemCriterias itemCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT book FROM Book AS book  WHERE 1=1 ");
+		queryString.append("SELECT distinct book FROM Book AS book JOIN FETCH book.authors JOIN FETCH book.borrows  WHERE 1=1 ");
 		if(!itemCriterias.getBookCriterias().getTitle().equals(""))
 		{
-			queryString.append("AND book.title LIKE :title ");
+			queryString.append("OR book.title LIKE :title ");
 		}
 		if(itemCriterias.getBookCriterias().getEditor() != null)
 		{
-			queryString.append("AND book.editor LIKE :editor");
+			queryString.append("OR book.editor LIKE :editor");
 		}
 		if(itemCriterias.getBookCriterias().getRelease() != null)
 		{
-			queryString.append("AND book.release LIKE :release");
+			queryString.append("OR book.release LIKE :release");
 		}
 		
 		Query query = em.createQuery(queryString.toString());
@@ -55,6 +59,16 @@ public class BookDaoImpl implements BookDao {
 		{
 			query.setParameter("release", itemCriterias.getBookCriterias().getRelease());
 		}
-		return (List <Book>) query.getResultList();
+		
+		Set<Book> books = new HashSet<>();
+		books.addAll(query.getResultList());
+		BookTransformerImpl bookTransformer = new BookTransformerImpl();
+		return bookTransformer.toBooksDTO(books);
+	}
+	
+	public void bookEntityHibernateInitialization(Book book)
+	{
+		Hibernate.initialize(book.getAuthors());
+		
 	}
 }

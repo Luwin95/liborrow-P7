@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{itemservice.model.generated.webinterface.liborrow.com}book" minOccurs="0"/>
+ *         &lt;element name="return" type="{itemservice.model.generated.webinterface.liborrow.com}bookDTO" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,17 +33,17 @@ import javax.xml.bind.annotation.XmlType;
 public class GetBookResponse {
 
     @XmlElement(name = "return")
-    protected Book _return;
+    protected BookDTO _return;
 
     /**
      * Obtient la valeur de la propriété return.
      * 
      * @return
      *     possible object is
-     *     {@link Book }
+     *     {@link BookDTO }
      *     
      */
-    public Book getReturn() {
+    public BookDTO getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class GetBookResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Book }
+     *     {@link BookDTO }
      *     
      */
-    public void setReturn(Book value) {
+    public void setReturn(BookDTO value) {
         this._return = value;
     }
 

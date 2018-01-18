@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import org.liborrow.webservice.model.xmladapter.AuthorSetXmlAdapter;
 
 @Entity(name="Book")
 public class Book extends Item {

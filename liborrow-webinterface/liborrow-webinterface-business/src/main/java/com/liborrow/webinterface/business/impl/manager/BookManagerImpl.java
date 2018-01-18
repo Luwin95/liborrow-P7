@@ -1,10 +1,10 @@
 package com.liborrow.webinterface.business.impl.manager;
 
 import com.liborrow.webinterface.business.contract.manager.BookManager;
-import com.liborrow.webinterface.generated.model.itemservice.Book;
+import com.liborrow.webinterface.generated.model.itemservice.BookDTO;
 
 public class BookManagerImpl extends AbstractManagerImpl implements BookManager {
-	public Book getBookById(Integer id)
+	public BookDTO getBookById(Integer id)
 	{
 		return getDaoFactory().getBookDao().find(id);
 	}

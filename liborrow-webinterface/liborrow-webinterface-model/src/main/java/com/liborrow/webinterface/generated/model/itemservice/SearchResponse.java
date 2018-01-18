@@ -19,8 +19,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="authors" type="{itemservice.model.generated.webinterface.liborrow.com}author" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="books" type="{itemservice.model.generated.webinterface.liborrow.com}book" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="authors" type="{itemservice.model.generated.webinterface.liborrow.com}authorDTO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="books" type="{itemservice.model.generated.webinterface.liborrow.com}bookDTO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="magazines" type="{itemservice.model.generated.webinterface.liborrow.com}magazine" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -39,9 +39,9 @@ import javax.xml.bind.annotation.XmlType;
 public class SearchResponse {
 
     @XmlElement(nillable = true)
-    protected List<Author> authors;
+    protected List<AuthorDTO> authors;
     @XmlElement(nillable = true)
-    protected List<Book> books;
+    protected List<BookDTO> books;
     @XmlElement(nillable = true)
     protected List<Magazine> magazines;
 
@@ -63,13 +63,13 @@ public class SearchResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Author }
+     * {@link AuthorDTO }
      * 
      * 
      */
-    public List<Author> getAuthors() {
+    public List<AuthorDTO> getAuthors() {
         if (authors == null) {
-            authors = new ArrayList<Author>();
+            authors = new ArrayList<AuthorDTO>();
         }
         return this.authors;
     }
@@ -92,13 +92,13 @@ public class SearchResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Book }
+     * {@link BookDTO }
      * 
      * 
      */
-    public List<Book> getBooks() {
+    public List<BookDTO> getBooks() {
         if (books == null) {
-            books = new ArrayList<Book>();
+            books = new ArrayList<BookDTO>();
         }
         return this.books;
     }
