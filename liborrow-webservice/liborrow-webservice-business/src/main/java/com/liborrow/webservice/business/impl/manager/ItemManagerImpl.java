@@ -3,6 +3,8 @@ package com.liborrow.webservice.business.impl.manager;
 import javax.annotation.Resource;
 
 import org.liborrow.webservice.model.entities.Item;
+import org.liborrow.webservice.model.utilsobject.ItemCriterias;
+import org.liborrow.webservice.model.utilsobject.SearchResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,25 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 	public Item findItemById(long id)
 	{
 		return itemRepository.findOne(id);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public SearchResponse searchWithSimpleString(ItemCriterias itemCriterias, String[] simpleStringSplited) {
+		SearchResponse searchResponse = new SearchResponse();
+		searchResponse.getAuthors().addAll(
+				getTransformerFactory().getAuthorTransformer().toAuthorsDTO(
+						getDaoFactory().getAuthorDao().searchWithSimpleStringAuthor(itemCriterias, simpleStringSplited),true)
+				);
+		searchResponse.getBooks().addAll(
+				getTransformerFactory().getBookTransformer().toBooksDTO(
+						getDaoFactory().getBookDao().searchWithSimpleStringBook(itemCriterias, simpleStringSplited), true)
+				);
+		searchResponse.getMagazines().addAll(
+				getTransformerFactory().getMagazineTransformer().toMagazinesDTO(
+						getDaoFactory().getMagazineDao().searchWithSimpleStringMagazine(itemCriterias, simpleStringSplited), true)
+				);
+		return searchResponse;
 	}
 
 }

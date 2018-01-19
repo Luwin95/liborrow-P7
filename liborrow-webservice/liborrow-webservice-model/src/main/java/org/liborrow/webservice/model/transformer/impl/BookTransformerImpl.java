@@ -79,12 +79,12 @@ public class BookTransformerImpl implements BookTransformer {
 	}
 	
 	@Override
-	public Set<BookDTO> toBooksDTO(Set<Book> books)
+	public Set<BookDTO> toBooksDTO(Set<Book> books, boolean isParent)
 	{
 		Set<BookDTO> booksTransformed = new HashSet<>();
 		for(Book book : books)
 		{
-			booksTransformed.add(toBookDTO(book, true));
+			booksTransformed.add(toBookDTO(book, isParent));
 		}
 		return booksTransformed;
 	}

@@ -1,10 +1,11 @@
 package org.liborrow.webservice.consumer.contract.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 
 public interface AuthorDao {
-	List<Author> searchAuthor(ItemCriterias itemCriterias);
+	Set<Author> searchAuthor(ItemCriterias itemCriterias);
+	Set<Author> searchWithSimpleStringAuthor(ItemCriterias itemCriterias, String[] simpleStringSplited);
 }

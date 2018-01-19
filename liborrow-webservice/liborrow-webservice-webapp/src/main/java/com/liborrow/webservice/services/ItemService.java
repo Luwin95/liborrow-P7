@@ -6,7 +6,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import org.liborrow.webservice.model.dto.BookDTO;
-import org.liborrow.webservice.model.entities.Magazine;
+import org.liborrow.webservice.model.dto.MagazineDTO;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 import org.liborrow.webservice.model.utilsobject.SearchResponse;
 
@@ -29,13 +29,13 @@ public class ItemService extends AbstractService{
 	}
 	
 	@WebMethod
-	public Magazine getMagazine(Integer id)
+	public MagazineDTO getMagazine(Integer id)
 	{
 		return getManagerFactory().getMagazineManager().findMagazineById(id);
 	}
 	
 	@WebMethod
-	public List<Magazine> getAllMagazines()
+	public List<MagazineDTO> getAllMagazines()
 	{
 		return getManagerFactory().getMagazineManager().findAllMagazines();
 	}
@@ -44,7 +44,26 @@ public class ItemService extends AbstractService{
 	public SearchResponse searchItem(ItemCriterias itemCriterias)
 	{
 		SearchResponse searchResponse = new SearchResponse();
-		searchResponse.setBooks(getManagerFactory().getBookManager().searchBook(itemCriterias));
+		if(itemCriterias.isStringSearch())
+		{
+			String[] splitedString = itemCriterias.getSimpleStringSearch().split("\\s+");
+			searchResponse = getManagerFactory().getItemManager().searchWithSimpleString(itemCriterias, splitedString);
+		}else {
+			if(itemCriterias.getBookCriterias()!=null)
+			{
+				searchResponse.setBooks(getManagerFactory().getBookManager().searchBook(itemCriterias));
+			}
+			
+			if(itemCriterias.getAuthorCriterias() !=null)
+			{
+				searchResponse.setAuthors(getManagerFactory().getAuthorManager().searchAuthor(itemCriterias));
+			}
+			
+			if(itemCriterias.getMagazineCriterias() != null)
+			{
+				searchResponse.setMagazines(getManagerFactory().getMagazineManager().searchMagazine(itemCriterias));
+			}
+		}
 		return searchResponse;
 	}
 }

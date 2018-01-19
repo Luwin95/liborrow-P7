@@ -1,6 +1,7 @@
 package com.liborrow.webservice.business.impl;
 
 import com.liborrow.webservice.business.contract.ManagerFactory;
+import com.liborrow.webservice.business.contract.manager.AuthorManager;
 import com.liborrow.webservice.business.contract.manager.BookManager;
 import com.liborrow.webservice.business.contract.manager.BorrowManager;
 import com.liborrow.webservice.business.contract.manager.ItemManager;
@@ -8,12 +9,23 @@ import com.liborrow.webservice.business.contract.manager.MagazineManager;
 import com.liborrow.webservice.business.contract.manager.UserManager;
 
 public class ManagerFactoryImpl implements ManagerFactory {
+	private AuthorManager authorManager;
 	private BookManager bookManager;
 	private ItemManager itemManager;
 	private MagazineManager magazineManager;
 	private BorrowManager borrowManager;
 	private UserManager userManager;
 	
+	@Override
+	public AuthorManager getAuthorManager() {
+		return authorManager;
+	}
+
+	@Override
+	public void setAuthorManager(AuthorManager authorManager) {
+		this.authorManager = authorManager;
+	}
+
 	@Override
 	public BookManager getBookManager() {
 		return bookManager;

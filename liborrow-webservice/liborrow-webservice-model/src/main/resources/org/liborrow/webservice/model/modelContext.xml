@@ -9,11 +9,28 @@
 	 <bean id="authorTransformer" class="org.liborrow.webservice.model.transformer.impl.AuthorTransformerImpl"/>
 	 <bean id="bookTransformer" class="org.liborrow.webservice.model.transformer.impl.BookTransformerImpl"/>
 	 <bean id="citizenshipTransformer" class="org.liborrow.webservice.model.transformer.impl.CitizenshipTransformerImpl"/>
+	 <bean id="magazineTransformer" class="org.liborrow.webservice.model.transformer.impl.MagazineTransformerImpl"/>
 	 
 	 <!-- Déclaration TransformerFactory -->
 	 <bean id="transformerFactory" class="org.liborrow.webservice.model.transformer.impl.TransformerFactoryImpl">
 	 	<property name="authorTransformer" ref="authorTransformer"/>
 	 	<property name="bookTransformer" ref="bookTransformer"/>
 	 	<property name="citizenshipTransformer" ref="citizenshipTransformer"/>
+	 	<property name="magazineTransformer" ref="magazineTransformer"/>
 	 </bean>
+	 
+	 <!-- Déclaration Utils -->
+	 <!-- Déclaration Utils Converters -->
+	 <bean id="dateConverter" class="org.liborrow.webservice.model.utils.converters.impl.DateConverterImpl"/>
+	 
+	 <!-- Déclaration Utils ConvertersFactory -->
+	 <bean id="convertersFactory" class="org.liborrow.webservice.model.utils.converters.impl.ConvertersFactoryImpl">
+	 	<property name="dateConverter" ref="dateConverter"/>
+	 </bean>
+	 
+	 <!-- Déclaration UtilsFactory -->
+	 <bean id="utilsFactory" class="org.liborrow.webservice.model.utils.impl.UtilsFactoryImpl">
+	 	<property name="convertersFactory" ref="convertersFactory"/>
+	 </bean>
+	 
 </beans>

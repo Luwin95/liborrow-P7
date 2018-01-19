@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="itemRef" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="magazineCriterias" type="{itemservice.model.generated.webinterface.liborrow.com}magazineCriterias" minOccurs="0"/>
  *         &lt;element name="magazineSearch" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="simpleStringSearch" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="stringSearch" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,7 +41,9 @@ import javax.xml.bind.annotation.XmlType;
     "bookSearch",
     "itemRef",
     "magazineCriterias",
-    "magazineSearch"
+    "magazineSearch",
+    "simpleStringSearch",
+    "stringSearch"
 })
 public class ItemCriterias {
 
@@ -50,6 +54,8 @@ public class ItemCriterias {
     protected String itemRef;
     protected MagazineCriterias magazineCriterias;
     protected boolean magazineSearch;
+    protected String simpleStringSearch;
+    protected boolean stringSearch;
 
     /**
      * Obtient la valeur de la propriété authorCriterias.
@@ -193,6 +199,46 @@ public class ItemCriterias {
      */
     public void setMagazineSearch(boolean value) {
         this.magazineSearch = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété simpleStringSearch.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSimpleStringSearch() {
+        return simpleStringSearch;
+    }
+
+    /**
+     * Définit la valeur de la propriété simpleStringSearch.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSimpleStringSearch(String value) {
+        this.simpleStringSearch = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété stringSearch.
+     * 
+     */
+    public boolean isStringSearch() {
+        return stringSearch;
+    }
+
+    /**
+     * Définit la valeur de la propriété stringSearch.
+     * 
+     */
+    public void setStringSearch(boolean value) {
+        this.stringSearch = value;
     }
 
 }

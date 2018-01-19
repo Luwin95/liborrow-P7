@@ -9,4 +9,6 @@ public interface TransformerFactory {
 	void setBorrowTransformer(BorrowTransformer borrowTransformer);
 	CitizenshipTransformer getCitizenshipTransformer();
 	void setCitizenshipTransformer(CitizenshipTransformer citizenshipTransformer);
+	MagazineTransformer getMagazineTransformer();
+	void setMagazineTransformer(MagazineTransformer magazineTransformer);
 }

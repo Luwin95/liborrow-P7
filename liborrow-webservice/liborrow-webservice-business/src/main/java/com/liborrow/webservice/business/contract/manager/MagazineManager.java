@@ -2,9 +2,11 @@ package com.liborrow.webservice.business.contract.manager;
 
 import java.util.List;
 
-import org.liborrow.webservice.model.entities.Magazine;
+import org.liborrow.webservice.model.dto.MagazineDTO;
+import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 
 public interface MagazineManager {
-	Magazine findMagazineById(long id);
-	List<Magazine> findAllMagazines();
+	MagazineDTO findMagazineById(long id);
+	List<MagazineDTO> findAllMagazines();
+	List<MagazineDTO> searchMagazine(ItemCriterias itemCriterias); 
 }

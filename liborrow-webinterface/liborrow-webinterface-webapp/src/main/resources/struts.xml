@@ -48,6 +48,17 @@
         	<result name="success">/WEB-INF/jsp/search.jsp</result>
         	<result name="input">/WEB-INF/jsp/search.jsp</result>
         </action>
-        
+        <action name="searchBook" class="com.liborrow.webinterface.webapp.actions.SearchBookAction" method="execute">
+        	<result name="success">/WEB-INF/jsp/search.jsp</result>
+        	<result name="input">/WEB-INF/jsp/search.jsp</result>
+        </action>
+        <action name="searchAuthor" class="com.liborrow.webinterface.webapp.actions.SearchAuthorAction" method="execute">
+        	<result name="success">/WEB-INF/jsp/search.jsp</result>
+        	<result name="input">/WEB-INF/jsp/search.jsp</result>
+        </action>
+        <action name="searchMagazine" class="com.liborrow.webinterface.webapp.actions.SearchMagazineAction" method="execute">
+        	<result name="success">/WEB-INF/jsp/search.jsp</result>
+        	<result name="input">/WEB-INF/jsp/search.jsp</result>
+        </action>
     </package>
 </struts>

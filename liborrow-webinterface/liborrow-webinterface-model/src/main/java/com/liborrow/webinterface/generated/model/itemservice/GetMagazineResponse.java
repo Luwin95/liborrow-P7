@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{itemservice.model.generated.webinterface.liborrow.com}magazine" minOccurs="0"/>
+ *         &lt;element name="return" type="{itemservice.model.generated.webinterface.liborrow.com}magazineDTO" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,17 +33,17 @@ import javax.xml.bind.annotation.XmlType;
 public class GetMagazineResponse {
 
     @XmlElement(name = "return")
-    protected Magazine _return;
+    protected MagazineDTO _return;
 
     /**
      * Obtient la valeur de la propriété return.
      * 
      * @return
      *     possible object is
-     *     {@link Magazine }
+     *     {@link MagazineDTO }
      *     
      */
-    public Magazine getReturn() {
+    public MagazineDTO getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class GetMagazineResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Magazine }
+     *     {@link MagazineDTO }
      *     
      */
-    public void setReturn(Magazine value) {
+    public void setReturn(MagazineDTO value) {
         this._return = value;
     }
 

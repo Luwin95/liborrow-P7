@@ -50,7 +50,10 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 	@Override
 	public List<BookDTO> searchBook(ItemCriterias itemCriterias) {
 		List<BookDTO> books = new ArrayList<>();
-		books.addAll(getDaoFactory().getBookDao().searchBook(itemCriterias));
+		if(books!=null)
+		{
+			books.addAll(getTransformerFactory().getBookTransformer().toBooksDTO(getDaoFactory().getBookDao().searchBook(itemCriterias),true));
+		}
 		return books;
 	}
 	

@@ -4,6 +4,7 @@ import org.liborrow.webservice.model.transformer.contract.AuthorTransformer;
 import org.liborrow.webservice.model.transformer.contract.BookTransformer;
 import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
 import org.liborrow.webservice.model.transformer.contract.CitizenshipTransformer;
+import org.liborrow.webservice.model.transformer.contract.MagazineTransformer;
 import org.liborrow.webservice.model.transformer.contract.TransformerFactory;
 
 public class TransformerFactoryImpl implements TransformerFactory {
@@ -11,6 +12,7 @@ public class TransformerFactoryImpl implements TransformerFactory {
 	AuthorTransformer authorTransformer;
 	BorrowTransformer borrowTransformer;
 	CitizenshipTransformer citizenshipTransformer;
+	MagazineTransformer magazineTransformer;
 	
 	public BookTransformer getBookTransformer() {
 		return bookTransformer;
@@ -43,4 +45,14 @@ public class TransformerFactoryImpl implements TransformerFactory {
 	public void setCitizenshipTransformer(CitizenshipTransformer citizenshipTransformer) {
 		this.citizenshipTransformer = citizenshipTransformer;
 	}
+
+	public MagazineTransformer getMagazineTransformer() {
+		return magazineTransformer;
+	}
+
+	public void setMagazineTransformer(MagazineTransformer magazineTransformer) {
+		this.magazineTransformer = magazineTransformer;
+	}
+	
+	
 }

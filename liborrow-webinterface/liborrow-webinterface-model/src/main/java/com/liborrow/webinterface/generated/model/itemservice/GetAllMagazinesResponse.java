@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{itemservice.model.generated.webinterface.liborrow.com}magazine" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{itemservice.model.generated.webinterface.liborrow.com}magazineDTO" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GetAllMagazinesResponse {
 
     @XmlElement(name = "return")
-    protected List<Magazine> _return;
+    protected List<MagazineDTO> _return;
 
     /**
      * Gets the value of the return property.
@@ -55,13 +55,13 @@ public class GetAllMagazinesResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Magazine }
+     * {@link MagazineDTO }
      * 
      * 
      */
-    public List<Magazine> getReturn() {
+    public List<MagazineDTO> getReturn() {
         if (_return == null) {
-            _return = new ArrayList<Magazine>();
+            _return = new ArrayList<MagazineDTO>();
         }
         return this._return;
     }

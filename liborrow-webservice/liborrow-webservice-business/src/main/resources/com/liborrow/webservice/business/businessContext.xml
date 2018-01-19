@@ -12,6 +12,7 @@
 		<property name="transformerFactory" ref="transformerFactory"/>
 	</bean>
 	<!-- Déclaration des Managers -->
+	<bean id="authorManager" class="com.liborrow.webservice.business.impl.manager.AuthorManagerImpl" parent ="abstractManager"/>
 	<bean id="bookManager" class ="com.liborrow.webservice.business.impl.manager.BookManagerImpl" parent="abstractManager"/>
 	<bean id="itemManager" class ="com.liborrow.webservice.business.impl.manager.ItemManagerImpl" parent="abstractManager"/>
 	<bean id="magazineManager" class ="com.liborrow.webservice.business.impl.manager.MagazineManagerImpl" parent="abstractManager"/>
@@ -20,6 +21,7 @@
 	
 	<!-- Manager Factory -->
 	<bean id="managerFactory" class ="com.liborrow.webservice.business.impl.ManagerFactoryImpl">
+		<property name="authorManager" ref="authorManager"/>
 		<property name="bookManager" ref="bookManager"/>
 		<property name="itemManager" ref="itemManager"/>
 		<property name="magazineManager" ref="magazineManager"/>

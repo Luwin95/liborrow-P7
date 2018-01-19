@@ -4,6 +4,10 @@
 	xmlns:repo="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	 http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+	 <bean id="abstractDao" abstract ="true">
+	 	<property name="utilsFactory" ref="utilsFactory"/>
+	 </bean>
+	 
 	 <bean id="authorDao" class="org.liborrow.webservice.consumer.impl.dao.AuthorDaoImpl"/>
 	 <bean id="bookDao" class="org.liborrow.webservice.consumer.impl.dao.BookDaoImpl"/>
 	 <bean id="magazineDao" class="org.liborrow.webservice.consumer.impl.dao.MagazineDaoImpl"/>

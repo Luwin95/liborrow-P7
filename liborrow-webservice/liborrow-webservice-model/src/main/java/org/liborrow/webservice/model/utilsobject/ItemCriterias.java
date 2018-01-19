@@ -1,10 +1,12 @@
 package org.liborrow.webservice.model.utilsobject;
 
 public class ItemCriterias {
+	private String simpleStringSearch;
 	private String itemRef;
-	private BookCriterias bookCriterias;
-	private AuthorCriterias authorCriterias;
-	private MagazineCriterias magazineCriterias;
+	private BookCriterias bookCriterias= new BookCriterias();
+	private AuthorCriterias authorCriterias= new AuthorCriterias();
+	private MagazineCriterias magazineCriterias= new MagazineCriterias();
+	private boolean isStringSearch;
 	private boolean isBookSearch;
 	private boolean isMagazineSearch;
 	private boolean isAuthorSearch;
@@ -15,6 +17,14 @@ public class ItemCriterias {
 		this.magazineCriterias = new MagazineCriterias();
 	}
 	
+	public String getSimpleStringSearch() {
+		return simpleStringSearch;
+	}
+
+	public void setSimpleStringSearch(String simpleStringSearch) {
+		this.simpleStringSearch = simpleStringSearch;
+	}
+
 	public String getItemRef() {
 		return itemRef;
 	}
@@ -39,6 +49,15 @@ public class ItemCriterias {
 	public void setMagazineCriterias(MagazineCriterias magazineCriterias) {
 		this.magazineCriterias = magazineCriterias;
 	}
+	
+	public boolean isStringSearch() {
+		return isStringSearch;
+	}
+
+	public void setStringSearch(boolean isStringSearch) {
+		this.isStringSearch = isStringSearch;
+	}
+
 	public boolean isBookSearch() {
 		return isBookSearch;
 	}

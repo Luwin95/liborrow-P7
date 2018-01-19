@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="authors" type="{itemservice.model.generated.webinterface.liborrow.com}authorDTO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="books" type="{itemservice.model.generated.webinterface.liborrow.com}bookDTO" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="magazines" type="{itemservice.model.generated.webinterface.liborrow.com}magazine" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="magazines" type="{itemservice.model.generated.webinterface.liborrow.com}magazineDTO" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +43,7 @@ public class SearchResponse {
     @XmlElement(nillable = true)
     protected List<BookDTO> books;
     @XmlElement(nillable = true)
-    protected List<Magazine> magazines;
+    protected List<MagazineDTO> magazines;
 
     /**
      * Gets the value of the authors property.
@@ -121,13 +121,13 @@ public class SearchResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Magazine }
+     * {@link MagazineDTO }
      * 
      * 
      */
-    public List<Magazine> getMagazines() {
+    public List<MagazineDTO> getMagazines() {
         if (magazines == null) {
-            magazines = new ArrayList<Magazine>();
+            magazines = new ArrayList<MagazineDTO>();
         }
         return this.magazines;
     }

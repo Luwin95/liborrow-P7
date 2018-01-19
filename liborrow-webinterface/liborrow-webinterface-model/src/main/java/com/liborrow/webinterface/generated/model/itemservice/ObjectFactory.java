@@ -123,35 +123,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MagazineCriterias }
+     * Create an instance of {@link AuthorDTO }
      * 
      */
-    public MagazineCriterias createMagazineCriterias() {
-        return new MagazineCriterias();
-    }
-
-    /**
-     * Create an instance of {@link BookCriterias }
-     * 
-     */
-    public BookCriterias createBookCriterias() {
-        return new BookCriterias();
-    }
-
-    /**
-     * Create an instance of {@link AuthorCriterias }
-     * 
-     */
-    public AuthorCriterias createAuthorCriterias() {
-        return new AuthorCriterias();
-    }
-
-    /**
-     * Create an instance of {@link BorrowDTO }
-     * 
-     */
-    public BorrowDTO createBorrowDTO() {
-        return new BorrowDTO();
+    public AuthorDTO createAuthorDTO() {
+        return new AuthorDTO();
     }
 
     /**
@@ -163,11 +139,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuthorDTO }
+     * Create an instance of {@link MagazineCriterias }
      * 
      */
-    public AuthorDTO createAuthorDTO() {
-        return new AuthorDTO();
+    public MagazineCriterias createMagazineCriterias() {
+        return new MagazineCriterias();
     }
 
     /**
@@ -211,6 +187,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link BookCriterias }
+     * 
+     */
+    public BookCriterias createBookCriterias() {
+        return new BookCriterias();
+    }
+
+    /**
+     * Create an instance of {@link AuthorCriterias }
+     * 
+     */
+    public AuthorCriterias createAuthorCriterias() {
+        return new AuthorCriterias();
+    }
+
+    /**
      * Create an instance of {@link SearchResponse }
      * 
      */
@@ -219,27 +211,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UserAccount }
+     * Create an instance of {@link MagazineDTO }
      * 
      */
-    public UserAccount createUserAccount() {
-        return new UserAccount();
+    public MagazineDTO createMagazineDTO() {
+        return new MagazineDTO();
     }
 
     /**
-     * Create an instance of {@link Borrow }
+     * Create an instance of {@link BorrowDTO }
      * 
      */
-    public Borrow createBorrow() {
-        return new Borrow();
-    }
-
-    /**
-     * Create an instance of {@link Magazine }
-     * 
-     */
-    public Magazine createMagazine() {
-        return new Magazine();
+    public BorrowDTO createBorrowDTO() {
+        return new BorrowDTO();
     }
 
     /**
