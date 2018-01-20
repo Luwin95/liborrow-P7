@@ -18,6 +18,7 @@ public class SearchBookAction extends AbstractAction{
 	
 	public String execute() throws Exception {
 		SearchResponse searchResponse =getManagerFactory().getItemManager().searchItem(itemCriterias);
+		itemCriterias.setSimpleStringSearch("Hello");
 		itemCriterias.setStringSearch(false);
 		itemCriterias.setAuthorSearch(false);
 		itemCriterias.setMagazineSearch(false);

@@ -13,31 +13,31 @@ public class AuthorDaoImpl extends AbstractDaoImpl implements AuthorDao {
 	@Override
 	public Set<Author> searchAuthor(ItemCriterias itemCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct author FROM Author AS author JOIN FETCH author.books JOIN FETCH author.citizenships WHERE 1=0 ");
-		if(itemCriterias.getAuthorCriterias().getFirstname() !=null)
+		queryString.append("SELECT distinct author FROM Author AS author JOIN FETCH author.books JOIN FETCH author.citizenships WHERE 1=1 ");
+		if(itemCriterias.getAuthorCriterias().getFirstname()!=null && !itemCriterias.getAuthorCriterias().getFirstname().equals("") )
 		{
-			queryString.append("OR firstname LIKE :firstname ");
+			queryString.append("AND (firstname LIKE :firstname ");
 			queryString.append("OR firstname LIKE :firstnameupper ");
 			queryString.append("OR firstname LIKE :firstnamelower ");
-			queryString.append("OR firstname LIKE :firstnamewithfirstupper ");
+			queryString.append("OR firstname LIKE :firstnamewithfirstupper) ");
 		}
 		
-		if(itemCriterias.getAuthorCriterias().getLastname() !=null)
+		if(itemCriterias.getAuthorCriterias().getLastname() !=null && !itemCriterias.getAuthorCriterias().getLastname().equals("") )
 		{
-			queryString.append("OR name LIKE :lastname ");
+			queryString.append("AND (name LIKE :lastname ");
 			queryString.append("OR name LIKE :lastnameupper ");
 			queryString.append("OR name LIKE :lastnamelower ");
-			queryString.append("OR name LIKE :lastnamewithfirstupper ");
+			queryString.append("OR name LIKE :lastnamewithfirstupper) ");
 		}
 		
 		if(itemCriterias.getAuthorCriterias().getBirth() !=0)
 		{
-			queryString.append("OR birth LIKE :birth ");
+			queryString.append("AND birth LIKE :birth ");
 		}
 		
 		if(itemCriterias.getAuthorCriterias().getDeath() !=0)
 		{
-			queryString.append("OR death LIKE :death ");
+			queryString.append("AND death LIKE :death ");
 		}
 		
 		Query query = getEm().createQuery(queryString.toString());

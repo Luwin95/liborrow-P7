@@ -18,25 +18,33 @@ public class MagazineDaoImpl implements MagazineDao {
 	@Override
 	public Set<Magazine> searchMagazine(ItemCriterias itemCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct magazine FROM Magazine AS magazine JOIN FETCH magazine.borrows WHERE 1=0");
-		if(!itemCriterias.getMagazineCriterias().getName().equals(""))
+		queryString.append("SELECT distinct magazine FROM Magazine AS magazine JOIN FETCH magazine.borrows WHERE 1=1");
+		if(itemCriterias.getMagazineCriterias().getName()!=null && !itemCriterias.getMagazineCriterias().getName().equals(""))
 		{
-			queryString.append("OR magazine.name LIKE :name ");
+			queryString.append("AND (magazine.name LIKE :name ");
 			queryString.append("OR magazine.name LIKE :nameupper ");
 			queryString.append("OR magazine.name LIKE :namelower ");
-			queryString.append("OR magazine.name LIKE :namewithfirstupper ");
+			queryString.append("OR magazine.name LIKE :namewithfirstupper) ");
 		}
 		if(itemCriterias.getMagazineCriterias().getPublishDate()!=null)
 		{
-			queryString.append("OR magazine.publishDate LIKE :publishdate ");
+			queryString.append("AND magazine.publishDate LIKE :publishdate ");
 		}
 		if(itemCriterias.getMagazineCriterias().getEditionNumber() >0)
 		{
-			queryString.append("OR magazine.editionNumber = :editionnumber ");
+			queryString.append("AND magazine.editionNumber = :editionnumber ");
 		}
+		if(itemCriterias.getItemRef() !=null && !itemCriterias.getItemRef().equals(""))
+		{
+			queryString.append("AND (magazine.itemRef LIKE :itemref ");
+			queryString.append("OR magazine.itemRef LIKE :itemrefupper ");
+			queryString.append("OR magazine.itemRef LIKE :itemreflower ");
+			queryString.append("OR magazine.itemRef LIKE :itemrefwithfirstupper) ");
+		}
+		
 		Query query = em.createQuery(queryString.toString());
 		
-		if(!itemCriterias.getMagazineCriterias().getName().equals(""))
+		if(itemCriterias.getMagazineCriterias().getName()!=null && !itemCriterias.getMagazineCriterias().getName().equals(""))
 		{
 			query.setParameter("name", "%"+itemCriterias.getMagazineCriterias().getName()+"%");
 			query.setParameter("nameupper", "%"+itemCriterias.getMagazineCriterias().getName().toUpperCase()+"%");
@@ -51,6 +59,14 @@ public class MagazineDaoImpl implements MagazineDao {
 		{
 			query.setParameter("editionnumber", itemCriterias.getMagazineCriterias().getEditionNumber());
 		}
+		if(itemCriterias.getItemRef() !=null && !itemCriterias.getItemRef().equals(""))
+		{
+			query.setParameter("itemref", "%"+itemCriterias.getItemRef()+"%");
+			query.setParameter("itemrefupper", "%"+itemCriterias.getItemRef().toUpperCase()+"%");
+			query.setParameter("itemreflower", "%"+itemCriterias.getItemRef().toLowerCase()+"%");
+			query.setParameter("itemrefwithfirstupper", "%"+itemCriterias.getItemRef().substring(0, 1).toUpperCase()+itemCriterias.getItemRef().substring(1).toLowerCase()+"%");
+		}
+		
 		Set<Magazine> magazines = new HashSet<>();
 		magazines.addAll(query.getResultList());
 		return  magazines;

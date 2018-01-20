@@ -27,29 +27,37 @@ public class BookDaoImpl extends AbstractDaoImpl implements BookDao {
 	@Override
 	public Set<Book> searchBook(ItemCriterias itemCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct book FROM Book AS book JOIN FETCH book.authors JOIN FETCH book.borrows  WHERE 1=0 ");
-		if(!itemCriterias.getBookCriterias().getTitle().equals(""))
+		queryString.append("SELECT distinct book FROM Book AS book JOIN FETCH book.authors JOIN FETCH book.borrows  WHERE 1=1 ");
+		if(itemCriterias.getBookCriterias().getTitle()!=null && !itemCriterias.getBookCriterias().getTitle().equals("") )
 		{
-			queryString.append("OR book.title LIKE :title ");
+			queryString.append("AND (book.title LIKE :title ");
 			queryString.append("OR book.title LIKE :titlelower ");
 			queryString.append("OR book.title LIKE :titleupper ");
-			queryString.append("OR book.title LIKE :titlewithfirstupper ");
+			queryString.append("OR book.title LIKE :titlewithfirstupper) ");
 		}
-		if(itemCriterias.getBookCriterias().getEditor() != null)
+		if(itemCriterias.getBookCriterias().getEditor() != null && !itemCriterias.getBookCriterias().getEditor().equals(""))
 		{
-			queryString.append("OR book.editor LIKE :editor ");
+			queryString.append("AND (book.editor LIKE :editor ");
 			queryString.append("OR book.editor LIKE :editorlower ");
 			queryString.append("OR book.editor LIKE :editorupper ");
-			queryString.append("OR book.editor LIKE :editorwithfirstupper ");
+			queryString.append("OR book.editor LIKE :editorwithfirstupper) ");
 		}
 		
 		if(itemCriterias.getBookCriterias().getRelease() != null)
 		{
-			queryString.append("OR book.release LIKE :release");
+			queryString.append("AND book.release LIKE :release");
+		}
+		
+		if(itemCriterias.getItemRef() !=null && !itemCriterias.getItemRef().equals(""))
+		{
+			queryString.append("AND (book.itemRef LIKE :itemref ");
+			queryString.append("OR book.itemRef LIKE :itemrefupper ");
+			queryString.append("OR book.itemRef LIKE :itemreflower ");
+			queryString.append("OR book.itemRef LIKE :itemrefwithfirstupper) ");
 		}
 		
 		Query query = getEm().createQuery(queryString.toString());
-		if(!itemCriterias.getBookCriterias().getTitle().equals(""))
+		if(itemCriterias.getBookCriterias().getTitle()!=null && !itemCriterias.getBookCriterias().getTitle().equals("") )
 		{
 			query.setParameter("title", "%"+itemCriterias.getBookCriterias().getTitle()+"%");
 			query.setParameter("titlelower", "%"+itemCriterias.getBookCriterias().getTitle().toLowerCase()+"%");
@@ -57,7 +65,7 @@ public class BookDaoImpl extends AbstractDaoImpl implements BookDao {
 			query.setParameter("titlewithfirstupper", "%"+itemCriterias.getBookCriterias().getTitle().substring(0, 1).toUpperCase()+itemCriterias.getBookCriterias().getTitle().substring(1).toLowerCase()+"%");
 		}
 		
-		if(itemCriterias.getBookCriterias().getEditor()!=null)
+		if(itemCriterias.getBookCriterias().getEditor() != null && !itemCriterias.getBookCriterias().getEditor().equals(""))
 		{
 			query.setParameter("editor", "%"+itemCriterias.getBookCriterias().getEditor()+"%");
 			query.setParameter("editorlower", "%"+itemCriterias.getBookCriterias().getEditor().toLowerCase()+"%");
@@ -69,6 +77,15 @@ public class BookDaoImpl extends AbstractDaoImpl implements BookDao {
 		{
 			query.setParameter("release", itemCriterias.getBookCriterias().getRelease());
 		}
+		
+		if(itemCriterias.getItemRef() !=null && !itemCriterias.getItemRef().equals(""))
+		{
+			query.setParameter("itemref", "%"+itemCriterias.getItemRef()+"%");
+			query.setParameter("itemrefupper", "%"+itemCriterias.getItemRef().toUpperCase()+"%");
+			query.setParameter("itemreflower", "%"+itemCriterias.getItemRef().toLowerCase()+"%");
+			query.setParameter("itemrefwithfirstupper", "%"+itemCriterias.getItemRef().substring(0, 1).toUpperCase()+itemCriterias.getItemRef().substring(1).toLowerCase()+"%");
+		}
+		
 		
 		Set<Book> books = new HashSet<>();
 		books.addAll(query.getResultList());

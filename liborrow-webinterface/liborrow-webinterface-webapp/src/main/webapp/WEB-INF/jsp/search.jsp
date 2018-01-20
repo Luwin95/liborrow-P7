@@ -27,27 +27,27 @@
 			<s:form action="searchBook" id="formBook">
 				<s:textfield label="Titre "  name="itemCriterias.bookCriterias.title" cssClass="form-control"/>
 				<s:textfield label="Editeur  " name="itemCriterias.bookCriterias.editor" cssClass="form-control"/>
-				<s:textfield label="Date de sortie " name="itemCriterias.bookCriterias.release" cssClass="form-control"/>
+				<!--<s:textfield label="Date de sortie " name="itemCriterias.bookCriterias.release" cssClass="form-control"/> -->
 				<s:textfield label="Référence item " name="itemCriterias.itemRef" cssClass="form-control"/>
-				<s:hidden name="itemCriterias.isBookSearch" value="true"/>
+				<s:hidden name="itemCriterias.bookSearch" value="true"/>
 				<s:submit cssClass="btn btn-warning"/>
 			</s:form>
 			
 			<s:form action="searchAuthor" id="formAuthor">
 				<s:textfield label="Prénom "  name="itemCriterias.authorCriterias.firstname" cssClass="form-control"/>
 				<s:textfield label="Nom  " name="itemCriterias.authorCriterias.lastname" cssClass="form-control"/>
-				<s:textfield label="Année de naissance " name="itemCriterias.authorCriterias.birth" cssClass="form-control"/>
-				<s:textfield label="Année de décès " name="itemCriterias.authorCriterias.death" cssClass="form-control"/>
-				<s:hidden name="itemCriterias.isAuthorSearch" value="true"/>
+				<!--<s:textfield label="Année de naissance " name="itemCriterias.authorCriterias.birth" cssClass="form-control"/>
+				<s:textfield label="Année de décès " name="itemCriterias.authorCriterias.death" cssClass="form-control"/>-->
+				<s:hidden name="itemCriterias.authorSearch" value="true"/>
 				<s:submit cssClass="btn btn-warning"/>
 			</s:form>
 			
 			<s:form action="searchMagazine" id="formMagazine">
 				<s:textfield label="Nom "  name="itemCriterias.magazineCriterias.name" cssClass="form-control"/>
 				<s:textfield label="Numéro " name="itemCriterias.magazineCriterias.editionNumber" cssClass="form-control"/>
-				<s:textfield label="Date de sortie " name="itemCriterias.magazineCriterias.publishDate" cssClass="form-control"/>
+				<!--<s:textfield label="Date de sortie " name="itemCriterias.magazineCriterias.publishDate" cssClass="form-control"/>-->
 				<s:textfield label="Référence item " name="itemCriterias.itemRef" cssClass="form-control"/>
-				<s:hidden name="itemCriterias.isAuthorSearch" value="true"/>
+				<s:hidden name="itemCriterias.magazineSearch" value="true"/>
 				<s:submit cssClass="btn btn-warning"/>
 			</s:form>
 		</div>
@@ -70,7 +70,10 @@
 				    <s:iterator value="bookResponse" status="status">
 						<tr>
 					      <th scope="row"><s:property value="%{#status.index+1}"/></th>
-					      <td><s:property value="title"/></td>
+					      <s:url action="book" var="bookUrl" namespace="/liborrow" >
+							    <s:param name="idBook"><s:property value="id"/></s:param>
+						  </s:url>
+					      <td><a href="${bookUrl}"><s:property value="title"/></a></td>
 					      <td><s:property value="editor"/></td>
 					      <td><s:property value="language"/></td>
 					      <td>
@@ -133,7 +136,10 @@
 				    <s:iterator value="magazineResponse" status="status">
 						<tr>
 					      <th scope="row"><s:property value="%{#status.index+1}"/></th>
-					      <td><s:property value="name"/></td>
+					      <s:url action="magazine" var="magazineUrl" namespace="/liborrow" >
+							    <s:param name="idMagazine"><s:property value="id"/></s:param>
+						  </s:url>
+					      <td><a href="${magazineUrl}"><s:property value="name"/></a></td>
 					      <td><s:property value="editionNumber"/></td>
 					      <td><s:property value="publishDate"/></td>
 					      <td><s:property value="remainingCount"/></td>

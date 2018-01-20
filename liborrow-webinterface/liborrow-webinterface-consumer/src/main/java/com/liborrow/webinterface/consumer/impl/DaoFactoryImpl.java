@@ -3,6 +3,7 @@ package com.liborrow.webinterface.consumer.impl;
 import com.liborrow.webinterface.consumer.contract.DaoFactory;
 import com.liborrow.webinterface.consumer.contract.dao.BookDao;
 import com.liborrow.webinterface.consumer.contract.dao.ItemDao;
+import com.liborrow.webinterface.consumer.contract.dao.MagazineDao;
 import com.liborrow.webinterface.consumer.contract.dao.UserDao;
 
 public class DaoFactoryImpl implements DaoFactory {
@@ -10,6 +11,7 @@ public class DaoFactoryImpl implements DaoFactory {
 	private BookDao bookDao;
 	private UserDao userDao;
 	private ItemDao itemDao;
+	private MagazineDao magazineDao;
 
 	public BookDao getBookDao() {
 		return bookDao;
@@ -34,6 +36,16 @@ public class DaoFactoryImpl implements DaoFactory {
 	public void setItemDao(ItemDao itemDao) {
 		this.itemDao = itemDao;
 	}
+
+	public MagazineDao getMagazineDao() {
+		return magazineDao;
+	}
+
+	public void setMagazineDao(MagazineDao magazineDao) {
+		this.magazineDao = magazineDao;
+	}
+	
+	
 	
 	
 }

@@ -48,21 +48,20 @@ public class ItemService extends AbstractService{
 		{
 			String[] splitedString = itemCriterias.getSimpleStringSearch().split("\\s+");
 			searchResponse = getManagerFactory().getItemManager().searchWithSimpleString(itemCriterias, splitedString);
-		}else {
-			if(itemCriterias.getBookCriterias()!=null)
-			{
-				searchResponse.setBooks(getManagerFactory().getBookManager().searchBook(itemCriterias));
-			}
-			
-			if(itemCriterias.getAuthorCriterias() !=null)
-			{
-				searchResponse.setAuthors(getManagerFactory().getAuthorManager().searchAuthor(itemCriterias));
-			}
-			
-			if(itemCriterias.getMagazineCriterias() != null)
-			{
-				searchResponse.setMagazines(getManagerFactory().getMagazineManager().searchMagazine(itemCriterias));
-			}
+		}
+		if(itemCriterias.isBookSearch())
+		{
+			searchResponse.setBooks(getManagerFactory().getBookManager().searchBook(itemCriterias));
+		}
+		
+		if(itemCriterias.isAuthorSearch())
+		{
+			searchResponse.setAuthors(getManagerFactory().getAuthorManager().searchAuthor(itemCriterias));
+		}
+		
+		if(itemCriterias.isMagazineSearch())
+		{
+			searchResponse.setMagazines(getManagerFactory().getMagazineManager().searchMagazine(itemCriterias));
 		}
 		return searchResponse;
 	}
