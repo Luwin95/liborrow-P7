@@ -87,11 +87,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UserAccount }
+     * Create an instance of {@link AuthorDTO }
      * 
      */
-    public UserAccount createUserAccount() {
-        return new UserAccount();
+    public AuthorDTO createAuthorDTO() {
+        return new AuthorDTO();
     }
 
     /**
@@ -103,11 +103,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Borrow }
+     * Create an instance of {@link CitizenshipDTO }
      * 
      */
-    public Borrow createBorrow() {
-        return new Borrow();
+    public CitizenshipDTO createCitizenshipDTO() {
+        return new CitizenshipDTO();
+    }
+
+    /**
+     * Create an instance of {@link BookDTO }
+     * 
+     */
+    public BookDTO createBookDTO() {
+        return new BookDTO();
+    }
+
+    /**
+     * Create an instance of {@link ItemDTO }
+     * 
+     */
+    public ItemDTO createItemDTO() {
+        return new ItemDTO();
+    }
+
+    /**
+     * Create an instance of {@link UserLightDTO }
+     * 
+     */
+    public UserLightDTO createUserLightDTO() {
+        return new UserLightDTO();
+    }
+
+    /**
+     * Create an instance of {@link MagazineDTO }
+     * 
+     */
+    public MagazineDTO createMagazineDTO() {
+        return new MagazineDTO();
+    }
+
+    /**
+     * Create an instance of {@link BorrowDTO }
+     * 
+     */
+    public BorrowDTO createBorrowDTO() {
+        return new BorrowDTO();
     }
 
     /**

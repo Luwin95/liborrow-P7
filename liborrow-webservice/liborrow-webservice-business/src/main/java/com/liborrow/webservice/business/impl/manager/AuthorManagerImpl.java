@@ -18,7 +18,7 @@ public class AuthorManagerImpl extends AbstractManagerImpl implements AuthorMana
 		List<AuthorDTO> authorsDTO = new ArrayList<>();
 		if(authors!=null)
 		{
-			authorsDTO.addAll(getTransformerFactory().getAuthorTransformer().toAuthorsDTO(authors, true));
+			authorsDTO.addAll(getTransformerFactory().getAuthorTransformer().toAuthorsDTO(authors, true, "org.liborrow.webservice.model.dto.AuthorDTO"));
 		}
 		return authorsDTO;
 	}

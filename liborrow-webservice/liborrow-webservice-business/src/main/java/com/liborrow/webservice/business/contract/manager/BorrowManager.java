@@ -2,10 +2,10 @@ package com.liborrow.webservice.business.contract.manager;
 
 import java.util.List;
 
-import org.liborrow.webservice.model.entities.Borrow;
+import org.liborrow.webservice.model.dto.BorrowDTO;
 
 public interface BorrowManager {
-	Borrow findBorrowById(long id);
-	List<Borrow> findBorrowByUser(long userId);
-	List<Borrow> findAllBorrows();
+	BorrowDTO findBorrowById(long id);
+	List<BorrowDTO> findBorrowByUser(long userId);
+	List<BorrowDTO> findAllBorrows();
 }

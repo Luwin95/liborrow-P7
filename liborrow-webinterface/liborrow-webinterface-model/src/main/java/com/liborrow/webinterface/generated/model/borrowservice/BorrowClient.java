@@ -29,14 +29,14 @@ public interface BorrowClient {
      * 
      * @param arg0
      * @return
-     *     returns java.util.List<com.liborrow.webinterface.generated.model.borrowservice.Borrow>
+     *     returns com.liborrow.webinterface.generated.model.borrowservice.BorrowDTO
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getUserBorrows", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetUserBorrows")
-    @ResponseWrapper(localName = "getUserBorrowsResponse", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetUserBorrowsResponse")
-    @Action(input = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getUserBorrowsRequest", output = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getUserBorrowsResponse")
-    public List<Borrow> getUserBorrows(
+    @RequestWrapper(localName = "getBorrow", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetBorrow")
+    @ResponseWrapper(localName = "getBorrowResponse", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetBorrowResponse")
+    @Action(input = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getBorrowRequest", output = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getBorrowResponse")
+    public BorrowDTO getBorrow(
         @WebParam(name = "arg0", targetNamespace = "")
         long arg0);
 
@@ -44,27 +44,27 @@ public interface BorrowClient {
      * 
      * @param arg0
      * @return
-     *     returns com.liborrow.webinterface.generated.model.borrowservice.Borrow
+     *     returns java.util.List<com.liborrow.webinterface.generated.model.borrowservice.BorrowDTO>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getBorrow", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetBorrow")
-    @ResponseWrapper(localName = "getBorrowResponse", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetBorrowResponse")
-    @Action(input = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getBorrowRequest", output = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getBorrowResponse")
-    public Borrow getBorrow(
+    @RequestWrapper(localName = "getUserBorrows", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetUserBorrows")
+    @ResponseWrapper(localName = "getUserBorrowsResponse", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetUserBorrowsResponse")
+    @Action(input = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getUserBorrowsRequest", output = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getUserBorrowsResponse")
+    public List<BorrowDTO> getUserBorrows(
         @WebParam(name = "arg0", targetNamespace = "")
         long arg0);
 
     /**
      * 
      * @return
-     *     returns java.util.List<com.liborrow.webinterface.generated.model.borrowservice.Borrow>
+     *     returns java.util.List<com.liborrow.webinterface.generated.model.borrowservice.BorrowDTO>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "getAllBorrows", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetAllBorrows")
     @ResponseWrapper(localName = "getAllBorrowsResponse", targetNamespace = "borrowservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.borrowservice.GetAllBorrowsResponse")
     @Action(input = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getAllBorrowsRequest", output = "borrowservice.model.generated.webinterface.liborrow.com/BorrowClient/getAllBorrowsResponse")
-    public List<Borrow> getAllBorrows();
+    public List<BorrowDTO> getAllBorrows();
 
 }

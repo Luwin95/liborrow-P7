@@ -1,6 +1,7 @@
 package com.liborrow.webservice.business.impl.manager;
 
 import org.hibernate.Hibernate;
+import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.UserAccount;
 import org.liborrow.webservice.model.entities.UserLight;
@@ -44,7 +45,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public UserLight login(String email, String password)
+	public UserLightDTO login(String email, String password)
 	{
 		if(isInDatabase(email))
 		{
@@ -55,8 +56,11 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 				if(validateCredentials(user,password))
 				{
 					UserLight userLight = userLightRepository.findOne(user.getId());
+					UserLightDTO userLightDTO = new UserLightDTO();
 					userEntityHibernateInitialization(userLight);
-					return userLight;
+					userLightDTO = getTransformerFactory().getUserLightTransformer().toUserLightDto(userLight, true, userLightDTO.getClass().getName());
+					
+					return userLightDTO;
 				}else {
 					return null;
 				}
@@ -81,7 +85,8 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 		Hibernate.initialize(user.getBorrows());
 		for(Borrow borrow : user.getBorrows())
 		{
-			Hibernate.initialize(borrow.getItems());
+			Hibernate.initialize(borrow.getBooks());
+			Hibernate.initialize(borrow.getMagazines());
 			Hibernate.initialize(borrow.getBorrower());
 		}
 	}

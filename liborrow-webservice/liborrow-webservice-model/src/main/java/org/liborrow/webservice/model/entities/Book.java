@@ -35,6 +35,9 @@ public class Book extends Item {
 			inverseJoinColumns = @JoinColumn(name="author_id"))
 	private Set<Author> authors = new HashSet<>();
 	
+	@ManyToMany(mappedBy="books")
+	private Set<Borrow> borrows = new HashSet<>();
+	
 	public Book() {}
 	
 	public Book (String title, String language, Date release, String summary, String editor, Set<Author> authors) 
@@ -103,5 +106,13 @@ public class Book extends Item {
 	public void removeAuthor(Author author) {
 		authors.remove(author);
 		author.removeBook(this);
+	}
+
+	public Set<Borrow> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(Set<Borrow> borrows) {
+		this.borrows = borrows;
 	}
 }

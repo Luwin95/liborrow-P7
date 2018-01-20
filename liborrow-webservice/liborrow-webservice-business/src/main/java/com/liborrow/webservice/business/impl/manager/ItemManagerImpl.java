@@ -32,15 +32,15 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 		SearchResponse searchResponse = new SearchResponse();
 		searchResponse.getAuthors().addAll(
 				getTransformerFactory().getAuthorTransformer().toAuthorsDTO(
-						getDaoFactory().getAuthorDao().searchWithSimpleStringAuthor(itemCriterias, simpleStringSplited),true)
+						getDaoFactory().getAuthorDao().searchWithSimpleStringAuthor(itemCriterias, simpleStringSplited),true, "org.liborrow.webservice.model.dto.AuthorDTO")
 				);
 		searchResponse.getBooks().addAll(
 				getTransformerFactory().getBookTransformer().toBooksDTO(
-						getDaoFactory().getBookDao().searchWithSimpleStringBook(itemCriterias, simpleStringSplited), true)
+						getDaoFactory().getBookDao().searchWithSimpleStringBook(itemCriterias, simpleStringSplited), true, "org.liborrow.webservice.model.dto.BookDTO")
 				);
 		searchResponse.getMagazines().addAll(
 				getTransformerFactory().getMagazineTransformer().toMagazinesDTO(
-						getDaoFactory().getMagazineDao().searchWithSimpleStringMagazine(itemCriterias, simpleStringSplited), true)
+						getDaoFactory().getMagazineDao().searchWithSimpleStringMagazine(itemCriterias, simpleStringSplited), true, "org.liborrow.webservice.model.dto.MagazineDTO")
 				);
 		return searchResponse;
 	}

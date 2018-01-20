@@ -171,11 +171,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UserDTO }
+     * Create an instance of {@link UserLightDTO }
      * 
      */
-    public UserDTO createUserDTO() {
-        return new UserDTO();
+    public UserLightDTO createUserLightDTO() {
+        return new UserLightDTO();
     }
 
     /**

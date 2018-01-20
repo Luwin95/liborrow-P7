@@ -1,14 +1,10 @@
 package org.liborrow.webservice.model.entities;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 
@@ -35,9 +31,6 @@ public abstract class Item {
 	
 	@Column(name="place")
 	private String place;
-	
-	@ManyToMany(mappedBy="items")
-	private Set<Borrow> borrows = new HashSet<>();
 	
 	public Item() {}
 	
@@ -97,23 +90,4 @@ public abstract class Item {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-
-	public Set<Borrow> getBorrows() {
-		return borrows;
-	}
-
-	public void setBorrows(Set<Borrow> borrows) {
-		this.borrows = borrows;
-	}
-	
-	public void addBorrow(Borrow borrow)
-	{
-		this.borrows.add(borrow);
-	}
-	
-	public void removeBorrow(Borrow borrow)
-	{
-		this.borrows.remove(borrow);
-	}
-
 }

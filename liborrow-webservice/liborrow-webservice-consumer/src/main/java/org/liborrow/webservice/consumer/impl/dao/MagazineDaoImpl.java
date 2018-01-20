@@ -84,6 +84,10 @@ public class MagazineDaoImpl implements MagazineDao {
 			queryString.append("OR magazine.name LIKE :nameupper"+string+" ");
 			queryString.append("OR magazine.name LIKE :namelower"+string+" ");
 			queryString.append("OR magazine.name LIKE :namewithfirstupper"+string+" ");
+			queryString.append("OR magazine.itemRef LIKE :itemref"+string+" ");
+			queryString.append("OR magazine.itemRef LIKE :itemrefupper"+string+" ");
+			queryString.append("OR magazine.itemRef LIKE :itemreflower"+string+" ");
+			queryString.append("OR magazine.itemRef LIKE :itemrefwithfirstupper"+string+" ");
 		}
 		Query query = em.createQuery(queryString.toString());
 		for(String string : simpleStringSplited)
@@ -92,6 +96,10 @@ public class MagazineDaoImpl implements MagazineDao {
 			query.setParameter("nameupper"+string, "%"+string.toUpperCase()+"%");
 			query.setParameter("namelower"+string, "%"+string.toLowerCase()+"%");
 			query.setParameter("namewithfirstupper"+string, "%"+string.substring(0, 1).toUpperCase()+string.substring(1).toLowerCase()+"%");
+			query.setParameter("itemref"+string, "%"+string+"%");
+			query.setParameter("itemrefupper"+string, "%"+string.toLowerCase()+"%");
+			query.setParameter("itemreflower"+string, "%"+string.toUpperCase()+"%");
+			query.setParameter("itemrefwithfirstupper"+string, "%"+string.substring(0, 1).toUpperCase()+string.substring(1).toLowerCase()+"%");
 		}
 		Set<Magazine> magazines = new HashSet<>();
 		magazines.addAll(query.getResultList());

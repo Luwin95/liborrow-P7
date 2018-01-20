@@ -7,7 +7,6 @@ import org.liborrow.webservice.model.entities.Borrow;
 
 public interface BorrowTransformer {
 	
-
-	BorrowDTO toBorrowDTO(Borrow borrow, boolean isParent);
-	Set<BorrowDTO> toBorrowsDTO(Set<Borrow> borrows, boolean isParent);
+	BorrowDTO toBorrowDTO(Borrow borrow, boolean isParent, String classParentName);
+	Set<BorrowDTO> toBorrowsDTO(Set<Borrow> borrows, boolean isParent, String classParentName);
 }

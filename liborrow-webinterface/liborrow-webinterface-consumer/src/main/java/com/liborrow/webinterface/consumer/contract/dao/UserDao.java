@@ -1,8 +1,8 @@
 package com.liborrow.webinterface.consumer.contract.dao;
 
-import com.liborrow.webinterface.generated.model.userservice.UserLight;
+import com.liborrow.webinterface.generated.model.userservice.UserLightDTO;
 
 public interface UserDao {
-	UserLight login(String email, String password);
+	UserLightDTO login(String email, String password);
 
 }

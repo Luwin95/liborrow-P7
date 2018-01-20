@@ -106,6 +106,10 @@ public class BookDaoImpl extends AbstractDaoImpl implements BookDao {
 			queryString.append("OR book.editor LIKE :editorlower"+string+" ");
 			queryString.append("OR book.editor LIKE :editorupper"+string+" ");
 			queryString.append("OR book.editor LIKE :editorwithfirstupper"+string+" ");
+			queryString.append("OR book.itemRef LIKE :itemref"+string+" ");
+			queryString.append("OR book.itemRef LIKE :itemrefupper"+string+" ");
+			queryString.append("OR book.itemRef LIKE :itemreflower"+string+" ");
+			queryString.append("OR book.itemRef LIKE :itemrefwithfirstupper"+string+" ");
 		}
 		Query query = getEm().createQuery(queryString.toString());
 		
@@ -119,6 +123,10 @@ public class BookDaoImpl extends AbstractDaoImpl implements BookDao {
 			query.setParameter("editorlower"+string, "%"+string.toLowerCase()+"%");
 			query.setParameter("editorupper"+string, "%"+string.toUpperCase()+"%");
 			query.setParameter("editorwithfirstupper"+string, "%"+string.substring(0, 1).toUpperCase()+string.substring(1).toLowerCase()+"%");
+			query.setParameter("itemref"+string, "%"+string+"%");
+			query.setParameter("itemrefupper"+string, "%"+string.toLowerCase()+"%");
+			query.setParameter("itemreflower"+string, "%"+string.toUpperCase()+"%");
+			query.setParameter("itemrefwithfirstupper"+string, "%"+string.substring(0, 1).toUpperCase()+string.substring(1).toLowerCase()+"%");
 		}
 		
 		Set<Book> books = new HashSet<>();

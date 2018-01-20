@@ -13,27 +13,27 @@ import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
 public class BookTransformerImpl implements BookTransformer {
 
 	@Override
-	public BookDTO toBookDTO(Book book, boolean isParent)
+	public BookDTO toBookDTO(Book book, boolean isParent, String classParentName)
 	{
 		BookDTO transformedBook = new BookDTO();
 		if(book.getAlley()!=null)
 		{
 			transformedBook.setAlley(book.getAlley());
 		}
-		if(book.getAuthors()!=null && isParent)
+		if(book.getAuthors()!=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.BorrowDTO")))
 		{
 			Set<AuthorDTO> authorsTransformed = new HashSet<>();
 			AuthorTransformerImpl authorTransformer = new AuthorTransformerImpl();
 			for(Author author : book.getAuthors())
 			{
-				authorsTransformed.add(authorTransformer.toAuthorDto(author, false));
+				authorsTransformed.add(authorTransformer.toAuthorDto(author, false, transformedBook.getClass().getName()));
 			}
 			transformedBook.setAuthors(authorsTransformed);
 		}
-		if(book.getBorrows() !=null && isParent)
+		if(book.getBorrows() !=null && (isParent|| classParentName.equals("org.liborrow.webservice.model.dto.AuthorDTO")))
 		{
 			BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
-			transformedBook.setBorrows(borrowTransformer.toBorrowsDTO(book.getBorrows(), true));
+			transformedBook.setBorrows(borrowTransformer.toBorrowsDTO(book.getBorrows(), true, transformedBook.getClass().getName()));
 		}
 		if(book.getEditor()!=null)
 		{
@@ -79,12 +79,12 @@ public class BookTransformerImpl implements BookTransformer {
 	}
 	
 	@Override
-	public Set<BookDTO> toBooksDTO(Set<Book> books, boolean isParent)
+	public Set<BookDTO> toBooksDTO(Set<Book> books, boolean isParent, String classParentName)
 	{
 		Set<BookDTO> booksTransformed = new HashSet<>();
 		for(Book book : books)
 		{
-			booksTransformed.add(toBookDTO(book, isParent));
+			booksTransformed.add(toBookDTO(book, isParent, classParentName));
 		}
 		return booksTransformed;
 	}

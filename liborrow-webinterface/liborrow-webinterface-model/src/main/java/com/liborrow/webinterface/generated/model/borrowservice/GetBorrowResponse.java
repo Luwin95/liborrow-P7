@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{borrowservice.model.generated.webinterface.liborrow.com}borrow" minOccurs="0"/>
+ *         &lt;element name="return" type="{borrowservice.model.generated.webinterface.liborrow.com}borrowDTO" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,17 +33,17 @@ import javax.xml.bind.annotation.XmlType;
 public class GetBorrowResponse {
 
     @XmlElement(name = "return")
-    protected Borrow _return;
+    protected BorrowDTO _return;
 
     /**
      * Obtient la valeur de la propriété return.
      * 
      * @return
      *     possible object is
-     *     {@link Borrow }
+     *     {@link BorrowDTO }
      *     
      */
-    public Borrow getReturn() {
+    public BorrowDTO getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class GetBorrowResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Borrow }
+     *     {@link BorrowDTO }
      *     
      */
-    public void setReturn(Borrow value) {
+    public void setReturn(BorrowDTO value) {
         this._return = value;
     }
 

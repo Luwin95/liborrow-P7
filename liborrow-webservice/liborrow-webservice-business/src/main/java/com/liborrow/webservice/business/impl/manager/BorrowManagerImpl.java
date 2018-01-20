@@ -1,8 +1,10 @@
 package com.liborrow.webservice.business.impl.manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.liborrow.webservice.model.dto.BorrowDTO;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +23,16 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	UserAccountRepository userRepository;
 	
 	@Override
-	public Borrow findBorrowById(long id)
+	public BorrowDTO findBorrowById(long id)
 	{
 		Borrow borrow = borrowRepository.findOne(id);
 		borrowEntityHibernateInitialization(borrow);
-		return borrow;
+		BorrowDTO borrowDTO = getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, "org.liborrow.webservice.model.dto.BorrowDTO");
+		return borrowDTO;
 	}
 	
 	@Override
-	public List<Borrow> findBorrowByUser(long userId)
+	public List<BorrowDTO> findBorrowByUser(long userId)
 	{
 		if(userId != 0)
 		{
@@ -38,11 +41,13 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 			if(user != null)
 			{
 				List<Borrow> borrows = borrowRepository.findByBorrower(user);
+				List<BorrowDTO> borrowsDTO = new ArrayList<>();
 				for(Borrow borrow : borrows)
 				{
 					borrowEntityHibernateInitialization(borrow);
+					borrowsDTO.add(getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, "org.liborrow.webservice.model.dto.BorrowDTO"));
 				}
-				return borrows;
+				return borrowsDTO;
 			}else
 			{
 				return null;
@@ -53,21 +58,24 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	}
 	
 	@Override
-	public List<Borrow> findAllBorrows()
+	public List<BorrowDTO> findAllBorrows()
 	{
 		List<Borrow> borrows = borrowRepository.findAll();
+		List<BorrowDTO> borrowsDTO = new ArrayList<>();
 		for(Borrow borrow : borrows)
 		{
 			borrowEntityHibernateInitialization(borrow);
+			borrowsDTO.add(getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, "org.liborrow.webservice.model.dto.BorrowDTO"));
 		}
-		return borrows;
+		return borrowsDTO;
 	}
 	
 	public void borrowEntityHibernateInitialization(Borrow borrow)
 	{
 		Hibernate.initialize(borrow.getBorrower());
 		Hibernate.initialize(borrow.getBorrower().getCitizenship());
-		Hibernate.initialize(borrow.getItems());
+		Hibernate.initialize(borrow.getBooks());
+		Hibernate.initialize(borrow.getMagazines());
 	}
 	
 	public void userEntityHibernateInitialization(UserAccount user)

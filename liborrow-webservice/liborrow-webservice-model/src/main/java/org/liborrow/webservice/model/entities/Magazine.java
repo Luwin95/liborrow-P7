@@ -1,9 +1,12 @@
 package org.liborrow.webservice.model.entities;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity(name="Magazine")
 public class Magazine extends Item {
@@ -16,6 +19,9 @@ public class Magazine extends Item {
 	
 	@Column(name="publishdate")
 	private Date publishDate;
+	
+	@ManyToMany(mappedBy="magazines")
+	private Set<Borrow> borrows = new HashSet<>();
 	
 	public Magazine() {}
 	
@@ -48,5 +54,13 @@ public class Magazine extends Item {
 
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
+	}
+
+	public Set<Borrow> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(Set<Borrow> borrows) {
+		this.borrows = borrows;
 	}
 }

@@ -28,7 +28,8 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 	{
 		Book book = bookRepository.findOne(id);
 		bookEntityHibernateInitialization(book);
-		BookDTO bookDTO = getTransformerFactory().getBookTransformer().toBookDTO(book, true);
+		BookDTO bookDTO = new BookDTO();
+		bookDTO = getTransformerFactory().getBookTransformer().toBookDTO(book, true, bookDTO.getClass().getName());
 		return bookDTO;
 	}
 	
@@ -41,7 +42,8 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		for(Book book : books)
 		{
 			bookEntityHibernateInitialization(book);
-			BookDTO bookDTO = getTransformerFactory().getBookTransformer().toBookDTO(book, true);
+			BookDTO bookDTO = new BookDTO();
+			bookDTO = getTransformerFactory().getBookTransformer().toBookDTO(book, true, bookDTO.getClass().getName());
 			booksDTO.add(bookDTO);
 		}
 		return booksDTO;
@@ -52,7 +54,7 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		List<BookDTO> books = new ArrayList<>();
 		if(books!=null)
 		{
-			books.addAll(getTransformerFactory().getBookTransformer().toBooksDTO(getDaoFactory().getBookDao().searchBook(itemCriterias),true));
+			books.addAll(getTransformerFactory().getBookTransformer().toBooksDTO(getDaoFactory().getBookDao().searchBook(itemCriterias),true, "org.liborrow.webservice.model.dto.BookDTO"));
 		}
 		return books;
 	}
@@ -74,7 +76,8 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		for(Borrow borrow : book.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
-			Hibernate.initialize(borrow.getItems());
+			Hibernate.initialize(borrow.getBooks());
+			Hibernate.initialize(borrow.getMagazines());
 		}
 	}
 }

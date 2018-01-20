@@ -29,14 +29,14 @@ public interface UserClient {
      * @param arg1
      * @param arg0
      * @return
-     *     returns com.liborrow.webinterface.generated.model.userservice.UserLight
+     *     returns com.liborrow.webinterface.generated.model.userservice.UserLightDTO
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "loginUser", targetNamespace = "userservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.userservice.LoginUser")
     @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "userservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.userservice.LoginUserResponse")
     @Action(input = "userservice.model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "userservice.model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
-    public UserLight loginUser(
+    public UserLightDTO loginUser(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")

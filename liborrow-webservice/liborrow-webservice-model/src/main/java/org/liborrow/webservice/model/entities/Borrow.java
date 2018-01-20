@@ -16,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity(name="Borrow")
 public class Borrow {
@@ -38,13 +37,19 @@ public class Borrow {
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-	private UserAccount borrower;
+	private UserLight borrower;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="borrow_item",
 			joinColumns=@JoinColumn(name="borrow_id"),
 			inverseJoinColumns = @JoinColumn(name="item_id"))
-	private Set<Item> items = new HashSet<>();
+	private Set<Book> books = new HashSet<>();
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="borrow_item",
+			joinColumns=@JoinColumn(name="borrow_id"),
+			inverseJoinColumns = @JoinColumn(name="item_id"))
+	private Set<Magazine> magazines = new HashSet<>();
 	
 	public Borrow() {}
 	
@@ -105,35 +110,27 @@ public class Borrow {
 		this.extended = extended;
 	}
 
-	public UserAccount getBorrower() {
+	public UserLight getBorrower() {
 		return borrower;
 	}
 
-	public void setBorrower(UserAccount borrower) {
+	public void setBorrower(UserLight borrower) {
 		this.borrower = borrower;
 	}
 
-	@XmlTransient
-	public Set<Item> getItems() {
-		return items;
+	public Set<Book> getBooks() {
+		return books;
 	}
 
-	public void setItems(Set<Item> items) {
-		this.items = items;
+	public void setBooks(Set<Book> books) {
+		this.books = books;
 	}
-	
-	public void addItem(Item item)
-	{
-		this.items.add(item);
+
+	public Set<Magazine> getMagazines() {
+		return magazines;
 	}
-	
-	public void removeItem(Item item)
-	{
-		this.items.remove(item);
+
+	public void setMagazines(Set<Magazine> magazines) {
+		this.magazines = magazines;
 	}
-	
-	
-	
-	
-	
 }

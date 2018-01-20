@@ -11,7 +11,7 @@ import org.liborrow.webservice.model.transformer.contract.MagazineTransformer;
 public class MagazineTransformerImpl implements MagazineTransformer {
 	
 	 @Override
-	public MagazineDTO toMagazineDTO(Magazine magazine, boolean isParent) {
+	public MagazineDTO toMagazineDTO(Magazine magazine, boolean isParent, String classParentName) {
 		// TODO Auto-generated method stub
 		 MagazineDTO magazineDTO = new MagazineDTO();
 		 magazineDTO.setId(magazine.getId());
@@ -26,17 +26,17 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 		 if(magazine.getBorrows()!=null && isParent)
 		 {
 			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
-			 magazineDTO.setBorrows(borrowTransformer.toBorrowsDTO(magazine.getBorrows(), false));
+			 magazineDTO.setBorrows(borrowTransformer.toBorrowsDTO(magazine.getBorrows(), false, magazineDTO.getClass().getName()));
 		 }
 		return magazineDTO;
 	}
 	 
 	 @Override
-	public Set<MagazineDTO> toMagazinesDTO(Set<Magazine> magazines, boolean isParent) {
+	public Set<MagazineDTO> toMagazinesDTO(Set<Magazine> magazines, boolean isParent, String classParentName) {
 		Set<MagazineDTO> magazinesDTO = new HashSet<>();
 		for(Magazine magazine : magazines)
 		{
-			magazinesDTO.add(toMagazineDTO(magazine, isParent));
+			magazinesDTO.add(toMagazineDTO(magazine, isParent, classParentName));
 		}
 		return magazinesDTO;
 	}

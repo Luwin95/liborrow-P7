@@ -11,4 +11,6 @@ public interface TransformerFactory {
 	void setCitizenshipTransformer(CitizenshipTransformer citizenshipTransformer);
 	MagazineTransformer getMagazineTransformer();
 	void setMagazineTransformer(MagazineTransformer magazineTransformer);
+	UserLightTransformer getUserLightTransformer();
+	void setUserLightTransformer(UserLightTransformer userLightTransformer);
 }

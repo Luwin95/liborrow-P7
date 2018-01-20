@@ -16,9 +16,11 @@ public class BorrowDTO {
 	
 	private Boolean extended;
 	
-	private UserDTO borrower;
+	private UserLightDTO borrower;
 	
-	private Set<ItemDTO> items = new HashSet<>();
+	private Set<BookDTO> books = new HashSet<>();
+	
+	private Set<MagazineDTO> magazines = new HashSet<>();
 	
 	public BorrowDTO() {
 		// TODO Auto-generated constructor stub
@@ -64,19 +66,27 @@ public class BorrowDTO {
 		this.extended = extended;
 	}
 
-	public UserDTO getBorrower() {
+	public UserLightDTO getBorrower() {
 		return borrower;
 	}
 
-	public void setBorrower(UserDTO borrower) {
+	public void setBorrower(UserLightDTO borrower) {
 		this.borrower = borrower;
 	}
 
-	public Set<ItemDTO> getItems() {
-		return items;
+	public Set<BookDTO> getBooks() {
+		return books;
 	}
 
-	public void setItems(Set<ItemDTO> items) {
-		this.items = items;
+	public void setBooks(Set<BookDTO> books) {
+		this.books = books;
+	}
+
+	public Set<MagazineDTO> getMagazines() {
+		return magazines;
+	}
+
+	public void setMagazines(Set<MagazineDTO> magazines) {
+		this.magazines = magazines;
 	}
 }

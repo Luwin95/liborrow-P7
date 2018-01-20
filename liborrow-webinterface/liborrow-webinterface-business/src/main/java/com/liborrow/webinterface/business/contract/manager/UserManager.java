@@ -1,7 +1,7 @@
 package com.liborrow.webinterface.business.contract.manager;
 
-import com.liborrow.webinterface.generated.model.userservice.UserLight;
+import com.liborrow.webinterface.generated.model.userservice.UserLightDTO;
 
 public interface UserManager {
-	UserLight loginUser(String email, String password);
+	UserLightDTO loginUser(String email, String password);
 }

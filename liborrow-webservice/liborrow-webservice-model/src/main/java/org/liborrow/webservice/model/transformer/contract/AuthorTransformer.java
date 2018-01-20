@@ -7,6 +7,6 @@ import org.liborrow.webservice.model.entities.Author;
 
 public interface AuthorTransformer {
 
-	AuthorDTO toAuthorDto(Author author, boolean isParent);
-	public Set<AuthorDTO> toAuthorsDTO(Set<Author> authors, boolean isParent);
+	AuthorDTO toAuthorDto(Author author, boolean isParent, String classParentName);
+	public Set<AuthorDTO> toAuthorsDTO(Set<Author> authors, boolean isParent, String classParentName);
 }

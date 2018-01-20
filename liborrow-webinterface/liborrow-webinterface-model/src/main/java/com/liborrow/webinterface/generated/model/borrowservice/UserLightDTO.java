@@ -1,28 +1,31 @@
 
-package com.liborrow.webinterface.generated.model.userservice;
+package com.liborrow.webinterface.generated.model.borrowservice;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour userAccount complex type.
+ * <p>Classe Java pour userLightDTO complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="userAccount">
+ * &lt;complexType name="userLightDTO">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="address" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="citizenship" type="{userservice.model.generated.webinterface.liborrow.com}citizenship" minOccurs="0"/>
+ *         &lt;element name="borrows" type="{borrowservice.model.generated.webinterface.liborrow.com}borrowDTO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="citizenship" type="{borrowservice.model.generated.webinterface.liborrow.com}citizenshipDTO" minOccurs="0"/>
  *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="firstname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="phoneNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -34,26 +37,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "userAccount", propOrder = {
+@XmlType(name = "userLightDTO", propOrder = {
     "address",
+    "borrows",
     "citizenship",
     "email",
     "firstname",
     "id",
     "lastname",
-    "password",
     "phoneNumber",
     "postCode"
 })
-public class UserAccount {
+public class UserLightDTO {
 
     protected String address;
-    protected Citizenship citizenship;
+    @XmlElement(nillable = true)
+    protected List<BorrowDTO> borrows;
+    protected CitizenshipDTO citizenship;
     protected String email;
     protected String firstname;
     protected long id;
     protected String lastname;
-    protected String password;
     protected String phoneNumber;
     protected String postCode;
 
@@ -82,14 +86,43 @@ public class UserAccount {
     }
 
     /**
+     * Gets the value of the borrows property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the borrows property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getBorrows().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BorrowDTO }
+     * 
+     * 
+     */
+    public List<BorrowDTO> getBorrows() {
+        if (borrows == null) {
+            borrows = new ArrayList<BorrowDTO>();
+        }
+        return this.borrows;
+    }
+
+    /**
      * Obtient la valeur de la propriété citizenship.
      * 
      * @return
      *     possible object is
-     *     {@link Citizenship }
+     *     {@link CitizenshipDTO }
      *     
      */
-    public Citizenship getCitizenship() {
+    public CitizenshipDTO getCitizenship() {
         return citizenship;
     }
 
@@ -98,10 +131,10 @@ public class UserAccount {
      * 
      * @param value
      *     allowed object is
-     *     {@link Citizenship }
+     *     {@link CitizenshipDTO }
      *     
      */
-    public void setCitizenship(Citizenship value) {
+    public void setCitizenship(CitizenshipDTO value) {
         this.citizenship = value;
     }
 
@@ -191,30 +224,6 @@ public class UserAccount {
      */
     public void setLastname(String value) {
         this.lastname = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété password.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Définit la valeur de la propriété password.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPassword(String value) {
-        this.password = value;
     }
 
     /**

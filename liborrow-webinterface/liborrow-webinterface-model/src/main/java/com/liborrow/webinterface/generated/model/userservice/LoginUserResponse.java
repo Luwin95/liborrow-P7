@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{userservice.model.generated.webinterface.liborrow.com}userLight" minOccurs="0"/>
+ *         &lt;element name="return" type="{userservice.model.generated.webinterface.liborrow.com}userLightDTO" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,17 +33,17 @@ import javax.xml.bind.annotation.XmlType;
 public class LoginUserResponse {
 
     @XmlElement(name = "return")
-    protected UserLight _return;
+    protected UserLightDTO _return;
 
     /**
      * Obtient la valeur de la propriété return.
      * 
      * @return
      *     possible object is
-     *     {@link UserLight }
+     *     {@link UserLightDTO }
      *     
      */
-    public UserLight getReturn() {
+    public UserLightDTO getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class LoginUserResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link UserLight }
+     *     {@link UserLightDTO }
      *     
      */
-    public void setReturn(UserLight value) {
+    public void setReturn(UserLightDTO value) {
         this._return = value;
     }
 

@@ -7,6 +7,6 @@ import org.liborrow.webservice.model.entities.Citizenship;
 
 public interface CitizenshipTransformer {
 
-	CitizenshipDTO toCitizenshipDTO(Citizenship citizenship, boolean isParent);
-	Set<CitizenshipDTO> toCitizenshipsDTO(Set<Citizenship> citizenships, boolean isParent);
+	CitizenshipDTO toCitizenshipDTO(Citizenship citizenship, boolean isParent, String classParentName);
+	Set<CitizenshipDTO> toCitizenshipsDTO(Set<Citizenship> citizenships, boolean isParent, String classParentName);
 }

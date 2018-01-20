@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.liborrow.webinterface.generated.model.userservice.UserLight;
+import com.liborrow.webinterface.generated.model.userservice.UserLightDTO;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class LoginAction extends AbstractAction implements SessionAware {
@@ -15,7 +15,7 @@ public class LoginAction extends AbstractAction implements SessionAware {
 	protected Map<String, Object> session;
 	
     public String execute() throws Exception {
-    	UserLight sessionUser = getManagerFactory().getUserManager().loginUser(email, plainPassword);
+    	UserLightDTO sessionUser = getManagerFactory().getUserManager().loginUser(email, plainPassword);
     	if(sessionUser !=null)
     	{
     		session.put("sessionUser", sessionUser);

@@ -5,14 +5,16 @@ import java.util.Set;
 
 import org.liborrow.webservice.model.dto.AuthorDTO;
 import org.liborrow.webservice.model.dto.BookDTO;
+import org.liborrow.webservice.model.dto.CitizenshipDTO;
 import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.transformer.contract.AuthorTransformer;
+import org.liborrow.webservice.model.transformer.contract.CitizenshipTransformer;
 
 public class AuthorTransformerImpl implements AuthorTransformer {
 	
 	@Override
-	public AuthorDTO toAuthorDto(Author author, boolean isParent)
+	public AuthorDTO toAuthorDto(Author author, boolean isParent, String classParentName)
 	{
 		AuthorDTO authorTransformed = new AuthorDTO();
 		if(author.getBiography()!=null)
@@ -23,19 +25,21 @@ public class AuthorTransformerImpl implements AuthorTransformer {
 		{
 			authorTransformed.setBirth(author.getBirth());
 		}
-		if(author.getBooks()!=null && isParent)
+		if(author.getBooks()!=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.CitizenshipDTO")))
 		{
 			Set<BookDTO> booksTransformed = new HashSet<>();
 			BookTransformerImpl bookTransformer = new BookTransformerImpl();
 			for(Book book : author.getBooks())
 			{
-				booksTransformed.add(bookTransformer.toBookDTO(book,false));
+				booksTransformed.add(bookTransformer.toBookDTO(book,false, authorTransformed.getClass().getName()));
 			}
 			authorTransformed.setBooks(booksTransformed);
 		}
-		if(author.getCitizenships()!=null)
+		if(author.getCitizenships()!=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.BookDTO")))
 		{
-			
+			Set<CitizenshipDTO> citizenshipsTransformed = new HashSet<>();
+			CitizenshipTransformer citizenshipTransformer = new CitizenshipTransformerImpl();
+			citizenshipsTransformed.addAll(citizenshipTransformer.toCitizenshipsDTO(author.getCitizenships(), false, authorTransformed.getClass().getName()));
 		}
 		if((Integer) author.getDeath()!=null)
 		{
@@ -56,12 +60,12 @@ public class AuthorTransformerImpl implements AuthorTransformer {
 		return authorTransformed;
 	}
 	
-	public Set<AuthorDTO> toAuthorsDTO(Set <Author> authors, boolean isParent)
+	public Set<AuthorDTO> toAuthorsDTO(Set <Author> authors, boolean isParent, String classParentName)
 	{
 		Set<AuthorDTO> authorsDTO = new HashSet<>();
 		for(Author author : authors)
 		{
-			AuthorDTO authorDTO = toAuthorDto(author, isParent);
+			AuthorDTO authorDTO = toAuthorDto(author, isParent, classParentName);
 			authorsDTO.add(authorDTO);
 		}
 		return authorsDTO;

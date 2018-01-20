@@ -5,26 +5,26 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-import org.liborrow.webservice.model.entities.Borrow;
+import org.liborrow.webservice.model.dto.BorrowDTO;
 import com.liborrow.webservice.AbstractService;
 
 @WebService(name = "BorrowClient", serviceName = "BorrowService", portName = "BorrowPort", targetNamespace="borrowservice.model.generated.webinterface.liborrow.com")
 public class BorrowService extends AbstractService {
 	
 	@WebMethod
-	public Borrow getBorrow(long id)
+	public BorrowDTO getBorrow(long id)
 	{
 		return getManagerFactory().getBorrowManager().findBorrowById(id);
 	}
 	
 	@WebMethod
-	public List<Borrow> getUserBorrows(long userId)
+	public List<BorrowDTO> getUserBorrows(long userId)
 	{
 		return getManagerFactory().getBorrowManager().findBorrowByUser(userId);
 	}
 	
 	@WebMethod
-	public List<Borrow> getAllBorrows()
+	public List<BorrowDTO> getAllBorrows()
 	{
 		return getManagerFactory().getBorrowManager().findAllBorrows();
 	}

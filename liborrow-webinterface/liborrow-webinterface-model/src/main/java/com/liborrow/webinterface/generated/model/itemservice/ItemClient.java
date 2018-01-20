@@ -27,6 +27,18 @@ public interface ItemClient {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<com.liborrow.webinterface.generated.model.itemservice.MagazineDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAllMagazines", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.GetAllMagazines")
+    @ResponseWrapper(localName = "getAllMagazinesResponse", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.GetAllMagazinesResponse")
+    @Action(input = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/getAllMagazinesRequest", output = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/getAllMagazinesResponse")
+    public List<MagazineDTO> getAllMagazines();
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns com.liborrow.webinterface.generated.model.itemservice.MagazineDTO
@@ -44,28 +56,16 @@ public interface ItemClient {
      * 
      * @param arg0
      * @return
-     *     returns com.liborrow.webinterface.generated.model.itemservice.BookDTO
+     *     returns com.liborrow.webinterface.generated.model.itemservice.SearchResponse
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getBook", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.GetBook")
-    @ResponseWrapper(localName = "getBookResponse", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.GetBookResponse")
-    @Action(input = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/getBookRequest", output = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/getBookResponse")
-    public BookDTO getBook(
+    @RequestWrapper(localName = "searchItem", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.SearchItem")
+    @ResponseWrapper(localName = "searchItemResponse", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.SearchItemResponse")
+    @Action(input = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/searchItemRequest", output = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/searchItemResponse")
+    public SearchResponse searchItem(
         @WebParam(name = "arg0", targetNamespace = "")
-        Integer arg0);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<com.liborrow.webinterface.generated.model.itemservice.MagazineDTO>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAllMagazines", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.GetAllMagazines")
-    @ResponseWrapper(localName = "getAllMagazinesResponse", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.GetAllMagazinesResponse")
-    @Action(input = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/getAllMagazinesRequest", output = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/getAllMagazinesResponse")
-    public List<MagazineDTO> getAllMagazines();
+        ItemCriterias arg0);
 
     /**
      * 
@@ -83,15 +83,15 @@ public interface ItemClient {
      * 
      * @param arg0
      * @return
-     *     returns com.liborrow.webinterface.generated.model.itemservice.SearchResponse
+     *     returns com.liborrow.webinterface.generated.model.itemservice.BookDTO
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchItem", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.SearchItem")
-    @ResponseWrapper(localName = "searchItemResponse", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.SearchItemResponse")
-    @Action(input = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/searchItemRequest", output = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/searchItemResponse")
-    public SearchResponse searchItem(
+    @RequestWrapper(localName = "getBook", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.GetBook")
+    @ResponseWrapper(localName = "getBookResponse", targetNamespace = "itemservice.model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.itemservice.GetBookResponse")
+    @Action(input = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/getBookRequest", output = "itemservice.model.generated.webinterface.liborrow.com/ItemClient/getBookResponse")
+    public BookDTO getBook(
         @WebParam(name = "arg0", targetNamespace = "")
-        ItemCriterias arg0);
+        Integer arg0);
 
 }

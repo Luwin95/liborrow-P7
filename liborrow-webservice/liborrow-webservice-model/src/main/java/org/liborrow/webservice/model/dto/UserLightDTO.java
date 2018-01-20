@@ -3,9 +3,6 @@ package org.liborrow.webservice.model.dto;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.liborrow.webservice.model.entities.Borrow;
-import org.liborrow.webservice.model.entities.Citizenship;
-
 public class UserLightDTO {
 	private long id;
 	
@@ -21,9 +18,9 @@ public class UserLightDTO {
 	
 	private String phoneNumber;
 	
-	private Citizenship citizenship;
+	private CitizenshipDTO citizenship;
 	
-	private Set<Borrow> borrows = new HashSet<>();
+	private Set<BorrowDTO> borrows = new HashSet<>();
 	
 	public UserLightDTO() {
 		// TODO Auto-generated constructor stub
@@ -85,21 +82,20 @@ public class UserLightDTO {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Citizenship getCitizenship() {
+	public CitizenshipDTO getCitizenship() {
 		return citizenship;
 	}
 
-	public void setCitizenship(Citizenship citizenship) {
+	public void setCitizenship(CitizenshipDTO citizenship) {
 		this.citizenship = citizenship;
 	}
 
-	public Set<Borrow> getBorrows() {
+	public Set<BorrowDTO> getBorrows() {
 		return borrows;
 	}
 
-	public void setBorrows(Set<Borrow> borrows) {
+	public void setBorrows(Set<BorrowDTO> borrows) {
 		this.borrows = borrows;
 	}
-	
 	
 }

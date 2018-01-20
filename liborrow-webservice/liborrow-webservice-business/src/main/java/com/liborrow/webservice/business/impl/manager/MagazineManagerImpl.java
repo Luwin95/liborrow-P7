@@ -32,7 +32,7 @@ public class MagazineManagerImpl extends AbstractManagerImpl implements Magazine
 	{
 		Magazine magazine = magazineRepository.findOne(id);
 		magazineEntityHibernateInitialization(magazine);
-		MagazineDTO magazineDTO = getTransformerFactory().getMagazineTransformer().toMagazineDTO(magazine, true);
+		MagazineDTO magazineDTO = getTransformerFactory().getMagazineTransformer().toMagazineDTO(magazine, true, "MagazineDTO");
 		return magazineDTO;
 	}
 	
@@ -44,18 +44,18 @@ public class MagazineManagerImpl extends AbstractManagerImpl implements Magazine
 		magazines.addAll(magazineRepository.findAll());
 		magazinesEntityHibernateInitialization(magazines);
 		List <MagazineDTO> magazinesDTO = new ArrayList<>();
-		magazinesDTO.addAll(getTransformerFactory().getMagazineTransformer().toMagazinesDTO(magazines, true));
+		magazinesDTO.addAll(getTransformerFactory().getMagazineTransformer().toMagazinesDTO(magazines, true, "MagazineDTO"));
 		return magazinesDTO;
 	}
 	
 	@Override
 	public List<MagazineDTO> searchMagazine(ItemCriterias itemCriterias) {
 		Set<Magazine> magazines = getDaoFactory().getMagazineDao().searchMagazine(itemCriterias);
-		//magazinesEntityHibernateInitialization(magazines);
+		magazinesEntityHibernateInitialization(magazines);
 		List<MagazineDTO> magazinesDTO = new ArrayList<>();
 		if(magazines !=null)
 		{
-			magazinesDTO.addAll(getTransformerFactory().getMagazineTransformer().toMagazinesDTO(magazines, true));
+			magazinesDTO.addAll(getTransformerFactory().getMagazineTransformer().toMagazinesDTO(magazines, true, "org.liborrow.webservice.model.dto.MagazineDTO"));
 		}
 		return magazinesDTO;
 	}
@@ -66,7 +66,8 @@ public class MagazineManagerImpl extends AbstractManagerImpl implements Magazine
 		for(Borrow borrow : magazine.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
-			Hibernate.initialize(borrow.getItems());
+			Hibernate.initialize(borrow.getBooks());
+			Hibernate.initialize(borrow.getMagazines());
 			Hibernate.initialize(borrow.getBorrower().getCitizenship());
 		}
 	}

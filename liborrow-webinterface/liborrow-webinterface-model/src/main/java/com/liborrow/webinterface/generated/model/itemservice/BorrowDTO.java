@@ -21,12 +21,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="borrower" type="{itemservice.model.generated.webinterface.liborrow.com}userDTO" minOccurs="0"/>
+ *         &lt;element name="books" type="{itemservice.model.generated.webinterface.liborrow.com}bookDTO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="borrower" type="{itemservice.model.generated.webinterface.liborrow.com}userLightDTO" minOccurs="0"/>
  *         &lt;element name="endDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="extended" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="getBackDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="items" type="{itemservice.model.generated.webinterface.liborrow.com}itemDTO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="magazines" type="{itemservice.model.generated.webinterface.liborrow.com}magazineDTO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -38,17 +39,20 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "borrowDTO", propOrder = {
+    "books",
     "borrower",
     "endDate",
     "extended",
     "getBackDate",
     "id",
-    "items",
+    "magazines",
     "startDate"
 })
 public class BorrowDTO {
 
-    protected UserDTO borrower;
+    @XmlElement(nillable = true)
+    protected List<BookDTO> books;
+    protected UserLightDTO borrower;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar endDate;
     protected Boolean extended;
@@ -56,19 +60,48 @@ public class BorrowDTO {
     protected XMLGregorianCalendar getBackDate;
     protected long id;
     @XmlElement(nillable = true)
-    protected List<ItemDTO> items;
+    protected List<MagazineDTO> magazines;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar startDate;
+
+    /**
+     * Gets the value of the books property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the books property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getBooks().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BookDTO }
+     * 
+     * 
+     */
+    public List<BookDTO> getBooks() {
+        if (books == null) {
+            books = new ArrayList<BookDTO>();
+        }
+        return this.books;
+    }
 
     /**
      * Obtient la valeur de la propriété borrower.
      * 
      * @return
      *     possible object is
-     *     {@link UserDTO }
+     *     {@link UserLightDTO }
      *     
      */
-    public UserDTO getBorrower() {
+    public UserLightDTO getBorrower() {
         return borrower;
     }
 
@@ -77,10 +110,10 @@ public class BorrowDTO {
      * 
      * @param value
      *     allowed object is
-     *     {@link UserDTO }
+     *     {@link UserLightDTO }
      *     
      */
-    public void setBorrower(UserDTO value) {
+    public void setBorrower(UserLightDTO value) {
         this.borrower = value;
     }
 
@@ -173,32 +206,32 @@ public class BorrowDTO {
     }
 
     /**
-     * Gets the value of the items property.
+     * Gets the value of the magazines property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the items property.
+     * This is why there is not a <CODE>set</CODE> method for the magazines property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getItems().add(newItem);
+     *    getMagazines().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ItemDTO }
+     * {@link MagazineDTO }
      * 
      * 
      */
-    public List<ItemDTO> getItems() {
-        if (items == null) {
-            items = new ArrayList<ItemDTO>();
+    public List<MagazineDTO> getMagazines() {
+        if (magazines == null) {
+            magazines = new ArrayList<MagazineDTO>();
         }
-        return this.items;
+        return this.magazines;
     }
 
     /**

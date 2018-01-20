@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.liborrow.webinterface.generated.model.userservice.UserLight;
+import com.liborrow.webinterface.generated.model.userservice.UserLightDTO;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
@@ -25,7 +25,7 @@ public class AuthenticationInterceptor implements Interceptor {
         HttpServletResponse response = ServletActionContext.getResponse();
         if(session != null && session.containsKey("sessionUser"))
         {
-            UserLight user = (UserLight) session.get("sessionUser");
+            UserLightDTO user = (UserLightDTO) session.get("sessionUser");
             if(user==null)
             {
             	return Action.LOGIN;

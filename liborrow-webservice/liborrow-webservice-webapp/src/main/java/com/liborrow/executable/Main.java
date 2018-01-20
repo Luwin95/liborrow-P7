@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.liborrow.webservice.model.dto.AuthorDTO;
 import org.liborrow.webservice.model.dto.BookDTO;
+import org.liborrow.webservice.model.dto.BorrowDTO;
 import org.liborrow.webservice.model.dto.MagazineDTO;
 import org.liborrow.webservice.model.utilsobject.AuthorCriterias;
 import org.liborrow.webservice.model.utilsobject.BookCriterias;
@@ -30,7 +31,7 @@ public class Main extends AbstractService{
 		String search = "le Petit";
 		
 		ItemCriterias itemCriterias = new ItemCriterias();
-		String string = "monde";
+		String string = "Hello";
 		itemCriterias.setSimpleStringSearch(string);
 		String[] splitedString = itemCriterias.getSimpleStringSearch().split("\\s+");
 		/*itemCriterias.setAuthorCriterias(new AuthorCriterias());
@@ -54,10 +55,15 @@ public class Main extends AbstractService{
 			System.out.println("Livres : ");
 			for(BookDTO book : books)
 			{
+				System.out.println(book.getClass().getName());
 				System.out.println(book.getTitle()+" publié par : "+book.getEditor());
 				for(AuthorDTO author : book.getAuthors())
 				{
 					System.out.println(author.getFirstname()+ " " +author.getName());
+				}
+				for(BorrowDTO borrow: book.getBorrows())
+				{
+					System.out.println(borrow.getBorrower().getEmail());
 				}
 			}
 		}
