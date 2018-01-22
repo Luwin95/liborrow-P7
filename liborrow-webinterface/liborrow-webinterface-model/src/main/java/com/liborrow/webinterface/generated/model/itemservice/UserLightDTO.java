@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="phoneNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -46,7 +47,8 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "lastname",
     "phoneNumber",
-    "postCode"
+    "postCode",
+    "role"
 })
 public class UserLightDTO {
 
@@ -60,6 +62,7 @@ public class UserLightDTO {
     protected String lastname;
     protected String phoneNumber;
     protected String postCode;
+    protected String role;
 
     /**
      * Obtient la valeur de la propriété address.
@@ -272,6 +275,30 @@ public class UserLightDTO {
      */
     public void setPostCode(String value) {
         this.postCode = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété role.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * Définit la valeur de la propriété role.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRole(String value) {
+        this.role = value;
     }
 
 }

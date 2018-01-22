@@ -67,6 +67,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ImageDTO }
+     * 
+     */
+    public ImageDTO createImageDTO() {
+        return new ImageDTO();
+    }
+
+    /**
      * Create an instance of {@link MagazineDTO }
      * 
      */

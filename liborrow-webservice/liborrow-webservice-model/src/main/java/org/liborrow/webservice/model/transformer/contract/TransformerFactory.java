@@ -13,4 +13,6 @@ public interface TransformerFactory {
 	void setMagazineTransformer(MagazineTransformer magazineTransformer);
 	UserLightTransformer getUserLightTransformer();
 	void setUserLightTransformer(UserLightTransformer userLightTransformer);
+	ImageTransformer getImageTransformer();
+	void setImageTransformer(ImageTransformer imageTransformer);
 }

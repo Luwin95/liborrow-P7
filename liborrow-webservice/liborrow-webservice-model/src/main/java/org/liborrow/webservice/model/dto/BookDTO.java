@@ -12,6 +12,7 @@ public class BookDTO extends ItemDTO{
 	private String summary;
 	private String editor;
 	private Set<AuthorDTO> authors = new HashSet<>();
+	private ImageDTO image;
 
 	public BookDTO() {
 		// TODO Auto-generated constructor stub
@@ -63,5 +64,13 @@ public class BookDTO extends ItemDTO{
 
 	public void setAuthors(Set<AuthorDTO> authors) {
 		this.authors = authors;
+	}
+
+	public ImageDTO getImage() {
+		return image;
+	}
+
+	public void setImage(ImageDTO image) {
+		this.image = image;
 	}
 }

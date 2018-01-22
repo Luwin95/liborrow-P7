@@ -20,6 +20,8 @@ public class UserDTO {
 	
 	private CitizenshipDTO citizenship;
 	
+	private String role;
+	
 	private Set<BorrowDTO> borrows = new HashSet<>();
 	
 	public UserDTO() {
@@ -80,6 +82,14 @@ public class UserDTO {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public CitizenshipDTO getCitizenship() {

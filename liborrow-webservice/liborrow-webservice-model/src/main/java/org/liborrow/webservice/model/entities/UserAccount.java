@@ -40,6 +40,9 @@ public class UserAccount {
 	@Column(name="phonenumber")
 	private String phoneNumber;
 	
+	@Column(name="role")
+	private String role;
+	
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "citizenship_id")
 	private Citizenship citizenship;
@@ -127,5 +130,13 @@ public class UserAccount {
 
 	public void setCitizenship(Citizenship citizenship) {
 		this.citizenship = citizenship;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

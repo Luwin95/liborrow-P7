@@ -9,6 +9,7 @@ import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.transformer.contract.BookTransformer;
 import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
+import org.liborrow.webservice.model.transformer.contract.ImageTransformer;
 
 public class BookTransformerImpl implements BookTransformer {
 
@@ -74,6 +75,11 @@ public class BookTransformerImpl implements BookTransformer {
 		if(book.getTotalCount()>=0)
 		{
 			transformedBook.setTotalCount(book.getTotalCount());
+		}
+		if(book.getImage()!=null)
+		{
+			ImageTransformer imageTransformer = new ImageTransformerImpl();
+			transformedBook.setImage(imageTransformer.toImageDTO(book.getImage(), false, transformedBook.getClass().getName()));
 		}
 		return transformedBook;
 	}

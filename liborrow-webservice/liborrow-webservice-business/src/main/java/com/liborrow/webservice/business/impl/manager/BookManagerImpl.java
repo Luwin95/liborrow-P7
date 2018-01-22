@@ -63,6 +63,7 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 	public void bookEntityHibernateInitialization(Book book)
 	{
 		Hibernate.initialize(book.getAuthors());
+		Hibernate.initialize(book.getImage());
 		for(Author author : book.getAuthors())
 		{
 			Hibernate.initialize(author.getBooks());

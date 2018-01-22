@@ -22,6 +22,8 @@ public class AuthorDTO {
 	
 	private Set<Citizenship> citizenships = new HashSet<>();
 	
+	private ImageDTO image;
+	
 	public AuthorDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -88,5 +90,13 @@ public class AuthorDTO {
 
 	public void setCitizenships(Set<Citizenship> citizenships) {
 		this.citizenships = citizenships;
+	}
+
+	public ImageDTO getImage() {
+		return image;
+	}
+
+	public void setImage(ImageDTO image) {
+		this.image = image;
 	}
 }

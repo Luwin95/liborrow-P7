@@ -23,6 +23,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="authors" type="{borrowservice.model.generated.webinterface.liborrow.com}authorDTO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="editor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="image" type="{borrowservice.model.generated.webinterface.liborrow.com}imageDTO" minOccurs="0"/>
  *         &lt;element name="language" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="release" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="summary" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -39,6 +40,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "bookDTO", propOrder = {
     "authors",
     "editor",
+    "image",
     "language",
     "release",
     "summary",
@@ -51,6 +53,7 @@ public class BookDTO
     @XmlElement(nillable = true)
     protected List<AuthorDTO> authors;
     protected String editor;
+    protected ImageDTO image;
     protected String language;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar release;
@@ -108,6 +111,30 @@ public class BookDTO
      */
     public void setEditor(String value) {
         this.editor = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété image.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ImageDTO }
+     *     
+     */
+    public ImageDTO getImage() {
+        return image;
+    }
+
+    /**
+     * Définit la valeur de la propriété image.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ImageDTO }
+     *     
+     */
+    public void setImage(ImageDTO value) {
+        this.image = value;
     }
 
     /**

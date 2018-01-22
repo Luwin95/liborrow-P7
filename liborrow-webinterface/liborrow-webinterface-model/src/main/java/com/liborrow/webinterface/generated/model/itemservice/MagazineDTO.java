@@ -19,6 +19,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;extension base="{itemservice.model.generated.webinterface.liborrow.com}itemDTO">
  *       &lt;sequence>
  *         &lt;element name="editionNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="image" type="{itemservice.model.generated.webinterface.liborrow.com}imageDTO" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="publishDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *       &lt;/sequence>
@@ -32,6 +33,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "magazineDTO", propOrder = {
     "editionNumber",
+    "image",
     "name",
     "publishDate"
 })
@@ -40,6 +42,7 @@ public class MagazineDTO
 {
 
     protected int editionNumber;
+    protected ImageDTO image;
     protected String name;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar publishDate;
@@ -58,6 +61,30 @@ public class MagazineDTO
      */
     public void setEditionNumber(int value) {
         this.editionNumber = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété image.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ImageDTO }
+     *     
+     */
+    public ImageDTO getImage() {
+        return image;
+    }
+
+    /**
+     * Définit la valeur de la propriété image.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ImageDTO }
+     *     
+     */
+    public void setImage(ImageDTO value) {
+        this.image = value;
     }
 
     /**

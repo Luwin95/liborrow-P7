@@ -10,6 +10,7 @@ import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.transformer.contract.AuthorTransformer;
 import org.liborrow.webservice.model.transformer.contract.CitizenshipTransformer;
+import org.liborrow.webservice.model.transformer.contract.ImageTransformer;
 
 public class AuthorTransformerImpl implements AuthorTransformer {
 	
@@ -56,6 +57,11 @@ public class AuthorTransformerImpl implements AuthorTransformer {
 		if(author.getName()!=null)
 		{
 			authorTransformed.setName(author.getName());
+		}
+		if(author.getImage()!=null)
+		{
+			ImageTransformer imageTransformer = new ImageTransformerImpl();
+			authorTransformed.setImage(imageTransformer.toImageDTO(author.getImage(), false, authorTransformed.getClass().getName()));
 		}
 		return authorTransformed;
 	}

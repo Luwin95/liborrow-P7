@@ -21,6 +21,7 @@ public class UserLightTransformerImpl implements UserLightTransformer {
 		userTransformed.setPhoneNumber(user.getPhoneNumber());
 		userTransformed.setPostCode(user.getPostCode());
 		userTransformed.setAddress(user.getAddress());
+		
 		if(user.getBorrows()!=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.CitizenshipDTO")))
 		{
 			BorrowTransformer borrowTransformer = new BorrowTransformerImpl();

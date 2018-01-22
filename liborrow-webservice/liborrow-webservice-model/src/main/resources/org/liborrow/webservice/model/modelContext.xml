@@ -10,6 +10,7 @@
 	 <bean id="bookTransformer" class="org.liborrow.webservice.model.transformer.impl.BookTransformerImpl"/>
 	 <bean id="citizenshipTransformer" class="org.liborrow.webservice.model.transformer.impl.CitizenshipTransformerImpl"/>
 	 <bean id="magazineTransformer" class="org.liborrow.webservice.model.transformer.impl.MagazineTransformerImpl"/>
+	 <bean id="imageTransformer" class="org.liborrow.webservice.model.transformer.impl.ImageTransformerImpl"/>
 	 <bean id="userLightTransformer" class="org.liborrow.webservice.model.transformer.impl.UserLightTransformerImpl"/>
 	 
 	 <!-- Déclaration TransformerFactory -->
@@ -18,6 +19,7 @@
 	 	<property name="bookTransformer" ref="bookTransformer"/>
 	 	<property name="citizenshipTransformer" ref="citizenshipTransformer"/>
 	 	<property name="magazineTransformer" ref="magazineTransformer"/>
+	 	<property name="imageTransformer" ref="imageTransformer"/>
 	 	<property name="userLightTransformer" ref="userLightTransformer"/>
 	 </bean>
 	 

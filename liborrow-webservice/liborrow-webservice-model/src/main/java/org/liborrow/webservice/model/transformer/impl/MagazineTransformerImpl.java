@@ -6,6 +6,7 @@ import java.util.Set;
 import org.liborrow.webservice.model.dto.MagazineDTO;
 import org.liborrow.webservice.model.entities.Magazine;
 import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
+import org.liborrow.webservice.model.transformer.contract.ImageTransformer;
 import org.liborrow.webservice.model.transformer.contract.MagazineTransformer;
 
 public class MagazineTransformerImpl implements MagazineTransformer {
@@ -27,6 +28,11 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 		 {
 			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
 			 magazineDTO.setBorrows(borrowTransformer.toBorrowsDTO(magazine.getBorrows(), false, magazineDTO.getClass().getName()));
+		 }
+		 if(magazine.getImage()!=null)
+		 {
+			 ImageTransformer imageTransformer = new ImageTransformerImpl();
+			 magazineDTO.setImage(imageTransformer.toImageDTO(magazine.getImage(), false, magazineDTO.getClass().getName()));
 		 }
 		return magazineDTO;
 	}

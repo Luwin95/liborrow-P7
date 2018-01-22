@@ -6,7 +6,10 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity(name="Magazine")
 public class Magazine extends Item {
@@ -22,6 +25,10 @@ public class Magazine extends Item {
 	
 	@ManyToMany(mappedBy="magazines")
 	private Set<Borrow> borrows = new HashSet<>();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+	private Image image;
 	
 	public Magazine() {}
 	
@@ -62,5 +69,13 @@ public class Magazine extends Item {
 
 	public void setBorrows(Set<Borrow> borrows) {
 		this.borrows = borrows;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 }

@@ -10,7 +10,10 @@ import javax.annotation.Resource;
 
 import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.dto.MagazineDTO;
+import org.liborrow.webservice.model.entities.Author;
+import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
+import org.liborrow.webservice.model.entities.Citizenship;
 import org.liborrow.webservice.model.entities.Magazine;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,11 +66,30 @@ public class MagazineManagerImpl extends AbstractManagerImpl implements Magazine
 	private void magazineEntityHibernateInitialization(Magazine magazine)
 	{
 		Hibernate.initialize(magazine.getBorrows());
+		Hibernate.initialize(magazine.getImage());
 		for(Borrow borrow : magazine.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
 			Hibernate.initialize(borrow.getBooks());
+			for(Book book : borrow.getBooks())
+			{
+				Hibernate.initialize(book.getAuthors());
+				Hibernate.initialize(book.getImage());
+				for(Author author : book.getAuthors())
+				{
+					Hibernate.initialize(author.getBooks());
+					Hibernate.initialize(author.getCitizenships());
+					for(Citizenship citizenship : author.getCitizenships())
+					{
+						Hibernate.initialize(citizenship.getAuthors());
+					}
+				}
+			}
 			Hibernate.initialize(borrow.getMagazines());
+			for(Magazine magazine1 : borrow.getMagazines())
+			{
+				Hibernate.initialize(magazine1.getImage());
+			}
 			Hibernate.initialize(borrow.getBorrower().getCitizenship());
 		}
 	}

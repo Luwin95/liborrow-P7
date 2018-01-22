@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="death" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="firstname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="image" type="{userservice.model.generated.webinterface.liborrow.com}imageDTO" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -44,6 +45,7 @@ import javax.xml.bind.annotation.XmlType;
     "death",
     "firstname",
     "id",
+    "image",
     "name"
 })
 public class AuthorDTO {
@@ -57,6 +59,7 @@ public class AuthorDTO {
     protected int death;
     protected String firstname;
     protected Long id;
+    protected ImageDTO image;
     protected String name;
 
     /**
@@ -219,6 +222,30 @@ public class AuthorDTO {
      */
     public void setId(Long value) {
         this.id = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété image.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ImageDTO }
+     *     
+     */
+    public ImageDTO getImage() {
+        return image;
+    }
+
+    /**
+     * Définit la valeur de la propriété image.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ImageDTO }
+     *     
+     */
+    public void setImage(ImageDTO value) {
+        this.image = value;
     }
 
     /**

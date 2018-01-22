@@ -10,6 +10,8 @@ public class MagazineDTO extends ItemDTO {
 	
 	private Date publishDate;
 	
+	private ImageDTO image;
+	
 	public MagazineDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -37,7 +39,12 @@ public class MagazineDTO extends ItemDTO {
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
-	
-	
 
+	public ImageDTO getImage() {
+		return image;
+	}
+
+	public void setImage(ImageDTO image) {
+		this.image = image;
+	}
 }

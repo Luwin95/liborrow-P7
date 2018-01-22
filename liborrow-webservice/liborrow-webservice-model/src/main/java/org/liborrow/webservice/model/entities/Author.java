@@ -6,12 +6,14 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity(name="Author")
@@ -44,6 +46,10 @@ public class Author {
 			joinColumns=@JoinColumn(name="author_id"),
 			inverseJoinColumns = @JoinColumn(name="citizenship_id"))
 	private Set<Citizenship> citizenships = new HashSet<>();
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+	private Image image;
 	
 	public Author() {}
 	
@@ -139,5 +145,13 @@ public class Author {
 	public void removeCitizenship(Citizenship citizenship) {
 		citizenships.remove(citizenship);
 		citizenship.removeAuthor(this);
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 }
