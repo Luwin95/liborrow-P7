@@ -3,8 +3,6 @@ package org.liborrow.webservice.model.dto;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.liborrow.webservice.model.entities.Citizenship;
-
 public class AuthorDTO {
 	private Long id;
 	
@@ -20,7 +18,7 @@ public class AuthorDTO {
 	
 	private Set<BookDTO> books = new HashSet<>(); 
 	
-	private Set<Citizenship> citizenships = new HashSet<>();
+	private Set<CitizenshipDTO> citizenships = new HashSet<>();
 	
 	private ImageDTO image;
 	
@@ -84,11 +82,11 @@ public class AuthorDTO {
 		this.books = books;
 	}
 
-	public Set<Citizenship> getCitizenships() {
+	public Set<CitizenshipDTO> getCitizenships() {
 		return citizenships;
 	}
 
-	public void setCitizenships(Set<Citizenship> citizenships) {
+	public void setCitizenships(Set<CitizenshipDTO> citizenships) {
 		this.citizenships = citizenships;
 	}
 

@@ -52,11 +52,12 @@ public class MagazineManagerImpl extends AbstractManagerImpl implements Magazine
 	}
 	
 	@Override
+	@Transactional(readOnly = true)
 	public List<MagazineDTO> searchMagazine(ItemCriterias itemCriterias) {
 		Set<Magazine> magazines = getDaoFactory().getMagazineDao().searchMagazine(itemCriterias);
 		magazinesEntityHibernateInitialization(magazines);
 		List<MagazineDTO> magazinesDTO = new ArrayList<>();
-		if(magazines !=null)
+		if(magazines !=null && magazines.size()!=0)
 		{
 			magazinesDTO.addAll(getTransformerFactory().getMagazineTransformer().toMagazinesDTO(magazines, true, "org.liborrow.webservice.model.dto.MagazineDTO"));
 		}
@@ -70,26 +71,6 @@ public class MagazineManagerImpl extends AbstractManagerImpl implements Magazine
 		for(Borrow borrow : magazine.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
-			Hibernate.initialize(borrow.getBooks());
-			for(Book book : borrow.getBooks())
-			{
-				Hibernate.initialize(book.getAuthors());
-				Hibernate.initialize(book.getImage());
-				for(Author author : book.getAuthors())
-				{
-					Hibernate.initialize(author.getBooks());
-					Hibernate.initialize(author.getCitizenships());
-					for(Citizenship citizenship : author.getCitizenships())
-					{
-						Hibernate.initialize(citizenship.getAuthors());
-					}
-				}
-			}
-			Hibernate.initialize(borrow.getMagazines());
-			for(Magazine magazine1 : borrow.getMagazines())
-			{
-				Hibernate.initialize(magazine1.getImage());
-			}
 			Hibernate.initialize(borrow.getBorrower().getCitizenship());
 		}
 	}

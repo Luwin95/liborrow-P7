@@ -2,11 +2,11 @@ package com.liborrow.webinterface.webapp.actions;
 
 import java.util.List;
 
-import com.liborrow.webinterface.generated.model.itemservice.AuthorDTO;
-import com.liborrow.webinterface.generated.model.itemservice.BookDTO;
-import com.liborrow.webinterface.generated.model.itemservice.ItemCriterias;
-import com.liborrow.webinterface.generated.model.itemservice.MagazineDTO;
-import com.liborrow.webinterface.generated.model.itemservice.SearchResponse;
+import com.liborrow.webinterface.generated.model.AuthorDTO;
+import com.liborrow.webinterface.generated.model.BookDTO;
+import com.liborrow.webinterface.generated.model.ItemCriterias;
+import com.liborrow.webinterface.generated.model.MagazineDTO;
+import com.liborrow.webinterface.generated.model.SearchResponse;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class SearchAuthorAction extends AbstractAction{
@@ -17,6 +17,9 @@ public class SearchAuthorAction extends AbstractAction{
 	private List<MagazineDTO> magazineResponse;
 	
 	public String execute() throws Exception {
+		itemCriterias.setStringSearch(false);
+		itemCriterias.setBookSearch(false);
+		itemCriterias.setMagazineSearch(false);
 		SearchResponse searchResponse =getManagerFactory().getItemManager().searchItem(itemCriterias);
 		setBookResponse(searchResponse.getBooks());
 		setAuthorResponse(searchResponse.getAuthors());

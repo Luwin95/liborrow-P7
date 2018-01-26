@@ -1,6 +1,6 @@
 package com.liborrow.webinterface.webapp.actions;
 
-import com.liborrow.webinterface.generated.model.itemservice.MagazineDTO;
+import com.liborrow.webinterface.generated.model.MagazineDTO;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class MagazineAction extends AbstractAction {

@@ -19,6 +19,8 @@ public class ItemDTO {
 	
 	private Set<BorrowDTO> borrows = new HashSet<>();
 	
+	private String itemType;
+	
 	public ItemDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -77,5 +79,13 @@ public class ItemDTO {
 
 	public void setBorrows(Set<BorrowDTO> borrows) {
 		this.borrows = borrows;
+	}
+
+	public String getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(String itemType) {
+		this.itemType = itemType;
 	}
 }

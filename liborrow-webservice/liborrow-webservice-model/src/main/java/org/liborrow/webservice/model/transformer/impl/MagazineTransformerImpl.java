@@ -24,11 +24,11 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 		 magazineDTO.setPublishDate(magazine.getPublishDate());
 		 magazineDTO.setRemainingCount(magazine.getRemainingCount());
 		 magazineDTO.setTotalCount(magazine.getTotalCount());
-		 if(magazine.getBorrows()!=null && isParent)
-		 {
-			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
-			 magazineDTO.setBorrows(borrowTransformer.toBorrowsDTO(magazine.getBorrows(), false, magazineDTO.getClass().getName()));
-		 }
+//		 if(magazine.getBorrows()!=null && isParent)
+//		 {
+//			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
+//			 magazineDTO.setBorrows(borrowTransformer.toBorrowsDTO(magazine.getBorrows(), false, magazineDTO.getClass().getName()));
+//		 }
 		 if(magazine.getImage()!=null)
 		 {
 			 ImageTransformer imageTransformer = new ImageTransformerImpl();
@@ -45,6 +45,42 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 			magazinesDTO.add(toMagazineDTO(magazine, isParent, classParentName));
 		}
 		return magazinesDTO;
+	}
+	 
+	@Override
+	public Magazine toMagazineEntity(MagazineDTO magazine, boolean isParent, String classParentName) {
+		// TODO Auto-generated method stub
+		 Magazine magazineTransformed = new Magazine();
+		 magazineTransformed.setId(magazine.getId());
+		 magazineTransformed.setItemRef(magazine.getItemRef());
+		 magazineTransformed.setName(magazine.getName());
+		 magazineTransformed.setAlley(magazine.getAlley());
+		 magazineTransformed.setEditionNumber(magazine.getEditionNumber());
+		 magazineTransformed.setPlace(magazine.getPlace());
+		 magazineTransformed.setPublishDate(magazine.getPublishDate());
+		 magazineTransformed.setRemainingCount(magazine.getRemainingCount());
+		 magazineTransformed.setTotalCount(magazine.getTotalCount());
+		 if(magazine.getBorrows()!=null && isParent)
+		 {
+			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
+			 magazineTransformed.setBorrows(borrowTransformer.toBorrowsEntities(magazine.getBorrows(), false, magazineTransformed.getClass().getSimpleName()));
+		 }
+		 if(magazine.getImage()!=null)
+		 {
+			 ImageTransformer imageTransformer = new ImageTransformerImpl();
+			 magazineTransformed.setImage(imageTransformer.toImageEntity(magazine.getImage(), false, magazineTransformed.getClass().getSimpleName()));
+		 }
+		return magazineTransformed;
+	}
+	
+	@Override
+	public Set<Magazine> toMagazinesEntities(Set<MagazineDTO> magazines, boolean isParent, String classParentName) {
+		Set<Magazine> magazinesTransformed = new HashSet<>();
+		for(MagazineDTO magazine : magazines)
+		{
+			magazinesTransformed.add(toMagazineEntity(magazine, isParent, classParentName));
+		}
+		return magazinesTransformed;
 	}
 
 }

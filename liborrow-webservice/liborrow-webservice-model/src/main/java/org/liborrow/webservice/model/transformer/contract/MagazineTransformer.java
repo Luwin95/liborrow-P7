@@ -9,4 +9,6 @@ public interface MagazineTransformer {
 
 	MagazineDTO toMagazineDTO(Magazine magazine, boolean isParent, String classParentName);
 	Set<MagazineDTO> toMagazinesDTO(Set<Magazine> magazines, boolean isParent, String classParentName);
+	Magazine toMagazineEntity(MagazineDTO magazine, boolean isParent, String classParentName);
+	Set<Magazine> toMagazinesEntities(Set<MagazineDTO> magazines, boolean isParent, String classParentName);
 }

@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.liborrow.webinterface.generated.model.userservice.UserLightDTO;
+import com.liborrow.webinterface.generated.model.UserLightDTO;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class LoginAction extends AbstractAction implements SessionAware {

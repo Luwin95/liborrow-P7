@@ -9,4 +9,6 @@ public interface CitizenshipTransformer {
 
 	CitizenshipDTO toCitizenshipDTO(Citizenship citizenship, boolean isParent, String classParentName);
 	Set<CitizenshipDTO> toCitizenshipsDTO(Set<Citizenship> citizenships, boolean isParent, String classParentName);
+	Citizenship toCitizenshipEntity(CitizenshipDTO citizenship, boolean isParent, String classParentName);
+	Set<Citizenship> toCitizenshipsEntities(Set<CitizenshipDTO> citizenships, boolean isParent, String classParentName);
 }

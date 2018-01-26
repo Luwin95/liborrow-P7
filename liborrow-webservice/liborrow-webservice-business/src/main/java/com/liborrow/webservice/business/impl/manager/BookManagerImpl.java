@@ -1,7 +1,9 @@
 package com.liborrow.webservice.business.impl.manager;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.dto.BookDTO;
@@ -19,6 +21,7 @@ import com.liborrow.webservice.consumer.repository.BookRepository;
 
 @Service
 public class BookManagerImpl extends AbstractManagerImpl implements BookManager {
+	
 	@Autowired
 	BookRepository bookRepository;
 	
@@ -50,11 +53,14 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 	}
 	
 	@Override
+	@Transactional(readOnly = true)
 	public List<BookDTO> searchBook(ItemCriterias itemCriterias) {
+		Set<Book> booksEntities = getDaoFactory().getBookDao().searchBook(itemCriterias);
 		List<BookDTO> books = new ArrayList<>();
-		if(books!=null)
+		if(books!=null && booksEntities.size()!=0)
 		{
-			books.addAll(getTransformerFactory().getBookTransformer().toBooksDTO(getDaoFactory().getBookDao().searchBook(itemCriterias),true, "org.liborrow.webservice.model.dto.BookDTO"));
+			//bookListEntityHibernateInitialization(booksEntities);
+			books.addAll(getTransformerFactory().getBookTransformer().toBooksDTO(booksEntities,true, "org.liborrow.webservice.model.dto.BookDTO"));
 		}
 		return books;
 	}
@@ -77,8 +83,15 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		for(Borrow borrow : book.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
-			Hibernate.initialize(borrow.getBooks());
-			Hibernate.initialize(borrow.getMagazines());
+			Hibernate.initialize(borrow.getItem());
+		}
+	}
+	
+	@Override
+	public void bookListEntityHibernateInitialization(Collection<Book> books) {
+		for(Book book : books)
+		{
+			bookEntityHibernateInitialization(book);
 		}
 	}
 }

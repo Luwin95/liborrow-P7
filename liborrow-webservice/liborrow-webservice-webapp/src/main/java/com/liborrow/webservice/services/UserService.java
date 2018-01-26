@@ -6,7 +6,7 @@ import javax.jws.WebService;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import com.liborrow.webservice.AbstractService;
 
-@WebService(name = "UserClient", serviceName = "UserService", portName = "UserPort", targetNamespace="userservice.model.generated.webinterface.liborrow.com")
+@WebService(name = "UserClient", serviceName = "UserService", portName = "UserPort", targetNamespace="model.generated.webinterface.liborrow.com")
 public class UserService extends AbstractService {
 	
 	@WebMethod

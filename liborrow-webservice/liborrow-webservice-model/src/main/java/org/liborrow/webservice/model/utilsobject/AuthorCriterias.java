@@ -30,7 +30,4 @@ public class AuthorCriterias {
 	public void setDeath(int death) {
 		this.death = death;
 	}
-	
-	
-
 }

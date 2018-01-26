@@ -28,4 +28,24 @@ public class ImageTransformerImpl implements ImageTransformer {
 		}
 		return imagesDTO;
 	}
+	
+	@Override
+	public Image toImageEntity(ImageDTO image, boolean isParent, String classParentName) {
+		Image imageTransformed = new Image();
+		imageTransformed.setId(image.getId());
+		imageTransformed.setAlt(image.getAlt());
+		imageTransformed.setPath(image.getPath());
+		imageTransformed.setTitle(image.getTitle());
+		return imageTransformed;
+	}
+	
+	@Override
+	public Set<Image> toImagesEntities(Set<ImageDTO> images, boolean isParent, String classParentName) {
+		Set<Image> imagesTransformed = new HashSet<>();
+		for(ImageDTO image : images)
+		{
+			imagesTransformed.add(toImageEntity(image,isParent, classParentName));
+		}
+		return imagesTransformed;
+	}
 }

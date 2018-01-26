@@ -12,11 +12,13 @@
 	 <bean id="magazineTransformer" class="org.liborrow.webservice.model.transformer.impl.MagazineTransformerImpl"/>
 	 <bean id="imageTransformer" class="org.liborrow.webservice.model.transformer.impl.ImageTransformerImpl"/>
 	 <bean id="userLightTransformer" class="org.liborrow.webservice.model.transformer.impl.UserLightTransformerImpl"/>
+	 <bean id="borrowTransformer" class="org.liborrow.webservice.model.transformer.impl.BorrowTransformerImpl"/>
 	 
 	 <!-- Déclaration TransformerFactory -->
 	 <bean id="transformerFactory" class="org.liborrow.webservice.model.transformer.impl.TransformerFactoryImpl">
 	 	<property name="authorTransformer" ref="authorTransformer"/>
 	 	<property name="bookTransformer" ref="bookTransformer"/>
+	 	<property name="borrowTransformer" ref="borrowTransformer"/>
 	 	<property name="citizenshipTransformer" ref="citizenshipTransformer"/>
 	 	<property name="magazineTransformer" ref="magazineTransformer"/>
 	 	<property name="imageTransformer" ref="imageTransformer"/>

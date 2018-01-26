@@ -1,0 +1,36 @@
+package com.liborrow.webinterface.business.impl.manager;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import com.liborrow.webinterface.business.contract.manager.BorrowManager;
+import com.liborrow.webinterface.generated.model.BorrowDTO;
+import com.liborrow.webinterface.generated.model.UserLightDTO;
+
+public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowManager {
+
+	public List<BorrowDTO> getAllCurrentBorrows() {
+		List<BorrowDTO> borrows = getDaoFactory().getBorrowDao().getAllBorrows();
+		List<BorrowDTO> borrowsToDelete = new ArrayList<BorrowDTO>();
+		for(BorrowDTO borrow : borrows)
+		{
+			GregorianCalendar gregorianCalendar = new GregorianCalendar();
+	        Date endDate = borrow.getEndDate().toGregorianCalendar().getTime();
+	        Date now= new Date();
+			if(endDate.before(now))
+			{
+				borrowsToDelete.add(borrow);
+			}
+		}
+		borrows.removeAll(borrowsToDelete);
+		
+		return borrows;
+	}
+	
+	public List<BorrowDTO> getAllOnGoingBorrowByUserLogged(UserLightDTO user) {
+		// TODO Auto-generated method stub
+		return getDaoFactory().getBorrowDao().getAllOnGoingBorrowByUserLogged(user);
+	}
+}

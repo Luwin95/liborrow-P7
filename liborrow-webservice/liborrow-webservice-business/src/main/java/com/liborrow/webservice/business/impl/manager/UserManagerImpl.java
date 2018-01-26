@@ -85,8 +85,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 		Hibernate.initialize(user.getBorrows());
 		for(Borrow borrow : user.getBorrows())
 		{
-			Hibernate.initialize(borrow.getBooks());
-			Hibernate.initialize(borrow.getMagazines());
+			Hibernate.initialize(borrow.getItem());
 			Hibernate.initialize(borrow.getBorrower());
 		}
 	}

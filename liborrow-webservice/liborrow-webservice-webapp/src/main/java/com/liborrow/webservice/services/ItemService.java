@@ -12,7 +12,7 @@ import org.liborrow.webservice.model.utilsobject.SearchResponse;
 
 import com.liborrow.webservice.AbstractService;
 
-@WebService(name = "ItemClient", serviceName = "ItemService", portName = "ItemPort", targetNamespace="itemservice.model.generated.webinterface.liborrow.com")
+@WebService(name = "ItemClient", serviceName = "ItemService", portName = "ItemPort", targetNamespace="model.generated.webinterface.liborrow.com")
 
 public class ItemService extends AbstractService{
 	
@@ -59,6 +59,39 @@ public class ItemService extends AbstractService{
 			searchResponse.setAuthors(getManagerFactory().getAuthorManager().searchAuthor(itemCriterias));
 		}
 		
+		if(itemCriterias.isMagazineSearch())
+		{
+			searchResponse.setMagazines(getManagerFactory().getMagazineManager().searchMagazine(itemCriterias));
+		}
+		return searchResponse;
+	}
+	
+	@WebMethod
+	public SearchResponse searchBook(ItemCriterias itemCriterias)
+	{
+		SearchResponse searchResponse = new SearchResponse();
+		if(itemCriterias.isBookSearch())
+		{
+			searchResponse.setBooks(getManagerFactory().getBookManager().searchBook(itemCriterias));
+		}
+		return searchResponse;
+	}
+	
+	@WebMethod
+	public SearchResponse searchAuthor(ItemCriterias itemCriterias)
+	{
+		SearchResponse searchResponse = new SearchResponse();
+		if(itemCriterias.isAuthorSearch())
+		{
+			searchResponse.setAuthors(getManagerFactory().getAuthorManager().searchAuthor(itemCriterias));
+		}
+		return searchResponse;
+	}
+	
+	@WebMethod
+	public SearchResponse searchMagazine(ItemCriterias itemCriterias)
+	{
+		SearchResponse searchResponse = new SearchResponse();
 		if(itemCriterias.isMagazineSearch())
 		{
 			searchResponse.setMagazines(getManagerFactory().getMagazineManager().searchMagazine(itemCriterias));

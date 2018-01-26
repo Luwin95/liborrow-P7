@@ -1,7 +1,7 @@
 package com.liborrow.webinterface.webapp.actions;
 
 
-import com.liborrow.webinterface.generated.model.itemservice.BookDTO;
+import com.liborrow.webinterface.generated.model.BookDTO;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class BookAction extends AbstractAction {

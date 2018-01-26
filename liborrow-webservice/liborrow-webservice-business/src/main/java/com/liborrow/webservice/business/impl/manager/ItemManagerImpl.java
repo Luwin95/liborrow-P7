@@ -3,6 +3,7 @@ package com.liborrow.webservice.business.impl.manager;
 import javax.annotation.Resource;
 
 import org.liborrow.webservice.model.entities.Item;
+import org.liborrow.webservice.model.utilsobject.AuthorDependenciesEnum;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 import org.liborrow.webservice.model.utilsobject.SearchResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 		SearchResponse searchResponse = new SearchResponse();
 		searchResponse.getAuthors().addAll(
 				getTransformerFactory().getAuthorTransformer().toAuthorsDTO(
-						getDaoFactory().getAuthorDao().searchWithSimpleStringAuthor(itemCriterias, simpleStringSplited),true, "org.liborrow.webservice.model.dto.AuthorDTO")
+						getDaoFactory().getAuthorDao().searchWithSimpleStringAuthor(itemCriterias, simpleStringSplited),AuthorDependenciesEnum.AUTHOR_BOOKS, AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS)
 				);
 		searchResponse.getBooks().addAll(
 				getTransformerFactory().getBookTransformer().toBooksDTO(

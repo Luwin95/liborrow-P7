@@ -1,5 +1,6 @@
 package com.liborrow.webservice.business.contract.manager;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.liborrow.webservice.model.dto.BookDTO;
@@ -10,5 +11,6 @@ public interface BookManager {
 	BookDTO findBookById(long id);
 	List<BookDTO> findAllBooks();
 	void bookEntityHibernateInitialization(Book book);
+	void bookListEntityHibernateInitialization(Collection<Book> books);
 	List<BookDTO> searchBook(ItemCriterias itemCriterias);
 }

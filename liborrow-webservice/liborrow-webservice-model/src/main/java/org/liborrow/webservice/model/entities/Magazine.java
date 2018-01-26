@@ -5,13 +5,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name="Magazine")
+@DiscriminatorValue("2")
 public class Magazine extends Item {
 	
 	@Column(name = "editionnumber")
@@ -23,7 +26,7 @@ public class Magazine extends Item {
 	@Column(name="publishdate")
 	private Date publishDate;
 	
-	@ManyToMany(mappedBy="magazines")
+	@OneToMany(mappedBy="item")
 	private Set<Borrow> borrows = new HashSet<>();
 	
 	@OneToOne(fetch = FetchType.LAZY)

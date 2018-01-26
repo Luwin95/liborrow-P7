@@ -1,7 +1,7 @@
 package com.liborrow.webinterface.consumer.impl.dao;
 
 import com.liborrow.webinterface.consumer.contract.dao.UserDao;
-import com.liborrow.webinterface.generated.model.userservice.UserLightDTO;
+import com.liborrow.webinterface.generated.model.UserLightDTO;
 
 public class UserDaoImpl extends AbstractDao implements UserDao {
 	

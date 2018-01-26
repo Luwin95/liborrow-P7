@@ -2,8 +2,6 @@ package org.liborrow.webservice.model.entities;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,8 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.ManyToOne;
 
 @Entity(name="Borrow")
@@ -39,17 +36,9 @@ public class Borrow {
     @JoinColumn(name = "user_id")
 	private UserLight borrower;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="borrow_item",
-			joinColumns=@JoinColumn(name="borrow_id"),
-			inverseJoinColumns = @JoinColumn(name="item_id"))
-	private Set<Book> books = new HashSet<>();
-	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="borrow_item",
-			joinColumns=@JoinColumn(name="borrow_id"),
-			inverseJoinColumns = @JoinColumn(name="item_id"))
-	private Set<Magazine> magazines = new HashSet<>();
+//	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "item_id")
+	private Item item;
 	
 	public Borrow() {}
 	
@@ -118,19 +107,11 @@ public class Borrow {
 		this.borrower = borrower;
 	}
 
-	public Set<Book> getBooks() {
-		return books;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setBooks(Set<Book> books) {
-		this.books = books;
-	}
-
-	public Set<Magazine> getMagazines() {
-		return magazines;
-	}
-
-	public void setMagazines(Set<Magazine> magazines) {
-		this.magazines = magazines;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 }

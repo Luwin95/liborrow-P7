@@ -1,9 +1,11 @@
 package com.liborrow.webinterface.consumer.impl.dao;
 
-import com.liborrow.webinterface.generated.model.itemservice.ItemClient;
-import com.liborrow.webinterface.generated.model.itemservice.ItemService;
-import com.liborrow.webinterface.generated.model.userservice.UserClient;
-import com.liborrow.webinterface.generated.model.userservice.UserService;
+import com.liborrow.webinterface.generated.model.BorrowClient;
+import com.liborrow.webinterface.generated.model.BorrowService;
+import com.liborrow.webinterface.generated.model.ItemClient;
+import com.liborrow.webinterface.generated.model.ItemService;
+import com.liborrow.webinterface.generated.model.UserClient;
+import com.liborrow.webinterface.generated.model.UserService;
 
 public abstract class AbstractDao {
 	private ItemService itemService = new ItemService();
@@ -11,6 +13,9 @@ public abstract class AbstractDao {
 	
 	private UserService userService = new UserService();
 	private UserClient userSrv = userService.getUserPort();
+	
+	private BorrowService borrowService = new BorrowService();
+	private BorrowClient borrowSrv = borrowService.getBorrowPort();
 	
 	protected ItemService getItemService() {
 		return itemService;
@@ -36,5 +41,11 @@ public abstract class AbstractDao {
 	}
 	public void setUserSrv(UserClient userSrv) {
 		this.userSrv = userSrv;
+	}
+	public BorrowClient getBorrowSrv() {
+		return borrowSrv;
+	}
+	public void setBorrowSrv(BorrowClient borrowSrv) {
+		this.borrowSrv = borrowSrv;
 	}
 }

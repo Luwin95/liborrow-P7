@@ -6,14 +6,17 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name="Book")
+@DiscriminatorValue("1")
 public class Book extends Item {
 	
 	@Column(name = "title")
@@ -37,7 +40,7 @@ public class Book extends Item {
 			inverseJoinColumns = @JoinColumn(name="author_id"))
 	private Set<Author> authors = new HashSet<>();
 	
-	@ManyToMany(mappedBy="books")
+	@OneToMany(mappedBy="item")
 	private Set<Borrow> borrows = new HashSet<>();
 	
 	@OneToOne(fetch = FetchType.LAZY)

@@ -1,15 +1,25 @@
 package org.liborrow.webservice.model.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 
 @Entity
-@Inheritance( strategy = InheritanceType.JOINED)
+@Inheritance( strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="item_type", discriminatorType = DiscriminatorType.INTEGER)
 public abstract class Item {
 	
 	@Id
@@ -32,6 +42,12 @@ public abstract class Item {
 	@Column(name="place")
 	private String place;
 	
+	@Column(name = "item_type_string")
+	private String itemType;
+	
+//	@OneToMany(mappedBy="item")
+	private Set<Borrow> borrows = new HashSet<>();
+
 	public Item() {}
 	
 	public Item(String itemRef, int totalCount, int remainingCount, String alley, String place) 
@@ -89,5 +105,21 @@ public abstract class Item {
 
 	public void setPlace(String place) {
 		this.place = place;
+	}
+
+	public String getItemType() {
+		return itemType;
+	}
+
+	public void setItemType(String itemType) {
+		this.itemType = itemType;
+	}
+
+	public Set<Borrow> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(Set<Borrow> borrows) {
+		this.borrows = borrows;
 	}
 }

@@ -11,11 +11,13 @@
 	<bean id="userManager" class="com.liborrow.webinterface.business.impl.manager.UserManagerImpl" parent="abstractManager"/>
 	<bean id="itemManager" class="com.liborrow.webinterface.business.impl.manager.ItemManagerImpl" parent="abstractManager"/>
 	<bean id="magazineManager" class="com.liborrow.webinterface.business.impl.manager.MagazineManagerImpl" parent="abstractManager"/>
+	<bean id="borrowManager" class="com.liborrow.webinterface.business.impl.manager.BorrowManagerImpl" parent="abstractManager"/>
 	
 	<bean id="managerFactory" class="com.liborrow.webinterface.business.impl.ManagerFactoryImpl">
 		<property name="bookManager" ref="bookManager"/>
 		<property name="userManager" ref="userManager"/>
 		<property name="itemManager" ref="itemManager"/>
 		<property name="magazineManager" ref="magazineManager"/>
+		<property name="borrowManager" ref="borrowManager"/>
 	</bean>
 </beans>

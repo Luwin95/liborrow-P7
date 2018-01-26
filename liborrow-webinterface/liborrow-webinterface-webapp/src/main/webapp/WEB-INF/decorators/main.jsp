@@ -26,7 +26,7 @@
         <div id="header" class="clearfix">
         	<nav class="navbar navbar-expand-md navbar-dark bg-primary">
 	       		<div class="container">
-				  <a class="navbar-brand" href="#">Liborrow</a>
+				  <a class="navbar-brand" href="<s:url action="index" namespace="/liborrow"/>"><span class="glyphicon glyphicon-book"></span> Liborrow</a>
 				  <!-- Toggler/collapsibe Button -->
 				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 				    <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
 				        <a class="nav-link" href="<s:url action="search" namespace="/liborrow"/>">Rechercher</a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="#">Link</a>
+				        <a class="nav-link" href="<s:url action="currentBorrows" namespace="/liborrow"/>">Mes prêts en cours</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="#">Link</a>
