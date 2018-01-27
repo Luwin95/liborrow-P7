@@ -1,5 +1,6 @@
 package org.liborrow.webservice.model.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity(name="UserLight")
 @Table(name="user_account")
-public class UserLight {
+public class UserLight implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -18,13 +18,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="book" type="{model.generated.webinterface.liborrow.com}bookDTO" minOccurs="0"/>
+ *         &lt;element name="bookDTO" type="{model.generated.webinterface.liborrow.com}bookDTO" minOccurs="0"/>
  *         &lt;element name="borrower" type="{model.generated.webinterface.liborrow.com}userLightDTO" minOccurs="0"/>
  *         &lt;element name="endDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="extended" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="getBackDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="magazine" type="{model.generated.webinterface.liborrow.com}magazineDTO" minOccurs="0"/>
+ *         &lt;element name="itemDTO" type="{model.generated.webinterface.liborrow.com}itemDTO" minOccurs="0"/>
+ *         &lt;element name="magazineDTO" type="{model.generated.webinterface.liborrow.com}magazineDTO" minOccurs="0"/>
  *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -36,18 +37,19 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "borrowDTO", propOrder = {
-    "book",
+    "bookDTO",
     "borrower",
     "endDate",
     "extended",
     "getBackDate",
     "id",
-    "magazine",
+    "itemDTO",
+    "magazineDTO",
     "startDate"
 })
 public class BorrowDTO {
 
-    protected BookDTO book;
+    protected BookDTO bookDTO;
     protected UserLightDTO borrower;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar endDate;
@@ -55,32 +57,33 @@ public class BorrowDTO {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar getBackDate;
     protected long id;
-    protected MagazineDTO magazine;
+    protected ItemDTO itemDTO;
+    protected MagazineDTO magazineDTO;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar startDate;
 
     /**
-     * Obtient la valeur de la propriété book.
+     * Obtient la valeur de la propriété bookDTO.
      * 
      * @return
      *     possible object is
      *     {@link BookDTO }
      *     
      */
-    public BookDTO getBook() {
-        return book;
+    public BookDTO getBookDTO() {
+        return bookDTO;
     }
 
     /**
-     * Définit la valeur de la propriété book.
+     * Définit la valeur de la propriété bookDTO.
      * 
      * @param value
      *     allowed object is
      *     {@link BookDTO }
      *     
      */
-    public void setBook(BookDTO value) {
-        this.book = value;
+    public void setBookDTO(BookDTO value) {
+        this.bookDTO = value;
     }
 
     /**
@@ -196,27 +199,51 @@ public class BorrowDTO {
     }
 
     /**
-     * Obtient la valeur de la propriété magazine.
+     * Obtient la valeur de la propriété itemDTO.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ItemDTO }
+     *     
+     */
+    public ItemDTO getItemDTO() {
+        return itemDTO;
+    }
+
+    /**
+     * Définit la valeur de la propriété itemDTO.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ItemDTO }
+     *     
+     */
+    public void setItemDTO(ItemDTO value) {
+        this.itemDTO = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété magazineDTO.
      * 
      * @return
      *     possible object is
      *     {@link MagazineDTO }
      *     
      */
-    public MagazineDTO getMagazine() {
-        return magazine;
+    public MagazineDTO getMagazineDTO() {
+        return magazineDTO;
     }
 
     /**
-     * Définit la valeur de la propriété magazine.
+     * Définit la valeur de la propriété magazineDTO.
      * 
      * @param value
      *     allowed object is
      *     {@link MagazineDTO }
      *     
      */
-    public void setMagazine(MagazineDTO value) {
-        this.magazine = value;
+    public void setMagazineDTO(MagazineDTO value) {
+        this.magazineDTO = value;
     }
 
     /**

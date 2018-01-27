@@ -1,5 +1,6 @@
 package org.liborrow.webservice.model.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,9 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 
 @Entity
-@Inheritance( strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="item_type", discriminatorType = DiscriminatorType.INTEGER)
-public abstract class Item {
+@Inheritance( strategy = InheritanceType.JOINED)
+public abstract class Item implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -46,7 +46,7 @@ public abstract class Item {
 	private String itemType;
 	
 //	@OneToMany(mappedBy="item")
-	private Set<Borrow> borrows = new HashSet<>();
+//	private Set<Borrow> borrows = new HashSet<>();
 
 	public Item() {}
 	
@@ -115,11 +115,11 @@ public abstract class Item {
 		this.itemType = itemType;
 	}
 
-	public Set<Borrow> getBorrows() {
-		return borrows;
-	}
-
-	public void setBorrows(Set<Borrow> borrows) {
-		this.borrows = borrows;
-	}
+//	public Set<Borrow> getBorrows() {
+//		return borrows;
+//	}
+//
+//	public void setBorrows(Set<Borrow> borrows) {
+//		this.borrows = borrows;
+//	}
 }

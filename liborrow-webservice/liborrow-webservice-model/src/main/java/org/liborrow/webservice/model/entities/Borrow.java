@@ -1,7 +1,9 @@
 package org.liborrow.webservice.model.entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,8 +16,11 @@ import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity(name="Borrow")
-public class Borrow {
+public class Borrow implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "borrow_id", updatable = false, nullable = false)
@@ -36,9 +41,15 @@ public class Borrow {
     @JoinColumn(name = "user_id")
 	private UserLight borrower;
 	
-//	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "item_id")
-	private Item item;
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@NotFound(action = NotFoundAction.IGNORE)
+	@JoinColumn(name = "book_id", nullable=true)
+	private Book book;
+	
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@NotFound(action = NotFoundAction.IGNORE)
+	@JoinColumn(name = "item_id", nullable=true)
+	private Magazine magazine;
 	
 	public Borrow() {}
 	
@@ -107,11 +118,19 @@ public class Borrow {
 		this.borrower = borrower;
 	}
 
-	public Item getItem() {
-		return item;
+	public Optional<Book> getBook() {
+		return Optional.ofNullable(book);
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+	public Optional<Magazine> getMagazine() {
+		return Optional.ofNullable(magazine);
+	}
+
+	public void setMagazine(Magazine magazine) {
+		this.magazine = magazine;
 	}
 }

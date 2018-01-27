@@ -24,11 +24,11 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 		 magazineDTO.setPublishDate(magazine.getPublishDate());
 		 magazineDTO.setRemainingCount(magazine.getRemainingCount());
 		 magazineDTO.setTotalCount(magazine.getTotalCount());
-//		 if(magazine.getBorrows()!=null && isParent)
-//		 {
-//			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
-//			 magazineDTO.setBorrows(borrowTransformer.toBorrowsDTO(magazine.getBorrows(), false, magazineDTO.getClass().getName()));
-//		 }
+		 if(magazine.getBorrows()!=null && isParent)
+		 {
+			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
+			 magazineDTO.setBorrows(borrowTransformer.toBorrowsDTO(magazine.getBorrows(), false, magazineDTO.getClass().getName()));
+		 }
 		 if(magazine.getImage()!=null)
 		 {
 			 ImageTransformer imageTransformer = new ImageTransformerImpl();
@@ -60,7 +60,7 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 		 magazineTransformed.setPublishDate(magazine.getPublishDate());
 		 magazineTransformed.setRemainingCount(magazine.getRemainingCount());
 		 magazineTransformed.setTotalCount(magazine.getTotalCount());
-		 if(magazine.getBorrows()!=null && isParent)
+		 if(magazine.getBorrows()!=null && (isParent))
 		 {
 			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
 			 magazineTransformed.setBorrows(borrowTransformer.toBorrowsEntities(magazine.getBorrows(), false, magazineTransformed.getClass().getSimpleName()));

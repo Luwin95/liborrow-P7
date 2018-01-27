@@ -1,5 +1,6 @@
 package org.liborrow.webservice.model.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,14 +9,21 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name="Magazine")
-@DiscriminatorValue("2")
-public class Magazine extends Item {
+public class Magazine extends Item implements Serializable{
+	
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Column(name = "magazine_id", updatable = false, nullable = false)
+//	private Long idMagazine;
 	
 	@Column(name = "editionnumber")
 	private int editionNumber;
@@ -26,7 +34,7 @@ public class Magazine extends Item {
 	@Column(name="publishdate")
 	private Date publishDate;
 	
-	@OneToMany(mappedBy="item")
+	@OneToMany(mappedBy="magazine")
 	private Set<Borrow> borrows = new HashSet<>();
 	
 	@OneToOne(fetch = FetchType.LAZY)
@@ -41,6 +49,15 @@ public class Magazine extends Item {
 		this.name = name;
 		this.publishDate = publishDate;
 	}
+	
+	
+//	public Long getIdMagazine() {
+//		return idMagazine;
+//	}
+//
+//	public void setIdMagazine(Long idMagazine) {
+//		this.idMagazine = idMagazine;
+//	}
 
 	public int getEditionNumber() {
 		return editionNumber;

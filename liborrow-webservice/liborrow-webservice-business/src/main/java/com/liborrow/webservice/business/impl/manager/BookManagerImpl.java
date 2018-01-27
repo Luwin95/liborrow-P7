@@ -83,7 +83,8 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		for(Borrow borrow : book.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
-			Hibernate.initialize(borrow.getItem());
+			Hibernate.initialize(borrow.getBook());
+			Hibernate.initialize(borrow.getMagazine());
 		}
 	}
 	

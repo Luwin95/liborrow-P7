@@ -1,7 +1,11 @@
 package com.liborrow.webinterface.webapp.actions;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -12,6 +16,7 @@ import com.liborrow.webinterface.webapp.AbstractAction;
 public class BorrowsListAction extends AbstractAction implements SessionAware{
 	
 	private  List<BorrowDTO> borrows;
+	private GregorianCalendar now = new GregorianCalendar();
 	protected Map<String,Object> session;
 	
 	public String execute() throws Exception {
@@ -26,4 +31,9 @@ public class BorrowsListAction extends AbstractAction implements SessionAware{
 	public List<BorrowDTO> getBorrows() {
 		return borrows;
 	}
+
+	public GregorianCalendar getNow() {
+		return now;
+	}
+	
 }

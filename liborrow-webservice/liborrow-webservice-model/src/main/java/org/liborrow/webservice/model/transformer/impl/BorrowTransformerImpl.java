@@ -4,10 +4,17 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.liborrow.webservice.model.dto.AuthorDTO;
 import org.liborrow.webservice.model.dto.BorrowDTO;
 import org.liborrow.webservice.model.dto.ItemDTO;
+import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Borrow;
+import org.liborrow.webservice.model.entities.Magazine;
+import org.liborrow.webservice.model.entities.UserLight;
+import org.liborrow.webservice.model.transformer.contract.BookTransformer;
 import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
+import org.liborrow.webservice.model.transformer.contract.MagazineTransformer;
+import org.liborrow.webservice.model.utilsobject.AuthorDependenciesEnum;
 
 
 public class BorrowTransformerImpl implements BorrowTransformer {
@@ -24,11 +31,15 @@ public class BorrowTransformerImpl implements BorrowTransformer {
 		borrowTransformed.setGetBackDate(borrow.getGetBackDate());
 		borrowTransformed.setExtended(borrow.getExtended());
 		borrowTransformed.setStartDate(borrow.getStartDate());
-		if(borrow.getItem() !=null)
+		if(borrow.getBook().isPresent() && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
-			borrowTransformed.setItemDTO(new ItemDTO());
-			borrowTransformed.getItemDTO().setId(borrow.getItem().getId());
-			borrowTransformed.getItemDTO().setItemType(borrow.getItem().getItemType());
+			BookTransformer bookTransformer = new BookTransformerImpl();
+			borrowTransformed.setBookDTO(bookTransformer.toBookDTO(borrow.getBook().get(), false, Borrow.class.getSimpleName()));
+		}
+		if(borrow.getMagazine().isPresent() && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
+		{
+			MagazineTransformer magazineTransformer = new MagazineTransformerImpl();
+			borrowTransformed.setMagazineDTO(magazineTransformer.toMagazineDTO( borrow.getMagazine().get(), false, Borrow.class.getSimpleName()));
 		}
 		return borrowTransformed;
 	}

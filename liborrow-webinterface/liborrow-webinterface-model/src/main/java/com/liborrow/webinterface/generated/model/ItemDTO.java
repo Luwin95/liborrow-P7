@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="borrows" type="{model.generated.webinterface.liborrow.com}borrowDTO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="itemRef" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="itemType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="place" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="remainingCount" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="totalCount" type="{http://www.w3.org/2001/XMLSchema}int"/>
@@ -41,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
     "borrows",
     "id",
     "itemRef",
+    "itemType",
     "place",
     "remainingCount",
     "totalCount"
@@ -56,6 +58,7 @@ public class ItemDTO {
     protected List<BorrowDTO> borrows;
     protected Long id;
     protected String itemRef;
+    protected String itemType;
     protected String place;
     protected int remainingCount;
     protected int totalCount;
@@ -159,6 +162,30 @@ public class ItemDTO {
      */
     public void setItemRef(String value) {
         this.itemRef = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété itemType.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getItemType() {
+        return itemType;
+    }
+
+    /**
+     * Définit la valeur de la propriété itemType.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setItemType(String value) {
+        this.itemType = value;
     }
 
     /**

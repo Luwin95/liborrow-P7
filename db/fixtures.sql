@@ -2,17 +2,17 @@
 	('sdhgfsgfvisd', 5, 1, 'A', '32E',1,'book'),
 	('gsfdcqsghf', 7, 4, 'B', '41F',1,'book');
 
-INSERT INTO  book(item_id, title, language, release, summary, editor) VALUES
-	(1, 'Hello world', 'Français', '2001-09-28', 'Une chronique sur le monde', 'Galimard'),
-	(2, 'Hello world 2', 'Français', '2003-09-28', 'Le retour de la chronique sur le monde', 'Galimard');
+INSERT INTO  book(item_id, book_id, title, language, release, summary, editor) VALUES
+	(1,1, 'Hello world', 'Français', '2001-09-28', 'Une chronique sur le monde', 'Galimard'),
+	(2,2, 'Hello world 2', 'Français', '2003-09-28', 'Le retour de la chronique sur le monde', 'Galimard');
 	
 INSERT INTO item (itemref,totalcount, remainingcount, alley, place, item_type, item_type_string) VALUES 
 	('gzefzefhgqzjgfq', 4, 3, 'C', '50G',2,'magazine'),
 	('escuhkfgvzeezcrvzf', 7, 5, 'D', '69H',2,'magazine');
 
-INSERT INTO magazine(item_id, editionnumber, name, publishdate) VALUES 
-	(3,15, 'Le petit spirou', '2017-10-15'),
-	(4,250, 'Le monde', '2015-12-21');
+INSERT INTO magazine(item_id,magazine_id, editionnumber, name, publishdate) VALUES 
+	(3,1,15, 'Le petit spirou', '2017-10-15'),
+	(4,2,250, 'Le monde', '2015-12-21');
 	
 INSERT INTO author(author_id, name, firstname, birth, death, biography) VALUES
 	(1, 'Proust', 'Marcel', 1871, 1922, E'Ecrivain d\'origine française'),
@@ -266,23 +266,23 @@ INSERT INTO author_citizenship(author_id, citizenship_id) VALUES
 	(1,75),
 	(2,84);
 	
-INSERT INTO author_book(author_id, item_id) VALUES
-	(1,1),
-	(2,1),
-	(1,2);
+INSERT INTO author_book(author_id, item_id, book_id) VALUES
+	(1,1,1),
+	(2,1,1),
+	(1,2,2);
 	
 INSERT INTO user_account(user_id, email, password, firstname, lastname, address, postcode, phonenumber, citizenship_id, role) VALUES
 	(1, 'test@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'test', 'test', '10 Avenue du test', '95600', '0123456789', 75, 'ROLE_USER');
 	
-INSERT INTO borrow(borrow_id, startDate, extended, user_id,item_id) VALUES
-	(1, '2017-10-15', 'true', 1,1);
+INSERT INTO borrow(borrow_id, startDate, extended, user_id,item_id,book_id) VALUES
+	(1, '2017-10-15', 'true', 1,1,1);
 	
-INSERT INTO borrow(borrow_id, startDate, getBackDate, extended, user_id,item_id) VALUES	
-	(2, '2017-11-15', '2017-12-15','true', 1,2);
+INSERT INTO borrow(borrow_id, startDate, getBackDate, extended, user_id,item_id,book_id) VALUES	
+	(2, '2017-11-15', '2017-12-15','true', 1,2,2);
 	
-INSERT INTO borrow(borrow_id, startDate, extended, user_id,item_id) VALUES
-	(3, '2017-10-15', 'true', 1,3);
+INSERT INTO borrow(borrow_id, startDate, extended, user_id,item_id,magazine_id) VALUES
+	(3, '2017-10-15', 'true', 1,3,1);
 	
-INSERT INTO borrow(borrow_id, startDate, getBackDate, extended, user_id,item_id) VALUES	
-	(4, '2017-11-15', '2017-12-15','true', 1,4);
+INSERT INTO borrow(borrow_id, startDate, getBackDate, extended, user_id,item_id, magazine_id) VALUES	
+	(4, '2017-11-15', '2017-12-15','true', 1,4,2);
 	

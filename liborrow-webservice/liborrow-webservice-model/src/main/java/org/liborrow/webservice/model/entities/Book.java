@@ -1,5 +1,6 @@
 package org.liborrow.webservice.model.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +10,9 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -16,8 +20,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name="Book")
-@DiscriminatorValue("1")
-public class Book extends Item {
+public class Book extends Item implements Serializable{
+	
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Column(name = "book_id", updatable = false, nullable = false)
+//	private Long idBook;
 	
 	@Column(name = "title")
 	private String title;
@@ -40,7 +48,7 @@ public class Book extends Item {
 			inverseJoinColumns = @JoinColumn(name="author_id"))
 	private Set<Author> authors = new HashSet<>();
 	
-	@OneToMany(mappedBy="item")
+	@OneToMany(mappedBy="book")
 	private Set<Borrow> borrows = new HashSet<>();
 	
 	@OneToOne(fetch = FetchType.LAZY)
@@ -58,6 +66,14 @@ public class Book extends Item {
 		this.editor = editor;
 		this.authors = authors;
 	}
+	
+//	public Long getIdBook() {
+//		return idBook;
+//	}
+//
+//	public void setIdBook(Long idBook) {
+//		this.idBook = idBook;
+//	}
 
 	public String getTitle() {
 		return title;

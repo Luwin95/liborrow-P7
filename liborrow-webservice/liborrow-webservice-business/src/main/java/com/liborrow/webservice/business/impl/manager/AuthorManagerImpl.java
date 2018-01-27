@@ -41,7 +41,8 @@ public class AuthorManagerImpl extends AbstractManagerImpl implements AuthorMana
 			for(Borrow borrow : book.getBorrows())
 			{
 				Hibernate.initialize(borrow.getBorrower());
-				Hibernate.initialize(borrow.getItem());
+				Hibernate.initialize(borrow.getBook());
+				Hibernate.initialize(borrow.getMagazine());
 			}
 		}
 		Hibernate.initialize(author.getCitizenships());

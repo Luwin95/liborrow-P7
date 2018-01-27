@@ -1,6 +1,8 @@
 package org.liborrow.webservice.model.entities;
 
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity(name="User")
 @Table(name="user_account")
-public class UserAccount {
+public class UserAccount implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id", updatable = false, nullable = false)

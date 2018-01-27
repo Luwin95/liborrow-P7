@@ -62,7 +62,7 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 					borrowEntityHibernateInitialization(borrow);
 					borrowsDTO.add(getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, "org.liborrow.webservice.model.dto.BorrowDTO"));
 				}
-				getItemOfBorrow(borrowsDTO);
+//				getItemOfBorrow(borrowsDTO);
 				return borrowsDTO;
 			}else
 			{
@@ -89,7 +89,8 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	public void borrowEntityHibernateInitialization(Borrow borrow)
 	{
 		Hibernate.initialize(borrow.getBorrower());
-		Hibernate.initialize(borrow.getItem());
+		Hibernate.initialize(borrow.getBook());
+		Hibernate.initialize(borrow.getMagazine());
 		Hibernate.initialize(borrow.getBorrower().getCitizenship());
 	}
 	
@@ -98,20 +99,20 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		Hibernate.initialize(user.getCitizenship());
 	}
 	
-	private void getItemOfBorrow(List<BorrowDTO> borrows)
-	{
-		for(BorrowDTO borrow : borrows)
-		{
-			if(borrow.getItemDTO().getItemType().equals("book"))
-			{
-				Book book = bookRepository.findOne(borrow.getItemDTO().getId());
-				borrow.setBookDTO(getTransformerFactory().getBookTransformer().toBookDTO(book, true, BookDTO.class.getSimpleName()));
-			}
-			if(borrow.getItemDTO().getItemType().equals("magazine"))
-			{
-				Magazine magazine = magazineRepository.findOne(borrow.getItemDTO().getId());
-				borrow.setMagazineDTO(getTransformerFactory().getMagazineTransformer().toMagazineDTO(magazine, true, MagazineDTO.class.getSimpleName()));
-			}
-		}
-	}
+//	private void getItemOfBorrow(List<BorrowDTO> borrows)
+//	{
+//		for(BorrowDTO borrow : borrows)
+//		{
+//			if(borrow.getItemDTO().getItemType().equals("book"))
+//			{
+//				Book book = bookRepository.findOne(borrow.getItemDTO().getId());
+//				borrow.setBookDTO(getTransformerFactory().getBookTransformer().toBookDTO(book, true, BookDTO.class.getSimpleName()));
+//			}
+//			if(borrow.getItemDTO().getItemType().equals("magazine"))
+//			{
+//				Magazine magazine = magazineRepository.findOne(borrow.getItemDTO().getId());
+//				borrow.setMagazineDTO(getTransformerFactory().getMagazineTransformer().toMagazineDTO(magazine, true, MagazineDTO.class.getSimpleName()));
+//			}
+//		}
+//	}
 }

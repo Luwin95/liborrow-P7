@@ -24,8 +24,5 @@ public class BorrowMain {
 		{
 			System.out.println(borrow.getId());
 		}
-	}
-	
-
-			
+	}		
 }

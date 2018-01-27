@@ -20,25 +20,23 @@
 		      <th>Date de début</th>
 		      <th>Date de fin</th>
 		      <th>Rallongé</th>
-		      <th>Emprunteur</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 		    <s:iterator value="borrows" status="status">
-				<tr>
+				<tr class="<s:if test="%{endDate.toGregorianCalendar().compareTo(now)}">bg-danger</s:if>" >
 			      <th scope="row"><s:property value="%{#status.index+1}"/></th>
 			      <td>
-			      	<s:if test="borrow.book!=null">
-			      		<s:property value="borrow.book.title"/>
+			      	<s:if test="%{bookDTO!=null}">
+			      		<s:property value="bookDTO.title"/>
 			      	</s:if>
 			      	<s:else>
-			      		<s:property value="borrow.magazine.name"/> n°<s:property value="borrow.magazine.editionNumber"/>
+			      		<s:property value="magazineDTO.name"/> n°<s:property value="magazineDTO.editionNumber"/>
 			      	</s:else>
 			      </td>
 			      <td><s:property value="startDate"/></td>
 			      <td><s:property value="endDate"/></td>
 			      <td><s:if test="extended">Oui</s:if><s:else>Non</s:else></td>
-			      <td><s:property value="borrower.firstname"/> <s:property value="borrower.lastname"/></td>
 			    </tr>
 			</s:iterator>
 		  </tbody>

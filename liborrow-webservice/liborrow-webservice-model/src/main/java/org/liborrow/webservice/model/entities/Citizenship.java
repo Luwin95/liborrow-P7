@@ -1,5 +1,6 @@
 package org.liborrow.webservice.model.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity(name="Citizenship")
-public class Citizenship {
+public class Citizenship implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "citizenship_id", updatable = false, nullable = false)
