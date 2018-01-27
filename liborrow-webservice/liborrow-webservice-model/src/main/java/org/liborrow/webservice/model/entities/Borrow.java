@@ -16,10 +16,12 @@ import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 @Entity(name="Borrow")
+@DynamicUpdate
 public class Borrow implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,7 +39,7 @@ public class Borrow implements Serializable {
 	@Column(name="extended")
 	private Boolean extended;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
 	private UserLight borrower;
 	
@@ -50,6 +52,9 @@ public class Borrow implements Serializable {
 	@NotFound(action = NotFoundAction.IGNORE)
 	@JoinColumn(name = "item_id", nullable=true)
 	private Magazine magazine;
+	
+	@Column(name = "item_id", insertable=false, updatable = false, nullable = false)
+	private Long idItem;
 	
 	public Borrow() {}
 	
@@ -132,5 +137,13 @@ public class Borrow implements Serializable {
 
 	public void setMagazine(Magazine magazine) {
 		this.magazine = magazine;
+	}
+
+	public Long getIdItem() {
+		return idItem;
+	}
+
+	public void setIdItem(Long idItem) {
+		this.idItem = idItem;
 	}
 }

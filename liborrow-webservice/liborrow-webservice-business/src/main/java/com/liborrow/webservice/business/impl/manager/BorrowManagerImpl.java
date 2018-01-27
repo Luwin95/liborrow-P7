@@ -99,20 +99,17 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		Hibernate.initialize(user.getCitizenship());
 	}
 	
-//	private void getItemOfBorrow(List<BorrowDTO> borrows)
-//	{
-//		for(BorrowDTO borrow : borrows)
-//		{
-//			if(borrow.getItemDTO().getItemType().equals("book"))
-//			{
-//				Book book = bookRepository.findOne(borrow.getItemDTO().getId());
-//				borrow.setBookDTO(getTransformerFactory().getBookTransformer().toBookDTO(book, true, BookDTO.class.getSimpleName()));
-//			}
-//			if(borrow.getItemDTO().getItemType().equals("magazine"))
-//			{
-//				Magazine magazine = magazineRepository.findOne(borrow.getItemDTO().getId());
-//				borrow.setMagazineDTO(getTransformerFactory().getMagazineTransformer().toMagazineDTO(magazine, true, MagazineDTO.class.getSimpleName()));
-//			}
-//		}
-//	}
+	@Override
+	public boolean markAsExtended(BorrowDTO borrow) {
+		if(borrow.getExtended())
+		{
+			return false;
+		}else {
+			Borrow borrowEntity = getTransformerFactory().getBorrowTransformer().toBorrowEntity(borrow, true, Borrow.class.getSimpleName());
+			getDaoFactory().getBorrowDao().markAsExtended(borrowEntity);
+			return true;
+		}
+		
+	}
+	
 }

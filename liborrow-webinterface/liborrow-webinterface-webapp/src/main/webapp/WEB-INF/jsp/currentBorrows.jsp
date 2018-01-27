@@ -20,11 +20,12 @@
 		      <th>Date de début</th>
 		      <th>Date de fin</th>
 		      <th>Rallongé</th>
+		      <th>Prolonger</th>
 		    </tr>
 		  </thead>
 		  <tbody>
 		    <s:iterator value="borrows" status="status">
-				<tr class="<s:if test="%{endDate.toGregorianCalendar().compareTo(now)}">bg-danger</s:if>" >
+				<tr class="<s:if test="%{now.compareTo(endDate.toGregorianCalendar())>0}">bg-danger</s:if>" >
 			      <th scope="row"><s:property value="%{#status.index+1}"/></th>
 			      <td>
 			      	<s:if test="%{bookDTO!=null}">
@@ -37,6 +38,10 @@
 			      <td><s:property value="startDate"/></td>
 			      <td><s:property value="endDate"/></td>
 			      <td><s:if test="extended">Oui</s:if><s:else>Non</s:else></td>
+			      <s:url action="extendBorrow" namespace="/liborrow" var="urlBorrow">
+			      	<s:param name="idBorrow"><s:property value="id"/></s:param>
+			      </s:url>
+			      <td><s:if test="extended">Impossible</s:if><s:else><a class="btn btn-info" href="${urlBorrow}">Prolonger prêt</a></s:else></td>
 			    </tr>
 			</s:iterator>
 		  </tbody>

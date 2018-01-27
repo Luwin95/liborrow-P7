@@ -42,6 +42,9 @@ public abstract class Item implements Serializable{
 	@Column(name="place")
 	private String place;
 	
+	@Column(name = "item_type")
+	private Long idItemType;
+	
 	@Column(name = "item_type_string")
 	private String itemType;
 	
@@ -114,6 +117,15 @@ public abstract class Item implements Serializable{
 	public void setItemType(String itemType) {
 		this.itemType = itemType;
 	}
+
+	public Long getIdItemType() {
+		return idItemType;
+	}
+
+	public void setIdItemType(Long idItemType) {
+		this.idItemType = idItemType;
+	}
+	
 
 //	public Set<Borrow> getBorrows() {
 //		return borrows;

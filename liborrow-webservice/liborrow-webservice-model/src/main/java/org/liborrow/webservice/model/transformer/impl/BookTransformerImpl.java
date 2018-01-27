@@ -19,6 +19,7 @@ public class BookTransformerImpl implements BookTransformer {
 	public BookDTO toBookDTO(Book book, boolean isParent, String classParentName)
 	{
 		BookDTO transformedBook = new BookDTO();
+		transformedBook.setItemType("book");
 		if(book.getAlley()!=null)
 		{
 			transformedBook.setAlley(book.getAlley());
@@ -100,6 +101,8 @@ public class BookTransformerImpl implements BookTransformer {
 	@Override
 	public Book toBookEntity(BookDTO book, boolean isParent, String classParentName) {
 		Book transformedBook = new Book();
+		transformedBook.setItemType("book");
+		transformedBook.setIdItemType(1L);
 		if(book.getAlley()!=null)
 		{
 			transformedBook.setAlley(book.getAlley());

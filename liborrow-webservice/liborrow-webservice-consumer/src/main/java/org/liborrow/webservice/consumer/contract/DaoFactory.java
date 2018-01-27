@@ -2,6 +2,7 @@ package org.liborrow.webservice.consumer.contract;
 
 import org.liborrow.webservice.consumer.contract.dao.AuthorDao;
 import org.liborrow.webservice.consumer.contract.dao.BookDao;
+import org.liborrow.webservice.consumer.contract.dao.BorrowDao;
 import org.liborrow.webservice.consumer.contract.dao.MagazineDao;
 
 public interface DaoFactory {
@@ -11,4 +12,6 @@ public interface DaoFactory {
 	void setBookDao(BookDao bookDao);
 	MagazineDao getMagazineDao();
 	void setMagazineDao(MagazineDao magazineDao);
+	BorrowDao getBorrowDao();
+	void setBorrowDao(BorrowDao borrowDao);
 }

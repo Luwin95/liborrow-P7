@@ -11,6 +11,10 @@ import com.liborrow.webinterface.generated.model.UserLightDTO;
 
 public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowManager {
 
+	public BorrowDTO getBorrowById(long id) {
+		return getDaoFactory().getBorrowDao().getBorrowById(id);
+	}
+	
 	public List<BorrowDTO> getAllCurrentBorrows() {
 		List<BorrowDTO> borrows = getDaoFactory().getBorrowDao().getAllBorrows();
 		List<BorrowDTO> borrowsToDelete = new ArrayList<BorrowDTO>();
@@ -32,5 +36,16 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	public List<BorrowDTO> getAllOnGoingBorrowByUserLogged(UserLightDTO user) {
 		// TODO Auto-generated method stub
 		return getDaoFactory().getBorrowDao().getAllOnGoingBorrowByUserLogged(user);
+	}
+	
+	public boolean markBorrow(BorrowDTO borrow) {
+		if(borrow.isExtended())
+		{
+			return false;
+		}else {
+			getDaoFactory().getBorrowDao().markBorrow(borrow);
+			return true;
+		}
+		
 	}
 }

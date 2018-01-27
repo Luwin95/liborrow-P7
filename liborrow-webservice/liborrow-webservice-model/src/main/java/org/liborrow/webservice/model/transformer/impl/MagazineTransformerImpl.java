@@ -15,6 +15,7 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 	public MagazineDTO toMagazineDTO(Magazine magazine, boolean isParent, String classParentName) {
 		// TODO Auto-generated method stub
 		 MagazineDTO magazineDTO = new MagazineDTO();
+		 magazineDTO.setItemType("magazine");
 		 magazineDTO.setId(magazine.getId());
 		 magazineDTO.setItemRef(magazine.getItemRef());
 		 magazineDTO.setName(magazine.getName());
@@ -60,6 +61,8 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 		 magazineTransformed.setPublishDate(magazine.getPublishDate());
 		 magazineTransformed.setRemainingCount(magazine.getRemainingCount());
 		 magazineTransformed.setTotalCount(magazine.getTotalCount());
+		 magazineTransformed.setIdItemType(2L);
+		 magazineTransformed.setItemType("magazine");
 		 if(magazine.getBorrows()!=null && (isParent))
 		 {
 			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();

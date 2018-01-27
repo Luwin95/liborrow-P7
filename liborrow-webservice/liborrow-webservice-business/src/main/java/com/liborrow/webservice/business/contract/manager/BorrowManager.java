@@ -9,4 +9,5 @@ public interface BorrowManager {
 	BorrowDTO findBorrowById(long id);
 	List<BorrowDTO> findOnGoingBorrowsByUser(UserLightDTO user);
 	List<BorrowDTO> findAllBorrows();
+	boolean markAsExtended(BorrowDTO borrow);
 }

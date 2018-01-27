@@ -286,3 +286,15 @@ INSERT INTO borrow(borrow_id, startDate, extended, user_id,item_id,magazine_id) 
 INSERT INTO borrow(borrow_id, startDate, getBackDate, extended, user_id,item_id, magazine_id) VALUES	
 	(4, '2017-11-15', '2017-12-15','true', 1,4,2);
 	
+INSERT INTO borrow(startDate, extended, user_id,item_id,book_id) VALUES
+	('2017-10-15', 'true', 1,1,1);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id,book_id) VALUES
+	('2018-01-27', 'false', 1,1,1);
+    
+INSERT INTO borrow(startDate, extended, user_id,item_id,book_id) VALUES
+	('2017-12-27', 'false', 1,1,1);
+    
+INSERT INTO borrow(startDate, extended, user_id,item_id,book_id) VALUES
+	('2018-01-02', 'false', 1,1,1);
+	

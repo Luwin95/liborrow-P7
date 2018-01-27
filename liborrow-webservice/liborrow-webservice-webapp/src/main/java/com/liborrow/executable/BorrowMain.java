@@ -23,6 +23,10 @@ public class BorrowMain {
 		for(BorrowDTO borrow : borrowsDTO)
 		{
 			System.out.println(borrow.getId());
+			if(borrow.getId()==5)
+			{
+				vManagerFactory.getBorrowManager().markAsExtended(borrow);
+			}
 		}
 	}		
 }

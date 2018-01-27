@@ -60,5 +60,9 @@
         <action name="currentBorrows" class="com.liborrow.webinterface.webapp.actions.BorrowsListAction" method="execute">
         	<result name="success">/WEB-INF/jsp/currentBorrows.jsp</result>
         </action>
+        <action name="extendBorrow" class="com.liborrow.webinterface.webapp.actions.ExtendBorrowAction" method="execute">
+        	<result name="success" type="redirect">/liborrow/currentBorrows.action</result>
+        	<result name="error" type="redirect">/liborrow/currentBorrows.action</result>
+        </action>
     </package>
 </struts>

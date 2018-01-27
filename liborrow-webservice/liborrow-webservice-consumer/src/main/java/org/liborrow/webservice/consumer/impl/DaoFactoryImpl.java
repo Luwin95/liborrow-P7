@@ -3,12 +3,14 @@ package org.liborrow.webservice.consumer.impl;
 import org.liborrow.webservice.consumer.contract.DaoFactory;
 import org.liborrow.webservice.consumer.contract.dao.AuthorDao;
 import org.liborrow.webservice.consumer.contract.dao.BookDao;
+import org.liborrow.webservice.consumer.contract.dao.BorrowDao;
 import org.liborrow.webservice.consumer.contract.dao.MagazineDao;
 
 public class DaoFactoryImpl implements DaoFactory {
 	private AuthorDao authorDao;
 	private BookDao bookDao;
 	private MagazineDao magazineDao;
+	private BorrowDao borrowDao;
 	
 	@Override
 	public AuthorDao getAuthorDao() {
@@ -39,4 +41,16 @@ public class DaoFactoryImpl implements DaoFactory {
 	public void setMagazineDao(MagazineDao magazineDao) {
 		this.magazineDao = magazineDao;
 	}
+
+	@Override
+	public BorrowDao getBorrowDao() {
+		return borrowDao;
+	}
+
+	@Override
+	public void setBorrowDao(BorrowDao borrowDao) {
+		this.borrowDao = borrowDao;
+	}
+	
+	
 }

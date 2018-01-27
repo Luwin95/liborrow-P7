@@ -6,7 +6,9 @@ import com.liborrow.webinterface.generated.model.BorrowDTO;
 import com.liborrow.webinterface.generated.model.UserLightDTO;
 
 public interface BorrowManager {
+
+	BorrowDTO getBorrowById(long id);
 	List<BorrowDTO> getAllCurrentBorrows();
-	
 	List<BorrowDTO> getAllOnGoingBorrowByUserLogged(UserLightDTO user);
+	boolean markBorrow(BorrowDTO borrow);
 }
