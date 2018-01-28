@@ -98,4 +98,10 @@ public class ItemService extends AbstractService{
 		}
 		return searchResponse;
 	}
+	
+	@WebMethod
+	public SearchResponse homeLastFiveItems()
+	{
+		return getManagerFactory().getItemManager().getLastFiveItems();
+	}
 }

@@ -88,7 +88,7 @@
 				</table>
 			</s:if>
 			<s:if test="%{authorResponse!=null && authorResponse.size()!=0}">
-				<h3>Livres</h3>
+				<h3>Auteurs</h3>
 				<table class="table table-striped">
 				  <thead class="thead-inverse">
 				    <tr>

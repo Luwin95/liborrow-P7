@@ -46,7 +46,7 @@ public class Main extends AbstractService{
 		List<AuthorDTO> authors = vManagerFactory.getAuthorManager().searchAuthor(itemCriterias);
 		List<MagazineDTO> magazines = vManagerFactory.getMagazineManager().searchMagazine(itemCriterias);*/
 		
-		SearchResponse searchResponse = vManagerFactory.getItemManager().searchWithSimpleString(itemCriterias, splitedString);
+		SearchResponse searchResponse = vManagerFactory.getItemManager().getLastFiveItems();
 		List<BookDTO> books = searchResponse.getBooks();
 		List<AuthorDTO> authors = searchResponse.getAuthors();
 		List<MagazineDTO> magazines = searchResponse.getMagazines();

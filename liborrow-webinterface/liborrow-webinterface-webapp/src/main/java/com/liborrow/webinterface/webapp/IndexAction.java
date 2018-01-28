@@ -15,24 +15,55 @@
  */
 package com.liborrow.webinterface.webapp;
 
-import com.opensymphony.xwork2.ActionSupport;
-import java.util.Date;
+
+import com.liborrow.webinterface.generated.model.BorrowDTO;
+import com.liborrow.webinterface.generated.model.SearchResponse;
+import com.liborrow.webinterface.generated.model.UserLightDTO;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.conversion.annotations.Conversion;
-import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
 /**
  * 
  */
 @Conversion()
-public class IndexAction extends ActionSupport {
-    
-    private Date now = new Date(System.currentTimeMillis());
-    
-    @TypeConversion(converter = "com.liborrow.webinterface.webapp.DateConverter")
-    public Date getDateNow() { return now; }
+public class IndexAction extends AbstractAction implements SessionAware {
+	
+	private Map<String, Object> session;
+	private SearchResponse searchResponse;
+	private int nbLate;
+	private int nbBorrows;
     
     public String execute() throws Exception {
-        now = new Date(System.currentTimeMillis());
+        searchResponse= getManagerFactory().getItemManager().findLastFiveItems();
+        UserLightDTO user = (UserLightDTO) session.get("sessionUser");
+        nbBorrows = user.getBorrows().size();
+        for(BorrowDTO borrow : user.getBorrows())
+        {
+        	if(borrow.getGetBackDate() == null)
+        	{
+        		nbLate++;
+        	}
+        }
         return SUCCESS;
     }
+
+	public SearchResponse getSearchResponse() {
+		return searchResponse;
+	}
+	
+	public void setSession(Map<String, Object> session) {
+        this.session = session;
+    }
+
+	public int getNbLate() {
+		return nbLate;
+	}
+
+	public int getNbBorrows() {
+		return nbBorrows;
+	}
 }

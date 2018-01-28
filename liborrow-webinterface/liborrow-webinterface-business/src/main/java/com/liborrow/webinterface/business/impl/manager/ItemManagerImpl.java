@@ -9,4 +9,8 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 	public SearchResponse searchItem(ItemCriterias itemCriterias) {
 		return getDaoFactory().getItemDao().searchItem(itemCriterias);
 	}
+	
+	public SearchResponse findLastFiveItems() {
+		return getDaoFactory().getItemDao().findLastFiveItems();
+	}
 }

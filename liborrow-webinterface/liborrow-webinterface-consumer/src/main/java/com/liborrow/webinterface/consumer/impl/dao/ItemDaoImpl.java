@@ -9,4 +9,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao{
 	public SearchResponse searchItem(ItemCriterias itemCriterias) {
 		return getItemSrv().searchItem(itemCriterias);
 	}
+	
+	public SearchResponse findLastFiveItems() {
+		return getItemSrv().homeLastFiveItems();
+	}
 }

@@ -7,4 +7,5 @@ import org.liborrow.webservice.model.utilsobject.SearchResponse;
 public interface ItemManager {
 	Item findItemById(long id);
 	SearchResponse searchWithSimpleString(ItemCriterias itemCriterias, String[] simpleStringSplited);
+	SearchResponse getLastFiveItems();
 }

@@ -6,4 +6,5 @@ import com.liborrow.webinterface.generated.model.SearchResponse;
 public interface ItemDao {
 
 	SearchResponse searchItem(ItemCriterias itemCriterias);
+	SearchResponse findLastFiveItems();
 }
