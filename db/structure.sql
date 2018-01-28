@@ -21,21 +21,28 @@ CREATE TABLE public.item (
                 remainingCount INTEGER NOT NULL,
                 alley VARCHAR NOT NULL,
                 place VARCHAR NOT NULL,
+                item_type INTEGER NOT NULL,
+                item_type_string VARCHAR NOT NULL,
                 CONSTRAINT item_pk PRIMARY KEY (item_id)
 );
 
 
 ALTER SEQUENCE public.item_item_id_seq OWNED BY public.item.item_id;
 
+CREATE SEQUENCE public.magazine_magazine_id_seq;
+
 CREATE TABLE public.magazine (
                 item_id INTEGER NOT NULL,
+                magazine_id INTEGER NOT NULL DEFAULT nextval('public.magazine_magazine_id_seq'),
                 editionNumber INTEGER,
                 name VARCHAR NOT NULL,
                 publishDate DATE,
                 image_id INTEGER,
-                CONSTRAINT magazine_pk PRIMARY KEY (item_id)
+                CONSTRAINT magazine_pk PRIMARY KEY (item_id, magazine_id)
 );
 
+
+ALTER SEQUENCE public.magazine_magazine_id_seq OWNED BY public.magazine.magazine_id;
 
 CREATE SEQUENCE public.citizenship_citizenship_id_seq;
 
@@ -71,27 +78,6 @@ CREATE UNIQUE INDEX user_idx
  ON public.user_account
  ( email );
 
-CREATE SEQUENCE public.borrow_borrow_id_seq;
-
-CREATE TABLE public.borrow (
-                borrow_id INTEGER NOT NULL DEFAULT nextval('public.borrow_borrow_id_seq'),
-                StartDate DATE NOT NULL,
-                getBackDate DATE,
-                extended BOOLEAN NOT NULL,
-                user_id INTEGER NOT NULL,
-                CONSTRAINT borrow_pk PRIMARY KEY (borrow_id)
-);
-
-
-ALTER SEQUENCE public.borrow_borrow_id_seq OWNED BY public.borrow.borrow_id;
-
-CREATE TABLE public.borrow_item (
-                borrow_id INTEGER NOT NULL,
-                item_id INTEGER NOT NULL,
-                CONSTRAINT borrow_item_pk PRIMARY KEY (borrow_id, item_id)
-);
-
-
 CREATE SEQUENCE public.author_author_id_seq;
 
 CREATE TABLE public.author (
@@ -115,22 +101,45 @@ CREATE TABLE public.author_citizenship (
 );
 
 
+CREATE SEQUENCE public.book_book_id_seq;
+
 CREATE TABLE public.book (
                 item_id INTEGER NOT NULL,
+                book_id INTEGER NOT NULL DEFAULT nextval('public.book_book_id_seq'),
                 title VARCHAR NOT NULL,
                 language VARCHAR NOT NULL,
                 release DATE NOT NULL,
                 summary VARCHAR,
                 editor VARCHAR NOT NULL,
                 image_id INTEGER,
-                CONSTRAINT book_pk PRIMARY KEY (item_id)
+                CONSTRAINT book_pk PRIMARY KEY (item_id, book_id)
 );
 
+
+ALTER SEQUENCE public.book_book_id_seq OWNED BY public.book.book_id;
+
+CREATE SEQUENCE public.borrow_borrow_id_seq;
+
+CREATE TABLE public.borrow (
+                borrow_id INTEGER NOT NULL DEFAULT nextval('public.borrow_borrow_id_seq'),
+                StartDate DATE NOT NULL,
+                getBackDate DATE,
+                extended BOOLEAN NOT NULL,
+                user_id INTEGER NOT NULL,
+                item_id INTEGER NOT NULL,
+                book_id INTEGER,
+                magazine_id INTEGER,
+                CONSTRAINT borrow_pk PRIMARY KEY (borrow_id)
+);
+
+
+ALTER SEQUENCE public.borrow_borrow_id_seq OWNED BY public.borrow.borrow_id;
 
 CREATE TABLE public.author_book (
                 author_id INTEGER NOT NULL,
                 item_id INTEGER NOT NULL,
-                CONSTRAINT author_book_pk PRIMARY KEY (author_id, item_id)
+                book_id INTEGER NOT NULL,
+                CONSTRAINT author_book_pk PRIMARY KEY (author_id, item_id, book_id)
 );
 
 
@@ -169,9 +178,9 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.borrow_item ADD CONSTRAINT item_borrow_item_fk
-FOREIGN KEY (item_id)
-REFERENCES public.item (item_id)
+ALTER TABLE public.borrow ADD CONSTRAINT magazine_borrow_fk
+FOREIGN KEY (item_id, magazine_id)
+REFERENCES public.magazine (item_id, magazine_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
@@ -197,13 +206,6 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.borrow_item ADD CONSTRAINT borrow_borrow_item_fk
-FOREIGN KEY (borrow_id)
-REFERENCES public.borrow (borrow_id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
-NOT DEFERRABLE;
-
 ALTER TABLE public.author_citizenship ADD CONSTRAINT author_author_citizenship_fk
 FOREIGN KEY (author_id)
 REFERENCES public.author (author_id)
@@ -219,8 +221,15 @@ ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.author_book ADD CONSTRAINT book_author_book_fk
-FOREIGN KEY (item_id)
-REFERENCES public.book (item_id)
+FOREIGN KEY (item_id, book_id)
+REFERENCES public.book (item_id, book_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.borrow ADD CONSTRAINT book_borrow_fk
+FOREIGN KEY (item_id, book_id)
+REFERENCES public.book (item_id, book_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
