@@ -274,17 +274,17 @@ INSERT INTO author_book(author_id, item_id, book_id) VALUES
 INSERT INTO user_account(user_id, email, password, firstname, lastname, address, postcode, phonenumber, citizenship_id, role) VALUES
 	(1, 'test@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'test', 'test', '10 Avenue du test', '95600', '0123456789', 75, 'ROLE_USER');
 	
-INSERT INTO borrow(borrow_id, startDate, extended, user_id,item_id,book_id) VALUES
-	(1, '2017-10-15', 'true', 1,1,1);
+INSERT INTO borrow(startDate, extended, user_id,item_id,book_id) VALUES
+	( '2017-10-15', 'true', 1,1,1);
 	
-INSERT INTO borrow(borrow_id, startDate, getBackDate, extended, user_id,item_id,book_id) VALUES	
-	(2, '2017-11-15', '2017-12-15','true', 1,2,2);
+INSERT INTO borrow(startDate, getBackDate, extended, user_id,item_id,book_id) VALUES	
+	('2017-11-15', '2017-12-15','true', 1,2,2);
 	
-INSERT INTO borrow(borrow_id, startDate, extended, user_id,item_id,magazine_id) VALUES
-	(3, '2017-10-15', 'true', 1,3,1);
+INSERT INTO borrow(startDate, extended, user_id,item_id,magazine_id) VALUES
+	('2017-10-15', 'true', 1,3,1);
 	
-INSERT INTO borrow(borrow_id, startDate, getBackDate, extended, user_id,item_id, magazine_id) VALUES	
-	(4, '2017-11-15', '2017-12-15','true', 1,4,2);
+INSERT INTO borrow(startDate, getBackDate, extended, user_id,item_id, magazine_id) VALUES	
+	('2017-11-15', '2017-12-15','true', 1,4,2);
 	
 INSERT INTO borrow(startDate, extended, user_id,item_id,book_id) VALUES
 	('2017-10-15', 'true', 1,1,1);

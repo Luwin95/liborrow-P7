@@ -1,6 +1,9 @@
 package com.liborrow.executable;
 
+import java.util.List;
+
 import org.liborrow.webservice.model.dto.UserLightDTO;
+import org.liborrow.webservice.model.utilsobject.UserCriterias;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,9 +20,15 @@ public class UserMain {
 				// Il est possible de récupérer un bean dans ce contexte :
 				ManagerFactory vManagerFactory
 		        = vApplicationContext.getBean("managerFactory", ManagerFactory.class);
-				
-				UserLightDTO user = vManagerFactory.getUserManager().login("test@gmail.com", "password");
-				System.out.println(user.getFirstname());
+				UserCriterias userCriterias = new UserCriterias();
+				userCriterias.setEmail("test@gmail.com");
+				List<UserLightDTO> users = vManagerFactory.getUserManager().searchUser(userCriterias);
+				for (UserLightDTO user : users)	
+				{
+					System.out.println(user.getEmail()+" "+user.getFirstname());
+				}
+//				UserLightDTO user = vManagerFactory.getUserManager().login("test@gmail.com", "password");
+//				System.out.println(user.getFirstname());
 	}
 
 }

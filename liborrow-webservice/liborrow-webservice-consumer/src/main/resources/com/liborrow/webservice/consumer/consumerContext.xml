@@ -12,12 +12,14 @@
 	 <bean id="bookDao" class="org.liborrow.webservice.consumer.impl.dao.BookDaoImpl"/>
 	 <bean id="magazineDao" class="org.liborrow.webservice.consumer.impl.dao.MagazineDaoImpl"/>
 	 <bean id="borrowDao" class="org.liborrow.webservice.consumer.impl.dao.BorrowDaoImpl"/>
+	 <bean id="userDao" class="org.liborrow.webservice.consumer.impl.dao.UserDaoImpl"/>
 	 
 	 <bean id="daoFactory" class="org.liborrow.webservice.consumer.impl.DaoFactoryImpl">
 	 	<property name="authorDao" ref="authorDao"/>
 	 	<property name="bookDao" ref="bookDao"/>
 	 	<property name="magazineDao" ref="magazineDao"/>
 	 	<property name="borrowDao" ref="borrowDao"/>
+	 	<property name="userDao" ref="userDao"/>
 	 </bean>
 	 
 	<repo:repositories base-package="com.liborrow.webservice.consumer.repository" />

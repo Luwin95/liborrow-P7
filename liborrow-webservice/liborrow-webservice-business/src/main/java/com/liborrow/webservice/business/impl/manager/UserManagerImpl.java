@@ -1,10 +1,14 @@
 package com.liborrow.webservice.business.impl.manager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.UserAccount;
 import org.liborrow.webservice.model.entities.UserLight;
+import org.liborrow.webservice.model.utilsobject.UserCriterias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
@@ -70,6 +74,14 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 		}else {
 			return null;
 		}
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<UserLightDTO> searchUser(UserCriterias userCriterias) {
+		List<UserLightDTO> users = new ArrayList<>();
+		users.addAll(getTransformerFactory().getUserLightTransformer().toUsersLightDTO(getDaoFactory().getUserDao().searchUser(userCriterias), true, UserLight.class.getSimpleName()));
+		return users;
 	}
 	
 	@Override
