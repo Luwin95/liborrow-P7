@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.XmlType;
     "totalCount"
 })
 @XmlSeeAlso({
-    MagazineDTO.class,
-    BookDTO.class
+    BookDTO.class,
+    MagazineDTO.class
 })
 public class ItemDTO {
 

@@ -1,6 +1,7 @@
 
 package com.liborrow.webinterface.generated.model;
 
+import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -41,5 +42,20 @@ public interface UserClient {
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.liborrow.webinterface.generated.model.UserLightDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchUser")
+    @ResponseWrapper(localName = "searchUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/searchUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/searchUserResponse")
+    public List<UserLightDTO> searchUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        UserCriterias arg0);
 
 }

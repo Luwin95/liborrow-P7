@@ -14,7 +14,7 @@
 		<s:form action="login">
 			<s:textfield label="Email" name="email" cssClass="form-control" />
 			<s:password label="Password" name="plainPassword" cssClass="form-control"/>
-			<s:submit />
+			<s:submit cssClass="btn btn-warning"/>
 		</s:form>
 	</body>
 </html>

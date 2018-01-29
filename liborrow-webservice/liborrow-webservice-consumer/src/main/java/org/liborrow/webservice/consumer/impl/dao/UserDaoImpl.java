@@ -14,7 +14,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao{
 	@Override
 	public Set<UserLight> searchUser(UserCriterias userCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT user FROM UserLight AS user WHERE 1=0 ");
+		queryString.append("SELECT user FROM UserLight AS user WHERE 1=1 ");
 		if(null != userCriterias.getAddress() && !userCriterias.getAddress().equals(""))
 		{
 			queryString.append("AND (user.address LIKE :address ");

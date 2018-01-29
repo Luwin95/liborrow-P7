@@ -26,6 +26,8 @@ public class ObjectFactory {
 
     private final static QName _LoginUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "loginUser");
     private final static QName _LoginUserResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "loginUserResponse");
+    private final static QName _SearchUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "searchUser");
+    private final static QName _SearchUserResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "searchUserResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.liborrow.webinterface.generated.model
@@ -48,6 +50,22 @@ public class ObjectFactory {
      */
     public LoginUserResponse createLoginUserResponse() {
         return new LoginUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchUser }
+     * 
+     */
+    public SearchUser createSearchUser() {
+        return new SearchUser();
+    }
+
+    /**
+     * Create an instance of {@link SearchUserResponse }
+     * 
+     */
+    public SearchUserResponse createSearchUserResponse() {
+        return new SearchUserResponse();
     }
 
     /**
@@ -75,27 +93,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MagazineDTO }
-     * 
-     */
-    public MagazineDTO createMagazineDTO() {
-        return new MagazineDTO();
-    }
-
-    /**
      * Create an instance of {@link BookDTO }
      * 
      */
     public BookDTO createBookDTO() {
         return new BookDTO();
-    }
-
-    /**
-     * Create an instance of {@link BorrowDTO }
-     * 
-     */
-    public BorrowDTO createBorrowDTO() {
-        return new BorrowDTO();
     }
 
     /**
@@ -115,6 +117,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link MagazineDTO }
+     * 
+     */
+    public MagazineDTO createMagazineDTO() {
+        return new MagazineDTO();
+    }
+
+    /**
+     * Create an instance of {@link UserCriterias }
+     * 
+     */
+    public UserCriterias createUserCriterias() {
+        return new UserCriterias();
+    }
+
+    /**
+     * Create an instance of {@link BorrowDTO }
+     * 
+     */
+    public BorrowDTO createBorrowDTO() {
+        return new BorrowDTO();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LoginUser }{@code >}}
      * 
      */
@@ -130,6 +156,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "loginUserResponse")
     public JAXBElement<LoginUserResponse> createLoginUserResponse(LoginUserResponse value) {
         return new JAXBElement<LoginUserResponse>(_LoginUserResponse_QNAME, LoginUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "searchUser")
+    public JAXBElement<SearchUser> createSearchUser(SearchUser value) {
+        return new JAXBElement<SearchUser>(_SearchUser_QNAME, SearchUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "searchUserResponse")
+    public JAXBElement<SearchUserResponse> createSearchUserResponse(SearchUserResponse value) {
+        return new JAXBElement<SearchUserResponse>(_SearchUserResponse_QNAME, SearchUserResponse.class, null, value);
     }
 
 }

@@ -65,4 +65,23 @@
         	<result name="error" type="redirect">/liborrow/currentBorrows.action</result>
         </action>
     </package>
+    <package name="librarian" namespace="/librarian" extends="struts-default">
+    	<interceptors>
+			<interceptor name="librarianAuthentication" class="com.liborrow.webinterface.webapp.interceptors.LibrarianInterceptor">
+			</interceptor>
+			<interceptor-stack name="librarianAuthStack">
+				<interceptor-ref name="librarianAuthentication"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="librarianAuthStack"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/login.action</result>
+		</global-results>
+		
+		<action name="newBorrow" class="com.liborrow.webinterface.webapp.actions.NewBorrowAction" method="execute">
+            <result name="success">/WEB-INF/jsp/newBorrow.jsp</result>
+            <result name="input">/WEB-INF/jsp/newBorrow.jsp</result>
+        </action>
+    </package>
 </struts>
