@@ -139,16 +139,18 @@
 				    			<p><s:property value="nbBorrows"/></p>
 				    		</div>
 				    	</div>
+				    </li>
+				    <li class="list-group-item <s:if test="nbLate>0">bg-danger</s:if>">
 				    	<h3 class="card-title">Nombre de prêt en retard</h3>
 				    	<div class="row">
 				    		<div class="nbCircle">
-				    			<p class="<s:if test="nbLate>0">bg-danger</s:if>"><s:property value="nbLate"/></p>
+				    			<p><s:property value="nbLate"/></p>
 				    		</div>
 				    	</div>
 				    </li>
 				</ul>
 		    </p>
-	        <a href="#" class="btn btn-primary">Mes prêts</a>
+	        <a href="<s:url action="currentBorrows" namespace="/liborrow"/>" class="btn btn-primary">Mes prêts</a>
 	      </div>
 	    </div>
 	  </div>

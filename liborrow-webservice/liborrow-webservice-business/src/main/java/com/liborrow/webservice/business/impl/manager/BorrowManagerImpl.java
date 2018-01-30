@@ -112,4 +112,10 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		
 	}
 	
+	@Override
+	public void newBorrow(BorrowDTO borrow) {
+		Borrow borrowToSave = getTransformerFactory().getBorrowTransformer().toBorrowEntity(borrow, true, BorrowDTO.class.getSimpleName());
+		borrowRepository.save(borrowToSave);
+	}
+	
 }

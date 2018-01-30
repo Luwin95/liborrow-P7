@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
 
 import com.liborrow.webinterface.business.contract.manager.BorrowManager;
+import com.liborrow.webinterface.generated.model.BookDTO;
 import com.liborrow.webinterface.generated.model.BorrowDTO;
 import com.liborrow.webinterface.generated.model.UserLightDTO;
 
@@ -47,5 +49,14 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 			return true;
 		}
 		
+	}
+	
+	public BorrowDTO initializeBorrow(Map<String, Object> mapItems) {
+		BorrowDTO borrow = new BorrowDTO();
+		if(mapItems.containsKey("book"))
+		{
+			borrow.setBookDTO((BookDTO) mapItems.get("book"));
+		}
+		return null;
 	}
 }

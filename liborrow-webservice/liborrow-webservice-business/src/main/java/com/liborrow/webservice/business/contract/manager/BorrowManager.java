@@ -10,4 +10,5 @@ public interface BorrowManager {
 	List<BorrowDTO> findOnGoingBorrowsByUser(UserLightDTO user);
 	List<BorrowDTO> findAllBorrows();
 	boolean markAsExtended(BorrowDTO borrow);
+	void newBorrow(BorrowDTO borrow);
 }

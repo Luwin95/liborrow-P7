@@ -64,6 +64,7 @@
 				      <th>Langue</th>
 				      <th>Auteur</th>
 				      <th>Restant</th>
+				      <s:if test='#session.sessionUser.role.equals("ROLE_LIBRARIAN") || #session.sessionUser.role.equals("ROLE_ADMIN")'><th>Ajouter</th></s:if>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -82,6 +83,11 @@
 					      	</ul>
 					      </td>
 					      <td><s:property value="remainingCount"/></td>
+					      <s:url action="addToBox" namespace="/librarian" var="urlAddToBoxBook">
+					      	<s:param name="objectType">book</s:param>
+					      	<s:param name="objectId"><s:property value="id"/></s:param>
+					      </s:url>
+					      <s:if test='(#session.sessionUser.role.equals("ROLE_LIBRARIAN") || #session.sessionUser.role.equals("ROLE_ADMIN"))&& remainingCount>0'><td><a href="${addToBoxBook}" class="btn btn-succeed">Ajouter livre</a></td></s:if>
 					    </tr>
 					</s:iterator>
 				  </tbody>
@@ -130,6 +136,7 @@
 				      <th>Numéro</th>
 				      <th>Date de sortie</th>
 				      <th>Restant</th>
+				      <s:if test='#session.sessionUser.role.equals("ROLE_LIBRARIAN") || #session.sessionUser.role.equals("ROLE_ADMIN")'><th>Ajouter</th></s:if>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -143,6 +150,11 @@
 					      <td><s:property value="editionNumber"/></td>
 					      <td><s:property value="publishDate"/></td>
 					      <td><s:property value="remainingCount"/></td>
+					      <s:url action="addToBox" namespace="/librarian" var="urlAddToBoxMag">
+					      	<s:param name="objectType">magazine</s:param>
+					      	<s:param name="objectId"><s:property value="id"/></s:param>
+					      </s:url>
+					      <s:if test='(#session.sessionUser.role.equals("ROLE_LIBRARIAN") || #session.sessionUser.role.equals("ROLE_ADMIN"))&& remainingCount>0'><td><a href="${addToBoxMag}" class="btn btn-succeed">Ajouter magazine</a></td></s:if>
 					    </tr>
 					</s:iterator>
 				  </tbody>

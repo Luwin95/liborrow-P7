@@ -1,6 +1,9 @@
 package com.liborrow.webinterface.webapp.actions;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.liborrow.webinterface.generated.model.AuthorDTO;
 import com.liborrow.webinterface.generated.model.BookDTO;
@@ -9,13 +12,14 @@ import com.liborrow.webinterface.generated.model.MagazineDTO;
 import com.liborrow.webinterface.generated.model.SearchResponse;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
-public class SearchItemAction extends AbstractAction{
+public class SearchItemAction extends AbstractAction implements SessionAware{
 	private String search;
 	private boolean reponse;
 	private ItemCriterias itemCriterias = new ItemCriterias();
 	private List<BookDTO> bookResponse;
 	private List<AuthorDTO> authorResponse;
 	private List<MagazineDTO> magazineResponse;
+	private Map<String, Object> session;
 	
 	public String execute() throws Exception {
 		itemCriterias.setSimpleStringSearch(search);
@@ -76,6 +80,8 @@ public class SearchItemAction extends AbstractAction{
 		this.reponse = reponse;
 	}
 	
-	
+	public void setSession(Map<String, Object> session) {
+        this.session = session;
+    }
 	
 }

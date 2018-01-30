@@ -36,4 +36,10 @@ public class BorrowService extends AbstractService {
 	{
 		return getManagerFactory().getBorrowManager().markAsExtended(borrow);
 	}
+	
+	@WebMethod
+	public void saveNewBorrow(BorrowDTO borrow)
+	{
+		getManagerFactory().getBorrowManager().newBorrow(borrow);
+	}
 }

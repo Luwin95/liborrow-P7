@@ -20,6 +20,7 @@ import com.liborrow.webinterface.generated.model.BorrowDTO;
 import com.liborrow.webinterface.generated.model.SearchResponse;
 import com.liborrow.webinterface.generated.model.UserLightDTO;
 
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -36,14 +37,18 @@ public class IndexAction extends AbstractAction implements SessionAware {
 	private SearchResponse searchResponse;
 	private int nbLate;
 	private int nbBorrows;
-    
+	private GregorianCalendar now = new GregorianCalendar();
+	
     public String execute() throws Exception {
         searchResponse= getManagerFactory().getItemManager().findLastFiveItems();
         UserLightDTO user = (UserLightDTO) session.get("sessionUser");
-        nbBorrows = user.getBorrows().size();
         for(BorrowDTO borrow : user.getBorrows())
         {
         	if(borrow.getGetBackDate() == null)
+        	{
+        		nbBorrows++;
+        	}
+        	if(now.compareTo(borrow.getEndDate().toGregorianCalendar())>0)
         	{
         		nbLate++;
         	}

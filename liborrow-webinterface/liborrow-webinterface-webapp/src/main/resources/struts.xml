@@ -83,5 +83,9 @@
             <result name="success">/WEB-INF/jsp/newBorrow.jsp</result>
             <result name="input">/WEB-INF/jsp/newBorrow.jsp</result>
         </action>
+        <action name="addToBox" class="com.liborrow.webinterface.webapp.actions.AddToBoxAction">
+        	<result name="success" type="redirect">/liborrow/search.action</result>
+        	<result name="error" type="redirect">/liborrow/search.action</result>
+        </action>
     </package>
 </struts>
