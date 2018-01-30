@@ -6,10 +6,14 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import com.liborrow.webinterface.business.contract.manager.BorrowManager;
 import com.liborrow.webinterface.generated.model.BookDTO;
 import com.liborrow.webinterface.generated.model.BorrowDTO;
+import com.liborrow.webinterface.generated.model.MagazineDTO;
 import com.liborrow.webinterface.generated.model.UserLightDTO;
+import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 
 public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowManager {
 
@@ -53,9 +57,16 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	
 	public BorrowDTO initializeBorrow(Map<String, Object> mapItems) {
 		BorrowDTO borrow = new BorrowDTO();
+		XMLGregorianCalendar now = new XMLGregorianCalendarImpl(new GregorianCalendar());
+		borrow.setStartDate(now);
+		borrow.setExtended(false);
 		if(mapItems.containsKey("book"))
 		{
 			borrow.setBookDTO((BookDTO) mapItems.get("book"));
+		}
+		if(mapItems.containsKey("magazine"))
+		{
+			borrow.setMagazineDTO((MagazineDTO) mapItems.get("magazine"));
 		}
 		return null;
 	}

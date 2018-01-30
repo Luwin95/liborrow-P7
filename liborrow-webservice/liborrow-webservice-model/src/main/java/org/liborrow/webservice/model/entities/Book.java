@@ -44,7 +44,9 @@ public class Book extends Item implements Serializable{
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="author_book",
-			joinColumns=@JoinColumn(name="item_id"),
+			joinColumns= {
+					@JoinColumn(name="item_id"),
+					@JoinColumn(name="book_id")},
 			inverseJoinColumns = @JoinColumn(name="author_id"))
 	private Set<Author> authors = new HashSet<>();
 	

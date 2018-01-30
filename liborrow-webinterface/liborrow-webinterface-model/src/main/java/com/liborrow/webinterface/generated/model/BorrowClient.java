@@ -55,6 +55,18 @@ public interface BorrowClient {
     /**
      * 
      * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "saveNewBorrow", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SaveNewBorrow")
+    @ResponseWrapper(localName = "saveNewBorrowResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SaveNewBorrowResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/saveNewBorrowRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/saveNewBorrowResponse")
+    public void saveNewBorrow(
+        @WebParam(name = "arg0", targetNamespace = "")
+        BorrowDTO arg0);
+
+    /**
+     * 
+     * @param arg0
      * @return
      *     returns com.liborrow.webinterface.generated.model.BorrowDTO
      */

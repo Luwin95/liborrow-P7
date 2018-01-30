@@ -31,7 +31,7 @@ public class Main extends AbstractService{
 		String search = "le Petit";
 		
 		ItemCriterias itemCriterias = new ItemCriterias();
-		String string = "Hello";
+		String string = "hello";
 		itemCriterias.setSimpleStringSearch(string);
 		String[] splitedString = itemCriterias.getSimpleStringSearch().split("\\s+");
 		/*itemCriterias.setAuthorCriterias(new AuthorCriterias());
@@ -41,15 +41,15 @@ public class Main extends AbstractService{
 		itemCriterias.getBookCriterias().setEditor(search);
 		itemCriterias.getAuthorCriterias().setFirstname(search);
 		itemCriterias.getAuthorCriterias().setLastname(search);
-		itemCriterias.getMagazineCriterias().setName(search);
+		itemCriterias.getMagazineCriterias().setName(search);*/
 		List<BookDTO> books = vManagerFactory.getBookManager().searchBook(itemCriterias);
-		List<AuthorDTO> authors = vManagerFactory.getAuthorManager().searchAuthor(itemCriterias);
+		/*List<AuthorDTO> authors = vManagerFactory.getAuthorManager().searchAuthor(itemCriterias);
 		List<MagazineDTO> magazines = vManagerFactory.getMagazineManager().searchMagazine(itemCriterias);*/
 		
-		SearchResponse searchResponse = vManagerFactory.getItemManager().getLastFiveItems();
-		List<BookDTO> books = searchResponse.getBooks();
-		List<AuthorDTO> authors = searchResponse.getAuthors();
-		List<MagazineDTO> magazines = searchResponse.getMagazines();
+//		SearchResponse searchResponse = vManagerFactory.getItemManager().getLastFiveItems();
+//		List<BookDTO> books = searchResponse.getBooks();
+////		List<AuthorDTO> authors = searchResponse.getAuthors();
+////		List<MagazineDTO> magazines = searchResponse.getMagazines();
 		if(books!=null)
 		{
 			System.out.println("Livres : ");
@@ -67,23 +67,23 @@ public class Main extends AbstractService{
 				}
 			}
 		}
-		if(authors!=null)
-		{
-			System.out.println("Auteurs : ");
-			for(AuthorDTO author : authors)
-			{
-				System.out.println(author.getFirstname()+" "+author.getName());
-			}
-		}
-		
-		if(magazines!=null)
-		{
-			System.out.println("Magazines : ");
-			for(MagazineDTO magazine : magazines)
-			{
-				System.out.println(magazine.getName()+" n°"+magazine.getEditionNumber());
-			}
-		}
+//		if(authors!=null)
+//		{
+//			System.out.println("Auteurs : ");
+//			for(AuthorDTO author : authors)
+//			{
+//				System.out.println(author.getFirstname()+" "+author.getName());
+//			}
+//		}
+//		
+//		if(magazines!=null)
+//		{
+//			System.out.println("Magazines : ");
+//			for(MagazineDTO magazine : magazines)
+//			{
+//				System.out.println(magazine.getName()+" n°"+magazine.getEditionNumber());
+//			}
+//		}
 		
 		
 	}

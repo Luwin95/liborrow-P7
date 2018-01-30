@@ -1,6 +1,7 @@
 package com.liborrow.webinterface.webapp.actions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,16 +20,24 @@ public class AddToBoxAction extends AbstractAction implements SessionAware{
 	 public String execute() throws Exception {
 		 if(null != objectId && !objectId.equals("") && null != objectType && !objectType.equals(""))
 		 {
+			 Map<String,Object> mapItems = new HashMap<String, Object>();
 			 if(objectType.equals("book"))
 		        {
 		        	BookDTO book = getManagerFactory().getBookManager().getBookById(Integer.parseInt(objectId));
 		        	if(book!=null)
 		        	{
+		        		mapItems.put("book", book);
+		        		BorrowDTO borrow = getManagerFactory().getBorrowManager().initializeBorrow(mapItems);
 		        		if(session.containsKey("box") )
 			        	{
-			        		
+		        			List<BorrowDTO> box = (List<BorrowDTO>) session.get("box");
+		        			box.add(borrow);
+		        			session.remove("box");
+		        			session.put("box", box);
 			        	}else {
-			        		
+			        		List<BorrowDTO> box = new ArrayList<BorrowDTO>();
+			        		box.add(borrow);
+			        		session.put("box", box);
 			        	}
 		        		return "success";
 		        	}else {
@@ -37,15 +46,22 @@ public class AddToBoxAction extends AbstractAction implements SessionAware{
 		        }
 		        if(objectType.equals("magazine"))
 		        {
+		        	
 		        	MagazineDTO magazine = getManagerFactory().getMagazineManager().getMagazineById(Integer.parseInt(objectId));
 		        	if(magazine!=null)
 		        	{
+		        		mapItems.put("magazine", magazine);
+		        		BorrowDTO borrow = getManagerFactory().getBorrowManager().initializeBorrow(mapItems);
 		        		if(session.containsKey("box") )
 			        	{
-			        		
+		        			List<BorrowDTO> box = (List<BorrowDTO>) session.get("box");
+		        			box.add(borrow);
+		        			session.remove("box");
+		        			session.put("box", box);
 			        	}else {
-			        		List<BorrowDTO> box = new ArrayList<>();
-			        		
+			        		List<BorrowDTO> box = new ArrayList<BorrowDTO>();
+			        		box.add(borrow);
+			        		session.put("box", box);
 			        	}
 		        		return "success";
 		        	}else {
