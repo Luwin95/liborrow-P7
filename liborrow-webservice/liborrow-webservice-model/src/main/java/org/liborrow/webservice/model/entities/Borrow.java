@@ -50,11 +50,11 @@ public class Borrow implements Serializable {
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	@NotFound(action = NotFoundAction.IGNORE)
-	@JoinColumn(name = "item_id", nullable=true)
+	@JoinColumn(name = "magazine_id", nullable=true)
 	private Magazine magazine;
 	
-	@Column(name = "item_id", insertable=false, updatable = false, nullable = false)
-	private Long idItem;
+//	@Column(name = "item_id", insertable=false, updatable = false, nullable = false)
+//	private Long idItem;
 	
 	public Borrow() {}
 	
@@ -139,11 +139,11 @@ public class Borrow implements Serializable {
 		this.magazine = magazine;
 	}
 
-	public Long getIdItem() {
-		return idItem;
-	}
-
-	public void setIdItem(Long idItem) {
-		this.idItem = idItem;
-	}
+//	public Long getIdItem() {
+//		return idItem;
+//	}
+//
+//	public void setIdItem(Long idItem) {
+//		this.idItem = idItem;
+//	}
 }

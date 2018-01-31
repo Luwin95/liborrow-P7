@@ -70,13 +70,13 @@ public class BorrowTransformerImpl implements BorrowTransformer {
 		borrowTransformed.setStartDate(borrow.getStartDate());
 		if(borrow.getBookDTO() !=null && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
-			borrowTransformed.setIdItem(borrow.getBookDTO().getId());
+//			borrowTransformed.setIdItem(borrow.getBookDTO().getId());
 			BookTransformer bookTransformer = new BookTransformerImpl();
 			borrowTransformed.setBook(bookTransformer.toBookEntity(borrow.getBookDTO(), false, Borrow.class.getSimpleName()));
 		}
 		if(borrow.getMagazineDTO() !=null && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
-			borrowTransformed.setIdItem(borrow.getMagazineDTO().getId());
+//			borrowTransformed.setIdItem(borrow.getMagazineDTO().getId());
 			MagazineTransformer magazineTransformer = new MagazineTransformerImpl();
 			borrowTransformed.setMagazine(magazineTransformer.toMagazineEntity( borrow.getMagazineDTO(), false, Borrow.class.getSimpleName()));
 		}

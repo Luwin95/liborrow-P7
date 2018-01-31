@@ -14,11 +14,13 @@
 	<s:if test="%{message!=null}"><div class="alert alert-danger"><s:property value="message"/></div></s:if>
 	<div id="singleStringSearch">
 		<s:form action="newBorrow">
-			<s:textfield  name="search" cssClass="form-control"/>
+			<s:textfield  name="userCriterias.email" label="Email" cssClass="form-control"/>
+			<s:textfield  name="userCriterias.lastname" label="Nom" cssClass="form-control"/>
+			<s:textfield  name="userCriterias.firstname" label="Prénom" cssClass="form-control"/>
 			<s:submit cssClass="btn btn-warning"/>
 		</s:form>
 	</div>
-	<s:if test="%{users!=null && users.size()!=0}">
+	<s:if test="%{users!=null && users.size()>0}">
 		<h3>Utilisateurs</h3>
 		<table class="table table-striped">
 		  <thead class="thead-inverse">

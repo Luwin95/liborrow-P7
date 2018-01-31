@@ -29,6 +29,36 @@ public interface ItemClient {
      * 
      * @param arg0
      * @return
+     *     returns com.liborrow.webinterface.generated.model.SearchResponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchAuthor", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchAuthor")
+    @ResponseWrapper(localName = "searchAuthorResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchAuthorResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/ItemClient/searchAuthorRequest", output = "model.generated.webinterface.liborrow.com/ItemClient/searchAuthorResponse")
+    public SearchResponse searchAuthor(
+        @WebParam(name = "arg0", targetNamespace = "")
+        ItemCriterias arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.liborrow.webinterface.generated.model.SearchResponse
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchMagazine", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchMagazine")
+    @ResponseWrapper(localName = "searchMagazineResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchMagazineResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/ItemClient/searchMagazineRequest", output = "model.generated.webinterface.liborrow.com/ItemClient/searchMagazineResponse")
+    public SearchResponse searchMagazine(
+        @WebParam(name = "arg0", targetNamespace = "")
+        ItemCriterias arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
      *     returns com.liborrow.webinterface.generated.model.BookDTO
      */
     @WebMethod
@@ -69,6 +99,18 @@ public interface ItemClient {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<com.liborrow.webinterface.generated.model.MagazineDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAllMagazines", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllMagazines")
+    @ResponseWrapper(localName = "getAllMagazinesResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllMagazinesResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/ItemClient/getAllMagazinesRequest", output = "model.generated.webinterface.liborrow.com/ItemClient/getAllMagazinesResponse")
+    public List<MagazineDTO> getAllMagazines();
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns com.liborrow.webinterface.generated.model.SearchResponse
@@ -96,48 +138,6 @@ public interface ItemClient {
     public SearchResponse searchBook(
         @WebParam(name = "arg0", targetNamespace = "")
         ItemCriterias arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns com.liborrow.webinterface.generated.model.SearchResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchAuthor", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchAuthor")
-    @ResponseWrapper(localName = "searchAuthorResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchAuthorResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/ItemClient/searchAuthorRequest", output = "model.generated.webinterface.liborrow.com/ItemClient/searchAuthorResponse")
-    public SearchResponse searchAuthor(
-        @WebParam(name = "arg0", targetNamespace = "")
-        ItemCriterias arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns com.liborrow.webinterface.generated.model.SearchResponse
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchMagazine", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchMagazine")
-    @ResponseWrapper(localName = "searchMagazineResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchMagazineResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/ItemClient/searchMagazineRequest", output = "model.generated.webinterface.liborrow.com/ItemClient/searchMagazineResponse")
-    public SearchResponse searchMagazine(
-        @WebParam(name = "arg0", targetNamespace = "")
-        ItemCriterias arg0);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<com.liborrow.webinterface.generated.model.MagazineDTO>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAllMagazines", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllMagazines")
-    @ResponseWrapper(localName = "getAllMagazinesResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllMagazinesResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/ItemClient/getAllMagazinesRequest", output = "model.generated.webinterface.liborrow.com/ItemClient/getAllMagazinesResponse")
-    public List<MagazineDTO> getAllMagazines();
 
     /**
      * 

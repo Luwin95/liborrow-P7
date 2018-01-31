@@ -26,7 +26,7 @@ public class LibrarianInterceptor implements Interceptor {
         if(session != null && session.containsKey("sessionUser"))
         {
             UserLightDTO user = (UserLightDTO) session.get("sessionUser");
-            if(user==null || !user.getRole().equals("ROLE_LIBRARIAN") || !user.getRole().equals("ROLE_ADMIN"))
+            if(user==null || user.getRole().equals("ROLE_USER"))
             {
             	return Action.LOGIN;
             }else{

@@ -8,6 +8,7 @@ import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class NewBorrowAction extends AbstractAction{
 	private UserCriterias userCriterias;
+	private String search;
 	private List<UserLightDTO> users;
 	private String message;
 	
@@ -31,5 +32,12 @@ public class NewBorrowAction extends AbstractAction{
 	public String getMessage() {
 		return message;
 	}
-	
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
 }

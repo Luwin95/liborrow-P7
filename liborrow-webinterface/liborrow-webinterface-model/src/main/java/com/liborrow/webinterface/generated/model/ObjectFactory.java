@@ -24,9 +24,11 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _FindUserByid_QNAME = new QName("model.generated.webinterface.liborrow.com", "findUserByid");
     private final static QName _LoginUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "loginUser");
     private final static QName _LoginUserResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "loginUserResponse");
     private final static QName _SearchUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "searchUser");
+    private final static QName _FindUserByidResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "findUserByidResponse");
     private final static QName _SearchUserResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "searchUserResponse");
 
     /**
@@ -61,11 +63,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindUserByidResponse }
+     * 
+     */
+    public FindUserByidResponse createFindUserByidResponse() {
+        return new FindUserByidResponse();
+    }
+
+    /**
      * Create an instance of {@link SearchUserResponse }
      * 
      */
     public SearchUserResponse createSearchUserResponse() {
         return new SearchUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link FindUserByid }
+     * 
+     */
+    public FindUserByid createFindUserByid() {
+        return new FindUserByid();
     }
 
     /**
@@ -141,6 +159,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindUserByid }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "findUserByid")
+    public JAXBElement<FindUserByid> createFindUserByid(FindUserByid value) {
+        return new JAXBElement<FindUserByid>(_FindUserByid_QNAME, FindUserByid.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LoginUser }{@code >}}
      * 
      */
@@ -165,6 +192,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "searchUser")
     public JAXBElement<SearchUser> createSearchUser(SearchUser value) {
         return new JAXBElement<SearchUser>(_SearchUser_QNAME, SearchUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindUserByidResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "findUserByidResponse")
+    public JAXBElement<FindUserByidResponse> createFindUserByidResponse(FindUserByidResponse value) {
+        return new JAXBElement<FindUserByidResponse>(_FindUserByidResponse_QNAME, FindUserByidResponse.class, null, value);
     }
 
     /**

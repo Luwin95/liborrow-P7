@@ -24,6 +24,7 @@
   	<org.hibernate-em-version>4.3.8.Final</org.hibernate-em-version>
   	<postgresql.version>42.1.4</postgresql.version>
   	<dbcp-version>1.4</dbcp-version>
+  	<log4j2.version>2.10.0</log4j2.version>
   </properties>
   
   <dependencyManagement>
@@ -112,6 +113,19 @@
               <version>${spring.security.version}</version>
               <type>pom</type>
           </dependency>
+          <!-- Logging -->
+	        <dependency>
+	            <groupId>org.apache.logging.log4j</groupId>
+	            <artifactId>log4j-core</artifactId>
+	            <version>${log4j2.version}</version>
+	        </dependency>
+	        
+	        <dependency>
+			    <groupId>org.apache.logging.log4j</groupId>
+			    <artifactId>log4j-api</artifactId>
+			    <version>${log4j2.version}</version>
+			</dependency>
+          
         
   	</dependencies>
   </dependencyManagement>

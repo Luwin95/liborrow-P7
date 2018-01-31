@@ -58,4 +58,19 @@ public interface UserClient {
         @WebParam(name = "arg0", targetNamespace = "")
         UserCriterias arg0);
 
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findUserByid", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.FindUserByid")
+    @ResponseWrapper(localName = "findUserByidResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.FindUserByidResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/findUserByidRequest", output = "model.generated.webinterface.liborrow.com/UserClient/findUserByidResponse")
+    public UserLightDTO findUserByid(
+        @WebParam(name = "arg0", targetNamespace = "")
+        long arg0);
+
 }
