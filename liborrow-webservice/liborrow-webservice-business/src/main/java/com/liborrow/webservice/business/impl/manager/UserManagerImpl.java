@@ -85,6 +85,13 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	}
 	
 	@Override
+	public UserLightDTO findById(long idUser) {
+		UserLight user = userLightRepository.findOne(idUser);
+		UserLightDTO userChosen = getTransformerFactory().getUserLightTransformer().toUserLightDto(user, true, UserLight.class.getSimpleName());
+		return userChosen;
+	}
+	
+	@Override
 	public void userEntityHibernateInitialization(UserAccount user)
 	{
 		Hibernate.initialize(user.getCitizenship());

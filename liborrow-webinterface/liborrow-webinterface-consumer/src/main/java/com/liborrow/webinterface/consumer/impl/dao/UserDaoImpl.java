@@ -16,4 +16,9 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 	public List<UserLightDTO> searchUser(UserCriterias userCriterias) {
 		return getUserSrv().searchUser(userCriterias);
 	}
+	
+	public UserLightDTO findById(long idUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

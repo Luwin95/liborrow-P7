@@ -16,4 +16,8 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	public List<UserLightDTO> searchUser(UserCriterias userCriterias) {
 		return getDaoFactory().getUserDao().searchUser(userCriterias);
 	}
+	
+	public UserLightDTO findById(long idUser) {
+		return getDaoFactory().getUserDao().findById(idUser);
+	}
 }

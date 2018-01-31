@@ -24,4 +24,10 @@ public class UserService extends AbstractService {
 	{
 		return getManagerFactory().getUserManager().searchUser(userCriterias);
 	}
+	
+	@WebMethod
+	public UserLightDTO findUserByid(long idUser)
+	{
+		return getManagerFactory().getUserManager().findById(idUser);
+	}
 }

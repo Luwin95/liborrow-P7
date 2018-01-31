@@ -14,4 +14,5 @@ public interface UserManager {
 	void userEntityHibernateInitialization(UserAccount user);
 	void userEntityHibernateInitialization(UserLight user);
 	List<UserLightDTO> searchUser(UserCriterias userCriterias);
+	UserLightDTO findById(long idUser);
 }

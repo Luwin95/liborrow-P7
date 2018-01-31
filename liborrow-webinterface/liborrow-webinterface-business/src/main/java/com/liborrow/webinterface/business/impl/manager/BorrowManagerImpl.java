@@ -70,4 +70,8 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		}
 		return null;
 	}
+	
+	public void saveNewBorrow(BorrowDTO borrow) {
+		getDaoFactory().getBorrowDao().saveBorrow(borrow);
+	}
 }
