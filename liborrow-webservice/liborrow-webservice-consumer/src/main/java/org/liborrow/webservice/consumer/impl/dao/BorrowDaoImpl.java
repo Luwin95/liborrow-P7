@@ -1,5 +1,12 @@
 package org.liborrow.webservice.consumer.impl.dao;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.liborrow.webservice.consumer.contract.dao.BorrowDao;
 import org.liborrow.webservice.model.dto.BorrowDTO;
 import org.liborrow.webservice.model.entities.Borrow;
@@ -17,5 +24,21 @@ public class BorrowDaoImpl extends AbstractDaoImpl implements BorrowDao {
 		borrow.setExtended(true);
 		getEm().merge(borrow);
 		getEm().flush();
+	}
+	
+	@Override
+	public List<Borrow> findLateGetBackBorrows() {
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT borrow FROM Borrow borrow WHERE ((borrow.startDate<=:now AND borrow.extended=false)OR(borrow.startDate<=:now2 AND borrow.extended=true)) AND getBackDate=null");
+		Query query = getEm().createQuery(queryString.toString());
+		Calendar cal1Month = Calendar.getInstance();
+		cal1Month.setTime(new Date());
+		cal1Month.add(Calendar.MONTH, -1);
+		query.setParameter("now", cal1Month.getTime());
+		Calendar cal2Month = Calendar.getInstance();
+		cal2Month.setTime(new Date());
+		cal2Month.add(Calendar.MONTH, -2);
+		query.setParameter("now2", cal2Month.getTime());
+		return (List<Borrow>) query.getResultList();
 	}
 }

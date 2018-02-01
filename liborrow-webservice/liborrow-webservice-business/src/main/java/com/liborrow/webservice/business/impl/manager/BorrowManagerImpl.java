@@ -1,7 +1,9 @@
 package com.liborrow.webservice.business.impl.manager;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.dto.BookDTO;
@@ -116,6 +118,17 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	public void newBorrow(BorrowDTO borrow) {
 		Borrow borrowToSave = getTransformerFactory().getBorrowTransformer().toBorrowEntity(borrow, true, BorrowDTO.class.getSimpleName());
 		borrowRepository.save(borrowToSave);
+	}
+	
+	@Override
+	public List<BorrowDTO> findLateBorrows() {
+		List<Borrow> borrowsEntities = getDaoFactory().getBorrowDao().findLateGetBackBorrows();
+		Set<Borrow> borrowsEntitiesSet = new HashSet<Borrow>();
+		borrowsEntitiesSet.addAll(borrowsEntities);
+		Set<BorrowDTO> borrows = getTransformerFactory().getBorrowTransformer().toBorrowsDTO(borrowsEntitiesSet, true, Borrow.class.getSimpleName());
+		List<BorrowDTO> returnList = new ArrayList<>();
+		returnList.addAll(borrows);
+		return returnList;
 	}
 	
 }

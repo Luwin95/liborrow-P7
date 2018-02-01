@@ -42,4 +42,10 @@ public class BorrowService extends AbstractService {
 	{
 		getManagerFactory().getBorrowManager().newBorrow(borrow);
 	}
+	
+	@WebMethod
+	public List<BorrowDTO> findLateBorrows()
+	{
+		return getManagerFactory().getBorrowManager().findLateBorrows();
+	}
 }
