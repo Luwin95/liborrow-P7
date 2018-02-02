@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public abstract class Item implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "item_id", updatable = false, nullable = false)
-	private Long id;
+	private Long idItem;
 	
 	@Column(name="itemref")
 	private String itemRef;
@@ -62,12 +63,12 @@ public abstract class Item implements Serializable{
 		this.place = place;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIdItem() {
+		return idItem;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdItem(Long idItem) {
+		this.idItem = idItem;
 	}
 
 	public String getItemRef() {

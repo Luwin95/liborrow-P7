@@ -12,6 +12,4 @@ public interface BorrowManager {
 	List<BorrowDTO> getAllCurrentBorrows();
 	List<BorrowDTO> getAllOnGoingBorrowByUserLogged(UserLightDTO user);
 	boolean markBorrow(BorrowDTO borrow);
-	BorrowDTO initializeBorrow(Map<String, Object> mapItems);
-	void saveNewBorrow(BorrowDTO borrow);
 }

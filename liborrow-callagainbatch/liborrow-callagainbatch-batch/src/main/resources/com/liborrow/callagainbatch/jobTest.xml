@@ -8,8 +8,11 @@
     http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 ">
 	<batch:job id="firstBatchJob">
-        <batch:step id="step1">
+        <batch:step id="step1" next="step2">
             <batch:tasklet ref="testTasklet"/>
+        </batch:step>
+        <batch:step id="step2">
+            <batch:tasklet ref="mailTasklet"/>
         </batch:step>
     </batch:job>
 </beans>

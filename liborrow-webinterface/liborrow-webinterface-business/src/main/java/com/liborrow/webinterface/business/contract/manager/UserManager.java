@@ -7,6 +7,5 @@ import com.liborrow.webinterface.generated.model.UserLightDTO;
 
 public interface UserManager {
 	UserLightDTO loginUser(String email, String password);
-	List<UserLightDTO> searchUser(UserCriterias userCriterias);
 	UserLightDTO findById(long idUser);
 }

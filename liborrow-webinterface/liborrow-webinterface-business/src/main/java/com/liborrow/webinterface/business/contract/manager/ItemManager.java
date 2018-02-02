@@ -7,4 +7,7 @@ public interface ItemManager {
 	
 	SearchResponse searchItem(ItemCriterias itemCriterias);
 	SearchResponse findLastFiveItems();
+	SearchResponse searchBook(ItemCriterias itemCriterias);
+	SearchResponse searchAuthor(ItemCriterias itemCriterias);
+	SearchResponse searchMagazine(ItemCriterias itemCriterias);
 }

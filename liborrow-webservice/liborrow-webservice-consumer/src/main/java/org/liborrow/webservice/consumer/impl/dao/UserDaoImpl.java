@@ -14,42 +14,42 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao{
 	@Override
 	public Set<UserLight> searchUser(UserCriterias userCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT user FROM UserLight AS user WHERE 1=1 ");
+		queryString.append("SELECT user FROM UserLight AS user WHERE 1=0 ");
 		if(null != userCriterias.getAddress() && !userCriterias.getAddress().equals(""))
 		{
-			queryString.append("AND (user.address LIKE :address ");
+			queryString.append("OR user.address LIKE :address ");
 			queryString.append("OR user.address LIKE :addresslower ");
 			queryString.append("OR user.address LIKE :addressupper ");
-			queryString.append("OR user.address LIKE :addresswithfirstupper) ");
+			queryString.append("OR user.address LIKE :addresswithfirstupper ");
 		}
 		if(null != userCriterias.getEmail() && !userCriterias.getEmail().equals(""))
 		{
-			queryString.append("AND (user.email LIKE :email ");
+			queryString.append("OR user.email LIKE :email ");
 			queryString.append("OR user.email LIKE :emaillower ");
 			queryString.append("OR user.email LIKE :emailupper ");
-			queryString.append("OR user.email LIKE :emailwithfirstupper) ");
+			queryString.append("OR user.email LIKE :emailwithfirstupper ");
 		}
 		if(null != userCriterias.getFirstname() && !userCriterias.getFirstname().equals(""))
 		{
-			queryString.append("AND (user.firstname LIKE :firstname ");
+			queryString.append("OR user.firstname LIKE :firstname ");
 			queryString.append("OR user.firstname LIKE :firstnamelower ");
 			queryString.append("OR user.firstname LIKE :firstnameupper ");
-			queryString.append("OR user.firstname LIKE :firstnamewithfirstupper) ");
+			queryString.append("OR user.firstname LIKE :firstnamewithfirstupper ");
 		}
 		if(null != userCriterias.getLastname() && !userCriterias.getLastname().equals(""))
 		{
-			queryString.append("AND (user.lastname LIKE :lastname ");
+			queryString.append("OR user.lastname LIKE :lastname ");
 			queryString.append("OR user.lastname LIKE :lastnamelower ");
 			queryString.append("OR user.lastname LIKE :lastnameupper ");
-			queryString.append("OR user.lastname LIKE :lastnamewithfirstupper) ");
+			queryString.append("OR user.lastname LIKE :lastnamewithfirstupper ");
 		}
 		if(null != userCriterias.getPhoneNumber() && !userCriterias.getPhoneNumber().equals(""))
 		{
-			queryString.append("AND (user.phoneNumber LIKE :phoneNumber ");
+			queryString.append("OR user.phoneNumber LIKE :phoneNumber ");
 		}
 		if(null != userCriterias.getPostCode() && !userCriterias.getPostCode().equals(""))
 		{
-			queryString.append("AND (user.postCode LIKE :postCode ");
+			queryString.append("OR user.postCode LIKE :postCode ");
 		}
 		
 		Query query = getEm().createQuery(queryString.toString());

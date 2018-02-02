@@ -20,7 +20,7 @@ public class SearchBookAction extends AbstractAction{
 		itemCriterias.setStringSearch(false);
 		itemCriterias.setAuthorSearch(false);
 		itemCriterias.setMagazineSearch(false);
-		SearchResponse searchResponse =getManagerFactory().getItemManager().searchItem(itemCriterias);
+		SearchResponse searchResponse =getManagerFactory().getItemManager().searchBook(itemCriterias);
 		setBookResponse(searchResponse.getBooks());
 		setAuthorResponse(searchResponse.getAuthors());
 		setMagazineResponse(searchResponse.getMagazines());

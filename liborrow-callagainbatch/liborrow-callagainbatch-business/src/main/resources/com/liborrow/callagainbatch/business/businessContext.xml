@@ -4,5 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="abstractManager" abstract ="true">
     	<property name="daoFactory" ref="daoFactory"/>
+    	<property name="mailSender" ref="mailSender"/>
     </bean>
+    
+    <bean id="borrowManager" class="com.liborrow.callagainbatch.business.impl.manager.BorrowManagerImpl" parent="abstractManager"/>
+    <bean id="mailManager" class="com.liborrow.callagainbatch.business.impl.manager.MailManagerImpl" parent="abstractManager"/>
+    
+    <bean id="managerFactory" class="com.liborrow.callagainbatch.business.impl.ManagerFactoryImpl">
+    	<property name="borrowManager" ref="borrowManager"/>
+    	<property name="mailManager" ref="mailManager"/>
+    </bean> 
+    
 </beans>

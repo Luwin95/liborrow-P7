@@ -43,12 +43,12 @@ public class Borrow implements Serializable {
     @JoinColumn(name = "user_id")
 	private UserLight borrower;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@JoinColumn(name = "book_id", nullable=true)
 	private Book book;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
 	@NotFound(action = NotFoundAction.IGNORE)
 	@JoinColumn(name = "magazine_id", nullable=true)
 	private Magazine magazine;

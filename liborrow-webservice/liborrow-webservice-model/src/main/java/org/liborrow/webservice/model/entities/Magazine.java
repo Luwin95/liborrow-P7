@@ -16,14 +16,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity(name="Magazine")
+@Table(name="magazine")
 public class Magazine extends Item implements Serializable{
 	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@Column(name = "magazine_id", updatable = false, nullable = false)
-//	private Long idMagazine;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "magazine_id", updatable = false, nullable = false)
+	private Long id;
 	
 	@Column(name = "editionnumber")
 	private int editionNumber;
@@ -51,13 +52,13 @@ public class Magazine extends Item implements Serializable{
 	}
 	
 	
-//	public Long getIdMagazine() {
-//		return idMagazine;
-//	}
-//
-//	public void setIdMagazine(Long idMagazine) {
-//		this.idMagazine = idMagazine;
-//	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public int getEditionNumber() {
 		return editionNumber;

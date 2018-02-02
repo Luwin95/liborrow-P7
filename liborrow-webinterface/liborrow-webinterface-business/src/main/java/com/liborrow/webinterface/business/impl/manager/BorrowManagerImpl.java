@@ -54,24 +54,4 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		}
 		
 	}
-	
-	public BorrowDTO initializeBorrow(Map<String, Object> mapItems) {
-		BorrowDTO borrow = new BorrowDTO();
-		XMLGregorianCalendar now = new XMLGregorianCalendarImpl(new GregorianCalendar());
-		borrow.setStartDate(now);
-		borrow.setExtended(false);
-		if(mapItems.containsKey("book"))
-		{
-			borrow.setBookDTO((BookDTO) mapItems.get("book"));
-		}
-		if(mapItems.containsKey("magazine"))
-		{
-			borrow.setMagazineDTO((MagazineDTO) mapItems.get("magazine"));
-		}
-		return null;
-	}
-	
-	public void saveNewBorrow(BorrowDTO borrow) {
-		getDaoFactory().getBorrowDao().saveBorrow(borrow);
-	}
 }

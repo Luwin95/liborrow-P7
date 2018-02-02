@@ -24,8 +24,4 @@ public class BorrowDaoImpl extends AbstractDao implements BorrowDao  {
 	{
 		getBorrowSrv().markBorrowAsExtended(borrow);
 	}
-	
-	public void saveBorrow(BorrowDTO borrow) {
-		getBorrowSrv().saveNewBorrow(borrow);
-	}
 }

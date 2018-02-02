@@ -35,16 +35,25 @@
 				
 				  <!-- Navbar links -->
 				  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-				    <ul class="navbar-nav">
+				    <ul class="navbar-nav mr-auto">
 				      <li class="nav-item">
 				        <a class="nav-link" href="<s:url action="search" namespace="/liborrow"/>">Rechercher</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="<s:url action="currentBorrows" namespace="/liborrow"/>">Mes prêts en cours</a>
 				      </li>
-				      <li class="nav-item">
-				        <a class="nav-link" href="#">Link</a>
-				      </li> 
+				   
+				    </ul>
+				    <ul class="navbar-nav ml-auto">
+						<s:if test='#session.sessionUser != null'>
+							<li class="nav-item dropdown">
+	                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+	                            <i class="fa fa-user" aria-hidden="true"></i> Bienvenue, <s:property value="%{#session.sessionUser.firstname}"/> <s:property value="%{#session.sessionUser.lastname}"/><b class="caret"></b></a>
+	                            <ul class="dropdown-menu">
+	                                <li class="dropdown-item"><a href="<s:url action="logout" namespace="/liborrow"/>">Se déconnecter</a></li>
+	                            </ul>
+							</li>
+						</s:if>
 				    </ul>
 				  </div> 
 			  </div>

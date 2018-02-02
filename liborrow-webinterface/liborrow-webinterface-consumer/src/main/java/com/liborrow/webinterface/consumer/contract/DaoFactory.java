@@ -1,5 +1,6 @@
 package com.liborrow.webinterface.consumer.contract;
 
+import com.liborrow.webinterface.consumer.contract.dao.AuthorDao;
 import com.liborrow.webinterface.consumer.contract.dao.BookDao;
 import com.liborrow.webinterface.consumer.contract.dao.BorrowDao;
 import com.liborrow.webinterface.consumer.contract.dao.ItemDao;
@@ -17,4 +18,6 @@ public interface DaoFactory {
 	 void setMagazineDao(MagazineDao magazineDao);
 	 BorrowDao getBorrowDao();
 	 void setBorrowDao(BorrowDao borrowDao);
+	 AuthorDao getAuthorDao();
+	 void setAuthorDao(AuthorDao authorDao);
 }

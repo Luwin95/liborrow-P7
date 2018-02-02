@@ -91,8 +91,8 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	public void borrowEntityHibernateInitialization(Borrow borrow)
 	{
 		Hibernate.initialize(borrow.getBorrower());
-		Hibernate.initialize(borrow.getBook());
 		Hibernate.initialize(borrow.getMagazine());
+		Hibernate.initialize(borrow.getBook());
 		Hibernate.initialize(borrow.getBorrower().getCitizenship());
 	}
 	
@@ -115,6 +115,7 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	}
 	
 	@Override
+	@Transactional
 	public void newBorrow(BorrowDTO borrow) {
 		Borrow borrowToSave = getTransformerFactory().getBorrowTransformer().toBorrowEntity(borrow, true, BorrowDTO.class.getSimpleName());
 		borrowRepository.save(borrowToSave);

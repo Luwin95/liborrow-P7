@@ -12,6 +12,7 @@ public class BookDTO extends ItemDTO{
 	private String summary;
 	private String editor;
 	private Set<AuthorDTO> authors = new HashSet<>();
+	private Set<BorrowDTO> borrows = new HashSet<>();
 	private ImageDTO image;
 
 	public BookDTO() {
@@ -64,6 +65,14 @@ public class BookDTO extends ItemDTO{
 
 	public void setAuthors(Set<AuthorDTO> authors) {
 		this.authors = authors;
+	}
+	
+	public Set<BorrowDTO> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(Set<BorrowDTO> borrows) {
+		this.borrows = borrows;
 	}
 
 	public ImageDTO getImage() {

@@ -22,10 +22,9 @@ import javax.persistence.OneToOne;
 @Entity(name="Book")
 public class Book extends Item implements Serializable{
 	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@Column(name = "book_id", updatable = false, nullable = false)
-//	private Long idBook;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "book_id", updatable = false, nullable = false)
+	private Long id;
 	
 	@Column(name = "title")
 	private String title;
@@ -66,14 +65,14 @@ public class Book extends Item implements Serializable{
 		this.editor = editor;
 		this.authors = authors;
 	}
-	
-//	public Long getIdBook() {
-//		return idBook;
-//	}
-//
-//	public void setIdBook(Long idBook) {
-//		this.idBook = idBook;
-//	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getTitle() {
 		return title;

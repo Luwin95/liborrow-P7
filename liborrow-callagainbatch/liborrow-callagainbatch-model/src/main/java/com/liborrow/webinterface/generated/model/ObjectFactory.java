@@ -26,10 +26,14 @@ public class ObjectFactory {
 
     private final static QName _GetBorrow_QNAME = new QName("model.generated.webinterface.liborrow.com", "getBorrow");
     private final static QName _MarkBorrowAsExtendedResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "markBorrowAsExtendedResponse");
+    private final static QName _FindLateBorrowsResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "findLateBorrowsResponse");
     private final static QName _GetUserBorrows_QNAME = new QName("model.generated.webinterface.liborrow.com", "getUserBorrows");
     private final static QName _MarkBorrowAsExtended_QNAME = new QName("model.generated.webinterface.liborrow.com", "markBorrowAsExtended");
+    private final static QName _SaveNewBorrow_QNAME = new QName("model.generated.webinterface.liborrow.com", "saveNewBorrow");
+    private final static QName _SaveNewBorrowResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "saveNewBorrowResponse");
     private final static QName _GetAllBorrows_QNAME = new QName("model.generated.webinterface.liborrow.com", "getAllBorrows");
     private final static QName _GetUserBorrowsResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "getUserBorrowsResponse");
+    private final static QName _FindLateBorrows_QNAME = new QName("model.generated.webinterface.liborrow.com", "findLateBorrows");
     private final static QName _GetAllBorrowsResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "getAllBorrowsResponse");
     private final static QName _GetBorrowResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "getBorrowResponse");
 
@@ -54,6 +58,14 @@ public class ObjectFactory {
      */
     public GetUserBorrowsResponse createGetUserBorrowsResponse() {
         return new GetUserBorrowsResponse();
+    }
+
+    /**
+     * Create an instance of {@link FindLateBorrows }
+     * 
+     */
+    public FindLateBorrows createFindLateBorrows() {
+        return new FindLateBorrows();
     }
 
     /**
@@ -89,6 +101,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FindLateBorrowsResponse }
+     * 
+     */
+    public FindLateBorrowsResponse createFindLateBorrowsResponse() {
+        return new FindLateBorrowsResponse();
+    }
+
+    /**
      * Create an instance of {@link GetUserBorrows }
      * 
      */
@@ -102,6 +122,22 @@ public class ObjectFactory {
      */
     public MarkBorrowAsExtended createMarkBorrowAsExtended() {
         return new MarkBorrowAsExtended();
+    }
+
+    /**
+     * Create an instance of {@link SaveNewBorrow }
+     * 
+     */
+    public SaveNewBorrow createSaveNewBorrow() {
+        return new SaveNewBorrow();
+    }
+
+    /**
+     * Create an instance of {@link SaveNewBorrowResponse }
+     * 
+     */
+    public SaveNewBorrowResponse createSaveNewBorrowResponse() {
+        return new SaveNewBorrowResponse();
     }
 
     /**
@@ -187,6 +223,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindLateBorrowsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "findLateBorrowsResponse")
+    public JAXBElement<FindLateBorrowsResponse> createFindLateBorrowsResponse(FindLateBorrowsResponse value) {
+        return new JAXBElement<FindLateBorrowsResponse>(_FindLateBorrowsResponse_QNAME, FindLateBorrowsResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetUserBorrows }{@code >}}
      * 
      */
@@ -205,6 +250,24 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveNewBorrow }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "saveNewBorrow")
+    public JAXBElement<SaveNewBorrow> createSaveNewBorrow(SaveNewBorrow value) {
+        return new JAXBElement<SaveNewBorrow>(_SaveNewBorrow_QNAME, SaveNewBorrow.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveNewBorrowResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "saveNewBorrowResponse")
+    public JAXBElement<SaveNewBorrowResponse> createSaveNewBorrowResponse(SaveNewBorrowResponse value) {
+        return new JAXBElement<SaveNewBorrowResponse>(_SaveNewBorrowResponse_QNAME, SaveNewBorrowResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllBorrows }{@code >}}
      * 
      */
@@ -220,6 +283,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "getUserBorrowsResponse")
     public JAXBElement<GetUserBorrowsResponse> createGetUserBorrowsResponse(GetUserBorrowsResponse value) {
         return new JAXBElement<GetUserBorrowsResponse>(_GetUserBorrowsResponse_QNAME, GetUserBorrowsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindLateBorrows }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "findLateBorrows")
+    public JAXBElement<FindLateBorrows> createFindLateBorrows(FindLateBorrows value) {
+        return new JAXBElement<FindLateBorrows>(_FindLateBorrows_QNAME, FindLateBorrows.class, null, value);
     }
 
     /**

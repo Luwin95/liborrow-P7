@@ -34,7 +34,6 @@
     	<action name="index" class="com.liborrow.webinterface.webapp.IndexAction" method="execute">
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
-        
         <action name="book" class="com.liborrow.webinterface.webapp.actions.BookAction" method="execute">
         	<result name="success">/WEB-INF/jsp/book.jsp</result>
         </action>
@@ -64,41 +63,8 @@
         	<result name="success" type="redirect">/liborrow/currentBorrows.action</result>
         	<result name="error" type="redirect">/liborrow/currentBorrows.action</result>
         </action>
-    </package>
-    <package name="librarian" namespace="/librarian" extends="struts-default">
-    	<interceptors>
-			<interceptor name="librarianAuthentication" class="com.liborrow.webinterface.webapp.interceptors.LibrarianInterceptor">
-			</interceptor>
-			<interceptor-stack name="librarianAuthStack">
-				<interceptor-ref name="librarianAuthentication"></interceptor-ref>
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
-		<default-interceptor-ref name="librarianAuthStack"></default-interceptor-ref>
-		<global-results>
-			<result name="login" type="redirect">/login.action</result>
-		</global-results>
-		
-		<action name="newBorrow" class="com.liborrow.webinterface.webapp.actions.NewBorrowAction" method="execute">
-            <result name="success">/WEB-INF/jsp/newBorrow.jsp</result>
-            <result name="input">/WEB-INF/jsp/newBorrow.jsp</result>
+        <action name="logout" class="com.liborrow.webinterface.webapp.actions.LogoutAction" method="execute">
+        	<result name="success" type="redirect">/login.action</result>
         </action>
-        <action name="addToBox" class="com.liborrow.webinterface.webapp.actions.AddToBoxAction">
-        	<result name="success" type="redirect">/liborrow/search.action</result>
-        	<result name="error" type="redirect">/liborrow/search.action</result>
-        </action>
-        <action name="borrowConfirmation" class="com.liborrow.webinterface.webapp.actions.BorrowConfirmationAction">
-        	<result name="success" type="redirect">/WEB-INF/jsp/confirmationBorrow.jsp</result>
-        	<result name="error" type="redirect">/WEB-INF/jsp/confirmationBorrow.jsp</result>
-        </action>
-        <action name="deleteFromBox" class="com.liborrow.webinterface.webapp.actions.DeleteFromBoxAction">
-        	<result name="success" type="redirect">/librarian/borrowConfirmation.action</result>
-        	<result name="error" type="redirect">/liborrow/borrowConfirmation.action</result>
-        </action>
-        <action name="saveBorrow" class="com.liborrow.webinterface.webapp.actions.SaveBorrowAction">
-        	<result name="success" type="redirect">/liborrow/index.action</result>
-        	<result name="error" type="redirect">/liborrow/borrowConfirmation.action</result>
-        </action>
-        
     </package>
 </struts>

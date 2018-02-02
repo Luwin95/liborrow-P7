@@ -10,6 +10,5 @@ public interface BorrowDao {
 	List<BorrowDTO> getAllBorrows();
 	List<BorrowDTO> getAllOnGoingBorrowByUserLogged(UserLightDTO user);
 	void markBorrow(BorrowDTO borrow);
-	void saveBorrow(BorrowDTO borrow);
 
 }

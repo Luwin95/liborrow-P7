@@ -1,5 +1,11 @@
 package com.liborrow.callagainbatch.business.contract;
 
-public interface ManagerFactory {
+import com.liborrow.callagainbatch.business.contract.manager.BorrowManager;
+import com.liborrow.callagainbatch.business.contract.manager.MailManager;
 
+public interface ManagerFactory {
+	BorrowManager getBorrowManager();
+	void setBorrowManager(BorrowManager borrowManager);
+	MailManager getMailManager();
+	void setMailManager(MailManager mailManager);
 }

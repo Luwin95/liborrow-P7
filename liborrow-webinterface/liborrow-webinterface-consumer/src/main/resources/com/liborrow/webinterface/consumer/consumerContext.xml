@@ -14,6 +14,7 @@
     <bean id="itemDao" class="com.liborrow.webinterface.consumer.impl.dao.ItemDaoImpl"/>
     <bean id="magazineDao" class="com.liborrow.webinterface.consumer.impl.dao.MagazineDaoImpl"/>
     <bean id="borrowDao" class="com.liborrow.webinterface.consumer.impl.dao.BorrowDaoImpl"/>
+    <bean id="authorDao" class="com.liborrow.webinterface.consumer.impl.dao.AuthorDaoImpl"/>
     
     <bean id="daoFactory" class="com.liborrow.webinterface.consumer.impl.DaoFactoryImpl">
     	<property name="bookDao" ref="bookDao"/>
@@ -21,6 +22,7 @@
     	<property name="itemDao" ref="itemDao"/>
     	<property name="magazineDao" ref="magazineDao"/>
     	<property name="borrowDao" ref="borrowDao"/>
+    	<property name="authorDao" ref="authorDao"/>
     </bean>
     
 </beans>

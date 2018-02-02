@@ -8,6 +8,11 @@
     http://www.springframework.org/schema/jdbc 
     http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
 ">
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:/com/liborrow/callagainbatch/mail.properties"/>
+        <property name="ignoreUnresolvablePlaceholders" value="false"/>
+    </bean>
 	<!-- stored job-meta in memory -->
 
     <bean id="jobRepository" 
@@ -28,6 +33,25 @@
     
     <!-- Tasklets -->
     <bean id="testTasklet" class="com.liborrow.callagainbatch.tasklet.TestTasklet"/>
+    <bean id="mailTasklet" class="com.liborrow.callagainbatch.tasklet.MailTasklet"/>
     
-    
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+	    <property name="targetClass" value="com.liborrow.callagainbatch.AbstractJob"/>
+	    <property name="targetMethod" value="setManagerFactory"/>
+	    <property name="arguments" ref="managerFactory"/>
+	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${liborrow.mail.host}" />
+		<property name="port" value="${liborrow.mail.port}" />
+		<property name="username" value="${liborrow.mail.sender.username}" />
+		<property name="password" value="${liborrow.mail.sender.password}" />
+	
+		<property name="javaMailProperties">
+		   <props>
+	       	      <prop key="mail.smtp.auth">${liborrow.mail.smtp.auth}</prop>
+	       	      <prop key="mail.smtp.starttls.enable">${liborrow.mail.smtp.ttls}</prop>
+	       	   </props>
+		</property>
+	</bean>
 </beans>

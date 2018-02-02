@@ -20,7 +20,7 @@ public class SearchMagazineAction extends AbstractAction{
 		itemCriterias.setStringSearch(false);
 		itemCriterias.setAuthorSearch(false);
 		itemCriterias.setBookSearch(false);
-		SearchResponse searchResponse =getManagerFactory().getItemManager().searchItem(itemCriterias);
+		SearchResponse searchResponse =getManagerFactory().getItemManager().searchMagazine(itemCriterias);
 		setBookResponse(searchResponse.getBooks());
 		setAuthorResponse(searchResponse.getAuthors());
 		setMagazineResponse(searchResponse.getMagazines());
@@ -58,7 +58,4 @@ public class SearchMagazineAction extends AbstractAction{
 	public void setMagazineResponse(List<MagazineDTO> magazineResponse) {
 		this.magazineResponse = magazineResponse;
 	}
-	
-	
-
 }
