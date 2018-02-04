@@ -9,43 +9,49 @@
 	<s:head />
 </head>
 <body>
-	<h1>Liste des prêts en cours</h1>
-	<s:if test="%{borrows!=null && borrows.size()!=0}">
-		<h2>Prêts en cours</h2>
-		<table class="table table-striped">
-		  <thead class="thead-inverse">
-		    <tr>
-		      <th>#</th>
-		      <th>Item</th>
-		      <th>Date de début</th>
-		      <th>Date de fin</th>
-		      <th>Rallongé</th>
-		      <th>Prolonger</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <s:iterator value="borrows" status="status">
-				<tr class="<s:if test="%{now.compareTo(endDate.toGregorianCalendar())>0}">bg-danger</s:if>" >
-			      <th scope="row"><s:property value="%{#status.index+1}"/></th>
-			      <td>
-			      	<s:if test="%{bookDTO!=null}">
-			      		<s:property value="bookDTO.title"/>
-			      	</s:if>
-			      	<s:else>
-			      		<s:property value="magazineDTO.name"/> n°<s:property value="magazineDTO.editionNumber"/>
-			      	</s:else>
-			      </td>
-			      <td><s:property value="startDate"/></td>
-			      <td><s:property value="endDate"/></td>
-			      <td><s:if test="extended">Oui</s:if><s:else>Non</s:else></td>
-			      <s:url action="extendBorrow" namespace="/liborrow" var="urlBorrow">
-			      	<s:param name="idBorrow"><s:property value="id"/></s:param>
-			      </s:url>
-			      <td><s:if test="extended">Impossible</s:if><s:else><a class="btn btn-info" href="${urlBorrow}">Prolonger prêt</a></s:else></td>
-			    </tr>
-			</s:iterator>
-		  </tbody>
-		</table>
-	</s:if>
+	<div class="card">
+	   <h1 class="card-title">Liste des prêts en cours</h1>
+	   <ul class="list-group list-group-flush">
+		    <li class="list-group-item">
+		    	<s:if test="%{borrows!=null && borrows.size()!=0}">
+					<h2 class="card-title">Prêts en cours</h2>
+					<table class="table table-striped">
+					  <thead class="thead-inverse">
+					    <tr>
+					      <th>#</th>
+					      <th>Item</th>
+					      <th>Date de début</th>
+					      <th>Date de fin</th>
+					      <th>Rallongé</th>
+					      <th>Prolonger</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <s:iterator value="borrows" status="status">
+							<tr class="<s:if test="%{now.compareTo(endDate.toGregorianCalendar())>0}">bg-danger</s:if>" >
+						      <th scope="row"><s:property value="%{#status.index+1}"/></th>
+						      <td>
+						      	<s:if test="%{bookDTO!=null}">
+						      		<s:property value="bookDTO.title"/>
+						      	</s:if>
+						      	<s:else>
+						      		<s:property value="magazineDTO.name"/> n°<s:property value="magazineDTO.editionNumber"/>
+						      	</s:else>
+						      </td>
+						      <td><s:property value="startDate.toGregorianCalendar().getTime()"/></td>
+						      <td><s:property value="endDate.toGregorianCalendar().getTime()"/></td>
+						      <td><s:if test="extended">Oui</s:if><s:else>Non</s:else></td>
+						      <s:url action="extendBorrow" namespace="/liborrow" var="urlBorrow">
+						      	<s:param name="idBorrow"><s:property value="id"/></s:param>
+						      </s:url>
+						      <td><s:if test="extended">Impossible</s:if><s:else><a class="btn btn-info" href="${urlBorrow}">Prolonger prêt</a></s:else></td>
+						    </tr>
+						</s:iterator>
+					  </tbody>
+					</table>
+				</s:if>
+		    </li>
+	    </ul>
+    </div>
 </body>
 </html>

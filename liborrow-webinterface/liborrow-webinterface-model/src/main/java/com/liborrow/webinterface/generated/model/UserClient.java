@@ -27,6 +27,24 @@ public interface UserClient {
 
     /**
      * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "loginUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUser")
+    @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
+    public UserLightDTO loginUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns com.liborrow.webinterface.generated.model.UserLightDTO
@@ -54,23 +72,5 @@ public interface UserClient {
     public List<UserLightDTO> searchUser(
         @WebParam(name = "arg0", targetNamespace = "")
         UserCriterias arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "loginUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUser")
-    @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
-    public UserLightDTO loginUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
 
 }

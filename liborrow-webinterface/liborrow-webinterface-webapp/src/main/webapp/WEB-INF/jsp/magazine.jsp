@@ -9,39 +9,23 @@
 	<s:head />
 </head>
 <body>
-	<h1><s:property value="magazine.name"/></h1>
-	<ul>
-		<li>Numéro : <s:property value="magazine.editionNumber"/></li>
-		<li>Date de publication : <s:property value="magazine.publishDate"/></li>
-		<li>Nombre d'exemplaires : <s:property value="magazine.totalCount"/></li>
-		<li>Nombre d'exemplaires disponibles : <s:property value="magazine.remainingCount"/></li>
-	</ul>
-	<s:if test="%{magazine.borrows!=null && magazine.borrows.size()!=0}">
-		<h2>Prêts en cours</h2>
-		<table class="table table-striped">
-		  <thead class="thead-inverse">
-		    <tr>
-		      <th>#</th>
-		      <th>Date de début</th>
-		      <th>Date de fin</th>
-		      <th>Rallongé</th>
-		      <th>Emprunteur</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <s:iterator value="magazine.borrows" status="status">
-		    	<s:if test="%{getBackDate==null}">
-					<tr>
-				      <th scope="row"><s:property value="%{#status.index+1}"/></th>
-				      <td><s:property value="startDate"/></td>
-				      <td><s:property value="endDate"/></td>
-				      <td><s:if test="extended">Oui</s:if><s:else>Non</s:else></td>
-				      <td><s:property value="borrower.firstname"/> <s:property value="borrower.lastname"/></td>
-				    </tr>
-			    </s:if>
-			</s:iterator>
-		  </tbody>
-		</table>
-	</s:if>
+	<div class="row justify-content-sm-center">
+		<div class="col-sm-4">
+			<div class="card">
+				<s:if test="magazine.image !=null">
+					<img class="card-img-top item-image" src="/resources/<s:property value="magazine.image.path"/>" alt="Card image cap">
+				</s:if>
+				<div class="card-header">
+				    <h4><s:property value="magazine.name"/></h4>
+				</div>
+				<ul>
+					<li>Numéro : <s:property value="magazine.editionNumber"/></li>
+					<li>Date de publication : <s:property value="magazine.publishDate.toGregorianCalendar().getTime()"/></li>
+					<li>Nombre d'exemplaires : <s:property value="magazine.totalCount"/></li>
+					<li>Nombre d'exemplaires disponibles : <s:property value="magazine.remainingCount"/></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

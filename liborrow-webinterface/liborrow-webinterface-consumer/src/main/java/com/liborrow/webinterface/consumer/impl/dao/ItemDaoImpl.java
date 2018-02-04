@@ -7,7 +7,8 @@ import com.liborrow.webinterface.generated.model.SearchResponse;
 public class ItemDaoImpl extends AbstractDao implements ItemDao{
 
 	public SearchResponse searchItem(ItemCriterias itemCriterias) {
-		return getItemSrv().searchItem(itemCriterias);
+		SearchResponse searchResponse = getItemSrv().searchItem(itemCriterias);
+		return searchResponse;
 	}
 	
 	public SearchResponse findLastFiveItems() {

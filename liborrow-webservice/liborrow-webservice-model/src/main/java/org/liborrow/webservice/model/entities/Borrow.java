@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -43,15 +44,19 @@ public class Borrow implements Serializable {
     @JoinColumn(name = "user_id")
 	private UserLight borrower;
 	
-	@ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
-	@NotFound(action = NotFoundAction.IGNORE)
-	@JoinColumn(name = "book_id", nullable=true)
-	private Book book;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "item_id")
+	private Item item;
 	
-	@ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
-	@NotFound(action = NotFoundAction.IGNORE)
-	@JoinColumn(name = "magazine_id", nullable=true)
-	private Magazine magazine;
+//	@ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
+//	@NotFound(action = NotFoundAction.IGNORE)
+//	@JoinColumn(name = "book_id", nullable=true)
+//	private Book book;
+//	
+//	@ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
+//	@NotFound(action = NotFoundAction.IGNORE)
+//	@JoinColumn(name = "magazine_id", nullable=true)
+//	private Magazine magazine;
 	
 //	@Column(name = "item_id", insertable=false, updatable = false, nullable = false)
 //	private Long idItem;
@@ -123,21 +128,31 @@ public class Borrow implements Serializable {
 		this.borrower = borrower;
 	}
 
-	public Optional<Book> getBook() {
-		return Optional.ofNullable(book);
+	public Item getItem() {
+		return item;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
-	public Optional<Magazine> getMagazine() {
-		return Optional.ofNullable(magazine);
-	}
+	
 
-	public void setMagazine(Magazine magazine) {
-		this.magazine = magazine;
-	}
+//	public Optional<Book> getBook() {
+//		return Optional.ofNullable(book);
+//	}
+//
+//	public void setBook(Book book) {
+//		this.book = book;
+//	}
+//
+//	public Optional<Magazine> getMagazine() {
+//		return Optional.ofNullable(magazine);
+//	}
+//
+//	public void setMagazine(Magazine magazine) {
+//		this.magazine = magazine;
+//	}
 
 //	public Long getIdItem() {
 //		return idItem;

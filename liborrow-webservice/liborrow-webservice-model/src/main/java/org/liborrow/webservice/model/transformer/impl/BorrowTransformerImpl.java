@@ -10,6 +10,7 @@ import org.liborrow.webservice.model.dto.ItemDTO;
 import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
+import org.liborrow.webservice.model.entities.Item;
 import org.liborrow.webservice.model.entities.Magazine;
 import org.liborrow.webservice.model.entities.UserLight;
 import org.liborrow.webservice.model.transformer.contract.BookTransformer;
@@ -33,15 +34,15 @@ public class BorrowTransformerImpl implements BorrowTransformer {
 		borrowTransformed.setGetBackDate(borrow.getGetBackDate());
 		borrowTransformed.setExtended(borrow.getExtended());
 		borrowTransformed.setStartDate(borrow.getStartDate());
-		if(borrow.getBook().isPresent() && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
+		if(borrow.getItem() instanceof Book && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 			BookTransformer bookTransformer = new BookTransformerImpl();
-			borrowTransformed.setBookDTO(bookTransformer.toBookDTO(borrow.getBook().get(), false, Borrow.class.getSimpleName()));
+			borrowTransformed.setBookDTO(bookTransformer.toBookDTO((Book) borrow.getItem(), false, Borrow.class.getSimpleName()));
 		}
-		if(borrow.getMagazine().isPresent() && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
+		if(borrow.getItem() instanceof Magazine && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 			MagazineTransformer magazineTransformer = new MagazineTransformerImpl();
-			borrowTransformed.setMagazineDTO(magazineTransformer.toMagazineDTO( borrow.getMagazine().get(), false, Borrow.class.getSimpleName()));
+			borrowTransformed.setMagazineDTO(magazineTransformer.toMagazineDTO((Magazine) borrow.getItem(), false, Borrow.class.getSimpleName()));
 		}
 		if(borrow.getBorrower()!=null && (isParent||classParentName.equals(Magazine.class.getSimpleName())||classParentName.equals(Book.class.getSimpleName())))
 		{
@@ -72,13 +73,13 @@ public class BorrowTransformerImpl implements BorrowTransformer {
 		{
 //			borrowTransformed.setIdItem(borrow.getBookDTO().getId());
 			BookTransformer bookTransformer = new BookTransformerImpl();
-			borrowTransformed.setBook(bookTransformer.toBookEntity(borrow.getBookDTO(), false, Borrow.class.getSimpleName()));
+			borrowTransformed.setItem(bookTransformer.toBookEntity(borrow.getBookDTO(), false, Borrow.class.getSimpleName()));
 		}
 		if(borrow.getMagazineDTO() !=null && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 //			borrowTransformed.setIdItem(borrow.getMagazineDTO().getId());
 			MagazineTransformer magazineTransformer = new MagazineTransformerImpl();
-			borrowTransformed.setMagazine(magazineTransformer.toMagazineEntity( borrow.getMagazineDTO(), false, Borrow.class.getSimpleName()));
+			borrowTransformed.setItem(magazineTransformer.toMagazineEntity( borrow.getMagazineDTO(), false, Borrow.class.getSimpleName()));
 		}
 		if(borrow.getBorrower()!=null && (isParent||classParentName.equals(Magazine.class.getSimpleName())||classParentName.equals(Book.class.getSimpleName())))
 		{

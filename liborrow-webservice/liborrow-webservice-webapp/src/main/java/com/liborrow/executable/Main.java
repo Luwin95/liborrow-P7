@@ -17,6 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.liborrow.webservice.AbstractService;
 import com.liborrow.webservice.business.contract.ManagerFactory;
+import com.liborrow.webservice.services.ItemService;
 
 public class Main extends AbstractService{
 
@@ -34,6 +35,7 @@ public class Main extends AbstractService{
 		String string = "hello";
 		itemCriterias.setSimpleStringSearch(string);
 		String[] splitedString = itemCriterias.getSimpleStringSearch().split("\\s+");
+		itemCriterias.setStringSearch(true);
 		/*itemCriterias.setAuthorCriterias(new AuthorCriterias());
 		itemCriterias.setBookCriterias(new BookCriterias());
 		itemCriterias.setMagazineCriterias(new MagazineCriterias());
@@ -42,7 +44,10 @@ public class Main extends AbstractService{
 		itemCriterias.getAuthorCriterias().setFirstname(search);
 		itemCriterias.getAuthorCriterias().setLastname(search);
 		itemCriterias.getMagazineCriterias().setName(search);*/
-		SearchResponse searchResponse =vManagerFactory.getItemManager().searchWithSimpleString(itemCriterias, splitedString);
+//		SearchResponse searchResponse =vManagerFactory.getItemManager().searchWithSimpleString(itemCriterias, splitedString);
+//		List<BookDTO> books = searchResponse.getBooks();
+		ItemService itemService = new ItemService();
+		SearchResponse searchResponse = itemService.searchItem(itemCriterias);
 		List<BookDTO> books = searchResponse.getBooks();
 		/*List<AuthorDTO> authors = vManagerFactory.getAuthorManager().searchAuthor(itemCriterias);
 		List<MagazineDTO> magazines = vManagerFactory.getMagazineManager().searchMagazine(itemCriterias);*/

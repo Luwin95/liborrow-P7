@@ -101,8 +101,8 @@ public class BookTransformerImpl implements BookTransformer {
 	@Override
 	public Book toBookEntity(BookDTO book, boolean isParent, String classParentName) {
 		Book transformedBook = new Book();
-		transformedBook.setItemType("book");
-		transformedBook.setIdItemType(1L);
+//		transformedBook.setItemType("book");
+//		transformedBook.setIdItemType(1L);
 		if(book.getAlley()!=null)
 		{
 			transformedBook.setAlley(book.getAlley());

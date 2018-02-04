@@ -3,6 +3,7 @@ package com.liborrow.executable;
 import java.util.List;
 
 import org.liborrow.webservice.model.dto.BorrowDTO;
+import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,10 +20,13 @@ public class BorrowMain {
 		ManagerFactory vManagerFactory
 	    = vApplicationContext.getBean("managerFactory", ManagerFactory.class);
 		
-		List<BorrowDTO> borrowsDTO = vManagerFactory.getBorrowManager().findAllBorrows();
+		UserLightDTO user = vManagerFactory.getUserManager().findById(1);
+		
+		List<BorrowDTO> borrowsDTO = vManagerFactory.getBorrowManager().findOnGoingBorrowsByUser(user);
 		for(BorrowDTO borrow : borrowsDTO)
 		{
 			System.out.println(borrow.getId());
+			System.out.println(borrow.getStartDate().getDate()+"/"+borrow.getStartDate().getMonth()+"/"+borrow.getStartDate().getYear());
 			if(borrow.getId()==5)
 			{
 				vManagerFactory.getBorrowManager().markAsExtended(borrow);

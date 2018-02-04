@@ -105,8 +105,9 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 		for(Borrow borrow : book.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
-			Hibernate.initialize(borrow.getBook());
-			Hibernate.initialize(borrow.getMagazine());
+//			Hibernate.initialize(borrow.getBook());
+//			Hibernate.initialize(borrow.getMagazine());
+			Hibernate.initialize(borrow.getItem());
 		}
 	}
 	
@@ -126,8 +127,9 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 			for(Borrow borrow : book.getBorrows())
 			{
 				Hibernate.initialize(borrow.getBorrower());
-				Hibernate.initialize(borrow.getBook());
-				Hibernate.initialize(borrow.getMagazine());
+//				Hibernate.initialize(borrow.getBook());
+//				Hibernate.initialize(borrow.getMagazine());
+				Hibernate.initialize(borrow.getItem());
 			}
 		}
 		Hibernate.initialize(author.getCitizenships());

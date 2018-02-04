@@ -71,10 +71,10 @@
     </div>
     <footer class="footer bg-primary">
       	<div class="container">
-      		<span class="text-muted">Place sticky footer content here.</span>
+      		<div class="footer-text">
+      			<p class="">Copyright 2018 | All rights reserved to Ben's Company | <a href="https://github.com/Luwin95/liborrow">Contribuate on github <i class="fa fa-github" aria-hidden="true"></i></a></p>
+      		</div>
       	</div>
     </footer>
-   	
-	
 </body>
 </html>

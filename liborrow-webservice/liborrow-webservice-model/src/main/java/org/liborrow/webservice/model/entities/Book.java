@@ -22,9 +22,9 @@ import javax.persistence.OneToOne;
 @Entity(name="Book")
 public class Book extends Item implements Serializable{
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "book_id", updatable = false, nullable = false)
-	private Long id;
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Column(name = "book_id", updatable = false, nullable = false)
+//	private Long id;
 	
 	@Column(name = "title")
 	private String title;
@@ -43,12 +43,12 @@ public class Book extends Item implements Serializable{
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="author_book",
-			joinColumns= @JoinColumn(name="book_id"),
+			joinColumns= @JoinColumn(name="item_id"),
 			inverseJoinColumns = @JoinColumn(name="author_id"))
 	private Set<Author> authors = new HashSet<>();
 	
-	@OneToMany(mappedBy="book")
-	private Set<Borrow> borrows = new HashSet<>();
+//	@OneToMany(mappedBy="book")
+//	private Set<Borrow> borrows = new HashSet<>();
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
@@ -66,13 +66,13 @@ public class Book extends Item implements Serializable{
 		this.authors = authors;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 
 	public String getTitle() {
 		return title;
@@ -132,13 +132,13 @@ public class Book extends Item implements Serializable{
 		author.removeBook(this);
 	}
 
-	public Set<Borrow> getBorrows() {
-		return borrows;
-	}
-
-	public void setBorrows(Set<Borrow> borrows) {
-		this.borrows = borrows;
-	}
+//	public Set<Borrow> getBorrows() {
+//		return borrows;
+//	}
+//
+//	public void setBorrows(Set<Borrow> borrows) {
+//		this.borrows = borrows;
+//	}
 
 	public Image getImage() {
 		return image;

@@ -15,3 +15,21 @@ html, body
 {
 	height: 50px;
 }
+
+.footer-text
+{
+	text-align: center;
+	color: white;
+	font-size:15px;
+}
+
+.footer-text p
+{
+	margin-top: 25px; /* poussé de la moitié de hauteur de viewport */
+  	transform: translateY(50%); /* tiré de la moitié de sa propre hauteur */
+}
+
+.footer-text a
+{
+	color: white;
+}

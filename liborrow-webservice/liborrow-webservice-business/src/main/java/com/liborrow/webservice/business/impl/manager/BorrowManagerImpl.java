@@ -57,6 +57,7 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 			if(user != null)
 			{
 				UserLight userEntity = getTransformerFactory().getUserLightTransformer().toUserLightEntity(user, true, UserLight.class.getSimpleName());
+//				userLightEntityHibernateInitialization(userEntity);
 				List<Borrow> borrows = borrowRepository.searchOnGoingBorrowByUserAccount(userEntity);
 				List<BorrowDTO> borrowsDTO = new ArrayList<>();
 				for(Borrow borrow : borrows)
@@ -91,14 +92,21 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	public void borrowEntityHibernateInitialization(Borrow borrow)
 	{
 		Hibernate.initialize(borrow.getBorrower());
-		Hibernate.initialize(borrow.getMagazine());
-		Hibernate.initialize(borrow.getBook());
+//		Hibernate.initialize(borrow.getMagazine());
+//		Hibernate.initialize(borrow.getBook());
+		Hibernate.initialize(borrow.getItem());
 		Hibernate.initialize(borrow.getBorrower().getCitizenship());
 	}
 	
 	public void userEntityHibernateInitialization(UserAccount user)
 	{
 		Hibernate.initialize(user.getCitizenship());
+	}
+	
+	public void userLightEntityHibernateInitialization(UserLight user)
+	{
+		Hibernate.initialize(user.getCitizenship());
+//		Hibernate.initialize(user.getBorrows());
 	}
 	
 	@Override

@@ -85,8 +85,10 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	}
 	
 	@Override
+	@Transactional(readOnly = true)
 	public UserLightDTO findById(long idUser) {
 		UserLight user = userLightRepository.findOne(idUser);
+		userEntityHibernateInitialization(user);
 		UserLightDTO userChosen = getTransformerFactory().getUserLightTransformer().toUserLightDto(user, true, UserLight.class.getSimpleName());
 		return userChosen;
 	}
@@ -104,8 +106,9 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 		Hibernate.initialize(user.getBorrows());
 		for(Borrow borrow : user.getBorrows())
 		{
-			Hibernate.initialize(borrow.getBook());
-			Hibernate.initialize(borrow.getMagazine());
+//			Hibernate.initialize(borrow.getBook());
+//			Hibernate.initialize(borrow.getMagazine());
+			Hibernate.initialize(borrow.getItem());
 			Hibernate.initialize(borrow.getBorrower());
 		}
 	}

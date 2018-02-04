@@ -80,7 +80,7 @@
 							  </s:url>
 						      <td><a href="${magazineUrl}"><s:property value="name"/></a></td>
 						      <td><s:property value="editionNumber"/></td>
-						      <td><s:property value="publishDate"/></td>
+						      <td><s:property value="publishDate.toGregorianCalendar().getTime()"/></td>
 						      <td><s:property value="remainingCount"/></td>
 						    </tr>
 						</s:iterator>
@@ -128,30 +128,24 @@
 	  </div>
 	  <div class="col-sm-3">
 	    <div class="card">
-	      <div class="card-block">
 	        <h3 class="card-title">Mes prêts</h3>
-	        <p class="card-text"> 
-		        <ul class="list-group list-group-flush">
-				    <li class="list-group-item">
-				    	<h3 class="card-title">Nombre de prêt en cours</h3>
-				    	<div class="row">
-				    		<div class="nbCircle">
-				    			<p><s:property value="nbBorrows"/></p>
-				    		</div>
-				    	</div>
-				    </li>
-				    <li class="list-group-item <s:if test="nbLate>0">bg-danger</s:if>">
-				    	<h3 class="card-title">Nombre de prêt en retard</h3>
-				    	<div class="row">
-				    		<div class="nbCircle">
-				    			<p><s:property value="nbLate"/></p>
-				    		</div>
-				    	</div>
-				    </li>
-				</ul>
-		    </p>
-	        <a href="<s:url action="currentBorrows" namespace="/liborrow"/>" class="btn btn-primary">Mes prêts</a>
-	      </div>
+	        <ul class="list-group list-group-flush">
+			    <li class="list-group-item">
+			    	<h5 class="card-title">Nombre de prêt en cours</h5>
+	    			<p><s:property value="nbBorrows"/></p>
+			    </li>
+			    <li class="list-group-item <s:if test="nbLate>0">bg-danger</s:if>">
+			    	<h5 class="card-title">Nombre de prêt en retard</h5>
+			    	<div class="row">
+			    		<div class="nbCircle">
+			    			<p><s:property value="nbLate"/></p>
+			    		</div>
+			    	</div>
+			    </li>
+			    <li class="list-group-item">
+			    	<a href="<s:url action="currentBorrows" namespace="/liborrow"/>" class="btn btn-primary">Mes prêts</a>
+			    </li>
+			</ul>
 	    </div>
 	  </div>
 	</div>

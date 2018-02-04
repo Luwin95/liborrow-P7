@@ -14,19 +14,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 
 @Entity
-@Inheritance( strategy = InheritanceType.JOINED)
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Item implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "item_id", updatable = false, nullable = false)
-	private Long idItem;
+	private Long id;
 	
 	@Column(name="itemref")
 	private String itemRef;
@@ -43,14 +45,8 @@ public abstract class Item implements Serializable{
 	@Column(name="place")
 	private String place;
 	
-	@Column(name = "item_type")
-	private Long idItemType;
-	
-	@Column(name = "item_type_string")
-	private String itemType;
-	
-//	@OneToMany(mappedBy="item")
-//	private Set<Borrow> borrows = new HashSet<>();
+	@OneToMany(mappedBy="item")
+	private Set<Borrow> borrows;
 
 	public Item() {}
 	
@@ -63,12 +59,12 @@ public abstract class Item implements Serializable{
 		this.place = place;
 	}
 
-	public Long getIdItem() {
-		return idItem;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdItem(Long idItem) {
-		this.idItem = idItem;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getItemRef() {
@@ -111,28 +107,11 @@ public abstract class Item implements Serializable{
 		this.place = place;
 	}
 
-	public String getItemType() {
-		return itemType;
+	public Set<Borrow> getBorrows() {
+		return borrows;
 	}
 
-	public void setItemType(String itemType) {
-		this.itemType = itemType;
+	public void setBorrows(Set<Borrow> borrows) {
+		this.borrows = borrows;
 	}
-
-	public Long getIdItemType() {
-		return idItemType;
-	}
-
-	public void setIdItemType(Long idItemType) {
-		this.idItemType = idItemType;
-	}
-	
-
-//	public Set<Borrow> getBorrows() {
-//		return borrows;
-//	}
-//
-//	public void setBorrows(Set<Borrow> borrows) {
-//		this.borrows = borrows;
-//	}
 }

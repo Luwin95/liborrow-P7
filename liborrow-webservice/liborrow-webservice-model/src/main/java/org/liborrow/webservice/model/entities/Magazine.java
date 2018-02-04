@@ -22,9 +22,9 @@ import javax.persistence.Table;
 @Table(name="magazine")
 public class Magazine extends Item implements Serializable{
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "magazine_id", updatable = false, nullable = false)
-	private Long id;
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Column(name = "magazine_id", updatable = false, nullable = false)
+//	private Long id;
 	
 	@Column(name = "editionnumber")
 	private int editionNumber;
@@ -35,8 +35,8 @@ public class Magazine extends Item implements Serializable{
 	@Column(name="publishdate")
 	private Date publishDate;
 	
-	@OneToMany(mappedBy="magazine")
-	private Set<Borrow> borrows = new HashSet<>();
+//	@OneToMany(mappedBy="magazine")
+//	private Set<Borrow> borrows = new HashSet<>();
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
@@ -52,13 +52,13 @@ public class Magazine extends Item implements Serializable{
 	}
 	
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 
 	public int getEditionNumber() {
 		return editionNumber;
@@ -84,13 +84,13 @@ public class Magazine extends Item implements Serializable{
 		this.publishDate = publishDate;
 	}
 
-	public Set<Borrow> getBorrows() {
-		return borrows;
-	}
-
-	public void setBorrows(Set<Borrow> borrows) {
-		this.borrows = borrows;
-	}
+//	public Set<Borrow> getBorrows() {
+//		return borrows;
+//	}
+//
+//	public void setBorrows(Set<Borrow> borrows) {
+//		this.borrows = borrows;
+//	}
 
 	public Image getImage() {
 		return image;

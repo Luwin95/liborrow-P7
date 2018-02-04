@@ -10,12 +10,21 @@
 		<s:head />
 	</head>
 	<body>
-		<s:if test="%{message!=null}"><div class="alert alert-danger"><s:property value="message"/></div></s:if>
-		<s:form action="login">
-			<s:textfield label="Email" name="email" cssClass="form-control" />
-			<s:password label="Password" name="plainPassword" cssClass="form-control"/>
-			<s:submit cssClass="btn btn-warning"/>
-		</s:form>
+		<div class="row justify-content-sm-center">
+			<div class="col-sm-4">
+				<div class="card">
+					<div class="card-block">
+							<s:if test="%{message!=null}"><div class="alert alert-danger"><s:property value="message"/></div></s:if>
+							<s:form action="login justify-content-sm-center">
+								<s:textfield label="Email" name="email" cssClass="form-control" />
+								<s:password label="Password" name="plainPassword" cssClass="form-control"/>
+								<s:submit value="Se connecter" cssClass="btn btn-warning"/>
+							</s:form>
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
 	

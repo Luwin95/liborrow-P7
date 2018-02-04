@@ -17,6 +17,6 @@ public interface BorrowRepository extends CrudRepository<Borrow, Long> {
 	
 	List<Borrow> findByGetBackDate(Date getBackDate);
 	
-	@Query("SELECT b FROM Borrow b WHERE b.borrower = (:borrower) AND b.getBackDate=null")
+	@Query("SELECT b FROM Borrow b join fetch b.item WHERE b.borrower = (:borrower) AND b.getBackDate=null")
 	List<Borrow> searchOnGoingBorrowByUserAccount(@Param("borrower") UserLight borrower);
 }
