@@ -109,7 +109,7 @@
 						      <td><s:property value="firstname"/></td>
 						      <td>
 						      	<ul>
-						      		<s:iterator value="citizenships"><li><s:property value="countryname"/></li></s:iterator>
+						      		<s:iterator value="citizenships"><li><s:property value="countryName"/></li></s:iterator>
 						      	</ul>
 						      </td>
 						      <td>
