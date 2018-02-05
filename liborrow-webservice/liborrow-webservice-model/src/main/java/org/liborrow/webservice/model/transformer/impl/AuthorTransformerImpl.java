@@ -28,21 +28,35 @@ public class AuthorTransformerImpl implements AuthorTransformer {
 		{
 			authorTransformed.setBirth(author.getBirth());
 		}
-		if(author.getBooks()!=null && (authorDependenciesEnum.equals(AuthorDependenciesEnum.AUTHOR_BOOKS)))
+		if(author.getBooks()!=null)
 		{
-			Set<BookDTO> booksTransformed = new HashSet<>();
-			BookTransformerImpl bookTransformer = new BookTransformerImpl();
-			for(Book book : author.getBooks())
+			for(AuthorDependenciesEnum authorDependency : authorDependenciesEnum)
 			{
-				booksTransformed.add(bookTransformer.toBookDTO(book,false, authorTransformed.getClass().getName()));
+				if(authorDependency.equals(AuthorDependenciesEnum.AUTHOR_BOOKS))
+				{
+					Set<BookDTO> booksTransformed = new HashSet<>();
+					BookTransformerImpl bookTransformer = new BookTransformerImpl();
+					for(Book book : author.getBooks())
+					{
+						booksTransformed.add(bookTransformer.toBookDTO(book,false, authorTransformed.getClass().getName()));
+					}
+					authorTransformed.setBooks(booksTransformed);
+				}
 			}
-			authorTransformed.setBooks(booksTransformed);
+			
 		}
-		if(author.getCitizenships()!=null && (authorDependenciesEnum.equals(AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS)))
+		if(author.getCitizenships()!=null)
 		{
-			Set<CitizenshipDTO> citizenshipsTransformed = new HashSet<>();
-			CitizenshipTransformer citizenshipTransformer = new CitizenshipTransformerImpl();
-			citizenshipsTransformed.addAll(citizenshipTransformer.toCitizenshipsDTO(author.getCitizenships(), false, authorTransformed.getClass().getName()));
+			for(AuthorDependenciesEnum authorDependency : authorDependenciesEnum)
+			{
+				if(authorDependency.equals(AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS))
+				{
+					Set<CitizenshipDTO> citizenshipsTransformed = new HashSet<>();
+					CitizenshipTransformer citizenshipTransformer = new CitizenshipTransformerImpl();
+					citizenshipsTransformed.addAll(citizenshipTransformer.toCitizenshipsDTO(author.getCitizenships(), false, authorTransformed.getClass().getName()));
+					authorTransformed.setCitizenships(citizenshipsTransformed);
+				}
+			}
 		}
 		if((Integer) author.getDeath()!=null)
 		{

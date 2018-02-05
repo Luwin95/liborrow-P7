@@ -48,7 +48,7 @@ public class IndexAction extends AbstractAction implements SessionAware {
         	{
         		nbBorrows++;
         	}
-        	if(now.compareTo(borrow.getEndDate().toGregorianCalendar())>0)
+        	if(borrow.getGetBackDate() == null && now.compareTo(borrow.getEndDate().toGregorianCalendar())>0)
         	{
         		nbLate++;
         	}

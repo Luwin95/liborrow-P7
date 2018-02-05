@@ -40,7 +40,6 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	}
 	
 	public List<BorrowDTO> getAllOnGoingBorrowByUserLogged(UserLightDTO user) {
-		// TODO Auto-generated method stub
 		return getDaoFactory().getBorrowDao().getAllOnGoingBorrowByUserLogged(user);
 	}
 	
