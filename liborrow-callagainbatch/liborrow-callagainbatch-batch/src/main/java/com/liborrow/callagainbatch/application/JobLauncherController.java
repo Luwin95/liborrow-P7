@@ -18,6 +18,9 @@ public class JobLauncherController {
 
 	@Autowired
 	Job firstBatchJob;
+	
+	@Autowired
+	Job callagainJob;
 
 	@RequestMapping("/launchjob")
 	public String handle() throws Exception {
@@ -31,6 +34,20 @@ public class JobLauncherController {
 			logger.info(e.getMessage());
 		}
 
+		return "Done";
+	}
+	
+	@RequestMapping("/callagainJob")
+	public String handle1() throws Exception {
+
+		Logger logger = LoggerFactory.getLogger(this.getClass());
+		try {
+			JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
+					.toJobParameters();
+			jobLauncher.run(callagainJob, jobParameters);
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
 		return "Done";
 	}
 }

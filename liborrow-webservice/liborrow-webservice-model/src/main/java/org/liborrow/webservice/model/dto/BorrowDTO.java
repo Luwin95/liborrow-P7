@@ -1,10 +1,9 @@
 package org.liborrow.webservice.model.dto;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-public class BorrowDTO {
+import java.util.Date;
+
+public class BorrowDTO{
 	
 	private long id;
 	

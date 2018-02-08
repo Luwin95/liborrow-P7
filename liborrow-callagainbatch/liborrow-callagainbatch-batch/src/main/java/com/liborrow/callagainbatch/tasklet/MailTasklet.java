@@ -16,7 +16,7 @@ public class MailTasklet extends AbstractJob implements Tasklet, InitializingBea
 	
 	public RepeatStatus execute(StepContribution contribution,
             ChunkContext chunkContext) throws Exception {
-		getManagerFactory().getMailManager().sendMail();
+		getManagerFactory().getMailManager().sendTestMail();
 		return RepeatStatus.FINISHED;
 	}
 

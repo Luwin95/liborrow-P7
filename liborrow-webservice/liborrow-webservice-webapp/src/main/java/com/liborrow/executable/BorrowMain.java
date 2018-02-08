@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.liborrow.webservice.business.contract.ManagerFactory;
+import com.liborrow.webservice.services.BorrowService;
 
 public class BorrowMain {
 
@@ -21,8 +22,9 @@ public class BorrowMain {
 	    = vApplicationContext.getBean("managerFactory", ManagerFactory.class);
 		
 //		UserLightDTO user = vManagerFactory.getUserManager().findById(1);
-		
-		List<BorrowDTO> borrowsDTO = vManagerFactory.getBorrowManager().findLateBorrows();
+		BorrowService borrowService = new BorrowService();
+		List<BorrowDTO> borrowsDTO = borrowService.findLateBorrows();
+//		List<BorrowDTO> borrowsDTO = vManagerFactory.getBorrowManager().findLateBorrows();
 		for(BorrowDTO borrow : borrowsDTO)
 		{
 			System.out.println(borrow.getId());

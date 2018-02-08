@@ -266,6 +266,7 @@ INSERT INTO author_book(author_id, item_id) VALUES
 INSERT INTO user_account(email, password, firstname, lastname, address, postcode, phonenumber, citizenship_id, role) VALUES
 	('test@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'test', 'test', '10 Avenue du test', '95600', '0123456789', 75, 'ROLE_USER'),
 	('new@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'new', 'lenouveau', '25 rue des maronniers', '78000', '0123456789', 75, 'ROLE_LIBRARIAN');
+	('b.aubin95@live.fr', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'nouveau', 'nouveau', '25 rue des maronniers', '78000', '0123456789', 75, 'ROLE_USER');
 	
 INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
 	( '2017-10-15', 'true', 1,1);
@@ -290,6 +291,12 @@ INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
     
 INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
 	('2018-01-02', 'false', 1,1);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2017-10-15', 'true', 3,2);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2017-10-15', 'true', 3,4);
 	
 INSERT INTO image(alt, path, title) VALUES
 	('Hello world cover', 'Atlas.jpg', 'Hello world cover');

@@ -1,12 +1,12 @@
 package com.liborrow.callagainbatch.business.impl;
 
-import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.liborrow.callagainbatch.consumer.contract.DaoFactory;
 
 public class AbstractManagerImpl {
 	private DaoFactory daoFactory;
-	private MailSender mailSender;
+	private JavaMailSender mailSender;
 
 	public DaoFactory getDaoFactory() {
 		return daoFactory;
@@ -16,11 +16,11 @@ public class AbstractManagerImpl {
 		this.daoFactory = daoFactory;
 	}
 
-	public MailSender getMailSender() {
+	public JavaMailSender getMailSender() {
 		return mailSender;
 	}
 
-	public void setMailSender(MailSender mailSender) {
+	public void setMailSender(JavaMailSender mailSender) {
 		this.mailSender = mailSender;
 	}
 }
