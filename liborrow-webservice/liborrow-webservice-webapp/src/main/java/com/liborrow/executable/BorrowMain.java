@@ -20,9 +20,9 @@ public class BorrowMain {
 		ManagerFactory vManagerFactory
 	    = vApplicationContext.getBean("managerFactory", ManagerFactory.class);
 		
-		UserLightDTO user = vManagerFactory.getUserManager().findById(1);
+//		UserLightDTO user = vManagerFactory.getUserManager().findById(1);
 		
-		List<BorrowDTO> borrowsDTO = vManagerFactory.getBorrowManager().findOnGoingBorrowsByUser(user);
+		List<BorrowDTO> borrowsDTO = vManagerFactory.getBorrowManager().findLateBorrows();
 		for(BorrowDTO borrow : borrowsDTO)
 		{
 			System.out.println(borrow.getId());
@@ -32,5 +32,6 @@ public class BorrowMain {
 				vManagerFactory.getBorrowManager().markAsExtended(borrow);
 			}
 		}
+		
 	}		
 }
