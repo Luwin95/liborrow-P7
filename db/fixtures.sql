@@ -265,7 +265,7 @@ INSERT INTO author_book(author_id, item_id) VALUES
 	
 INSERT INTO user_account(email, password, firstname, lastname, address, postcode, phonenumber, citizenship_id, role) VALUES
 	('test@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'test', 'test', '10 Avenue du test', '95600', '0123456789', 75, 'ROLE_USER'),
-	('new@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'new', 'lenouveau', '25 rue des maronniers', '78000', '0123456789', 75, 'ROLE_LIBRARIAN');
+	('new@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'new', 'lenouveau', '25 rue des maronniers', '78000', '0123456789', 75, 'ROLE_LIBRARIAN'),
 	('b.aubin95@live.fr', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'nouveau', 'nouveau', '25 rue des maronniers', '78000', '0123456789', 75, 'ROLE_USER');
 	
 INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES

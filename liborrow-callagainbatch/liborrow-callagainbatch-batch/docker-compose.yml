@@ -1,0 +1,15 @@
+version: "3"
+services:   
+  callagainbatch:
+    image: liborrow-callagainbatch
+    container_name: callagainbatch
+    deploy:
+      replicas: 1
+    hostname: callagainbatch
+    ports:
+      - "8888:8888"
+    networks:
+      - webnet
+
+networks:
+  webnet:

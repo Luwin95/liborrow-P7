@@ -44,6 +44,18 @@ public class BorrowService extends AbstractService {
 	}
 	
 	@WebMethod
+	public void updateBorrow(BorrowDTO borrow)
+	{
+		getManagerFactory().getBorrowManager().updateBorrow(borrow);
+	}
+	
+	@WebMethod
+	public void deleteBorrow(BorrowDTO borrow)
+	{
+		getManagerFactory().getBorrowManager().deleteBorrow(borrow);
+	}
+
+	@WebMethod
 	public List<BorrowDTO> findLateBorrows()
 	{
 		return getManagerFactory().getBorrowManager().findLateBorrows();

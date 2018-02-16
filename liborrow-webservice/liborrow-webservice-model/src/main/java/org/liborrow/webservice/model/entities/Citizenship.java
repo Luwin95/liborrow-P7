@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity(name="Citizenship")
@@ -34,6 +35,13 @@ public class Citizenship implements Serializable{
 		this.authors=authors;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getCountryName() {
 		return countryName;
@@ -42,7 +50,7 @@ public class Citizenship implements Serializable{
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
-	
+
 	@XmlTransient 
 	public Set<Author> getAuthors() {
 		return authors;

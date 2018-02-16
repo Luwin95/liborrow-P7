@@ -11,13 +11,19 @@ import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.Citizenship;
+import org.liborrow.webservice.model.utilsobject.AuthorDependenciesEnum;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.liborrow.webservice.business.contract.manager.AuthorManager;
+import com.liborrow.webservice.consumer.repository.AuthorRepository;
 
 public class AuthorManagerImpl extends AbstractManagerImpl implements AuthorManager {
 
+	@Autowired
+	AuthorRepository authorRepository;
+	
 	@Override
 	@Transactional(readOnly = true)
 	public List<AuthorDTO> searchAuthor(ItemCriterias itemCriterias) {
@@ -26,9 +32,30 @@ public class AuthorManagerImpl extends AbstractManagerImpl implements AuthorMana
 		if(authors!=null && authors.size()!=0)
 		{
 			authorListEntityHibernateLazyInitialization(authors);
-			authorsDTO.addAll(getTransformerFactory().getAuthorTransformer().toAuthorsDTO(authors));
+			authorsDTO.addAll(getTransformerFactory().getAuthorTransformer().toAuthorsDTO(authors,AuthorDependenciesEnum.AUTHOR_BOOKS, AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS));
 		}
 		return authorsDTO;
+	}
+	
+	@Override
+	@Transactional
+	public void createAuthor(AuthorDTO author) {
+		Author authorEntity = getTransformerFactory().getAuthorTransformer().toAuthorEntity(author, AuthorDependenciesEnum.AUTHOR_BOOKS, AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS);
+		authorRepository.save(authorEntity);
+	}
+	
+	@Override
+	@Transactional
+	public void updateAuthor(AuthorDTO author) {
+		Author authorEntity = getTransformerFactory().getAuthorTransformer().toAuthorEntity(author, AuthorDependenciesEnum.AUTHOR_BOOKS, AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS);
+		authorRepository.save(authorEntity);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteAuthor(AuthorDTO author) {
+		Author authorEntity = getTransformerFactory().getAuthorTransformer().toAuthorEntity(author, AuthorDependenciesEnum.AUTHOR_BOOKS, AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS);
+		authorRepository.delete(authorEntity);
 	}
 	
 	@Override

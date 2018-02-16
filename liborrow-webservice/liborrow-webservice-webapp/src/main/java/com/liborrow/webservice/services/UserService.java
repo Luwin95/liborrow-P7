@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import org.liborrow.webservice.model.dto.UserDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.utilsobject.UserCriterias;
 
@@ -29,5 +30,23 @@ public class UserService extends AbstractService {
 	public UserLightDTO findUserByid(long idUser)
 	{
 		return getManagerFactory().getUserManager().findById(idUser);
+	}
+	
+	@WebMethod
+	public void createUser(UserDTO user)
+	{
+		getManagerFactory().getUserManager().createUser(user);
+	}
+	
+	@WebMethod
+	public void updateUser(UserDTO user)
+	{
+		getManagerFactory().getUserManager().updateUser(user);
+	}
+	
+	@WebMethod
+	public void deleteUser(UserDTO user)
+	{
+		getManagerFactory().getUserManager().deleteUser(user);
 	}
 }

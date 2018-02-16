@@ -90,4 +90,40 @@ public class ItemService extends AbstractService{
 	{
 		return getManagerFactory().getItemManager().getLastFiveItems();
 	}
+	
+	@WebMethod
+	public void createBook(BookDTO book)
+	{
+		getManagerFactory().getBookManager().createBook(book);
+	}
+	
+	@WebMethod
+	public void updateBook(BookDTO book)
+	{
+		getManagerFactory().getBookManager().updateBook(book);
+	}
+	
+	@WebMethod
+	public void deleteBook(BookDTO book)
+	{
+		getManagerFactory().getBookManager().deleteBook(book);
+	}
+	
+	@WebMethod
+	public void createMagazine(MagazineDTO magazine)
+	{
+		getManagerFactory().getMagazineManager().createMagazine(magazine);
+	}
+	
+	@WebMethod
+	public void updateMagazine(MagazineDTO magazine)
+	{
+		getManagerFactory().getMagazineManager().updateMagazine(magazine);
+	}
+	
+	@WebMethod
+	public void deleteMagazine(MagazineDTO magazine)
+	{
+		getManagerFactory().getMagazineManager().deleteMagazine(magazine);
+	}
 }

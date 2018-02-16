@@ -15,4 +15,6 @@ public interface TransformerFactory {
 	void setUserLightTransformer(UserLightTransformer userLightTransformer);
 	ImageTransformer getImageTransformer();
 	void setImageTransformer(ImageTransformer imageTransformer);
+	UserAccountTransformer getUserAccountTransformer();
+	void setUserAccountTransformer(UserAccountTransformer userAccountTransformer);
 }

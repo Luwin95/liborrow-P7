@@ -2,7 +2,10 @@ package org.liborrow.webservice.model.entities;
 
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name="User")
@@ -45,9 +49,12 @@ public class UserAccount implements Serializable{
 	@Column(name="role")
 	private String role;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name = "citizenship_id")
 	private Citizenship citizenship;
+	
+	@OneToMany(mappedBy="borrower")
+	private Set<Borrow> borrows = new HashSet<>();
 
 	public UserAccount() {}
 	
@@ -140,5 +147,13 @@ public class UserAccount implements Serializable{
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public Set<Borrow> getBorrows() {
+		return borrows;
+	}
+
+	public void setBorrows(Set<Borrow> borrows) {
+		this.borrows = borrows;
 	}
 }

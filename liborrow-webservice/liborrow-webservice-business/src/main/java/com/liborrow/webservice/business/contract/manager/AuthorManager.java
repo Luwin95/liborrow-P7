@@ -12,4 +12,7 @@ public interface AuthorManager {
 	List<AuthorDTO> searchAuthor(ItemCriterias itemCriterias);
 	void authorEntityHibernateLazyInitialization(Author author);
 	void authorListEntityHibernateLazyInitialization(Collection<Author> authors);
+	void createAuthor(AuthorDTO author);
+	void updateAuthor(AuthorDTO author);
+	void deleteAuthor(AuthorDTO author);
 }

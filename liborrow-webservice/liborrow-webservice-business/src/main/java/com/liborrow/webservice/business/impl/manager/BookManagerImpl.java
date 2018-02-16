@@ -59,7 +59,6 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		List<BookDTO> books = new ArrayList<>();
 		if(books!=null && booksEntities.size()!=0)
 		{
-			//bookListEntityHibernateInitialization(booksEntities);
 			books.addAll(getTransformerFactory().getBookTransformer().toBooksDTO(booksEntities,true, "org.liborrow.webservice.model.dto.BookDTO"));
 		}
 		return books;
@@ -83,10 +82,29 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		for(Borrow borrow : book.getBorrows())
 		{
 			Hibernate.initialize(borrow.getBorrower());
-//			Hibernate.initialize(borrow.getBook());
-//			Hibernate.initialize(borrow.getMagazine());
 			Hibernate.initialize(borrow.getItem());
 		}
+	}
+	
+	@Override
+	@Transactional
+	public void createBook(BookDTO book) {
+		Book bookEntity = getTransformerFactory().getBookTransformer().toBookEntity(book, true, Book.class.getSimpleName());
+		bookRepository.save(bookEntity);
+	}
+	
+	@Override
+	@Transactional
+	public void updateBook(BookDTO book) {
+		Book bookEntity = getTransformerFactory().getBookTransformer().toBookEntity(book, true, Book.class.getSimpleName());
+		bookRepository.save(bookEntity);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteBook(BookDTO book) {
+		Book bookEntity = getTransformerFactory().getBookTransformer().toBookEntity(book, true, Book.class.getSimpleName());
+		bookRepository.delete(bookEntity);
 	}
 	
 	@Override

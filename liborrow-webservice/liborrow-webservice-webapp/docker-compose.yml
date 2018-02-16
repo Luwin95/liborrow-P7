@@ -1,48 +1,26 @@
 version: "3"
 services:
-  webservice:
-    image: luwin95/liborrow-webservice:latest
+  webservice-db:
+    image: liborrow-webservice-db
+    container_name: postgres
     deploy:
       replicas: 1
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 500M
-      restart_policy:
-        condition: on-failure
+    hostname: postgres
     ports:
-      - "8080:8080"
+      - "5432:5432"
     networks:
       - webnet
       
-  webinterface:
-    image: luwin95/liborrow-webinterface:latest
+  webservice-web:
+    image: liborrow-webservice-web
+    container_name: webservice
     deploy:
       replicas: 1
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 500M
-      restart_policy:
-        condition: on-failure
+    hostname: webservice
     ports:
       - "8080:8080"
     networks:
       - webnet
-      
-  callagainbatch:
-    image: luwin95/liborrow-callagainbatch:latest
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 500M
-      restart_policy:
-        condition: on-failure
-    ports:
-      - "8080:8080"
-    networks:
-      - webnet
+
 networks:
   webnet:

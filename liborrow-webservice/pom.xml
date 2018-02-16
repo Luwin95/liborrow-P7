@@ -25,6 +25,7 @@
   	<postgresql.version>42.1.4</postgresql.version>
   	<dbcp-version>1.4</dbcp-version>
   	<log4j2.version>2.10.0</log4j2.version>
+  	<jaxws.version>2.3.0</jaxws.version>
   </properties>
   
   <dependencyManagement>
@@ -125,8 +126,6 @@
 			    <artifactId>log4j-api</artifactId>
 			    <version>${log4j2.version}</version>
 			</dependency>
-          
-        
   	</dependencies>
   </dependencyManagement>
   <build>

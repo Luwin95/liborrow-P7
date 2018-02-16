@@ -116,12 +116,17 @@
 								      <td><s:property value="firstname"/></td>
 								      <td>
 								      	<ul>
-								      		<s:iterator value="citizenships"><li><s:property value="countryname"/></li></s:iterator>
+								      		<s:iterator value="citizenships"><li><s:property value="countryName"/></li></s:iterator>
 								      	</ul>
 								      </td>
 								      <td>
 								      	<ul>
-								      		<s:iterator value="books"><li><s:property value="title"/> chez <s:property value="editor"/></li></s:iterator>
+								      		<s:iterator value="books">
+								      			<s:url action="book" var="authorBookUrl" namespace="/liborrow" >
+													<s:param name="idBook"><s:property value="id"/></s:param>
+												</s:url>
+								      			<li><a href="${authorBookUrl}"><s:property value="title"/></a> chez <s:property value="editor"/></li>
+								      		</s:iterator>
 								      	</ul>
 								      </td>
 								    </tr>
@@ -150,7 +155,7 @@
 									  </s:url>
 								      <td><a href="${magazineUrl}"><s:property value="name"/></a></td>
 								      <td><s:property value="editionNumber"/></td>
-								      <td><s:property value="publishDate"/></td>
+								      <td><s:property value="publishDate.toGregorianCalendar().getTime()"/></td>
 								      <td><s:property value="remainingCount"/></td>
 								      <s:url action="addToBox" namespace="/librarian" var="urlAddToBoxMag">
 								      	<s:param name="objectType">magazine</s:param>

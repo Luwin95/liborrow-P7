@@ -16,6 +16,7 @@ public class CitizenshipTransformerImpl implements CitizenshipTransformer {
 	@Override
 	public CitizenshipDTO toCitizenshipDTO(Citizenship citizenship, boolean isParent, String classParentName) {
 		CitizenshipDTO citizenshipTransformed = new CitizenshipDTO();
+		citizenshipTransformed.setId(citizenship.getId());
 		citizenshipTransformed.setCountryName(citizenship.getCountryName());
 		
 		if(citizenship.getAuthors() !=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.CitizenshipDTO")))
@@ -45,7 +46,7 @@ public class CitizenshipTransformerImpl implements CitizenshipTransformer {
 	public Citizenship toCitizenshipEntity(CitizenshipDTO citizenship, boolean isParent, String classParentName) {
 		Citizenship citizenshipTransformed = new Citizenship();
 		citizenshipTransformed.setCountryName(citizenship.getCountryName());
-		
+		citizenshipTransformed.setId(citizenship.getId());
 		if(citizenship.getAuthors() !=null && (isParent||classParentName.equals(Citizenship.class.getSimpleName())))
 		{
 			Set<Author> authorsTransformed= new HashSet<>();

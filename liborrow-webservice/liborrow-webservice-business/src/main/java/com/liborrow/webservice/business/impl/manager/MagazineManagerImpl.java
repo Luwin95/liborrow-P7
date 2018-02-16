@@ -64,6 +64,24 @@ public class MagazineManagerImpl extends AbstractManagerImpl implements Magazine
 		return magazinesDTO;
 	}
 	
+	@Override
+	public void createMagazine(MagazineDTO magazine) {
+		Magazine magazineEntity = getTransformerFactory().getMagazineTransformer().toMagazineEntity(magazine, true, Magazine.class.getSimpleName());
+		magazineRepository.save(magazineEntity);
+	}
+	
+	@Override
+	public void updateMagazine(MagazineDTO magazine) {
+		Magazine magazineEntity = getTransformerFactory().getMagazineTransformer().toMagazineEntity(magazine, true, Magazine.class.getSimpleName());
+		magazineRepository.save(magazineEntity);
+	}
+	
+	@Override
+	public void deleteMagazine(MagazineDTO magazine) {
+		Magazine magazineEntity = getTransformerFactory().getMagazineTransformer().toMagazineEntity(magazine, true, Magazine.class.getSimpleName());
+		magazineRepository.delete(magazineEntity);
+	}
+	
 	private void magazineEntityHibernateInitialization(Magazine magazine)
 	{
 		Hibernate.initialize(magazine.getBorrows());

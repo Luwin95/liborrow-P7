@@ -13,4 +13,7 @@ public interface BookManager {
 	void bookEntityHibernateInitialization(Book book);
 	void bookListEntityHibernateInitialization(Collection<Book> books);
 	List<BookDTO> searchBook(ItemCriterias itemCriterias);
+	void createBook(BookDTO book);
+	void updateBook(BookDTO book);
+	void deleteBook(BookDTO book);
 }

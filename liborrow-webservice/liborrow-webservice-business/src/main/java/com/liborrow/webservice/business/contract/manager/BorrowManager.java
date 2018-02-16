@@ -11,5 +11,7 @@ public interface BorrowManager {
 	List<BorrowDTO> findAllBorrows();
 	boolean markAsExtended(BorrowDTO borrow);
 	void newBorrow(BorrowDTO borrow);
+	void updateBorrow(BorrowDTO borrow);
+	void deleteBorrow(BorrowDTO borrow);
 	List<BorrowDTO> findLateBorrows();
 }

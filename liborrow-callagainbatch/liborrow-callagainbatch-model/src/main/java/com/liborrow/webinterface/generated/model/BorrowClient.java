@@ -42,6 +42,33 @@ public interface BorrowClient {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<com.liborrow.webinterface.generated.model.BorrowDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAllBorrows", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllBorrows")
+    @ResponseWrapper(localName = "getAllBorrowsResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllBorrowsResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/getAllBorrowsRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/getAllBorrowsResponse")
+    public List<BorrowDTO> getAllBorrows();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "markBorrowAsExtended", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.MarkBorrowAsExtended")
+    @ResponseWrapper(localName = "markBorrowAsExtendedResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.MarkBorrowAsExtendedResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/markBorrowAsExtendedRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/markBorrowAsExtendedResponse")
+    public boolean markBorrowAsExtended(
+        @WebParam(name = "arg0", targetNamespace = "")
+        BorrowDTO arg0);
+
+    /**
+     * 
      * @param arg0
      */
     @WebMethod
@@ -78,32 +105,5 @@ public interface BorrowClient {
     public BorrowDTO getBorrow(
         @WebParam(name = "arg0", targetNamespace = "")
         long arg0);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<com.liborrow.webinterface.generated.model.BorrowDTO>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAllBorrows", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllBorrows")
-    @ResponseWrapper(localName = "getAllBorrowsResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllBorrowsResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/getAllBorrowsRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/getAllBorrowsResponse")
-    public List<BorrowDTO> getAllBorrows();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "markBorrowAsExtended", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.MarkBorrowAsExtended")
-    @ResponseWrapper(localName = "markBorrowAsExtendedResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.MarkBorrowAsExtendedResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/markBorrowAsExtendedRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/markBorrowAsExtendedResponse")
-    public boolean markBorrowAsExtended(
-        @WebParam(name = "arg0", targetNamespace = "")
-        BorrowDTO arg0);
 
 }

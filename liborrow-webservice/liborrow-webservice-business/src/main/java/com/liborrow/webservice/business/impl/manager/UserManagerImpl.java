@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.liborrow.webservice.model.dto.UserDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.UserAccount;
@@ -94,6 +95,27 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	}
 	
 	@Override
+	@Transactional
+	public void createUser(UserDTO user) {
+		UserAccount userEntity = getTransformerFactory().getUserAccountTransformer().toUserAccountEntity(user, true, UserAccount.class.getSimpleName());
+		userAccountRepository.save(userEntity);
+	}
+	
+	@Override
+	@Transactional
+	public void updateUser(UserDTO user) {
+		UserAccount userEntity = getTransformerFactory().getUserAccountTransformer().toUserAccountEntity(user, true, UserAccount.class.getSimpleName());
+		userAccountRepository.save(userEntity);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteUser(UserDTO user) {
+		UserAccount userEntity = getTransformerFactory().getUserAccountTransformer().toUserAccountEntity(user, true, UserAccount.class.getSimpleName());
+		userAccountRepository.delete(userEntity);
+	}
+	
+	@Override
 	public void userEntityHibernateInitialization(UserAccount user)
 	{
 		Hibernate.initialize(user.getCitizenship());
@@ -106,8 +128,6 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 		Hibernate.initialize(user.getBorrows());
 		for(Borrow borrow : user.getBorrows())
 		{
-//			Hibernate.initialize(borrow.getBook());
-//			Hibernate.initialize(borrow.getMagazine());
 			Hibernate.initialize(borrow.getItem());
 			Hibernate.initialize(borrow.getBorrower());
 		}

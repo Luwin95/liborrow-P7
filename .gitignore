@@ -33,3 +33,7 @@ target/
 
 #Meta-inf
 META-INF/
+
+#source
+*.war
+*.jar

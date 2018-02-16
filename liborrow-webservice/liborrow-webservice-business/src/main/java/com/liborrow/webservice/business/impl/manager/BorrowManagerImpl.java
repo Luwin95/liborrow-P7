@@ -130,6 +130,20 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	}
 	
 	@Override
+	@Transactional
+	public void updateBorrow(BorrowDTO borrow) {
+		Borrow borrowToSave = getTransformerFactory().getBorrowTransformer().toBorrowEntity(borrow, true, BorrowDTO.class.getSimpleName());
+		borrowRepository.save(borrowToSave);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteBorrow(BorrowDTO borrow) {
+		Borrow borrowToSave = getTransformerFactory().getBorrowTransformer().toBorrowEntity(borrow, true, BorrowDTO.class.getSimpleName());
+		borrowRepository.delete(borrowToSave);
+	}
+	
+	@Override
 	public List<BorrowDTO> findLateBorrows() {
 		List<Borrow> borrowsEntities = getDaoFactory().getBorrowDao().findLateGetBackBorrows();
 		Set<Borrow> borrowsEntitiesSet = new HashSet<Borrow>();
