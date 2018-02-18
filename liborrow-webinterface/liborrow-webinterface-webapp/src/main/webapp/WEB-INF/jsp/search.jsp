@@ -16,7 +16,7 @@
 			    <li class="list-group-item">
 			    	<s:if test="%{message!=null}"><div class="alert alert-danger"><s:property value="message"/></div></s:if>
 					<div id="singleStringSearch">
-						<s:form action="search">
+						<s:form action="searchItem">
 							<s:textfield  name="search" cssClass="form-control"/>
 							<s:submit cssClass="btn btn-warning"/>
 						</s:form>

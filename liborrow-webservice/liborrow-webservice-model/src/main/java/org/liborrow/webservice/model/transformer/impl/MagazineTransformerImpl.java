@@ -61,8 +61,6 @@ public class MagazineTransformerImpl implements MagazineTransformer {
 		 magazineTransformed.setPublishDate(magazine.getPublishDate());
 		 magazineTransformed.setRemainingCount(magazine.getRemainingCount());
 		 magazineTransformed.setTotalCount(magazine.getTotalCount());
-//		 magazineTransformed.setIdItemType(2L);
-//		 magazineTransformed.setItemType("magazine");
 		 if(magazine.getBorrows()!=null && (isParent))
 		 {
 			 BorrowTransformer borrowTransformer = new BorrowTransformerImpl();

@@ -13,8 +13,12 @@
 ">
 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:/com/liborrow/callagainbatch/mail.properties,
-        classpath:/com/liborrow/callagainbatch/scheduler.properties"/>
+        <property name="locations">
+        	<list>
+        		<value>classpath:/com/liborrow/callagainbatch/mail.properties</value>
+        		<value>classpath:/com/liborrow/callagainbatch/scheduler.properties</value>
+        	</list>
+        </property>
         <property name="ignoreUnresolvablePlaceholders" value="false"/>
     </bean>
 	<!-- stored job-meta in memory -->
@@ -70,6 +74,6 @@
 	<bean id="callagainBatchScheduler" class="com.liborrow.callagainbatch.application.scheduler.CallagainBatchScheduler"/>
 	
 	<task:scheduled-tasks>
-	  <task:scheduled ref="callagainBatchScheduler" method="run" cron="${com.liborrow.scheduler.delayDev}" />
+	  <task:scheduled ref="callagainBatchScheduler" method="run" cron="${com.liborrow.scheduler.delayProd}" />
 	</task:scheduled-tasks>
 </beans>

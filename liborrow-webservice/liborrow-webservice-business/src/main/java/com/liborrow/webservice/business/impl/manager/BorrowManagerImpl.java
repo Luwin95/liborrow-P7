@@ -6,13 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Hibernate;
-import org.liborrow.webservice.model.dto.BookDTO;
 import org.liborrow.webservice.model.dto.BorrowDTO;
-import org.liborrow.webservice.model.dto.MagazineDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
-import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
-import org.liborrow.webservice.model.entities.Magazine;
 import org.liborrow.webservice.model.entities.UserAccount;
 import org.liborrow.webservice.model.entities.UserLight;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +39,7 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	{
 		Borrow borrow = borrowRepository.findOne(id);
 		borrowEntityHibernateInitialization(borrow);
-		BorrowDTO borrowDTO = getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, "org.liborrow.webservice.model.dto.BorrowDTO");
+		BorrowDTO borrowDTO = getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, Borrow.class.getSimpleName());
 		return borrowDTO;
 	}
 	
@@ -53,19 +49,16 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		if(user != null && user.getId()!=0)
 		{
 			
-			//userEntityHibernateInitialization(user);
 			if(user != null)
 			{
 				UserLight userEntity = getTransformerFactory().getUserLightTransformer().toUserLightEntity(user, true, UserLight.class.getSimpleName());
-//				userLightEntityHibernateInitialization(userEntity);
 				List<Borrow> borrows = borrowRepository.searchOnGoingBorrowByUserAccount(userEntity);
 				List<BorrowDTO> borrowsDTO = new ArrayList<>();
 				for(Borrow borrow : borrows)
 				{
 					borrowEntityHibernateInitialization(borrow);
-					borrowsDTO.add(getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, "org.liborrow.webservice.model.dto.BorrowDTO"));
+					borrowsDTO.add(getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, Borrow.class.getSimpleName()));
 				}
-//				getItemOfBorrow(borrowsDTO);
 				return borrowsDTO;
 			}else
 			{
@@ -84,7 +77,7 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		for(Borrow borrow : borrows)
 		{
 			borrowEntityHibernateInitialization(borrow);
-			borrowsDTO.add(getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, "org.liborrow.webservice.model.dto.BorrowDTO"));
+			borrowsDTO.add(getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, Borrow.class.getSimpleName()));
 		}
 		return borrowsDTO;
 	}
@@ -92,8 +85,6 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	public void borrowEntityHibernateInitialization(Borrow borrow)
 	{
 		Hibernate.initialize(borrow.getBorrower());
-//		Hibernate.initialize(borrow.getMagazine());
-//		Hibernate.initialize(borrow.getBook());
 		Hibernate.initialize(borrow.getItem());
 		Hibernate.initialize(borrow.getBorrower().getCitizenship());
 	}
@@ -106,7 +97,6 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	public void userLightEntityHibernateInitialization(UserLight user)
 	{
 		Hibernate.initialize(user.getCitizenship());
-//		Hibernate.initialize(user.getBorrows());
 	}
 	
 	@Override
@@ -153,5 +143,4 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		returnList.addAll(borrows);
 		return returnList;
 	}
-	
 }

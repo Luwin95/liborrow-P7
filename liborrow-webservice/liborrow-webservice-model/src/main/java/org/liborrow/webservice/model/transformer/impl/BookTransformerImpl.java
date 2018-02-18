@@ -13,7 +13,7 @@ import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
 import org.liborrow.webservice.model.transformer.contract.ImageTransformer;
 import org.liborrow.webservice.model.utilsobject.AuthorDependenciesEnum;
 
-public class BookTransformerImpl implements BookTransformer {
+public class BookTransformerImpl extends AbstractTransformerImpl implements BookTransformer {
 
 	@Override
 	public BookDTO toBookDTO(Book book, boolean isParent, String classParentName)
@@ -101,8 +101,6 @@ public class BookTransformerImpl implements BookTransformer {
 	@Override
 	public Book toBookEntity(BookDTO book, boolean isParent, String classParentName) {
 		Book transformedBook = new Book();
-//		transformedBook.setItemType("book");
-//		transformedBook.setIdItemType(1L);
 		if(book.getAlley()!=null)
 		{
 			transformedBook.setAlley(book.getAlley());
@@ -113,7 +111,8 @@ public class BookTransformerImpl implements BookTransformer {
 			AuthorTransformerImpl authorTransformer = new AuthorTransformerImpl();
 			for(AuthorDTO author : book.getAuthors())
 			{
-				authorsTransformed.add(authorTransformer.toAuthorEntity(author, AuthorDependenciesEnum.AUTHOR_BOOKS, AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS));
+				Author authorEntity = getEm().find(Author.class, author.getId());
+				authorsTransformed.add(authorEntity);
 			}
 			transformedBook.setAuthors(authorsTransformed);
 		}

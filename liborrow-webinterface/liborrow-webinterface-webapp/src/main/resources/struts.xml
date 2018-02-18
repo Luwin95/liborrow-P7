@@ -40,7 +40,11 @@
         <action name="magazine" class="com.liborrow.webinterface.webapp.actions.MagazineAction" method="execute">
         	<result name="success">/WEB-INF/jsp/magazine.jsp</result>
         </action>
-        <action name="search" class="com.liborrow.webinterface.webapp.actions.SearchItemAction" method="execute">
+        <action name="search" class="com.liborrow.webinterface.webapp.actions.SearchHomeAction" method="execute">
+        	<result name="success">/WEB-INF/jsp/search.jsp</result>
+        	<result name="input">/WEB-INF/jsp/search.jsp</result>
+        </action>
+        <action name="searchItem" class="com.liborrow.webinterface.webapp.actions.SearchItemAction" method="execute">
         	<result name="success">/WEB-INF/jsp/search.jsp</result>
         	<result name="input">/WEB-INF/jsp/search.jsp</result>
         </action>

@@ -90,6 +90,7 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 	@Transactional
 	public void createBook(BookDTO book) {
 		Book bookEntity = getTransformerFactory().getBookTransformer().toBookEntity(book, true, Book.class.getSimpleName());
+		bookEntityHibernateInitialization(bookEntity);
 		bookRepository.save(bookEntity);
 	}
 	
@@ -97,6 +98,7 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 	@Transactional
 	public void updateBook(BookDTO book) {
 		Book bookEntity = getTransformerFactory().getBookTransformer().toBookEntity(book, true, Book.class.getSimpleName());
+		bookEntityHibernateInitialization(bookEntity);
 		bookRepository.save(bookEntity);
 	}
 	
@@ -104,6 +106,7 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 	@Transactional
 	public void deleteBook(BookDTO book) {
 		Book bookEntity = getTransformerFactory().getBookTransformer().toBookEntity(book, true, Book.class.getSimpleName());
+		bookEntityHibernateInitialization(bookEntity);
 		bookRepository.delete(bookEntity);
 	}
 	

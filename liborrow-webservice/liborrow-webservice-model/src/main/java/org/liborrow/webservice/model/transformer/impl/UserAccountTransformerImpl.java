@@ -3,6 +3,7 @@ package org.liborrow.webservice.model.transformer.impl;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.liborrow.webservice.model.dto.BorrowDTO;
 import org.liborrow.webservice.model.dto.UserDTO;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.Citizenship;
@@ -11,7 +12,7 @@ import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
 import org.liborrow.webservice.model.transformer.contract.CitizenshipTransformer;
 import org.liborrow.webservice.model.transformer.contract.UserAccountTransformer;
 
-public class UserAccountTransformerImpl implements UserAccountTransformer {
+public class UserAccountTransformerImpl extends AbstractTransformerImpl implements UserAccountTransformer {
 	@Override
 	public UserAccount toUserAccountEntity(UserDTO user, boolean isParent, String classParentName) {
 		UserAccount userTransformed = new UserAccount();
@@ -27,13 +28,14 @@ public class UserAccountTransformerImpl implements UserAccountTransformer {
 		
 		if(user.getBorrows()!=null && (isParent||classParentName.equals(Citizenship.class.getSimpleName())))
 		{
-			BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
-			userTransformed.setBorrows(borrowTransformer.toBorrowsEntities(user.getBorrows(), false, userTransformed.getClass().getSimpleName()));
+			for(BorrowDTO borrow : user.getBorrows()){
+				Borrow borrowEntity = getEm().find(Borrow.class, borrow.getId());
+				userTransformed.getBorrows().add(borrowEntity);
+			}
 		}
 		if(user.getCitizenship()!=null && (isParent||classParentName.equals(Borrow.class.getSimpleName())))
 		{
-			CitizenshipTransformer citizenshipTransformer= new CitizenshipTransformerImpl();
-			userTransformed.setCitizenship(citizenshipTransformer.toCitizenshipEntity(user.getCitizenship(), false, userTransformed.getClass().getSimpleName()));
+			userTransformed.setCitizenship(getEm().find(Citizenship.class, user.getCitizenship().getId()));
 		}
 		return userTransformed;
 	}

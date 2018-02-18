@@ -24,8 +24,14 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _DeleteUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "deleteUser");
     private final static QName _FindUserByid_QNAME = new QName("model.generated.webinterface.liborrow.com", "findUserByid");
+    private final static QName _UpdateUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "updateUser");
+    private final static QName _CreateUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "createUser");
+    private final static QName _UpdateUserResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "updateUserResponse");
+    private final static QName _DeleteUserResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "deleteUserResponse");
     private final static QName _LoginUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "loginUser");
+    private final static QName _CreateUserResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "createUserResponse");
     private final static QName _LoginUserResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "loginUserResponse");
     private final static QName _SearchUser_QNAME = new QName("model.generated.webinterface.liborrow.com", "searchUser");
     private final static QName _FindUserByidResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "findUserByidResponse");
@@ -44,6 +50,14 @@ public class ObjectFactory {
      */
     public LoginUser createLoginUser() {
         return new LoginUser();
+    }
+
+    /**
+     * Create an instance of {@link CreateUserResponse }
+     * 
+     */
+    public CreateUserResponse createCreateUserResponse() {
+        return new CreateUserResponse();
     }
 
     /**
@@ -79,11 +93,51 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteUser }
+     * 
+     */
+    public DeleteUser createDeleteUser() {
+        return new DeleteUser();
+    }
+
+    /**
      * Create an instance of {@link FindUserByid }
      * 
      */
     public FindUserByid createFindUserByid() {
         return new FindUserByid();
+    }
+
+    /**
+     * Create an instance of {@link UpdateUser }
+     * 
+     */
+    public UpdateUser createUpdateUser() {
+        return new UpdateUser();
+    }
+
+    /**
+     * Create an instance of {@link CreateUser }
+     * 
+     */
+    public CreateUser createCreateUser() {
+        return new CreateUser();
+    }
+
+    /**
+     * Create an instance of {@link UpdateUserResponse }
+     * 
+     */
+    public UpdateUserResponse createUpdateUserResponse() {
+        return new UpdateUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteUserResponse }
+     * 
+     */
+    public DeleteUserResponse createDeleteUserResponse() {
+        return new DeleteUserResponse();
     }
 
     /**
@@ -135,6 +189,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UserDTO }
+     * 
+     */
+    public UserDTO createUserDTO() {
+        return new UserDTO();
+    }
+
+    /**
      * Create an instance of {@link MagazineDTO }
      * 
      */
@@ -159,6 +221,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "deleteUser")
+    public JAXBElement<DeleteUser> createDeleteUser(DeleteUser value) {
+        return new JAXBElement<DeleteUser>(_DeleteUser_QNAME, DeleteUser.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FindUserByid }{@code >}}
      * 
      */
@@ -168,12 +239,57 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "updateUser")
+    public JAXBElement<UpdateUser> createUpdateUser(UpdateUser value) {
+        return new JAXBElement<UpdateUser>(_UpdateUser_QNAME, UpdateUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "createUser")
+    public JAXBElement<CreateUser> createCreateUser(CreateUser value) {
+        return new JAXBElement<CreateUser>(_CreateUser_QNAME, CreateUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "updateUserResponse")
+    public JAXBElement<UpdateUserResponse> createUpdateUserResponse(UpdateUserResponse value) {
+        return new JAXBElement<UpdateUserResponse>(_UpdateUserResponse_QNAME, UpdateUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "deleteUserResponse")
+    public JAXBElement<DeleteUserResponse> createDeleteUserResponse(DeleteUserResponse value) {
+        return new JAXBElement<DeleteUserResponse>(_DeleteUserResponse_QNAME, DeleteUserResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LoginUser }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "loginUser")
     public JAXBElement<LoginUser> createLoginUser(LoginUser value) {
         return new JAXBElement<LoginUser>(_LoginUser_QNAME, LoginUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "createUserResponse")
+    public JAXBElement<CreateUserResponse> createCreateUserResponse(CreateUserResponse value) {
+        return new JAXBElement<CreateUserResponse>(_CreateUserResponse_QNAME, CreateUserResponse.class, null, value);
     }
 
     /**

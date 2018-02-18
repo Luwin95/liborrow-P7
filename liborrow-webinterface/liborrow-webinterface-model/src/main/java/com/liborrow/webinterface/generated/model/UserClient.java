@@ -27,6 +27,24 @@ public interface UserClient {
 
     /**
      * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "loginUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUser")
+    @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
+    public UserLightDTO loginUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns java.util.List<com.liborrow.webinterface.generated.model.UserLightDTO>
@@ -57,20 +75,38 @@ public interface UserClient {
 
     /**
      * 
-     * @param arg1
      * @param arg0
-     * @return
-     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "loginUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUser")
-    @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
-    public UserLightDTO loginUser(
+    @RequestWrapper(localName = "createUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUser")
+    @ResponseWrapper(localName = "createUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/createUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/createUserResponse")
+    public void createUser(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
+        UserDTO arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "deleteUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUser")
+    @ResponseWrapper(localName = "deleteUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/deleteUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/deleteUserResponse")
+    public void deleteUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        UserDTO arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "updateUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.UpdateUser")
+    @ResponseWrapper(localName = "updateUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.UpdateUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/updateUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/updateUserResponse")
+    public void updateUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        UserDTO arg0);
 
 }

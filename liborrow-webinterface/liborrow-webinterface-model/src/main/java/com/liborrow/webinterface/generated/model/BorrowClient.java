@@ -29,6 +29,21 @@ public interface BorrowClient {
      * 
      * @param arg0
      * @return
+     *     returns com.liborrow.webinterface.generated.model.BorrowDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getBorrow", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetBorrow")
+    @ResponseWrapper(localName = "getBorrowResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetBorrowResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/getBorrowRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/getBorrowResponse")
+    public BorrowDTO getBorrow(
+        @WebParam(name = "arg0", targetNamespace = "")
+        long arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
      *     returns java.util.List<com.liborrow.webinterface.generated.model.BorrowDTO>
      */
     @WebMethod
@@ -81,6 +96,30 @@ public interface BorrowClient {
 
     /**
      * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "updateBorrow", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.UpdateBorrow")
+    @ResponseWrapper(localName = "updateBorrowResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.UpdateBorrowResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/updateBorrowRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/updateBorrowResponse")
+    public void updateBorrow(
+        @WebParam(name = "arg0", targetNamespace = "")
+        BorrowDTO arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "deleteBorrow", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteBorrow")
+    @ResponseWrapper(localName = "deleteBorrowResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteBorrowResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/deleteBorrowRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/deleteBorrowResponse")
+    public void deleteBorrow(
+        @WebParam(name = "arg0", targetNamespace = "")
+        BorrowDTO arg0);
+
+    /**
+     * 
      * @return
      *     returns java.util.List<com.liborrow.webinterface.generated.model.BorrowDTO>
      */
@@ -90,20 +129,5 @@ public interface BorrowClient {
     @ResponseWrapper(localName = "findLateBorrowsResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.FindLateBorrowsResponse")
     @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/findLateBorrowsRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/findLateBorrowsResponse")
     public List<BorrowDTO> findLateBorrows();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns com.liborrow.webinterface.generated.model.BorrowDTO
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getBorrow", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetBorrow")
-    @ResponseWrapper(localName = "getBorrowResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetBorrowResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/BorrowClient/getBorrowRequest", output = "model.generated.webinterface.liborrow.com/BorrowClient/getBorrowResponse")
-    public BorrowDTO getBorrow(
-        @WebParam(name = "arg0", targetNamespace = "")
-        long arg0);
 
 }
