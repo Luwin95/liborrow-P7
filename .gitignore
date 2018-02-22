@@ -33,6 +33,7 @@ target/
 
 #Pdf
 *.pdf
+!doc/*.pdf
 !uml/*.pdf
 
 #Meta-inf

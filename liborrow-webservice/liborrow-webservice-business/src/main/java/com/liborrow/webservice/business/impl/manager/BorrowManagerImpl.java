@@ -37,7 +37,7 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	@Override
 	public BorrowDTO findBorrowById(long id)
 	{
-		Borrow borrow = borrowRepository.findOne(id);
+		Borrow borrow = borrowRepository.getBorrowById(id);
 		borrowEntityHibernateInitialization(borrow);
 		BorrowDTO borrowDTO = getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, Borrow.class.getSimpleName());
 		return borrowDTO;
