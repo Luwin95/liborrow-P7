@@ -7,8 +7,49 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <listener>
+        <listener-class>
+                com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+        </listener-class>
+  </listener>
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:/bootstrapContext.xml</param-value>
   </context-param>
+  <servlet>
+      <servlet-name>borrow</servlet-name>
+      <servlet-class>
+      	com.sun.xml.ws.transport.http.servlet.WSServlet
+      </servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>borrow</servlet-name>
+      <url-pattern>/borrow</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>item</servlet-name>
+      <servlet-class>
+      	com.sun.xml.ws.transport.http.servlet.WSServlet
+      </servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>item</servlet-name>
+      <url-pattern>/item</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>user</servlet-name>
+      <servlet-class>
+      	com.sun.xml.ws.transport.http.servlet.WSServlet
+      </servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>user</servlet-name>
+      <url-pattern>/user</url-pattern>
+  </servlet-mapping>
+  <session-config>
+      <session-timeout>120</session-timeout>
+  </session-config>
 </web-app>
