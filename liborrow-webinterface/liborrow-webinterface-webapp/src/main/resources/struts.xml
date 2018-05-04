@@ -11,7 +11,7 @@
 
         <default-action-ref name="login" />
         
-        <action name="login" class="com.liborrow.webinterface.webapp.actions.LoginAction" method="execute">
+        <action name="login" class="com.liborrow.webinterface.webapp.actions.AuthenticationManagementAction" method="login">
         	<result name="input">/WEB-INF/jsp/login.jsp</result>
         	<result name="success" type="redirect">/liborrow/index.action</result>
         </action>
@@ -31,43 +31,43 @@
 			<result name="login" type="redirect">/login.action</result>
 		</global-results>
     
-    	<action name="index" class="com.liborrow.webinterface.webapp.IndexAction" method="execute">
+    	<action name="index" class="com.liborrow.webinterface.webapp.actions.IndexAction" method="execute">
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
-        <action name="book" class="com.liborrow.webinterface.webapp.actions.BookAction" method="execute">
+        <action name="book" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="displayBook">
         	<result name="success">/WEB-INF/jsp/book.jsp</result>
         </action>
-        <action name="magazine" class="com.liborrow.webinterface.webapp.actions.MagazineAction" method="execute">
+        <action name="magazine" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="displayMagazine">
         	<result name="success">/WEB-INF/jsp/magazine.jsp</result>
         </action>
-        <action name="search" class="com.liborrow.webinterface.webapp.actions.SearchHomeAction" method="execute">
+        <action name="search" class="com.liborrow.webinterface.webapp.actions.SearchManagementAction" method="searchHome">
         	<result name="success">/WEB-INF/jsp/search.jsp</result>
         	<result name="input">/WEB-INF/jsp/search.jsp</result>
         </action>
-        <action name="searchItem" class="com.liborrow.webinterface.webapp.actions.SearchItemAction" method="execute">
+        <action name="searchItem" class="com.liborrow.webinterface.webapp.actions.SearchManagementAction" method="searchItem">
         	<result name="success">/WEB-INF/jsp/search.jsp</result>
         	<result name="input">/WEB-INF/jsp/search.jsp</result>
         </action>
-        <action name="searchBook" class="com.liborrow.webinterface.webapp.actions.SearchBookAction" method="execute">
+        <action name="searchBook" class="com.liborrow.webinterface.webapp.actions.SearchManagementAction" method="searchBook">
         	<result name="success">/WEB-INF/jsp/search.jsp</result>
         	<result name="input">/WEB-INF/jsp/search.jsp</result>
         </action>
-        <action name="searchAuthor" class="com.liborrow.webinterface.webapp.actions.SearchAuthorAction" method="execute">
+        <action name="searchAuthor" class="com.liborrow.webinterface.webapp.actions.SearchManagementAction" method="searchAuthor">
         	<result name="success">/WEB-INF/jsp/search.jsp</result>
         	<result name="input">/WEB-INF/jsp/search.jsp</result>
         </action>
-        <action name="searchMagazine" class="com.liborrow.webinterface.webapp.actions.SearchMagazineAction" method="execute">
+        <action name="searchMagazine" class="com.liborrow.webinterface.webapp.actions.SearchManagementAction" method="searchMagazine">
         	<result name="success">/WEB-INF/jsp/search.jsp</result>
         	<result name="input">/WEB-INF/jsp/search.jsp</result>
         </action>
-        <action name="currentBorrows" class="com.liborrow.webinterface.webapp.actions.BorrowsListAction" method="execute">
+        <action name="currentBorrows" class="com.liborrow.webinterface.webapp.actions.BorrowsManagementAction" method="doListOnGoingBorrows">
         	<result name="success">/WEB-INF/jsp/currentBorrows.jsp</result>
         </action>
-        <action name="extendBorrow" class="com.liborrow.webinterface.webapp.actions.ExtendBorrowAction" method="execute">
+        <action name="extendBorrow" class="com.liborrow.webinterface.webapp.actions.BorrowsManagementAction" method="extendBorrow">
         	<result name="success" type="redirect">/liborrow/currentBorrows.action</result>
         	<result name="error" type="redirect">/liborrow/currentBorrows.action</result>
         </action>
-        <action name="logout" class="com.liborrow.webinterface.webapp.actions.LogoutAction" method="execute">
+        <action name="logout" class="com.liborrow.webinterface.webapp.actions.AuthenticationManagementAction" method="logout">
         	<result name="success" type="redirect">/login.action</result>
         </action>
     </package>

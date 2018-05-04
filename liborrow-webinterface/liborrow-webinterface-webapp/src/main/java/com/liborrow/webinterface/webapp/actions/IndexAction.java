@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liborrow.webinterface.webapp;
+package com.liborrow.webinterface.webapp.actions;
 
 
 import com.liborrow.webinterface.generated.model.BorrowDTO;
 import com.liborrow.webinterface.generated.model.SearchResponse;
 import com.liborrow.webinterface.generated.model.UserLightDTO;
+import com.liborrow.webinterface.webapp.AbstractAction;
 
 import java.util.GregorianCalendar;
 import java.util.Map;

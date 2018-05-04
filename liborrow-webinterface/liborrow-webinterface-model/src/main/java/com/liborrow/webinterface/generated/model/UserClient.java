@@ -28,6 +28,18 @@ public interface UserClient {
     /**
      * 
      * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "createUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUser")
+    @ResponseWrapper(localName = "createUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/createUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/createUserResponse")
+    public void createUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        UserDTO arg0);
+
+    /**
+     * 
+     * @param arg0
      * @return
      *     returns com.liborrow.webinterface.generated.model.UserLightDTO
      */
@@ -45,10 +57,10 @@ public interface UserClient {
      * @param arg0
      */
     @WebMethod
-    @RequestWrapper(localName = "createUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUser")
-    @ResponseWrapper(localName = "createUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/createUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/createUserResponse")
-    public void createUser(
+    @RequestWrapper(localName = "updateUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.UpdateUser")
+    @ResponseWrapper(localName = "updateUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.UpdateUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/updateUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/updateUserResponse")
+    public void updateUser(
         @WebParam(name = "arg0", targetNamespace = "")
         UserDTO arg0);
 
@@ -96,17 +108,5 @@ public interface UserClient {
     public List<UserLightDTO> searchUser(
         @WebParam(name = "arg0", targetNamespace = "")
         UserCriterias arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "updateUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.UpdateUser")
-    @ResponseWrapper(localName = "updateUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.UpdateUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/updateUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/updateUserResponse")
-    public void updateUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        UserDTO arg0);
 
 }

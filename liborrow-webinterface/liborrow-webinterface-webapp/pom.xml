@@ -78,11 +78,6 @@
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-api</artifactId>
 		</dependency>
-		<!-- Dwr -->
-		<dependency>
-			<groupId>uk.ltd.getahead</groupId>
-			<artifactId>dwr</artifactId>
-		</dependency>
 		<dependency>
 	      <groupId>commons-validator</groupId>
 	      <artifactId>commons-validator</artifactId>
@@ -95,8 +90,8 @@
     		<plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                   <source>1.5</source>
-                   <target>1.5</target>
+                   <source>1.8</source>
+                   <target>1.8</target>
                 </configuration>
             </plugin>
     		<plugin>
