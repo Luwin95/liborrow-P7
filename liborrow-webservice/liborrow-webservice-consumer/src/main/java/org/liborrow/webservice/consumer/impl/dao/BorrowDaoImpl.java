@@ -41,4 +41,19 @@ public class BorrowDaoImpl extends AbstractDaoImpl implements BorrowDao {
 		query.setParameter("now2", cal2Month.getTime());
 		return (List<Borrow>) query.getResultList();
 	}
+	
+	/**
+	 * Retourne true si l'utilisateur a bien emprunté l'item et false sinon
+	 * 
+	 * return boolean
+	 */
+	@Override
+	public Boolean checkItemForUser(Long itemId, Long userId) {
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT borrow FROM Borrow borrow JOIN FETCH borrow.item item JOIN FETCH borrow.borrower WHERE ((borrow.item.id=:item AND borrow.borrower.id=:borrower");
+		Query query = getEm().createQuery(queryString.toString());
+		query.setParameter("item", itemId);
+		query.setParameter("borrower", userId);
+		return query.getSingleResult()!=null;
+	}
 }

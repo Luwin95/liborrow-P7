@@ -1,12 +1,12 @@
-﻿INSERT INTO  book(item_id, title, language, release, summary, editor, itemref,totalcount, remainingcount, alley, place) VALUES
-	(1, 'Hello world', 'Français', '2001-09-28', 'Une chronique sur le monde', 'Galimard','sdhgfsgfvisd', 5, 1, 'A', '32E'),
-	(2, 'Hello world 2', 'Français', '2003-09-28', 'Le retour de la chronique sur le monde', 'Galimard','gsfdcqsghf', 7, 4, 'B', '41F'),
-	(5, 'Les trois Mousquetaires', 'Français', '1993-07-06', E'Le plus grand classique de cape et d\'épée', 'Flammarion','gsdvcfze', 2, 0, 'C', '50G'),
-	(6, 'Vingt ans après', 'Français', '1987-06-06', E'La suite du plus grand classique de cape et d\'épée', 'Galimard','sgdvgzsed', 1, 0, 'D', '69H');
+﻿INSERT INTO  book(item_id, title, language, release, summary, editor, itemref,totalcount, remainingcount, alley, place, type) VALUES
+	(1, 'Hello world', 'Français', '2001-09-28', 'Une chronique sur le monde', 'Galimard','sdhgfsgfvisd', 5, 1, 'A', '32E', 'B'),
+	(2, 'Hello world 2', 'Français', '2003-09-28', 'Le retour de la chronique sur le monde', 'Galimard','gsfdcqsghf', 7, 4, 'B', '41F', 'B'),
+	(5, 'Les trois Mousquetaires', 'Français', '1993-07-06', E'Le plus grand classique de cape et d\'épée', 'Flammarion','gsdvcfze', 2, 0, 'C', '50G', 'B'),
+	(6, 'Vingt ans après', 'Français', '1987-06-06', E'La suite du plus grand classique de cape et d\'épée', 'Galimard','sgdvgzsed', 1, 0, 'D', '69H', 'B');
 
-INSERT INTO magazine(item_id, editionnumber, name, publishdate,itemref,totalcount, remainingcount, alley, place) VALUES 
-	(3,15, 'Le petit spirou', '2017-10-15','gzefzefhgqzjgfq', 4, 3, 'C', '50G'),
-	(4,250, 'Le monde', '2015-12-21','escuhkfgvzeezcrvzf', 7, 5, 'D', '69H');
+INSERT INTO magazine(item_id, editionnumber, name, publishdate,itemref,totalcount, remainingcount, alley, place, type) VALUES 
+	(3,15, 'Le petit spirou', '2017-10-15','gzefzefhgqzjgfq', 4, 3, 'C', '50G', 'M'),
+	(4,250, 'Le monde', '2015-12-21','escuhkfgvzeezcrvzf', 7, 5, 'D', '69H', 'M');
 	
 INSERT INTO author(author_id, name, firstname, birth, death, biography) VALUES
 	(1, 'Proust', 'Marcel', 1871, 1922, E'Ecrivain d\'origine française'),

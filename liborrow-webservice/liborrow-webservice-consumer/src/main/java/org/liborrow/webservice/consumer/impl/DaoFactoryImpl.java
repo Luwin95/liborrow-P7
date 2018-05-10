@@ -6,6 +6,7 @@ import org.liborrow.webservice.consumer.contract.dao.BookDao;
 import org.liborrow.webservice.consumer.contract.dao.BorrowDao;
 import org.liborrow.webservice.consumer.contract.dao.MagazineDao;
 import org.liborrow.webservice.consumer.contract.dao.UserDao;
+import org.liborrow.webservice.consumer.contract.dao.WaitingListDao;
 
 public class DaoFactoryImpl implements DaoFactory {
 	private AuthorDao authorDao;
@@ -13,6 +14,7 @@ public class DaoFactoryImpl implements DaoFactory {
 	private MagazineDao magazineDao;
 	private BorrowDao borrowDao;
 	private UserDao userDao;
+	private WaitingListDao waitingListDao;
 	
 	@Override
 	public AuthorDao getAuthorDao() {
@@ -63,7 +65,15 @@ public class DaoFactoryImpl implements DaoFactory {
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
-	
-	
+
+	@Override
+	public WaitingListDao getWaitingListDao() {
+		return waitingListDao;
+	}
+
+	@Override
+	public void setWaitingListDao(WaitingListDao waitingListDao) {
+		this.waitingListDao = waitingListDao;
+	}
 	
 }

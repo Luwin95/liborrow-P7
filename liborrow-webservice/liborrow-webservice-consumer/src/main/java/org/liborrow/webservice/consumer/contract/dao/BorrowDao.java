@@ -8,5 +8,6 @@ public interface BorrowDao {
 	
 	void markAsExtended(Borrow borrow);
 	List<Borrow> findLateGetBackBorrows();
+	Boolean checkItemForUser(Long itemId,Long userId);
 
 }

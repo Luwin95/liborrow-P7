@@ -17,5 +17,4 @@ public interface BookManager {
 	void createBook(BookDTO book);
 	void updateBook(BookDTO book);
 	void deleteBook(BookDTO book);
-	void reserveBook(BookDTO book, UserLightDTO user);
 }

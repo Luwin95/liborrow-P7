@@ -45,6 +45,9 @@ public abstract class Item implements Serializable{
 	@Column(name="place")
 	private String place;
 	
+	@Column(name="type")
+	private String type;
+	
 	@OneToMany(mappedBy="item")
 	private Set<Borrow> borrows;
 

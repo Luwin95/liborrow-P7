@@ -1,7 +1,9 @@
 package org.liborrow.webservice.model.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -52,6 +54,9 @@ public class UserLight implements Serializable{
 	
 	@OneToMany(mappedBy="borrower")
 	private Set<Borrow> borrows = new HashSet<>();
+	
+	@OneToMany(mappedBy="borrower")
+	private List<WaitingList> reservations = new ArrayList<>();
 
 	public UserLight() {}
 	
@@ -146,4 +151,13 @@ public class UserLight implements Serializable{
 	public void setBorrows(Set<Borrow> borrows) {
 		this.borrows = borrows;
 	}
+
+	public List<WaitingList> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<WaitingList> reservations) {
+		this.reservations = reservations;
+	}
+	
 }

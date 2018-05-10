@@ -118,27 +118,4 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 			bookEntityHibernateInitialization(book);
 		}
 	}
-	
-	@Override
-	@Transactional
-	public void reserveBook(BookDTO book, UserLightDTO user) {
-		//TODO VERIFIER QUE LA DEMANDE EST VALABLE
-		
-		//TODO SI LA DEMANDE EST VALABLE RECUPERER LA DERNIERE VALEUR DE POSITION DANS LA LISTE
-		
-		//TODO SI AUCUNE LISTE N'EXISTE POUR CE LIVRE LA POSITION EST 1
-		
-		//TODO SINON LA POSITION EST LA POSITION MAX + 1
-		
-	}
-	
-	private boolean checkReservationDemand(BookDTO book, UserLightDTO user) {
-		//TODO VERIFIER QUE L'USAGER N'A PAS CE LIVRE DANS SES PRÊTS EN COURS
-		
-		//TODO VERIFIER QUE L'USAGER N'A PAS DEJA RESERVER CE LIVRE
-		
-		//TODO VERIFIER QUE LA LISTE D'ATTENTE NE DEPASSE PAS LE DOUBLE DU NOMBRE D'OUVRAGE EXISTANT
-		
-		return true;
-	}
 }
