@@ -9,8 +9,10 @@
 
     <package name="home" namespace="/" extends="struts-default" >
 
-        <default-action-ref name="login" />
-        
+        <default-action-ref name="loginHome"/>
+        <action name="loginHome" class="com.liborrow.webinterface.webapp.actions.AuthenticationManagementAction" method="displayLoginForm">
+        	<result name="success">/WEB-INF/jsp/login.jsp</result>
+        </action>
         <action name="login" class="com.liborrow.webinterface.webapp.actions.AuthenticationManagementAction" method="login">
         	<result name="input">/WEB-INF/jsp/login.jsp</result>
         	<result name="success" type="redirect">/liborrow/index.action</result>
@@ -28,7 +30,7 @@
 		</interceptors>
 		<default-interceptor-ref name="authStack"></default-interceptor-ref>
 		<global-results>
-			<result name="login" type="redirect">/login.action</result>
+			<result name="loginHome" type="redirect">/login.action</result>
 		</global-results>
     
     	<action name="index" class="com.liborrow.webinterface.webapp.actions.IndexAction" method="execute">
@@ -68,7 +70,7 @@
         	<result name="error" type="redirect">/liborrow/currentBorrows.action</result>
         </action>
         <action name="logout" class="com.liborrow.webinterface.webapp.actions.AuthenticationManagementAction" method="logout">
-        	<result name="success" type="redirect">/login.action</result>
+        	<result name="success" type="redirect">/loginHome.action</result>
         </action>
     </package>
 </struts>

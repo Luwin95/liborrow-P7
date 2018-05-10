@@ -17,6 +17,7 @@ public class AuthenticationManagementAction  extends AbstractAction implements S
 	protected Map<String, Object> session;
 	
 	// ----- Eléments en sortie
+	private UserLightDTO sessionUser;
 	
 	// ==================== Getters/Setters ====================
 	public String getEmail() {
@@ -48,13 +49,26 @@ public class AuthenticationManagementAction  extends AbstractAction implements S
 	}
 	
 	// ==================== Méthodes ====================
+	
+	/**
+	 * Affiche la page de login
+	 * 
+	 * @return success;
+	 */
+	public String displayLoginForm() {
+		return SUCCESS;
+	}
+	
 	/**
 	 * Authentifie un utilisateur
 	 * 
 	 * @return success/input
 	 */
 	public String login() {
-    	UserLightDTO sessionUser = getManagerFactory().getUserManager().loginUser(email, plainPassword);
+		if(checkLoginInformation(this.email, this.plainPassword))
+		{
+			this.sessionUser = getManagerFactory().getUserManager().loginUser(email, plainPassword);
+		}
     	if(sessionUser !=null)
     	{
     		session.put("sessionUser", sessionUser);
@@ -78,6 +92,16 @@ public class AuthenticationManagementAction  extends AbstractAction implements S
     	}else {
     		return "login";
     	}
+	}
+	
+	private boolean checkLoginInformation(String login, String password)
+	{
+		if(login.equals("")||login == null || password.equals("")|| password==null) {
+			this.addFieldError("plainPassword", "Une des informations de connexion est vide");
+			return false;
+		}else {
+			return true;
+		}
 	}
 }
 	
