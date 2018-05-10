@@ -1,6 +1,8 @@
 ﻿INSERT INTO  book(item_id, title, language, release, summary, editor, itemref,totalcount, remainingcount, alley, place) VALUES
 	(1, 'Hello world', 'Français', '2001-09-28', 'Une chronique sur le monde', 'Galimard','sdhgfsgfvisd', 5, 1, 'A', '32E'),
-	(2, 'Hello world 2', 'Français', '2003-09-28', 'Le retour de la chronique sur le monde', 'Galimard','gsfdcqsghf', 7, 4, 'B', '41F');
+	(2, 'Hello world 2', 'Français', '2003-09-28', 'Le retour de la chronique sur le monde', 'Galimard','gsfdcqsghf', 7, 4, 'B', '41F'),
+	(5, 'Les trois Mousquetaires', 'Français', '1993-07-06', E'Le plus grand classique de cape et d\'épée', 'Flammarion','gsdvcfze', 2, 0, 'C', '50G'),
+	(6, 'Vingt ans après', 'Français', '1987-06-06', E'La suite du plus grand classique de cape et d\'épée', 'Galimard','sgdvgzsed', 1, 0, 'D', '69H');
 
 INSERT INTO magazine(item_id, editionnumber, name, publishdate,itemref,totalcount, remainingcount, alley, place) VALUES 
 	(3,15, 'Le petit spirou', '2017-10-15','gzefzefhgqzjgfq', 4, 3, 'C', '50G'),
@@ -8,8 +10,9 @@ INSERT INTO magazine(item_id, editionnumber, name, publishdate,itemref,totalcoun
 	
 INSERT INTO author(author_id, name, firstname, birth, death, biography) VALUES
 	(1, 'Proust', 'Marcel', 1871, 1922, E'Ecrivain d\'origine française'),
-	(2, 'Test', 'test', 1900, 1990, 'Ecrivain Franco-allemand');
-	
+	(2, 'Test', 'test', 1900, 1990, 'Ecrivain Franco-allemand'),
+	(3, 'Dumas', 'Alexandre', 1802, 1870, E'Ecrivain d\'origine française');
+
 INSERT INTO citizenship(citizenship_id, countryname) VALUES
 (1, 'Afghanistan'),
 (2, 'Albanie'),
@@ -256,7 +259,8 @@ INSERT INTO citizenship(citizenship_id, countryname) VALUES
 
 INSERT INTO author_citizenship(author_id, citizenship_id) VALUES
 	(1,75),
-	(2,84);
+	(2,84),
+	(3,75);
 	
 INSERT INTO author_book(author_id, item_id) VALUES
 	(1,1),
@@ -297,6 +301,15 @@ INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
 	
 INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
 	('2017-10-15', 'true', 3,4);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-09', 'true', 2,5);
+
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-08', 'false', 2,6);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-10', 'false', 2,5);
 	
 INSERT INTO image(alt, path, title) VALUES
 	('Hello world cover', 'Atlas.jpg', 'Hello world cover');

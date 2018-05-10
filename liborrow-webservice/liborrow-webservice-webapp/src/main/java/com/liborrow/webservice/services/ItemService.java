@@ -126,4 +126,9 @@ public class ItemService extends AbstractService{
 	{
 		getManagerFactory().getMagazineManager().deleteMagazine(magazine);
 	}
+	
+	@WebMethod
+	public void reserveBook(BookDTO book) {
+		
+	}
 }
