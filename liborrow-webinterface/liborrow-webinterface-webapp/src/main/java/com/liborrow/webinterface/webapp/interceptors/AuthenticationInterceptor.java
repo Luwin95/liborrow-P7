@@ -28,13 +28,13 @@ public class AuthenticationInterceptor implements Interceptor {
             UserLightDTO user = (UserLightDTO) session.get("sessionUser");
             if(user==null)
             {
-            	return Action.LOGIN;
+            	return "loginHome";
             }else{
                 Action action = (Action) actionInvocation.getAction();
                 return actionInvocation.invoke();
             }
         }else{
-            return Action.LOGIN;
+            return "loginHome";
         }
     }
 }

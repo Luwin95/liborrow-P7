@@ -15,7 +15,7 @@
 				<div class="card">
 					<div class="card-block">
 							<s:if test="%{message!=null}"><div class="alert alert-danger"><s:property value="message"/></div></s:if>
-							<s:form action="login justify-content-sm-center">
+							<s:form action="login" cssClass="justify-content-sm-center">
 								<s:textfield label="Email" name="email" cssClass="form-control" />
 								<s:password label="Password" name="plainPassword" cssClass="form-control"/>
 								<s:submit value="Se connecter" cssClass="btn btn-warning"/>

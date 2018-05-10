@@ -14,7 +14,7 @@
 		   <h1 class="card-title">Rechercher un ouvrage, magazine, auteur...</h1>
 		   <ul class="list-group list-group-flush">
 			    <li class="list-group-item">
-			    	<s:if test="%{message!=null}"><div class="alert alert-danger"><s:property value="message"/></div></s:if>
+			    	<s:if test="%{error!=null}"><div class="alert alert-danger"><s:property value="error"/></div></s:if>
 					<div id="singleStringSearch">
 						<s:form action="searchItem">
 							<s:textfield  name="search" cssClass="form-control"/>

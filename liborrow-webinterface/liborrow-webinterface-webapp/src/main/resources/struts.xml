@@ -30,7 +30,7 @@
 		</interceptors>
 		<default-interceptor-ref name="authStack"></default-interceptor-ref>
 		<global-results>
-			<result name="loginHome" type="redirect">/login.action</result>
+			<result name="loginHome" type="redirect">/loginHome.action</result>
 		</global-results>
     
     	<action name="index" class="com.liborrow.webinterface.webapp.actions.IndexAction" method="execute">

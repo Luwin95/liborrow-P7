@@ -90,10 +90,17 @@ public class AuthenticationManagementAction  extends AbstractAction implements S
     		session.clear();
     		return SUCCESS;
     	}else {
-    		return "login";
+    		return "loginHome";
     	}
 	}
 	
+	/**
+	 * Valide le formulaire de connexion
+	 * 
+	 * @param String login (login entré)
+	 * @param String password (mot de passe entré)
+	 * @return boolean result (information de connexion respectant les normes ou nom
+	 */
 	private boolean checkLoginInformation(String login, String password)
 	{
 		if(login.equals("")||login == null || password.equals("")|| password==null) {
