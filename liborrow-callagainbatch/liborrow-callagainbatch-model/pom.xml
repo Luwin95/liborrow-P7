@@ -5,10 +5,9 @@
   <parent>
     <groupId>com.liborrow.liborrow-callagainbatch</groupId>
     <artifactId>liborrow-callagainbatch</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
   </parent>
   <artifactId>liborrow-callagainbatch-model</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>liborrow-callagainbatch-model</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -52,7 +51,7 @@
   			<configuration>
   				<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
   				<wsdlUrls>
-  					<wsdlUrl>http://liborrow:8080/liborrow-webservice-webapp/BorrowService?wsdl</wsdlUrl>
+  					<wsdlUrl>http://localhost:80/liborrow-webservice-webapp/borrow?wsdl</wsdlUrl>
   				</wsdlUrls>
   			</configuration>
   		</plugin>

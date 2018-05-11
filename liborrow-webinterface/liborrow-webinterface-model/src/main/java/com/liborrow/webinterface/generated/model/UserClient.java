@@ -39,6 +39,51 @@ public interface UserClient {
 
     /**
      * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "loginUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUser")
+    @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
+    public UserLightDTO loginUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "deleteUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUser")
+    @ResponseWrapper(localName = "deleteUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/deleteUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/deleteUserResponse")
+    public void deleteUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        UserDTO arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<com.liborrow.webinterface.generated.model.UserLightDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchUser")
+    @ResponseWrapper(localName = "searchUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/searchUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/searchUserResponse")
+    public List<UserLightDTO> searchUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        UserCriterias arg0);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns com.liborrow.webinterface.generated.model.UserLightDTO
@@ -63,50 +108,5 @@ public interface UserClient {
     public void updateUser(
         @WebParam(name = "arg0", targetNamespace = "")
         UserDTO arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "deleteUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUser")
-    @ResponseWrapper(localName = "deleteUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/deleteUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/deleteUserResponse")
-    public void deleteUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        UserDTO arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "loginUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUser")
-    @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
-    public UserLightDTO loginUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<com.liborrow.webinterface.generated.model.UserLightDTO>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchUser")
-    @ResponseWrapper(localName = "searchUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.SearchUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/searchUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/searchUserResponse")
-    public List<UserLightDTO> searchUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        UserCriterias arg0);
 
 }

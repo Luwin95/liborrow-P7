@@ -69,6 +69,7 @@
 							      <th>Langue</th>
 							      <th>Auteur</th>
 							      <th>Restant</th>
+							      <s:if test="remainingCount==0"><th>Réservation</th></s:if>
 							    </tr>
 							  </thead>
 							  <tbody>
@@ -91,6 +92,12 @@
 								      	<s:param name="objectType">book</s:param>
 								      	<s:param name="objectId"><s:property value="id"/></s:param>
 								      </s:url>
+								      <s:if test="remainingCount==0">
+									      <s:url action="reserveBook" namespace="/liborrow" var="urlReservationItem">
+										      <s:param name="itemId"><s:property value="id"/></s:param>
+										  </s:url>
+										  <td><a class="btn btn-info" href="${urlReservationItem}">Réserver</a></td>
+									  </s:if>
 								    </tr>
 								</s:iterator>
 							  </tbody>
@@ -144,6 +151,7 @@
 							      <th>Numéro</th>
 							      <th>Date de sortie</th>
 							      <th>Restant</th>
+							      <s:if test="remainingCount==0"><th>Réservation</th></s:if>
 							    </tr>
 							  </thead>
 							  <tbody>
@@ -161,6 +169,12 @@
 								      	<s:param name="objectType">magazine</s:param>
 								      	<s:param name="objectId"><s:property value="id"/></s:param>
 								      </s:url>
+								      <s:if test="remainingCount==0">
+									      <s:url action="reserveMagazine" namespace="/liborrow" var="urlReservationItem">
+										      <s:param name="itemId"><s:property value="id"/></s:param>
+										  </s:url>
+										  <td><a class="btn btn-info" href="${urlReservationItem}">Réserver</a></td>
+									  </s:if>
 								    </tr>
 								</s:iterator>
 							  </tbody>

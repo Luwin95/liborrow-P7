@@ -197,6 +197,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link WaitingListDTO }
+     * 
+     */
+    public WaitingListDTO createWaitingListDTO() {
+        return new WaitingListDTO();
+    }
+
+    /**
      * Create an instance of {@link MagazineDTO }
      * 
      */

@@ -8,9 +8,9 @@ import org.liborrow.webservice.model.utilsobject.ReservationResponse;
 import org.liborrow.webservice.model.utilsobject.SearchResponse;
 
 public interface ItemManager {
-	Item findItemById(long id);
+	ItemDTO findItemById(long id);
 	SearchResponse searchWithSimpleString(ItemCriterias itemCriterias, String[] simpleStringSplited);
 	SearchResponse getLastFiveItems();
 	ReservationResponse reserveItem(ItemDTO item, UserLightDTO user);
-	ReservationResponse cancelItemReservation(Integer itemId, UserLightDTO user);
+	ReservationResponse cancelItemReservation(Long itemId, UserLightDTO user);
 }

@@ -132,12 +132,16 @@ public class ItemService extends AbstractService{
 	
 	@WebMethod
 	public ReservationResponse reserveItem(ItemDTO item, UserLightDTO user) {
-		return null;
+		return getManagerFactory().getItemManager().reserveItem(item, user);
 	}
 	
 	@WebMethod
-	public ReservationResponse cancelReservation(Integer itemId, UserLightDTO user) {
-		return null;
+	public ReservationResponse cancelReservation(Long itemId, UserLightDTO user) {
+		return getManagerFactory().getItemManager().cancelItemReservation(itemId, user);
 	}
 	
+	@WebMethod
+	public ItemDTO getItem(Long id) {
+		return getManagerFactory().getItemManager().findItemById(id);
+	}
 }

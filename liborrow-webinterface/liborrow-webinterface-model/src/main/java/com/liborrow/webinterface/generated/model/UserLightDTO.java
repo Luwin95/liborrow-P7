@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="phoneNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="reservations" type="{model.generated.webinterface.liborrow.com}waitingListDTO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -48,6 +49,7 @@ import javax.xml.bind.annotation.XmlType;
     "lastname",
     "phoneNumber",
     "postCode",
+    "reservations",
     "role"
 })
 public class UserLightDTO {
@@ -62,6 +64,8 @@ public class UserLightDTO {
     protected String lastname;
     protected String phoneNumber;
     protected String postCode;
+    @XmlElement(nillable = true)
+    protected List<WaitingListDTO> reservations;
     protected String role;
 
     /**
@@ -275,6 +279,35 @@ public class UserLightDTO {
      */
     public void setPostCode(String value) {
         this.postCode = value;
+    }
+
+    /**
+     * Gets the value of the reservations property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the reservations property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getReservations().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link WaitingListDTO }
+     * 
+     * 
+     */
+    public List<WaitingListDTO> getReservations() {
+        if (reservations == null) {
+            reservations = new ArrayList<WaitingListDTO>();
+        }
+        return this.reservations;
     }
 
     /**

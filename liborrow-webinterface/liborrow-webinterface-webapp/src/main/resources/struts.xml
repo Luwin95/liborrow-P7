@@ -72,5 +72,21 @@
         <action name="logout" class="com.liborrow.webinterface.webapp.actions.AuthenticationManagementAction" method="logout">
         	<result name="success" type="redirect">/loginHome.action</result>
         </action>
+        <action name="reserveBook" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="reserveItem">
+        	<result name="success">/WEB-INF/jsp/book.jsp</result>
+        	<result name="error">/WEB-INF/jsp/book.jsp</result>
+        </action>
+        <action name="cancelReservationBook" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="cancelReservation">
+        	<result name="success">/WEB-INF/jsp/book.jsp</result>
+        	<result name="error">/WEB-INF/jsp/book.jsp</result>
+        </action>
+        <action name="reserveMagazine" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="reserveItem">
+        	<result name="success">/WEB-INF/jsp/magazine.jsp</result>
+        	<result name="error">/WEB-INF/jsp/magazine.jsp</result>
+        </action>
+        <action name="cancelReservationMagazine" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="cancelReservation">
+        	<result name="success">/WEB-INF/jsp/magazine.jsp</result>
+        	<result name="error">/WEB-INF/jsp/magazine.jsp</result>
+        </action>
     </package>
 </struts>

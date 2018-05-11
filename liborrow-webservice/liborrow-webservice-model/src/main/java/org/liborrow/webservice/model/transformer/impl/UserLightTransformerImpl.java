@@ -10,6 +10,7 @@ import org.liborrow.webservice.model.entities.UserLight;
 import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
 import org.liborrow.webservice.model.transformer.contract.CitizenshipTransformer;
 import org.liborrow.webservice.model.transformer.contract.UserLightTransformer;
+import org.liborrow.webservice.model.transformer.contract.WaitingListTransformer;
 
 public class UserLightTransformerImpl implements UserLightTransformer {
 
@@ -34,6 +35,10 @@ public class UserLightTransformerImpl implements UserLightTransformer {
 		{
 			CitizenshipTransformer citizenshipTransformer= new CitizenshipTransformerImpl();
 			userTransformed.setCitizenship(citizenshipTransformer.toCitizenshipDTO(user.getCitizenship(), false, userTransformed.getClass().getName()));
+		}
+		if(user.getReservations()!=null && (isParent||classParentName.equals(UserLight.class.getSimpleName()))) {
+			WaitingListTransformer waitingListTransformer = new WaitingListTransformerImpl();
+			userTransformed.setReservations(waitingListTransformer.toWaitingListsDTO(user.getReservations(), false, userTransformed.getClass().getSimpleName()));
 		}
 		return userTransformed;
 	}

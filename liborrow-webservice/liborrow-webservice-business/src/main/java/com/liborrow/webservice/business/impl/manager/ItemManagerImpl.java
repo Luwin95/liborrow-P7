@@ -12,12 +12,14 @@ import org.liborrow.webservice.model.dto.BookDTO;
 import org.liborrow.webservice.model.dto.ItemDTO;
 import org.liborrow.webservice.model.dto.MagazineDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
+import org.liborrow.webservice.model.dto.WaitingListDTO;
 import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.Citizenship;
 import org.liborrow.webservice.model.entities.Item;
 import org.liborrow.webservice.model.entities.Magazine;
+import org.liborrow.webservice.model.entities.UserLight;
 import org.liborrow.webservice.model.entities.WaitingList;
 import org.liborrow.webservice.model.utilsobject.AuthorDependenciesEnum;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
@@ -32,6 +34,7 @@ import com.liborrow.webservice.consumer.repository.AuthorRepository;
 import com.liborrow.webservice.consumer.repository.BookRepository;
 import com.liborrow.webservice.consumer.repository.ItemRepository;
 import com.liborrow.webservice.consumer.repository.MagazineRepository;
+import com.liborrow.webservice.consumer.repository.UserLightRepository;
 import com.liborrow.webservice.consumer.repository.WaitingListRepository;
 
 
@@ -53,13 +56,16 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 	@Autowired
 	WaitingListRepository waitingListRepository;
 	
+	@Autowired
+	UserLightRepository userLightRepository;
+	
 	private ReservationResponse reservationResponse = new ReservationResponse();
 	
 	@Override
 	@Transactional(readOnly = true)
-	public Item findItemById(long id)
+	public ItemDTO findItemById(long id)
 	{
-		return itemRepository.findOne(id);
+		return convertItem(itemRepository.findOne(id));
 	}
 	
 	@Override
@@ -113,18 +119,34 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 			waitingList.setItem(convertItemDTO(item));
 			waitingList.setBorrower(getTransformerFactory().getUserLightTransformer().toUserLightEntity(user, true, UserLightDTO.class.getSimpleName()));
 			waitingListRepository.save(waitingList);
-			reservationResponse.setMessage("Vous avez bien été ajouté dans la liste d'attent des réservations de cet item. Votre position est : "+(position+1));
+			reservationResponse.setMessage("Vous avez bien été ajouté dans la liste d'attente des réservations de cet item. Votre position est : "+(position+1));
 			reservationResponse.setResponseType("success");
 		}
 		return reservationResponse;
 	}
 	
 	@Override
-	public ReservationResponse cancelItemReservation(Integer itemId, UserLightDTO user) {
-		// TODO VERIFIER LA PRESENCE DE L'ITEM DANS LA LISTE DE RESERVATION DE L'UTILISATEUR
-		
-		//TODO SUPPRIMER DE LA LISTE L'ITEM SELECTIONNE 
-		return null;
+	public ReservationResponse cancelItemReservation(Long itemId, UserLightDTO user) {
+		//TODO VERIFIER LA PRESENCE DE L'ITEM DANS LA LISTE DE RESERVATION DE L'UTILISATEUR
+		if(checkItemInUserWaitingList(user, itemId)) {
+			//TODO SUPPRIMER DE LA LISTE L'ITEM SELECTIONNE 
+			UserLight userLightEntity = getTransformerFactory().getUserLightTransformer().toUserLightEntity(user, true, UserLightDTO.class.getName());
+			WaitingList waitingListToRemove = new WaitingList();
+			for(WaitingList waitingList : userLightEntity.getReservations()) {
+				if(waitingList.getItem().getId()==itemId) {
+					waitingListToRemove = waitingList;
+				}
+			}
+			userLightEntity.getReservations().remove(waitingListToRemove);
+			userLightRepository.save(userLightEntity);
+			reservationResponse.setMessage("Votre réservation a boen été annulée");
+			reservationResponse.setResponseType("success");
+			return reservationResponse;
+		}else {
+			reservationResponse.setMessage("Une erreur s'est produite lors de votre demande");
+			reservationResponse.setResponseType("error");
+			return reservationResponse;
+		}
 	}
 	
 	private void bookEntityHibernateInitialization(Book book)
@@ -239,6 +261,24 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 		}else {
 			return getTransformerFactory().getMagazineTransformer().toMagazineEntity((MagazineDTO) item, true, MagazineDTO.class.getSimpleName());
 		}
+	}
+	
+	private ItemDTO convertItem(Item item) {
+		if(item.getType().equals("B")) {
+			return getTransformerFactory().getBookTransformer().toBookDTO((Book) item, true, Book.class.getSimpleName());
+		}else {
+			return getTransformerFactory().getMagazineTransformer().toMagazineDTO((Magazine) item, true, MagazineDTO.class.getSimpleName());
+		}
+	}
+	
+	private boolean checkItemInUserWaitingList(UserLightDTO user, Long itemId) {
+		boolean isPresent = false;
+		for(WaitingListDTO waitingListItem : user.getReservations()) {
+			if(waitingListItem.getItem().getId()==itemId) {
+				isPresent = true;
+			}
+		}
+		return isPresent;
 	}
 	
 }

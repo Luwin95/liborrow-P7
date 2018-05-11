@@ -177,19 +177,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AuthorDTO }
-     * 
-     */
-    public AuthorDTO createAuthorDTO() {
-        return new AuthorDTO();
-    }
-
-    /**
      * Create an instance of {@link ImageDTO }
      * 
      */
     public ImageDTO createImageDTO() {
         return new ImageDTO();
+    }
+
+    /**
+     * Create an instance of {@link UserLightDTO }
+     * 
+     */
+    public UserLightDTO createUserLightDTO() {
+        return new UserLightDTO();
+    }
+
+    /**
+     * Create an instance of {@link MagazineDTO }
+     * 
+     */
+    public MagazineDTO createMagazineDTO() {
+        return new MagazineDTO();
+    }
+
+    /**
+     * Create an instance of {@link BorrowDTO }
+     * 
+     */
+    public BorrowDTO createBorrowDTO() {
+        return new BorrowDTO();
+    }
+
+    /**
+     * Create an instance of {@link AuthorDTO }
+     * 
+     */
+    public AuthorDTO createAuthorDTO() {
+        return new AuthorDTO();
     }
 
     /**
@@ -217,27 +241,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UserLightDTO }
+     * Create an instance of {@link WaitingListDTO }
      * 
      */
-    public UserLightDTO createUserLightDTO() {
-        return new UserLightDTO();
-    }
-
-    /**
-     * Create an instance of {@link MagazineDTO }
-     * 
-     */
-    public MagazineDTO createMagazineDTO() {
-        return new MagazineDTO();
-    }
-
-    /**
-     * Create an instance of {@link BorrowDTO }
-     * 
-     */
-    public BorrowDTO createBorrowDTO() {
-        return new BorrowDTO();
+    public WaitingListDTO createWaitingListDTO() {
+        return new WaitingListDTO();
     }
 
     /**

@@ -1,5 +1,8 @@
 package org.liborrow.webservice.consumer;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -25,9 +28,15 @@ public class WaitingListDaoTest {
 	@Test
 	public void getWaitingListSizeTest() {
 		LOGGER.debug("[DEBUT] SpringRegistry() - Initialisation du contexte Spring");
-		Integer waitingListSize = daoFactory.getWaitingListDao().getWaitingListSize(1L);
-//		assertNotNull(waitingListSize);
+		Long waitingListSize = daoFactory.getWaitingListDao().getWaitingListSize(1L);
 		assertTrue(waitingListSize==0);
 	}
-
+	
+	@Test
+	public void getLastPositionTest() {
+		LOGGER.debug("[DEBUT] SpringRegistry() - Initialisation du contexte Spring");
+		Integer lastPosition = daoFactory.getWaitingListDao().getLastPosition(6L);
+		assertNotNull(lastPosition);
+		assertTrue(lastPosition==1);
+	}
 }

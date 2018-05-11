@@ -5,10 +5,9 @@
   <parent>
     <groupId>com.liborrow.liborrow-callagainbatch</groupId>
     <artifactId>liborrow-callagainbatch</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
   </parent>
   <artifactId>liborrow-callagainbatch-consumer</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>liborrow-callagainbatch-consumer</name>
   <url>http://maven.apache.org</url>
   <properties>
