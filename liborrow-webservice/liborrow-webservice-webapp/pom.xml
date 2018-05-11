@@ -30,11 +30,27 @@
       <scope>provided</scope>
     </dependency>
     
+    <!-- Junit -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-engine</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.platform</groupId>
+	    <artifactId>junit-platform-launcher</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.platform</groupId>
+	    <artifactId>junit-platform-runner</artifactId>
+	    <scope>test</scope>
+	</dependency>
     
     <dependency>
       <groupId>org.springframework</groupId>
@@ -85,7 +101,6 @@
   </dependencies>
   <build>
     <finalName>liborrow-webservice-webapp</finalName>
-    
     <plugins>
     	<plugin>
 	        <artifactId>maven-war-plugin</artifactId>

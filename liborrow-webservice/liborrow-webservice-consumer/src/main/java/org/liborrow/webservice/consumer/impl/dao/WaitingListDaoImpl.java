@@ -8,7 +8,7 @@ public class WaitingListDaoImpl extends AbstractDaoImpl implements WaitingListDa
 	@Override
 	public Integer getWaitingListSize(Long itemId) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT count(waitingList.id) FROM WaitingList JOIN FETCH waitingList.item item WHERE waitingList.item.id=:item ");
+		queryString.append("SELECT count(waitingList.id) FROM WaitingList waitingList JOIN waitingList.item WHERE waitingList.item.id=:item ");
 		Query query = getEm().createQuery(queryString.toString());
 		query.setParameter("item", itemId);
 		return (Integer) query.getSingleResult();
