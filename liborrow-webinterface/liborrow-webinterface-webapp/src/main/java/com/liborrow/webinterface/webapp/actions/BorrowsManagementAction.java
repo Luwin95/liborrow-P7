@@ -17,6 +17,7 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 	private GregorianCalendar now = new GregorianCalendar();
 	protected Map<String,Object> session;
 	private String idBorrow;
+	private String error;
 	
 	// ----- Eléments en sortie
 	private BorrowDTO borrow;
@@ -49,7 +50,14 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 	public void setIdBorrow(String idBorrow) {
 		this.idBorrow = idBorrow;
 	}
-	
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
 	// ==================== Méthodes ====================
 	/**
 	 * Récupère la liste des prêts en cours de l'utilisateur loggé
@@ -67,14 +75,18 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 	 * @return success
 	 */
 	public String extendBorrow() {
+		UserLightDTO currentUser = (UserLightDTO) session.get("sessionUser");
 		borrow = getManagerFactory().getBorrowManager().getBorrowById(Integer.parseInt(idBorrow));
-		boolean isUpdated = getManagerFactory().getBorrowManager().markBorrow(borrow);
-		if(isUpdated)
-		{
-			return "success";
+		if(borrow.getBorrower().getId() == currentUser.getId()) {
+			boolean isUpdated = getManagerFactory().getBorrowManager().markBorrow(borrow);
+			if(isUpdated)
+			{
+				return "success";
+			}else {
+				return "error";
+			}
 		}else {
 			return "error";
 		}
 	}
-	
 }
