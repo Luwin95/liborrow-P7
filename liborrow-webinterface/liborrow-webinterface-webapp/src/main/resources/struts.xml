@@ -67,7 +67,7 @@
         </action>
         <action name="extendBorrow" class="com.liborrow.webinterface.webapp.actions.BorrowsManagementAction" method="extendBorrow">
         	<result name="success" type="redirect">/liborrow/currentBorrows.action</result>
-        	<result name="error" type="redirect">/liborrow/currentBorrows.action</result>
+        	<result name="error" type="redirect">/liborrow/currentBorrows.action?error=erreur</result>
         </action>
         <action name="logout" class="com.liborrow.webinterface.webapp.actions.AuthenticationManagementAction" method="logout">
         	<result name="success" type="redirect">/loginHome.action</result>

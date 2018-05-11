@@ -5,13 +5,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Magazine</title>
+	<title>Mes Prêts</title>
 	<s:head />
 </head>
 <body>
 	<div class="card">
 	   <h1 class="card-title">Liste des prêts en cours</h1>
 	   <ul class="list-group list-group-flush">
+	   		<s:if test="%{error!=null}"><li class="list-group-item"><div class="alert alert-danger">Une erreur s'est produite lors de la prolongation de votre prêt</div></li></s:if>
 		    <li class="list-group-item">
 		    	<s:if test="%{borrows!=null && borrows.size()!=0}">
 					<h2 class="card-title">Prêts en cours</h2>
@@ -44,7 +45,7 @@
 						      <s:url action="extendBorrow" namespace="/liborrow" var="urlBorrow">
 						      	<s:param name="idBorrow"><s:property value="id"/></s:param>
 						      </s:url>
-						      <td><s:if test="extended">Impossible</s:if><s:else><a class="btn btn-info" href="${urlBorrow}">Prolonger prêt</a></s:else></td>
+						      <td><s:if test="extended || endDate.toGregorianCalendar().before(now)">Impossible</s:if><s:else><a class="btn btn-info" href="${urlBorrow}">Prolonger prêt</a></s:else></td>
 						    </tr>
 						</s:iterator>
 					  </tbody>
