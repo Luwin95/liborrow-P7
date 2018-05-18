@@ -69,7 +69,9 @@
 							      <th>Langue</th>
 							      <th>Auteur</th>
 							      <th>Restant</th>
-							      <s:if test="remainingCount==0"><th>Réservation</th></s:if>
+						      	  <th>Nombre de réservations</th>
+						      	  <th>Prochain retour de prêt</th>
+						      	  <th>Réservation</th>
 							    </tr>
 							  </thead>
 							  <tbody>
@@ -92,12 +94,12 @@
 								      	<s:param name="objectType">book</s:param>
 								      	<s:param name="objectId"><s:property value="id"/></s:param>
 								      </s:url>
-								      <s:if test="remainingCount==0">
-									      <s:url action="reserveBook" namespace="/liborrow" var="urlReservationItem">
-										      <s:param name="itemId"><s:property value="id"/></s:param>
-										  </s:url>
-										  <td><a class="btn btn-info" href="${urlReservationItem}">Réserver</a></td>
-									  </s:if>
+								      <s:url action="reserveBook" namespace="/liborrow" var="urlReservationItem">
+									      <s:param name="itemId"><s:property value="id"/></s:param>
+									  </s:url>
+									  <td><s:if test="remainingCount==0"><s:property value="reservationsNumber"/></s:if><s:else>N/A</s:else></td>
+									  <td><s:if test="remainingCount==0"><s:property value="nextReturn.toGregorianCalendar().getTime()"/></s:if><s:else>N/A</s:else></td>
+									  <td><a class="btn btn-info <s:if test="remainingCount>0">disabled</s:if>" href="${urlReservationItem}">Réserver</a></td>
 								    </tr>
 								</s:iterator>
 							  </tbody>

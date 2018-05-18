@@ -13,10 +13,10 @@
 	<div class="row justify-content-sm-center">
 		<div class="col-sm-4">
 			<s:if test="%{reservationResponse!=null}">
-				<s:if test="%{#reservationResponse.responseType == 'success')}">
+				<s:if test="%{reservationResponse.responseType == 'success'}">
 					<div class="alert alert-success"><s:property value="reservationResponse.message"/></div>
 				</s:if>
-				<s:if test="%{#reservationResponse.responseType == 'error')}">
+				<s:if test="%{reservationResponse.responseType == 'error'}">
 					<div class="alert alert-danger"><s:property value="reservationResponse.message"/></div>
 				</s:if>
 			</s:if>

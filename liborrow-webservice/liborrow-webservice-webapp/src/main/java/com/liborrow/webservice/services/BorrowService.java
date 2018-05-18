@@ -7,6 +7,7 @@ import javax.jws.WebService;
 
 import org.liborrow.webservice.model.dto.BorrowDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
+import org.liborrow.webservice.model.dto.WaitingListDTO;
 
 import com.liborrow.webservice.AbstractService;
 
@@ -59,5 +60,9 @@ public class BorrowService extends AbstractService {
 	public List<BorrowDTO> findLateBorrows()
 	{
 		return getManagerFactory().getBorrowManager().findLateBorrows();
+	}
+	
+	public List<WaitingListDTO> findUserWaitingList(UserLightDTO user){
+		return getManagerFactory().getBorrowManager().findUserWaitingList(user);
 	}
 }

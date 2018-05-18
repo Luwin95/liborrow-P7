@@ -1,5 +1,6 @@
 package com.liborrow.webinterface.webapp.actions;
 
+import java.util.Calendar;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -25,6 +26,8 @@ public class ItemManagementAction  extends AbstractAction implements SessionAwar
 	private MagazineDTO magazine;
 	private ItemDTO item;
 	private ReservationResponse reservationResponse;
+	private Calendar nextReturn;
+	private Long reservationsNumber;
 	
 	// ==================== Getters/Setters ====================
 	public BookDTO getBook() {
@@ -66,10 +69,18 @@ public class ItemManagementAction  extends AbstractAction implements SessionAwar
 	public void setReservationResponse(ReservationResponse reservationResponse) {
 		this.reservationResponse = reservationResponse;
 	}
-	
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+	
+	public Calendar getNextReturn() {
+		return nextReturn;
+	}
+
+	public Long getReservationsNumber() {
+		return reservationsNumber;
 	}
 
 	// ==================== Méthodes ====================
@@ -79,6 +90,10 @@ public class ItemManagementAction  extends AbstractAction implements SessionAwar
 	 * @return success
 	 */
 	public String displayBook() {
+		if(null!=session.get("reservationResponse")) {
+			reservationResponse = (ReservationResponse) session.get("reservationResponse");
+			session.remove("reservationResponse");
+		}
 		 book = getManagerFactory().getBookManager().getBookById(Integer.parseInt(idBook));
 	     return SUCCESS;
 	}
@@ -89,6 +104,10 @@ public class ItemManagementAction  extends AbstractAction implements SessionAwar
 	 * @return success
 	 */
 	public String displayMagazine() {
+		if(null!=session.get("reservationResponse")) {
+			reservationResponse = (ReservationResponse) session.get("reservationResponse");
+			session.remove("reservationResponse");
+		}
 		magazine = getManagerFactory().getMagazineManager().getMagazineById(Integer.parseInt(idMagazine));
         return SUCCESS;
 	}
@@ -102,6 +121,7 @@ public class ItemManagementAction  extends AbstractAction implements SessionAwar
 		item = getManagerFactory().getItemManager().getItem(itemId);
 		if(null!=item) {
 			reservationResponse = getManagerFactory().getItemManager().reserveItem(item, (UserLightDTO) session.get("sessionUser"));
+			session.put("reservationResponse", reservationResponse);
 			return SUCCESS;
 		}else {
 			return "error";
@@ -116,6 +136,7 @@ public class ItemManagementAction  extends AbstractAction implements SessionAwar
 	public String cancelReservation() {
 		if(0!=itemId) {
 			reservationResponse = getManagerFactory().getItemManager().cancelItemReservation(itemId,(UserLightDTO) session.get("sessionUser"));
+			session.put("reservationResponse", reservationResponse);
 			return SUCCESS;
 		}else{
 			return "error";

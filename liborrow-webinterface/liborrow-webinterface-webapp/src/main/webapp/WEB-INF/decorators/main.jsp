@@ -42,7 +42,9 @@
 				      <li class="nav-item">
 				        <a class="nav-link" href="<s:url action="currentBorrows" namespace="/liborrow"/>">Mes prêts en cours</a>
 				      </li>
-				   
+				      <li class="nav-item">
+				        <a class="nav-link" href="<s:url action="userReservationsList" namespace="/liborrow"/>">Mes Réservations</a>
+				      </li>
 				    </ul>
 				    <ul class="navbar-nav ml-auto">
 						<s:if test='#session.sessionUser != null'>

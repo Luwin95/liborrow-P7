@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.liborrow.webinterface.generated.model.BorrowDTO;
 import com.liborrow.webinterface.generated.model.UserLightDTO;
+import com.liborrow.webinterface.generated.model.WaitingListDTO;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class BorrowsManagementAction extends AbstractAction implements SessionAware{
@@ -21,7 +22,8 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 	
 	// ----- Eléments en sortie
 	private BorrowDTO borrow;
-	private  List<BorrowDTO> borrows;
+	private List<BorrowDTO> borrows;
+	private List<WaitingListDTO> reservations;
 	
 	// ==================== Getters/Setters ====================
 	public void setSession(Map<String, Object> session) {
@@ -57,6 +59,10 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 	public void setError(String error) {
 		this.error = error;
 	}
+	
+	public List<WaitingListDTO> getReservations() {
+		return reservations;
+	}
 
 	// ==================== Méthodes ====================
 	/**
@@ -88,5 +94,15 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 		}else {
 			return "error";
 		}
+	}
+	
+	/**
+	 * Récupère la liste des réservations de l'utilisateur loggé
+	 * 
+	 * @return success
+	 */
+	public String doListReservations() {
+		reservations = getManagerFactory().getBorrowManager().getUserReservations((UserLightDTO) session.get("sessionUser"));
+		return SUCCESS;
 	}
 }

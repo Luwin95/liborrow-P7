@@ -39,6 +39,18 @@ public interface UserClient {
 
     /**
      * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "deleteUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUser")
+    @ResponseWrapper(localName = "deleteUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/deleteUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/deleteUserResponse")
+    public void deleteUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        UserDTO arg0);
+
+    /**
+     * 
      * @param arg1
      * @param arg0
      * @return
@@ -54,18 +66,6 @@ public interface UserClient {
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "deleteUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUser")
-    @ResponseWrapper(localName = "deleteUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.DeleteUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/deleteUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/deleteUserResponse")
-    public void deleteUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        UserDTO arg0);
 
     /**
      * 

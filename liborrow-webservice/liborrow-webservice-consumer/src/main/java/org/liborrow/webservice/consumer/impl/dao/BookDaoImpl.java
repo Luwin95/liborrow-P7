@@ -27,7 +27,7 @@ public class BookDaoImpl extends AbstractDaoImpl implements BookDao {
 	@Override
 	public Set<Book> searchBook(ItemCriterias itemCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct book FROM Book AS book JOIN FETCH book.authors JOIN FETCH book.borrows WHERE 1=1 ");
+		queryString.append("SELECT distinct book FROM Book AS book LEFT JOIN FETCH book.authors LEFT JOIN FETCH book.borrows LEFT JOIN FETCH book.reservations WHERE 1=1 ");
 		if(itemCriterias.getBookCriterias().getTitle()!=null && !itemCriterias.getBookCriterias().getTitle().equals("") )
 		{
 			queryString.append("AND (book.title LIKE :title ");
@@ -95,7 +95,7 @@ public class BookDaoImpl extends AbstractDaoImpl implements BookDao {
 	@Override
 	public Set<Book> searchWithSimpleStringBook(ItemCriterias itemCriterias, String[] simpleStringSplited) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct book FROM Book AS book JOIN FETCH book.authors JOIN FETCH book.borrows WHERE 1=0 ");
+		queryString.append("SELECT distinct book FROM Book AS book LEFT JOIN FETCH book.authors LEFT JOIN FETCH book.borrows LEFT JOIN FETCH book.reservations WHERE 1=0 ");
 		for(String string: simpleStringSplited)
 		{
 			queryString.append("OR book.title LIKE :title"+string+" ");

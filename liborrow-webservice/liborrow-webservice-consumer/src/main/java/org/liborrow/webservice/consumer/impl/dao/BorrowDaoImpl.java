@@ -50,10 +50,30 @@ public class BorrowDaoImpl extends AbstractDaoImpl implements BorrowDao {
 	@Override
 	public Boolean checkItemForUser(Long itemId, Long userId) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT borrow FROM Borrow borrow JOIN FETCH borrow.item item JOIN FETCH borrow.borrower WHERE ((borrow.item.id=:item AND borrow.borrower.id=:borrower");
+		queryString.append("SELECT borrow FROM Borrow borrow JOIN borrow.item item JOIN borrow.borrower WHERE borrow.item.id=:item AND borrow.borrower.id=:borrower");
 		Query query = getEm().createQuery(queryString.toString());
 		query.setParameter("item", itemId);
 		query.setParameter("borrower", userId);
-		return query.getSingleResult()!=null;
+		boolean isEmptyList = query.getResultList().isEmpty();
+		return isEmptyList ? false : true;
+	}
+	
+	@Override
+	public Calendar getNextGetBackDate(Long itemId) {
+		Calendar returnDate = null;
+		StringBuilder minNotExtendedDatequeryString = new StringBuilder();
+		minNotExtendedDatequeryString.append("SELECT min(borrow.startDate) FROM Borrow borrow JOIN borrow.item item JOIN borrow.borrower WHERE borrow.item.id=:item and borrow.extended = false");
+		Query queryMinNotExtendedDate = getEm().createQuery(minNotExtendedDatequeryString.toString());
+		queryMinNotExtendedDate.setParameter("item", itemId);	
+		Calendar minNotExtendedDate = Calendar.getInstance(); 
+		minNotExtendedDate.setTime((Date) queryMinNotExtendedDate.getSingleResult());
+		StringBuilder minExtendedDatequeryString = new StringBuilder();
+		minNotExtendedDatequeryString.append("SELECT min(borrow.startDate) FROM Borrow borrow JOIN borrow.item item JOIN borrow.borrower WHERE borrow.item.id=:item and borrow.extended = true");
+		Query queryMinExtendedDate = getEm().createQuery(minExtendedDatequeryString.toString());
+		queryMinExtendedDate.setParameter("item", itemId);	
+		Calendar minExtendedDate = Calendar.getInstance(); 
+		minExtendedDate.setTime((Date) queryMinExtendedDate.getSingleResult());
+		return returnDate = minExtendedDate.compareTo(minNotExtendedDate) > 0 ? minNotExtendedDate : minExtendedDate;
+		
 	}
 }

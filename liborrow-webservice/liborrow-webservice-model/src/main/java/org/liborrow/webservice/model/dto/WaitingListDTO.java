@@ -14,6 +14,10 @@ public class WaitingListDTO {
 	
 	private ItemDTO item;
 	
+	private BookDTO bookDTO;
+	
+	private MagazineDTO magazineDTO;
+	
 	public WaitingListDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -56,6 +60,22 @@ public class WaitingListDTO {
 
 	public void setItem(ItemDTO item) {
 		this.item = item;
+	}
+
+	public BookDTO getBookDTO() {
+		return bookDTO;
+	}
+
+	public void setBookDTO(BookDTO bookDTO) {
+		this.bookDTO = bookDTO;
+	}
+
+	public MagazineDTO getMagazineDTO() {
+		return magazineDTO;
+	}
+
+	public void setMagazineDTO(MagazineDTO magazineDTO) {
+		this.magazineDTO = magazineDTO;
 	}
 	
 }

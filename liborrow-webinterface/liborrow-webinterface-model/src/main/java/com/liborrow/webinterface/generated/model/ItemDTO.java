@@ -6,8 +6,10 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -25,8 +27,11 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="itemRef" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="itemType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="nextReturn" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="place" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="remainingCount" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="reservations" type="{model.generated.webinterface.liborrow.com}waitingListDTO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="reservationsNumber" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="totalCount" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -43,8 +48,11 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "itemRef",
     "itemType",
+    "nextReturn",
     "place",
     "remainingCount",
+    "reservations",
+    "reservationsNumber",
     "totalCount"
 })
 @XmlSeeAlso({
@@ -59,8 +67,13 @@ public class ItemDTO {
     protected Long id;
     protected String itemRef;
     protected String itemType;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar nextReturn;
     protected String place;
     protected int remainingCount;
+    @XmlElement(nillable = true)
+    protected List<WaitingListDTO> reservations;
+    protected Long reservationsNumber;
     protected int totalCount;
 
     /**
@@ -189,6 +202,30 @@ public class ItemDTO {
     }
 
     /**
+     * Obtient la valeur de la propriété nextReturn.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getNextReturn() {
+        return nextReturn;
+    }
+
+    /**
+     * Définit la valeur de la propriété nextReturn.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setNextReturn(XMLGregorianCalendar value) {
+        this.nextReturn = value;
+    }
+
+    /**
      * Obtient la valeur de la propriété place.
      * 
      * @return
@@ -226,6 +263,59 @@ public class ItemDTO {
      */
     public void setRemainingCount(int value) {
         this.remainingCount = value;
+    }
+
+    /**
+     * Gets the value of the reservations property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the reservations property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getReservations().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link WaitingListDTO }
+     * 
+     * 
+     */
+    public List<WaitingListDTO> getReservations() {
+        if (reservations == null) {
+            reservations = new ArrayList<WaitingListDTO>();
+        }
+        return this.reservations;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reservationsNumber.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getReservationsNumber() {
+        return reservationsNumber;
+    }
+
+    /**
+     * Définit la valeur de la propriété reservationsNumber.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setReservationsNumber(Long value) {
+        this.reservationsNumber = value;
     }
 
     /**

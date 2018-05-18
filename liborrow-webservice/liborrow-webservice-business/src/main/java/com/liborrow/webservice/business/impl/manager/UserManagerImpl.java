@@ -9,6 +9,7 @@ import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.UserAccount;
 import org.liborrow.webservice.model.entities.UserLight;
+import org.liborrow.webservice.model.entities.WaitingList;
 import org.liborrow.webservice.model.utilsobject.UserCriterias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -126,10 +127,16 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	{
 		Hibernate.initialize(user.getCitizenship());
 		Hibernate.initialize(user.getBorrows());
+		Hibernate.initialize(user.getReservations());
 		for(Borrow borrow : user.getBorrows())
 		{
 			Hibernate.initialize(borrow.getItem());
 			Hibernate.initialize(borrow.getBorrower());
+		}
+		for(WaitingList waitingList : user.getReservations())
+		{
+			Hibernate.initialize(waitingList.getItem());
+			Hibernate.initialize(waitingList.getBorrower());
 		}
 	}
 }

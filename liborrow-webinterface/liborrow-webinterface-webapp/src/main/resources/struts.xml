@@ -73,20 +73,47 @@
         	<result name="success" type="redirect">/loginHome.action</result>
         </action>
         <action name="reserveBook" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="reserveItem">
-        	<result name="success">/WEB-INF/jsp/book.jsp</result>
-        	<result name="error">/WEB-INF/jsp/book.jsp</result>
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">book</param>
+        		<param name="idBook">${itemId}</param>
+        	</result>
+        	<result name="error" type="redirectAction">
+        		<param name="actionName">book</param>
+        		<param name="idBook">${itemId}</param>
+        	</result>
         </action>
         <action name="cancelReservationBook" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="cancelReservation">
-        	<result name="success">/WEB-INF/jsp/book.jsp</result>
-        	<result name="error">/WEB-INF/jsp/book.jsp</result>
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">book</param>
+        		<param name="idBook">${itemId}</param>
+        	</result>
+        	<result name="error" type="redirectAction">
+        		<param name="actionName">book</param>
+        		<param name="idBook">${itemId}</param>
+        	</result>
         </action>
         <action name="reserveMagazine" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="reserveItem">
-        	<result name="success">/WEB-INF/jsp/magazine.jsp</result>
-        	<result name="error">/WEB-INF/jsp/magazine.jsp</result>
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">magazine</param>
+        		<param name="idMagazine">${itemId}</param>
+        	</result>
+        	<result name="error" type="redirectAction">
+        		<param name="actionName">magazine</param>
+        		<param name="idMagazine">${itemId}</param>
+        	</result>
         </action>
         <action name="cancelReservationMagazine" class="com.liborrow.webinterface.webapp.actions.ItemManagementAction" method="cancelReservation">
-        	<result name="success">/WEB-INF/jsp/magazine.jsp</result>
-        	<result name="error">/WEB-INF/jsp/magazine.jsp</result>
+        	<result name="success" type="redirectAction">
+        		<param name="actionName">magazine</param>
+        		<param name="idMagazine">${itemId}</param>
+        	</result>
+        	<result name="error" type="redirectAction">
+        		<param name="actionName">magazine</param>
+        		<param name="idMagazine">${itemId}</param>
+        	</result>
+        </action>
+        <action name="userReservationsList" class="com.liborrow.webinterface.webapp.actions.BorrowsManagementAction" method="doListReservations">
+        	<result name="success">/WEB-INF/jsp/userReservations.jsp</result>
         </action>
     </package>
 </struts>

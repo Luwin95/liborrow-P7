@@ -62,6 +62,7 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		{
 			books.addAll(getTransformerFactory().getBookTransformer().toBooksDTO(booksEntities,true, "org.liborrow.webservice.model.dto.BookDTO"));
 		}
+		formatBookResponse(books);
 		return books;
 	}
 	

@@ -7,10 +7,13 @@ import java.util.Set;
 
 import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.dto.BorrowDTO;
+import org.liborrow.webservice.model.dto.UserDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
+import org.liborrow.webservice.model.dto.WaitingListDTO;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.UserAccount;
 import org.liborrow.webservice.model.entities.UserLight;
+import org.liborrow.webservice.model.entities.WaitingList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -80,6 +83,13 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 			borrowsDTO.add(getTransformerFactory().getBorrowTransformer().toBorrowDTO(borrow, true, Borrow.class.getSimpleName()));
 		}
 		return borrowsDTO;
+	}
+	
+	@Override
+	public List<WaitingListDTO> findUserWaitingList(UserLightDTO user) {
+		List<WaitingList> waitingLists = getDaoFactory().getWaitingListDao().getWaitingListByBorrower(user.getId());
+		List<WaitingListDTO> waitingListsDTO = getTransformerFactory().getWaitingListTransformer().toWaitingListsDTO(waitingLists, true, WaitingList.class.getSimpleName() );
+		return waitingListsDTO;
 	}
 	
 	public void borrowEntityHibernateInitialization(Borrow borrow)

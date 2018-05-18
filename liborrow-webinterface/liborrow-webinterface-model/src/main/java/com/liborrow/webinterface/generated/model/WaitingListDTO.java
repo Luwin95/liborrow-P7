@@ -18,9 +18,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="bookDTO" type="{model.generated.webinterface.liborrow.com}bookDTO" minOccurs="0"/>
  *         &lt;element name="borrower" type="{model.generated.webinterface.liborrow.com}userLightDTO" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="item" type="{model.generated.webinterface.liborrow.com}itemDTO" minOccurs="0"/>
+ *         &lt;element name="magazineDTO" type="{model.generated.webinterface.liborrow.com}magazineDTO" minOccurs="0"/>
  *         &lt;element name="notificationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="position" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
@@ -33,20 +35,48 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "waitingListDTO", propOrder = {
+    "bookDTO",
     "borrower",
     "id",
     "item",
+    "magazineDTO",
     "notificationDate",
     "position"
 })
 public class WaitingListDTO {
 
+    protected BookDTO bookDTO;
     protected UserLightDTO borrower;
     protected Long id;
     protected ItemDTO item;
+    protected MagazineDTO magazineDTO;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar notificationDate;
     protected int position;
+
+    /**
+     * Obtient la valeur de la propriété bookDTO.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BookDTO }
+     *     
+     */
+    public BookDTO getBookDTO() {
+        return bookDTO;
+    }
+
+    /**
+     * Définit la valeur de la propriété bookDTO.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BookDTO }
+     *     
+     */
+    public void setBookDTO(BookDTO value) {
+        this.bookDTO = value;
+    }
 
     /**
      * Obtient la valeur de la propriété borrower.
@@ -118,6 +148,30 @@ public class WaitingListDTO {
      */
     public void setItem(ItemDTO value) {
         this.item = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété magazineDTO.
+     * 
+     * @return
+     *     possible object is
+     *     {@link MagazineDTO }
+     *     
+     */
+    public MagazineDTO getMagazineDTO() {
+        return magazineDTO;
+    }
+
+    /**
+     * Définit la valeur de la propriété magazineDTO.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link MagazineDTO }
+     *     
+     */
+    public void setMagazineDTO(MagazineDTO value) {
+        this.magazineDTO = value;
     }
 
     /**

@@ -2,7 +2,9 @@ package com.liborrow.webservice.business.impl.manager;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -29,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.liborrow.webservice.model.dto.BorrowDTO;
 import com.liborrow.webservice.business.contract.manager.ItemManager;
 import com.liborrow.webservice.consumer.repository.AuthorRepository;
 import com.liborrow.webservice.consumer.repository.BookRepository;
@@ -84,6 +87,7 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 				getTransformerFactory().getMagazineTransformer().toMagazinesDTO(
 						getDaoFactory().getMagazineDao().searchWithSimpleStringMagazine(itemCriterias, simpleStringSplited), true, "org.liborrow.webservice.model.dto.MagazineDTO")
 				);
+		formatSearchResponse(searchResponse);
 		return searchResponse;
 	}
 	
@@ -126,20 +130,13 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 	}
 	
 	@Override
+	@Transactional
 	public ReservationResponse cancelItemReservation(Long itemId, UserLightDTO user) {
 		//TODO VERIFIER LA PRESENCE DE L'ITEM DANS LA LISTE DE RESERVATION DE L'UTILISATEUR
 		if(checkItemInUserWaitingList(user, itemId)) {
 			//TODO SUPPRIMER DE LA LISTE L'ITEM SELECTIONNE 
-			UserLight userLightEntity = getTransformerFactory().getUserLightTransformer().toUserLightEntity(user, true, UserLightDTO.class.getName());
-			WaitingList waitingListToRemove = new WaitingList();
-			for(WaitingList waitingList : userLightEntity.getReservations()) {
-				if(waitingList.getItem().getId()==itemId) {
-					waitingListToRemove = waitingList;
-				}
-			}
-			userLightEntity.getReservations().remove(waitingListToRemove);
-			userLightRepository.save(userLightEntity);
-			reservationResponse.setMessage("Votre réservation a boen été annulée");
+			getDaoFactory().getWaitingListDao().removeItemInUserWaitingList(itemId, user.getId());
+			reservationResponse.setMessage("Votre réservation a bien été annulée");
 			reservationResponse.setResponseType("success");
 			return reservationResponse;
 		}else {
@@ -227,8 +224,15 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 	}
 	
 	private boolean checkReservationDemand(ItemDTO item, UserLightDTO user) {
-		if(checkUserBorrowList(item, user) && checkWaitingListSize(item)) {
-			return true;
+		if(checkUserBorrowList(item, user) && checkWaitingListSize(item) ) {
+			if(!checkItemInUserWaitingList(user, item.getId()))
+			{
+				return true;
+			}else {
+				reservationResponse.setMessage("Votre demande n'a pu aboutir : vous êtes déjà dans la liste d'attente de cet item.");
+				reservationResponse.setResponseType("error");
+				return false;
+			}
 		}else {
 			return false;
 		}
@@ -240,15 +244,17 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 		if(!getDaoFactory().getBorrowDao().checkItemForUser(item.getId(), user.getId())) {
 			return true;
 		}else {
-			reservationResponse.setMessage("Votre demande n'a pu aboutir : la liste d'attente pour ce livre est complète, veuillez réessayer plus tard.");
+			reservationResponse.setMessage("Votre demande n'a pu aboutir : vous avez déjà un prêt en cours pour ce livre.");
+			reservationResponse.setResponseType("error");
 			return false;
 		}
 	}
 	
 	private boolean checkWaitingListSize(ItemDTO item) {
 		//TODO VERIFIER QUE LA LISTE D'ATTENTE NE DEPASSE PAS LE DOUBLE DU NOMBRE D'OUVRAGE EXISTANT
-		if(getDaoFactory().getWaitingListDao().getWaitingListSize(item.getId())>=(2*item.getTotalCount())) {
-			reservationResponse.setMessage("Votre demande n'a pu aboutir : vous avez déjà un prêt en cours pour ce livre.");
+		if(getDaoFactory().getWaitingListDao().getWaitingListSize(item.getId()).intValue()>=(2*item.getTotalCount())) {
+			reservationResponse.setMessage("Votre demande n'a pu aboutir : la liste d'attente pour ce livre est complète, veuillez réessayer plus tard.");
+			reservationResponse.setResponseType("error");
 			return false;
 		}else {
 			return true;
@@ -256,7 +262,7 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 	}
 	
 	private Item convertItemDTO(ItemDTO item) {
-		if(item.getItemType().equals("B")) {
+		if(item.getItemType().equals("book")) {
 			return getTransformerFactory().getBookTransformer().toBookEntity((BookDTO) item, true, BookDTO.class.getSimpleName());
 		}else {
 			return getTransformerFactory().getMagazineTransformer().toMagazineEntity((MagazineDTO) item, true, MagazineDTO.class.getSimpleName());
@@ -272,13 +278,7 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 	}
 	
 	private boolean checkItemInUserWaitingList(UserLightDTO user, Long itemId) {
-		boolean isPresent = false;
-		for(WaitingListDTO waitingListItem : user.getReservations()) {
-			if(waitingListItem.getItem().getId()==itemId) {
-				isPresent = true;
-			}
-		}
-		return isPresent;
+		return getDaoFactory().getWaitingListDao().checkItemInUserWaitingList(itemId, user.getId());
 	}
 	
 }

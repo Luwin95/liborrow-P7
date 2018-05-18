@@ -27,12 +27,12 @@ public class WaitingListTransformerImpl implements WaitingListTransformer {
 		if(waitingList.getItem() instanceof Book && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 			BookTransformer bookTransformer = new BookTransformerImpl();
-			waitingListTransformed.setItem(bookTransformer.toBookDTO((Book) waitingList.getItem(), false, WaitingList.class.getSimpleName()));
+			waitingListTransformed.setBookDTO(bookTransformer.toBookDTO((Book) waitingList.getItem(), false, WaitingList.class.getSimpleName()));
 		}
 		if(waitingList.getItem() instanceof Magazine && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 			MagazineTransformer magazineTransformer = new MagazineTransformerImpl();
-			waitingListTransformed.setItem(magazineTransformer.toMagazineDTO((Magazine) waitingList.getItem(), false, WaitingList.class.getSimpleName()));
+			waitingListTransformed.setMagazineDTO(magazineTransformer.toMagazineDTO((Magazine) waitingList.getItem(), false, WaitingList.class.getSimpleName()));
 		}
 		if(waitingList.getBorrower()!=null && (isParent||classParentName.equals(Magazine.class.getSimpleName())||classParentName.equals(Book.class.getSimpleName())))
 		{
@@ -58,12 +58,12 @@ public class WaitingListTransformerImpl implements WaitingListTransformer {
 		waitingListTransformed.setId(waitingListDTO.getId());
 		waitingListTransformed.setPosition(waitingListDTO.getPosition());
 		waitingListTransformed.setNotificationDate(waitingListDTO.getNotificationDate());
-		if(waitingListDTO.getItem() instanceof BookDTO && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
+		if(waitingListDTO.getBookDTO() != null && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 			BookTransformer bookTransformer = new BookTransformerImpl();
 			waitingListTransformed.setItem(bookTransformer.toBookEntity((BookDTO) waitingListDTO.getItem(), false, WaitingListDTO.class.getSimpleName()));
 		}
-		if(waitingListDTO.getItem() instanceof MagazineDTO && (isParent||classParentName.equals(UserLightDTO.class.getSimpleName())))
+		if(waitingListDTO.getMagazineDTO() !=null && (isParent||classParentName.equals(UserLightDTO.class.getSimpleName())))
 		{
 			MagazineTransformer magazineTransformer = new MagazineTransformerImpl();
 			waitingListTransformed.setItem(magazineTransformer.toMagazineEntity((MagazineDTO) waitingListDTO.getItem(), false, WaitingListDTO.class.getSimpleName()));

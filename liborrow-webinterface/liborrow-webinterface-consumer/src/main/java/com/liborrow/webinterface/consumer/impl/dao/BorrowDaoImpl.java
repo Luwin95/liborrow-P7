@@ -5,6 +5,7 @@ import java.util.List;
 import com.liborrow.webinterface.consumer.contract.dao.BorrowDao;
 import com.liborrow.webinterface.generated.model.BorrowDTO;
 import com.liborrow.webinterface.generated.model.UserLightDTO;
+import com.liborrow.webinterface.generated.model.WaitingListDTO;
 
 public class BorrowDaoImpl extends AbstractDao implements BorrowDao  {
 	
@@ -23,5 +24,9 @@ public class BorrowDaoImpl extends AbstractDao implements BorrowDao  {
 	public void markBorrow(BorrowDTO borrow)
 	{
 		getBorrowSrv().markBorrowAsExtended(borrow);
+	}
+	
+	public List<WaitingListDTO> getUserReservations(UserLightDTO user){
+		return getBorrowSrv().findUserWaitingList(user);
 	}
 }

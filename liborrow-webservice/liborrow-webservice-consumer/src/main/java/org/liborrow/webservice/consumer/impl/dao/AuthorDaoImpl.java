@@ -13,7 +13,7 @@ public class AuthorDaoImpl extends AbstractDaoImpl implements AuthorDao {
 	@Override
 	public Set<Author> searchAuthor(ItemCriterias itemCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct author FROM Author AS author JOIN FETCH author.books JOIN FETCH author.citizenships WHERE 1=1 ");
+		queryString.append("SELECT distinct author FROM Author AS author LEFT JOIN FETCH author.books LEFT JOIN FETCH author.citizenships WHERE 1=1 ");
 		if(itemCriterias.getAuthorCriterias().getFirstname()!=null && !itemCriterias.getAuthorCriterias().getFirstname().equals("") )
 		{
 			queryString.append("AND (firstname LIKE :firstname ");
@@ -80,7 +80,7 @@ public class AuthorDaoImpl extends AbstractDaoImpl implements AuthorDao {
 	@Override
 	public Set<Author> searchWithSimpleStringAuthor(ItemCriterias itemCriterias, String[] simpleStringSplited) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct author FROM Author AS author JOIN FETCH author.books JOIN FETCH author.citizenships WHERE 1=0 ");
+		queryString.append("SELECT distinct author FROM Author AS author LEFT JOIN FETCH author.books LEFT JOIN FETCH author.citizenships WHERE 1=0 ");
 		for(String string : simpleStringSplited)
 		{
 			queryString.append("OR firstname LIKE :firstname"+string+" ");
