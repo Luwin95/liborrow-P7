@@ -8,28 +8,28 @@
     http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 ">
 	<batch:job id="reservationJob">
-        <batch:step id="stepGetWaitingListObsolete" next="deleteWaitingListDecision">
-            <batch:tasklet ref=""/>
+        <batch:step id="stepGetWaitingListObsolete" next="decideWaitingListToDelete">
+            <batch:tasklet ref="getWaitingListObsoleteTasklet"/>
         </batch:step>
-        <batch:decision id="deleteWaitingListDecision" decider="">
+        <batch:decision id="decideWaitingListToDelete" decider="waitingListToDeleteDecider">
 			<batch:next on="EMPTY" to="stepGetReservationAvailable"/>
 			<batch:next on="COMPLETED" to="stepDeleteWaitingListObsolete" />
 		</batch:decision>
         <batch:step id="stepDeleteWaitingListObsolete" next="stepReorganizePositionInWaitingList">
-            <batch:tasklet ref=""/>
+            <batch:tasklet ref="deleteWaitingListObsoleteTasklet"/>
         </batch:step>
-        <batch:step id="stepReorganizePositionInWaitingList" next="stepSendReservationAvailableMail">
-            <batch:tasklet ref=""/>
+        <batch:step id="stepReorganizePositionInWaitingList" next="stepGetReservationAvailable">
+            <batch:tasklet ref="reorganizePositionInWaitingListTasklet"/>
         </batch:step>
         <batch:step id="stepGetReservationAvailable" next="decisionSendReservationAvailableMail">
-            <batch:tasklet ref=""/>
+            <batch:tasklet ref="getReservationAvailableTasklet"/>
         </batch:step>
-        <batch:decision id="decisionSendReservationAvailableMail" decider="">
+        <batch:decision id="decisionSendReservationAvailableMail" decider="userToNotifyReservationAvailableDecider">
 			<batch:end on="EMPTY" />
 			<batch:next on="COMPLETED" to="stepSendReservationAvailableMail" />
 		</batch:decision>
         <batch:step id="stepSendReservationAvailableMail">
-            <batch:tasklet ref=""/>
+            <batch:tasklet ref="notifyReservationAvailableTasklet"/>
         </batch:step>
     </batch:job>
 </beans>

@@ -10,27 +10,24 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.mail.SimpleMailMessage;
 
 import com.liborrow.callagainbatch.AbstractJob;
-import com.liborrow.webinterface.generated.model.BorrowDTO;
 import com.liborrow.webinterface.utils.enums.MailTypeEnum;
 
-public class CallagainJobTasklet extends AbstractJob implements Tasklet, InitializingBean  {
+public class NotifyReservationAvailableTasklet extends AbstractJob implements Tasklet, InitializingBean {
 
 	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 	
-	public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
-		Map<String, BorrowDTO> emailAndBorrows = (Map<String, BorrowDTO>) chunkContext.getStepContext().getJobExecutionContext().get("emailAndBorrows");
-		Set keys = emailAndBorrows.keySet();
+	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+		Map<String, List<String>> emailAndReservations = (Map<String, List<String>>) chunkContext.getStepContext().getJobExecutionContext().get("emailAndReservations");
+		Set keys = emailAndReservations.keySet();
 		Iterator it = keys.iterator();
 		while(it.hasNext()) {
 			String email = (String) it.next();
-			List<String> borrows = (List<String>) emailAndBorrows.get(email);
-			getManagerFactory().getMailManager().createAndSendMail(email, borrows, MailTypeEnum.MAIL_LATE_BORROW);
+			List<String> reservations = (List<String>) emailAndReservations.get(email);
+			getManagerFactory().getMailManager().createAndSendMail(email, reservations, MailTypeEnum.MAIL_RESERVATION_AVAILABLE);
 		}
 		return RepeatStatus.FINISHED;
 	}

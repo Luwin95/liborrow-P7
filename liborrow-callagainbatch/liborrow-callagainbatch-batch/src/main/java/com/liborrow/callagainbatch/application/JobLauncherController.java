@@ -21,6 +21,9 @@ public class JobLauncherController {
 	
 	@Autowired
 	Job callagainJob;
+	
+	@Autowired
+	Job reservationJob;
 
 	@RequestMapping("/launchjob")
 	public String handle() throws Exception {
@@ -45,6 +48,20 @@ public class JobLauncherController {
 			JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
 					.toJobParameters();
 			jobLauncher.run(callagainJob, jobParameters);
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+		return "Done";
+	}
+	
+	@RequestMapping("/reservationJob")
+	public String handle2() throws Exception {
+
+		Logger logger = LoggerFactory.getLogger(this.getClass());
+		try {
+			JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
+					.toJobParameters();
+			jobLauncher.run(reservationJob, jobParameters);
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}

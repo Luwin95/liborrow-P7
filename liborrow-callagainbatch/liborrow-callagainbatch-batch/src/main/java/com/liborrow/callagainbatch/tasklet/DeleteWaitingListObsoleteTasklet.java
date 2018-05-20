@@ -11,18 +11,16 @@ import org.springframework.beans.factory.InitializingBean;
 import com.liborrow.callagainbatch.AbstractJob;
 import com.liborrow.webinterface.generated.model.WaitingListDTO;
 
-public class GetWaitingListObsoleteTasklet extends AbstractJob implements Tasklet, InitializingBean  {
-	
+public class DeleteWaitingListObsoleteTasklet extends AbstractJob implements Tasklet, InitializingBean   {
 	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		List <WaitingListDTO> reservations = getManagerFactory().getReservationManager().getWaitingListByNotificationDateObsolete();
-		if(reservations.size()>=1)
-		{
-			chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().put("reservationsObsolete", reservations);
+		List<Long> itemIds = getManagerFactory().getReservationManager().removeWaitingListObsolete((List<WaitingListDTO>) chunkContext.getStepContext().getJobExecutionContext().get("reservationsObsolete"));
+		chunkContext.getStepContext().getJobExecutionContext().remove("reservationsObsolete");
+		if(itemIds.size()>1) {
+			chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().put("itemsToModify", itemIds);
 		}
 		return RepeatStatus.FINISHED;
 	}
