@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:batch="http://www.springframework.org/schema/batch"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/batch
+    http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+">
+	<batch:job id="reservationJob">
+        <batch:step id="stepGetWaitingListObsolete" next="deleteWaitingListDecision">
+            <batch:tasklet ref=""/>
+        </batch:step>
+        <batch:decision id="deleteWaitingListDecision" decider="">
+			<batch:next on="EMPTY" to="stepGetReservationAvailable"/>
+			<batch:next on="COMPLETED" to="stepDeleteWaitingListObsolete" />
+		</batch:decision>
+        <batch:step id="stepDeleteWaitingListObsolete" next="stepReorganizePositionInWaitingList">
+            <batch:tasklet ref=""/>
+        </batch:step>
+        <batch:step id="stepReorganizePositionInWaitingList" next="stepSendReservationAvailableMail">
+            <batch:tasklet ref=""/>
+        </batch:step>
+        <batch:step id="stepGetReservationAvailable" next="decisionSendReservationAvailableMail">
+            <batch:tasklet ref=""/>
+        </batch:step>
+        <batch:decision id="decisionSendReservationAvailableMail" decider="">
+			<batch:end on="EMPTY" />
+			<batch:next on="COMPLETED" to="stepSendReservationAvailableMail" />
+		</batch:decision>
+        <batch:step id="stepSendReservationAvailableMail">
+            <batch:tasklet ref=""/>
+        </batch:step>
+    </batch:job>
+</beans>

@@ -22,6 +22,7 @@ import com.liborrow.webservice.consumer.repository.BookRepository;
 import com.liborrow.webservice.consumer.repository.BorrowRepository;
 import com.liborrow.webservice.consumer.repository.MagazineRepository;
 import com.liborrow.webservice.consumer.repository.UserAccountRepository;
+import com.liborrow.webservice.consumer.repository.WaitingListRepository;
 
 @Transactional
 public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowManager {
@@ -36,6 +37,9 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	
 	@Autowired
 	MagazineRepository magazineRepository;
+	
+	@Autowired
+	WaitingListRepository waitingListRepository;
 	
 	@Override
 	public BorrowDTO findBorrowById(long id)
@@ -152,5 +156,36 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 		List<BorrowDTO> returnList = new ArrayList<>();
 		returnList.addAll(borrows);
 		return returnList;
+	}
+	
+	@Override
+	public List<WaitingListDTO> getWaitingListAvailable() {
+		return getTransformerFactory().getWaitingListTransformer().toWaitingListsDTO(getDaoFactory().getWaitingListDao().getWaitingListAvailable(), true, WaitingList.class.getSimpleName());
+	}
+	
+	@Override
+	public List<WaitingListDTO> getWaitingListByItem(Long itemId) {
+		return getTransformerFactory().getWaitingListTransformer().toWaitingListsDTO(getDaoFactory().getWaitingListDao().getWaitingListByItem(itemId), true, WaitingList.class.getSimpleName());
+	}
+	
+	@Override
+	public List<WaitingListDTO> getWaitingListByNotificationDateObsolete() {
+		return getTransformerFactory().getWaitingListTransformer().toWaitingListsDTO(getDaoFactory().getWaitingListDao().getWaitingListByNotificationDateObsolete(), true, WaitingList.class.getSimpleName());
+	}
+	
+	@Override
+	public void removeReservations(List<WaitingListDTO> reservations) {
+		List<WaitingList> reservationsEntities = getTransformerFactory().getWaitingListTransformer().toWaitingListEntities(reservations, true, WaitingListDTO.class.getSimpleName());
+		for(WaitingList reservation : reservationsEntities) {
+			waitingListRepository.delete(reservation);
+		}
+	}
+	
+	@Override
+	public void saveReservations(List<WaitingListDTO> reservations) {
+		List<WaitingList> reservationsEntities = getTransformerFactory().getWaitingListTransformer().toWaitingListEntities(reservations, true, WaitingListDTO.class.getSimpleName());
+		for(WaitingList reservation : reservationsEntities) {
+			waitingListRepository.save(reservation);
+		}
 	}
 }

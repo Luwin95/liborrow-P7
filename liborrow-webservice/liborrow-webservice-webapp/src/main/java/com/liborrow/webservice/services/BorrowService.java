@@ -8,6 +8,7 @@ import javax.jws.WebService;
 import org.liborrow.webservice.model.dto.BorrowDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.dto.WaitingListDTO;
+import org.liborrow.webservice.model.entities.WaitingList;
 
 import com.liborrow.webservice.AbstractService;
 
@@ -62,7 +63,33 @@ public class BorrowService extends AbstractService {
 		return getManagerFactory().getBorrowManager().findLateBorrows();
 	}
 	
+	@WebMethod
 	public List<WaitingListDTO> findUserWaitingList(UserLightDTO user){
 		return getManagerFactory().getBorrowManager().findUserWaitingList(user);
+	}
+	
+	@WebMethod
+	public List<WaitingListDTO> getWaitingListAvailable() {
+		return getManagerFactory().getBorrowManager().getWaitingListAvailable();
+	}
+	
+	@WebMethod
+	public List<WaitingListDTO> getWaitingListByItem(Long itemId) {
+		return getManagerFactory().getBorrowManager().getWaitingListByItem(itemId);
+	}
+	
+	@WebMethod
+	public List<WaitingListDTO> getWaitingListByNotificationDateObsolete() {
+		return getManagerFactory().getBorrowManager().getWaitingListByNotificationDateObsolete();
+	}
+	
+	@WebMethod
+	public void removeReservations(List<WaitingListDTO> reservations) {
+		getManagerFactory().getBorrowManager().removeReservations(reservations);
+	}
+	
+	@WebMethod
+	public void saveReservations(List<WaitingListDTO> reservations) {
+		getManagerFactory().getBorrowManager().saveReservations(reservations);
 	}
 }

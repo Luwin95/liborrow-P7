@@ -1,7 +1,5 @@
 package org.liborrow.webservice.consumer;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -67,5 +65,29 @@ public class WaitingListDaoTest {
 		LOGGER.debug("[DEBUT] removeItemInUserWaitingListTest() - Démarrage du test");
 		 daoFactory.getWaitingListDao().removeItemInUserWaitingList(6L, 1L);
 		 assertTrue(true);
+	}
+	
+	@Test
+	public void getWaitingListByNotificationDateObsoleteTest() {
+		LOGGER.debug("[DEBUT] getWaitingListByNotificationDateObsolete() - Démarrage du test");
+		List<WaitingList> reservations = daoFactory.getWaitingListDao().getWaitingListByNotificationDateObsolete();
+		assertNotNull(reservations);
+		assertTrue(reservations.size()==1);
+	}
+	
+	@Test
+	public void getWaitingListByItemTest() {
+		LOGGER.debug("[DEBUT] getWaitingListByItemTest() - Démarrage du test");
+		List<WaitingList> reservations = daoFactory.getWaitingListDao().getWaitingListByItem(6L);
+		assertNotNull(reservations);
+		assertTrue(reservations.size()==2);
+	}
+	
+	@Test
+	public void getWaitingListAvailableTest() {
+		LOGGER.debug("[DEBUT] getWaitingListAvailableTest() - Démarrage du test");
+		List<WaitingList> reservations = daoFactory.getWaitingListDao().getWaitingListAvailable();
+		assertNotNull(reservations);
+		assertTrue(reservations.size()==1);
 	}
 }

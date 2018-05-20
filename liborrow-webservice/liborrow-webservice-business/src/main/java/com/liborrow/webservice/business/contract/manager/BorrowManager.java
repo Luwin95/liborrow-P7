@@ -6,6 +6,7 @@ import org.liborrow.webservice.model.dto.BorrowDTO;
 import org.liborrow.webservice.model.dto.UserDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.dto.WaitingListDTO;
+import org.liborrow.webservice.model.entities.WaitingList;
 
 public interface BorrowManager {
 	BorrowDTO findBorrowById(long id);
@@ -17,4 +18,9 @@ public interface BorrowManager {
 	void deleteBorrow(BorrowDTO borrow);
 	List<BorrowDTO> findLateBorrows();
 	List<WaitingListDTO> findUserWaitingList(UserLightDTO user);
+	List<WaitingListDTO> getWaitingListByNotificationDateObsolete();
+	List<WaitingListDTO> getWaitingListByItem(Long itemId);
+	List<WaitingListDTO> getWaitingListAvailable();
+	void removeReservations(List<WaitingListDTO> reservations);
+	void saveReservations(List<WaitingListDTO> reservations);
 }

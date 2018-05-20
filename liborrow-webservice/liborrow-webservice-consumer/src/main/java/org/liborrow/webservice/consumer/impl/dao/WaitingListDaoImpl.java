@@ -1,12 +1,14 @@
 package org.liborrow.webservice.consumer.impl.dao;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Query;
 
 import org.liborrow.webservice.consumer.contract.dao.WaitingListDao;
+import org.liborrow.webservice.model.entities.Item;
 import org.liborrow.webservice.model.entities.WaitingList;
-import org.springframework.transaction.annotation.Transactional;
 
 public class WaitingListDaoImpl extends AbstractDaoImpl implements WaitingListDao {
 	@Override
@@ -58,5 +60,35 @@ public class WaitingListDaoImpl extends AbstractDaoImpl implements WaitingListDa
 		query.setParameter("user", userId);
 		WaitingList waitingList = (WaitingList) query.getSingleResult();
 		getEm().remove(waitingList);
+	}
+	
+	
+	@Override
+	public List<WaitingList> getWaitingListByNotificationDateObsolete() {
+		StringBuilder queryString = new StringBuilder();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.HOUR, -48);
+		queryString.append("SELECT waitingList FROM WaitingList waitingList LEFT JOIN FETCH waitingList.item item LEFT JOIN FETCH waitingList.borrower borrower WHERE waitingList.notificationDate IS NOT NULL AND waitingList.notificationDate<=:now ");
+		Query query = getEm().createQuery(queryString.toString());
+		query.setParameter("now", cal);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<WaitingList> getWaitingListByItem(Long itemId){
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT waitingList FROM WaitingList waitingList LEFT JOIN FETCH waitingList.item item LEFT JOIN FETCH waitingList.borrower borrower WHERE waitingList.item.id=:item");
+		Query query = getEm().createQuery(queryString.toString());
+		query.setParameter("item", itemId);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<WaitingList> getWaitingListAvailable() {
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT waitingList FROM WaitingList waitingList LEFT JOIN FETCH waitingList.item item LEFT JOIN FETCH waitingList.borrower borrower WHERE waitingList.item.totalCount>0 AND waitingList.position=1 AND waitingList.notificationDate IS NULL");
+		Query query = getEm().createQuery(queryString.toString());
+		return query.getResultList();
 	}
 }
