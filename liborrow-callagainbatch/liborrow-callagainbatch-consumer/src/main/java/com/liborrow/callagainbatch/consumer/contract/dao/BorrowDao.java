@@ -12,6 +12,6 @@ public interface BorrowDao {
 	List<WaitingListDTO> getWaitingListByNotificationDateObsolete();
 	List<WaitingListDTO> getWaitingListByItem(Long itemId);
 	List<WaitingListDTO> getWaitingListAvailable();
-	void removeReservations(List<WaitingListDTO> reservations);
+	void removeReservations(List<Long> reservations);
 	void saveReservations(List<WaitingListDTO> reservations);
 }

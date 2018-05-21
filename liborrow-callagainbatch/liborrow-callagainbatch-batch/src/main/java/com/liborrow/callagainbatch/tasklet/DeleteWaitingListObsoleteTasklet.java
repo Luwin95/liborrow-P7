@@ -17,11 +17,8 @@ public class DeleteWaitingListObsoleteTasklet extends AbstractJob implements Tas
 	}
 	
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		List<Long> itemIds = getManagerFactory().getReservationManager().removeWaitingListObsolete((List<WaitingListDTO>) chunkContext.getStepContext().getJobExecutionContext().get("reservationsObsolete"));
-		chunkContext.getStepContext().getJobExecutionContext().remove("reservationsObsolete");
-		if(itemIds.size()>1) {
-			chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().put("itemsToModify", itemIds);
-		}
+		getManagerFactory().getReservationManager().removeWaitingListObsolete((List<Long>) chunkContext.getStepContext().getJobExecutionContext().get("reservationsObsolete"));
+//		chunkContext.getStepContext().getJobExecutionContext().remove("reservationsObsolete");
 		return RepeatStatus.FINISHED;
 	}
 }

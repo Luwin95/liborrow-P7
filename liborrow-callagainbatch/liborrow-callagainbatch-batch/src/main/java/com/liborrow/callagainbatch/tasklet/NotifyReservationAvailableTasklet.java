@@ -21,7 +21,7 @@ public class NotifyReservationAvailableTasklet extends AbstractJob implements Ta
 	}
 	
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		Map<String, List<String>> emailAndReservations = (Map<String, List<String>>) chunkContext.getStepContext().getJobExecutionContext().get("emailAndReservations");
+		Map<String, List<String>> emailAndReservations = (Map<String, List<String>>) chunkContext.getStepContext().getJobExecutionContext().get("emailAndReservation");
 		Set keys = emailAndReservations.keySet();
 		Iterator it = keys.iterator();
 		while(it.hasNext()) {

@@ -19,7 +19,7 @@ public class ReorganizePositionInWaitingListTasklet extends AbstractJob implemen
 	
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
 		getManagerFactory().getReservationManager().reorganizePositionInWaitingList((List<Long>)chunkContext.getStepContext().getJobExecutionContext().get("itemsToModify"));
-		chunkContext.getStepContext().getJobExecutionContext().remove("itemsToModify");
+//		chunkContext.getStepContext().getJobExecutionContext().remove("itemsToModify");
 		return RepeatStatus.FINISHED;
 	}
 }

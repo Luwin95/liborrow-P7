@@ -13,10 +13,8 @@ public class ReservationManagerImpl extends AbstractManagerImpl implements Reser
 		return getDaoFactory().getBorrowDao().getWaitingListByNotificationDateObsolete();
 	}
 	
-	public List<Long> removeWaitingListObsolete(List<WaitingListDTO> reservations) {
-		List<Long> itemModifiedList = getAllItemIdsFromReservations(reservations);
+	public void removeWaitingListObsolete(List<Long> reservations) {
 		getDaoFactory().getBorrowDao().removeReservations(reservations);
-		return itemModifiedList;
 	}
 	
 	private List<Long> getAllItemIdsFromReservations(List<WaitingListDTO> reservations) {

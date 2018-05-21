@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -18,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{model.generated.webinterface.liborrow.com}waitingListDTO" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}long" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class RemoveReservations {
 
-    protected List<WaitingListDTO> arg0;
+    @XmlElement(type = Long.class)
+    protected List<Long> arg0;
 
     /**
      * Gets the value of the arg0 property.
@@ -53,13 +55,13 @@ public class RemoveReservations {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link WaitingListDTO }
+     * {@link Long }
      * 
      * 
      */
-    public List<WaitingListDTO> getArg0() {
+    public List<Long> getArg0() {
         if (arg0 == null) {
-            arg0 = new ArrayList<WaitingListDTO>();
+            arg0 = new ArrayList<Long>();
         }
         return this.arg0;
     }

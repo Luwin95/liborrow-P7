@@ -24,7 +24,7 @@ public class BorrowDaoImpl extends AbstractDaoImpl implements BorrowDao {
 		return getBorrowSrv().getWaitingListByNotificationDateObsolete();
 	}
 	
-	public void removeReservations(List<WaitingListDTO> reservations) {
+	public void removeReservations(List<Long> reservations) {
 		getBorrowSrv().removeReservations(reservations);
 	}
 	

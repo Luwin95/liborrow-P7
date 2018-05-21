@@ -6,7 +6,7 @@ import com.liborrow.webinterface.generated.model.WaitingListDTO;
 
 public interface ReservationManager {
 	List<WaitingListDTO> getWaitingListByNotificationDateObsolete();
-	List<Long> removeWaitingListObsolete(List<WaitingListDTO> reservations);
+	void removeWaitingListObsolete(List<Long> reservations);
 	void reorganizePositionInWaitingList(List<Long> itemIds);
 	List<WaitingListDTO> getWaitingListAvailable();
 }
