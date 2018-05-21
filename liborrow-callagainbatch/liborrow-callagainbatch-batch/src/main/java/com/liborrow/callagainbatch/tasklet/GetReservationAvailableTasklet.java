@@ -16,13 +16,12 @@ import com.liborrow.webinterface.generated.model.WaitingListDTO;
 
 public class GetReservationAvailableTasklet extends AbstractJob implements Tasklet, InitializingBean  {
 	
-	private Map<String, List<String>> emailAndReservation = new HashMap<String, List<String>>();
-	
 	public void afterPropertiesSet() throws Exception {
 		
 	}
 	
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+		Map<String, List<String>> emailAndReservation = new HashMap<String, List<String>>();
 		List<WaitingListDTO> reservations = getManagerFactory().getReservationManager().getWaitingListAvailable();
 		for(WaitingListDTO reservation: reservations) {
 			if(emailAndReservation.containsKey(reservation.getBorrower().getEmail()))

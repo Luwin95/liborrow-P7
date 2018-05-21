@@ -17,20 +17,17 @@ import com.liborrow.webinterface.generated.model.UserLightDTO;
 
 public class BorrowTasklet extends AbstractJob implements Tasklet, InitializingBean {
 	
-	private List<BorrowDTO> borrows;
-	
-	private Map<String, List<String>> emailAndBorrows = new HashMap<String, List<String>>();
-	
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 	
 	public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
+		List<BorrowDTO> borrows= new ArrayList<BorrowDTO>();
+		Map<String, List<String>> emailAndBorrows = new HashMap<String, List<String>>();
 		borrows = getManagerFactory().getBorrowManager().findLateBorrows();
 		UserLightDTO userTemp = new UserLightDTO();
 		List<UserLightDTO> usersToContact = new ArrayList<UserLightDTO>();
-		
 		
 		for(BorrowDTO borrow: borrows)
 		{

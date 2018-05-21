@@ -80,8 +80,10 @@
 	
 	<!-- Scheduler -->
 	<bean id="callagainBatchScheduler" class="com.liborrow.callagainbatch.application.scheduler.CallagainBatchScheduler"/>
+	<bean id="reservationScheduler" class="com.liborrow.callagainbatch.application.scheduler.ReservationScheduler"/>
 	
 	<task:scheduled-tasks>
-	  <task:scheduled ref="callagainBatchScheduler" method="run" cron="${com.liborrow.scheduler.delayProd}" />
+	  <task:scheduled ref="callagainBatchScheduler" method="run" cron="${com.liborrow.scheduler.callagainjob.delayProd}" />
+	  <task:scheduled ref="reservationScheduler" method="run" cron="${com.liborrow.scheduler.reservationjob.delayDev}" />
 	</task:scheduled-tasks>
 </beans>

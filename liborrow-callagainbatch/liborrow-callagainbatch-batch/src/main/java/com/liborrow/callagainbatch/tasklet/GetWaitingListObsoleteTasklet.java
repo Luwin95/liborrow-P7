@@ -16,11 +16,6 @@ import com.liborrow.webinterface.generated.model.WaitingListDTO;
 
 public class GetWaitingListObsoleteTasklet extends AbstractJob implements Tasklet, InitializingBean  {
 	
-	private List <WaitingListDTO> reservations = new ArrayList<WaitingListDTO>();
-	
-	private List<Long> waitingListToDelete =  new ArrayList<Long>();
-	
-	private Map<Long, Long> positionAndItem = new HashMap<Long, Long>();
 	
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
@@ -28,6 +23,9 @@ public class GetWaitingListObsoleteTasklet extends AbstractJob implements Taskle
 	}
 	
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+		List <WaitingListDTO> reservations = new ArrayList<WaitingListDTO>();
+		List<Long> waitingListToDelete =  new ArrayList<Long>();
+		Map<Long, Long> positionAndItem = new HashMap<Long, Long>();
 		reservations = getManagerFactory().getReservationManager().getWaitingListByNotificationDateObsolete();
 		
 		if(reservations.size()>=1)

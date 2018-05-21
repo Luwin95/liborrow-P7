@@ -56,6 +56,7 @@ CREATE TABLE public.user_account (
                 phoneNumber VARCHAR NOT NULL,
                 citizenship_id INTEGER NOT NULL,
                 role VARCHAR NOT NULL,
+                recall BOOLEAN DEFAULT true NOT NULL,
                 CONSTRAINT user_account_pk PRIMARY KEY (user_id)
 );
 
