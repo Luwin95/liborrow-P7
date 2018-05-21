@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -135,6 +136,13 @@ public class ItemManagerImpl extends AbstractManagerImpl implements ItemManager 
 		//TODO VERIFIER LA PRESENCE DE L'ITEM DANS LA LISTE DE RESERVATION DE L'UTILISATEUR
 		if(checkItemInUserWaitingList(user, itemId)) {
 			//TODO SUPPRIMER DE LA LISTE L'ITEM SELECTIONNE 
+			WaitingList oldReservation = getDaoFactory().getWaitingListDao().getWaitingListByBorrowerAndItem(itemId, user.getId());
+			List <WaitingList> reservations = getDaoFactory().getWaitingListDao().getWaitingListByItem(itemId);
+			for(WaitingList reservation : reservations) {
+				if(reservation.getPosition()>oldReservation.getPosition())
+				reservation.setPosition(reservation.getPosition()-1);
+				waitingListRepository.save(reservation);
+			}
 			getDaoFactory().getWaitingListDao().removeItemInUserWaitingList(itemId, user.getId());
 			reservationResponse.setMessage("Votre réservation a bien été annulée");
 			reservationResponse.setResponseType("success");

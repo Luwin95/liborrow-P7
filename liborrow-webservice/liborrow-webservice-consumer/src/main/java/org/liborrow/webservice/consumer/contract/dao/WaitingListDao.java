@@ -16,4 +16,6 @@ public interface WaitingListDao {
 	List<WaitingList> getWaitingListByNotificationDateObsolete();
 	List<WaitingList> getWaitingListByItem(Long itemId);
 	List<WaitingList> getWaitingListAvailable();
+	WaitingList getWaitingListByBorrowerAndItem(Long itemId, Long userId);
+	WaitingList getWaitingListById(Long id);
 }

@@ -53,13 +53,18 @@ public class WaitingListDaoImpl extends AbstractDaoImpl implements WaitingListDa
 	
 	@Override
 	public void removeItemInUserWaitingList(Long itemId, Long userId) {
+		getEm().remove(getWaitingListByBorrowerAndItem(itemId,userId));
+	}
+	
+	@Override
+	public WaitingList getWaitingListByBorrowerAndItem(Long itemId, Long userId) {
 		StringBuilder queryString = new StringBuilder();
 		queryString.append("SELECT waitingList FROM WaitingList waitingList WHERE waitingList.item.id=:item and waitingList.borrower.id =:user ");
 		Query query = getEm().createQuery(queryString.toString());
 		query.setParameter("item", itemId);
 		query.setParameter("user", userId);
 		WaitingList waitingList = (WaitingList) query.getSingleResult();
-		getEm().remove(waitingList);
+		return waitingList;
 	}
 	
 	
@@ -90,5 +95,14 @@ public class WaitingListDaoImpl extends AbstractDaoImpl implements WaitingListDa
 		queryString.append("SELECT waitingList FROM WaitingList waitingList LEFT JOIN FETCH waitingList.item item LEFT JOIN FETCH waitingList.borrower borrower WHERE waitingList.item.totalCount>0 AND waitingList.position=1 AND waitingList.notificationDate IS NULL");
 		Query query = getEm().createQuery(queryString.toString());
 		return query.getResultList();
+	}
+	
+	@Override
+	public WaitingList getWaitingListById(Long id) {
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT waitingList FROM WaitingList waitingList LEFT JOIN FETCH waitingList.item item LEFT JOIN FETCH waitingList.borrower borrower WHERE waitingList.id=:id");
+		Query query = getEm().createQuery(queryString.toString());
+		query.setParameter("id", id);
+		return (WaitingList) query.getSingleResult();
 	}
 }

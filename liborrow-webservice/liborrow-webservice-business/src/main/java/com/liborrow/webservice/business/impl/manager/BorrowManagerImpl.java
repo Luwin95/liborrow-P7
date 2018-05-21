@@ -1,13 +1,14 @@
 package com.liborrow.webservice.business.impl.manager;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.dto.BorrowDTO;
-import org.liborrow.webservice.model.dto.UserDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.dto.WaitingListDTO;
 import org.liborrow.webservice.model.entities.Borrow;
@@ -160,7 +161,15 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	
 	@Override
 	public List<WaitingListDTO> getWaitingListAvailable() {
-		return getTransformerFactory().getWaitingListTransformer().toWaitingListsDTO(getDaoFactory().getWaitingListDao().getWaitingListAvailable(), true, WaitingList.class.getSimpleName());
+		List<WaitingList> reservations = getDaoFactory().getWaitingListDao().getWaitingListAvailable();
+		Calendar now = Calendar.getInstance();
+		now.setTime(new Date());
+		for(WaitingList reservation : reservations ) {
+			reservation.setNotificationDate(now);
+		}
+		List <WaitingListDTO> reservationsDTO = getTransformerFactory().getWaitingListTransformer().toWaitingListsDTO(reservations, true, WaitingList.class.getSimpleName());
+		saveReservations(reservationsDTO);
+		return reservationsDTO;
 	}
 	
 	@Override
@@ -174,9 +183,8 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	}
 	
 	@Override
-	public void removeReservations(List<WaitingListDTO> reservations) {
-		List<WaitingList> reservationsEntities = getTransformerFactory().getWaitingListTransformer().toWaitingListEntities(reservations, true, WaitingListDTO.class.getSimpleName());
-		for(WaitingList reservation : reservationsEntities) {
+	public void removeReservations(List<Long> reservations) {
+		for(Long reservation : reservations) {
 			waitingListRepository.delete(reservation);
 		}
 	}

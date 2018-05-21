@@ -23,6 +23,7 @@
 					      <th>Item</th>
 					      <th>Position dans la liste d'attente</th>
 					      <th>Annuler</th>
+					      <th>Disponible</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -46,9 +47,10 @@
 					      	  <s:else>
 					      	  		<s:url action="cancelReservationMagazine" namespace="/liborrow" var="urlCancel">
 								       <s:param name="itemId"><s:property value="magazineDTO.id"/></s:param>
-								     </s:url>
+								    </s:url>
 					      	  </s:else>
 					      	  <td><a class="btn btn-danger" href="${urlCancel}">Annuler</a></td>
+					      	  <td><s:if test="notificationDate!=null">Oui</s:if><s:else>Non</s:else></td>
 					      	</tr>
 						</s:iterator>
 					  </tbody>

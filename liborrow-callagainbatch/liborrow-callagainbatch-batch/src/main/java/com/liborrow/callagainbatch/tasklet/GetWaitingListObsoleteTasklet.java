@@ -1,7 +1,9 @@
 package com.liborrow.callagainbatch.tasklet;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -18,6 +20,8 @@ public class GetWaitingListObsoleteTasklet extends AbstractJob implements Taskle
 	
 	private List<Long> waitingListToDelete =  new ArrayList<Long>();
 	
+	private Map<Long, Long> positionAndItem = new HashMap<Long, Long>();
+	
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -28,22 +32,19 @@ public class GetWaitingListObsoleteTasklet extends AbstractJob implements Taskle
 		
 		if(reservations.size()>=1)
 		{
-			List<Long> itemModifiedList = new ArrayList<Long>();
 			for(WaitingListDTO reservation : reservations) {
 				if(reservation.getBookDTO()!=null) {
-					itemModifiedList.add(reservation.getBookDTO().getId());
+					positionAndItem.put(reservation.getBookDTO().getId(),new Long(reservation.getPosition()));
 				}else {
-					itemModifiedList.add(reservation.getMagazineDTO().getId());
+					positionAndItem.put(reservation.getMagazineDTO().getId(),new Long(reservation.getPosition()));
 				}
-				
 			}
-			
 			for(WaitingListDTO reservation : reservations) {
 				waitingListToDelete.add(reservation.getId());
 			}
 			
 			chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().put("reservationsObsolete", waitingListToDelete);
-			chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().put("itemsToModify", itemModifiedList);
+			chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().put("itemsToModify", positionAndItem);
 		}
 		return RepeatStatus.FINISHED;
 	}

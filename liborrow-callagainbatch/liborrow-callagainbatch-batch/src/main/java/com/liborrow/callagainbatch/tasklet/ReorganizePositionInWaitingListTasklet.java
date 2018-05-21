@@ -1,6 +1,7 @@
 package com.liborrow.callagainbatch.tasklet;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -18,7 +19,8 @@ public class ReorganizePositionInWaitingListTasklet extends AbstractJob implemen
 	}
 	
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		getManagerFactory().getReservationManager().reorganizePositionInWaitingList((List<Long>)chunkContext.getStepContext().getJobExecutionContext().get("itemsToModify"));
+		
+		getManagerFactory().getReservationManager().reorganizePositionInWaitingList((Map<Long, Long>)chunkContext.getStepContext().getJobExecutionContext().get("itemsToModify"));
 //		chunkContext.getStepContext().getJobExecutionContext().remove("itemsToModify");
 		return RepeatStatus.FINISHED;
 	}

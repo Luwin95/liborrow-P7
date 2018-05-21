@@ -61,12 +61,12 @@ public class WaitingListTransformerImpl implements WaitingListTransformer {
 		if(waitingListDTO.getBookDTO() != null && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 			BookTransformer bookTransformer = new BookTransformerImpl();
-			waitingListTransformed.setItem(bookTransformer.toBookEntity((BookDTO) waitingListDTO.getItem(), false, WaitingListDTO.class.getSimpleName()));
+			waitingListTransformed.setItem(bookTransformer.toBookEntity((BookDTO) waitingListDTO.getBookDTO(), false, WaitingListDTO.class.getSimpleName()));
 		}
 		if(waitingListDTO.getMagazineDTO() !=null && (isParent||classParentName.equals(UserLightDTO.class.getSimpleName())))
 		{
 			MagazineTransformer magazineTransformer = new MagazineTransformerImpl();
-			waitingListTransformed.setItem(magazineTransformer.toMagazineEntity((MagazineDTO) waitingListDTO.getItem(), false, WaitingListDTO.class.getSimpleName()));
+			waitingListTransformed.setItem(magazineTransformer.toMagazineEntity((MagazineDTO) waitingListDTO.getMagazineDTO(), false, WaitingListDTO.class.getSimpleName()));
 		}
 		if(waitingListDTO.getBorrower()!=null && (isParent||classParentName.equals(Magazine.class.getSimpleName())||classParentName.equals(BookDTO.class.getSimpleName())))
 		{

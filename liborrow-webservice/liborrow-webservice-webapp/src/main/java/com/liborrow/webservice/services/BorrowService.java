@@ -84,7 +84,7 @@ public class BorrowService extends AbstractService {
 	}
 	
 	@WebMethod
-	public void removeReservations(List<WaitingListDTO> reservations) {
+	public void removeReservations(List<Long> reservations) {
 		getManagerFactory().getBorrowManager().removeReservations(reservations);
 	}
 	
