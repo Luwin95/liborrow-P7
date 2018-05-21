@@ -25,6 +25,7 @@ public class UserLightTransformerImpl implements UserLightTransformer {
 		userTransformed.setPostCode(user.getPostCode());
 		userTransformed.setAddress(user.getAddress());
 		userTransformed.setRole(user.getRole());
+		userTransformed.setRecall(user.isRecall());
 		
 		if(user.getBorrows()!=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.CitizenshipDTO")))
 		{
@@ -64,6 +65,7 @@ public class UserLightTransformerImpl implements UserLightTransformer {
 		userTransformed.setPostCode(user.getPostCode());
 		userTransformed.setAddress(user.getAddress());
 		userTransformed.setRole(user.getRole());
+		userTransformed.setRecall(user.isRecall());
 		
 		if(user.getBorrows()!=null && (isParent||classParentName.equals(Citizenship.class.getSimpleName())))
 		{

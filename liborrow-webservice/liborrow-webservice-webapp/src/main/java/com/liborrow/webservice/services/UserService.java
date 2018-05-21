@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import org.liborrow.webservice.model.dto.CitizenshipDTO;
 import org.liborrow.webservice.model.dto.UserDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.utilsobject.UserCriterias;
@@ -39,7 +40,7 @@ public class UserService extends AbstractService {
 	}
 	
 	@WebMethod
-	public void updateUser(UserDTO user)
+	public void updateUser(UserLightDTO user)
 	{
 		getManagerFactory().getUserManager().updateUser(user);
 	}
@@ -48,5 +49,25 @@ public class UserService extends AbstractService {
 	public void deleteUser(UserDTO user)
 	{
 		getManagerFactory().getUserManager().deleteUser(user);
+	}
+	
+	@WebMethod
+	public List<String> getAllCitizenshipsNames(){
+		return getManagerFactory().getUserManager().getAllCitizenshipsName();
+	}
+	
+	@WebMethod
+	public void saveNewUser(UserDTO user) {
+		getManagerFactory().getUserManager().saveNewUser(user);
+	}
+	
+	@WebMethod
+	public CitizenshipDTO getCitizenshipByCountry (String country) {
+		return getManagerFactory().getUserManager().getCitizenshipByCountry(country);
+	}
+	
+	@WebMethod
+	public boolean isInDatabase(String email) {
+		return getManagerFactory().getUserManager().isInDatabase(email);
 	}
 }

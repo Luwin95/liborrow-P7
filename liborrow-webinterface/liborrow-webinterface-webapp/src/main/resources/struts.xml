@@ -17,6 +17,13 @@
         	<result name="input">/WEB-INF/jsp/login.jsp</result>
         	<result name="success" type="redirect">/liborrow/index.action</result>
         </action>
+        <action name="signinHome" class="com.liborrow.webinterface.webapp.actions.UserManagementAction" method="displaySignInForm">
+        	<result name="success">/WEB-INF/jsp/signin.jsp</result>
+        </action>
+        <action name="signin" class="com.liborrow.webinterface.webapp.actions.UserManagementAction" method="signIn">
+        	<result name="input">/WEB-INF/jsp/signin.jsp</result>
+        	<result name="success" type="redirect">/loginHome.action</result>
+        </action>
     </package>
     
     <package name="logged" namespace="/liborrow" extends="struts-default">
@@ -114,6 +121,13 @@
         </action>
         <action name="userReservationsList" class="com.liborrow.webinterface.webapp.actions.BorrowsManagementAction" method="doListReservations">
         	<result name="success">/WEB-INF/jsp/userReservations.jsp</result>
+        </action>
+        <action name="editUserHome" class="com.liborrow.webinterface.webapp.actions.UserManagementAction" method="displayEditAccountForm">
+        	<result name="success">/WEB-INF/jsp/editUserAccount.jsp</result>
+        </action>
+        <action name="editUser" class="com.liborrow.webinterface.webapp.actions.UserManagementAction" method="editAccount">
+        	<result name="input">/WEB-INF/jsp/editUserAccount.jsp</result>
+        	<result name="success" type="redirect">/liborrow/index.action</result>
         </action>
     </package>
 </struts>

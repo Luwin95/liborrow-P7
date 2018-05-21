@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="phoneNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="recall" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -50,6 +51,7 @@ import javax.xml.bind.annotation.XmlType;
     "password",
     "phoneNumber",
     "postCode",
+    "recall",
     "role"
 })
 public class UserDTO {
@@ -65,6 +67,7 @@ public class UserDTO {
     protected String password;
     protected String phoneNumber;
     protected String postCode;
+    protected boolean recall;
     protected String role;
 
     /**
@@ -302,6 +305,22 @@ public class UserDTO {
      */
     public void setPostCode(String value) {
         this.postCode = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété recall.
+     * 
+     */
+    public boolean isRecall() {
+        return recall;
+    }
+
+    /**
+     * Définit la valeur de la propriété recall.
+     * 
+     */
+    public void setRecall(boolean value) {
+        this.recall = value;
     }
 
     /**

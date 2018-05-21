@@ -34,6 +34,9 @@ public class Borrow implements Serializable {
 	
 	private Date endDate;
 	
+	@Column(name="recalldate")
+	private Date recallDate;
+	
 	@Column(name="getbackdate")
 	private Date getBackDate;
 	
@@ -134,6 +137,14 @@ public class Borrow implements Serializable {
 
 	public void setItem(Item item) {
 		this.item = item;
+	}
+
+	public Date getRecallDate() {
+		return recallDate;
+	}
+
+	public void setRecallDate(Date recallDate) {
+		this.recallDate = recallDate;
 	}
 
 	

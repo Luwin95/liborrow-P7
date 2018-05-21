@@ -13,6 +13,8 @@ public class BorrowDTO{
 	
 	private Date getBackDate;
 	
+	private Date recallDate;
+	
 	private Boolean extended;
 	
 	private UserLightDTO borrower;
@@ -99,4 +101,13 @@ public class BorrowDTO{
 	public void setMagazineDTO(MagazineDTO magazineDTO) {
 		this.magazineDTO = magazineDTO;
 	}
+
+	public Date getRecallDate() {
+		return recallDate;
+	}
+
+	public void setRecallDate(Date recallDate) {
+		this.recallDate = recallDate;
+	}
+	
 }

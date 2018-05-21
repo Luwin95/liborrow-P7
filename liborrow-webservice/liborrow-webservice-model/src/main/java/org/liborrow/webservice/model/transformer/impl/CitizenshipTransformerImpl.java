@@ -19,16 +19,16 @@ public class CitizenshipTransformerImpl implements CitizenshipTransformer {
 		citizenshipTransformed.setId(citizenship.getId());
 		citizenshipTransformed.setCountryName(citizenship.getCountryName());
 		
-		if(citizenship.getAuthors() !=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.CitizenshipDTO")))
-		{
-			Set<AuthorDTO> authorsTransformed= new HashSet<>();
-			AuthorTransformer authorTransformer = new AuthorTransformerImpl();
-			for(Author author: citizenship.getAuthors())
-			{
-				authorsTransformed.add(authorTransformer.toAuthorDto(author, AuthorDependenciesEnum.AUTHOR_BOOKS,AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS));
-			}
-			citizenshipTransformed.setAuthors(authorsTransformed);
-		}
+//		if(citizenship.getAuthors() !=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.CitizenshipDTO")))
+//		{
+//			Set<AuthorDTO> authorsTransformed= new HashSet<>();
+//			AuthorTransformer authorTransformer = new AuthorTransformerImpl();
+//			for(Author author: citizenship.getAuthors())
+//			{
+//				authorsTransformed.add(authorTransformer.toAuthorDto(author, AuthorDependenciesEnum.AUTHOR_BOOKS,AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS));
+//			}
+//			citizenshipTransformed.setAuthors(authorsTransformed);
+//		}
 		return citizenshipTransformed;
 	}
 	
@@ -47,16 +47,16 @@ public class CitizenshipTransformerImpl implements CitizenshipTransformer {
 		Citizenship citizenshipTransformed = new Citizenship();
 		citizenshipTransformed.setCountryName(citizenship.getCountryName());
 		citizenshipTransformed.setId(citizenship.getId());
-		if(citizenship.getAuthors() !=null && (isParent||classParentName.equals(Citizenship.class.getSimpleName())))
-		{
-			Set<Author> authorsTransformed= new HashSet<>();
-			AuthorTransformer authorTransformer = new AuthorTransformerImpl();
-			for(AuthorDTO author: citizenship.getAuthors())
-			{
-				authorsTransformed.add(authorTransformer.toAuthorEntity(author, AuthorDependenciesEnum.AUTHOR_BOOKS,AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS));
-			}
-			citizenshipTransformed.setAuthors(authorsTransformed);
-		}
+//		if(citizenship.getAuthors() !=null && (isParent||classParentName.equals(Citizenship.class.getSimpleName())))
+//		{
+//			Set<Author> authorsTransformed= new HashSet<>();
+//			AuthorTransformer authorTransformer = new AuthorTransformerImpl();
+//			for(AuthorDTO author: citizenship.getAuthors())
+//			{
+//				authorsTransformed.add(authorTransformer.toAuthorEntity(author, AuthorDependenciesEnum.AUTHOR_BOOKS,AuthorDependenciesEnum.AUTHOR_CITIZENSHIPS));
+//			}
+//			citizenshipTransformed.setAuthors(authorsTransformed);
+//		}
 		return citizenshipTransformed;
 	}
 	

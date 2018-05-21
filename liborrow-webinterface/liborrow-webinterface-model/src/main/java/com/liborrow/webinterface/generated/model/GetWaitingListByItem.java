@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour updateUser complex type.
+ * <p>Classe Java pour getWaitingListByItem complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="updateUser">
+ * &lt;complexType name="getWaitingListByItem">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{model.generated.webinterface.liborrow.com}userLightDTO" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,22 +26,22 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "updateUser", propOrder = {
+@XmlType(name = "getWaitingListByItem", propOrder = {
     "arg0"
 })
-public class UpdateUser {
+public class GetWaitingListByItem {
 
-    protected UserLightDTO arg0;
+    protected Long arg0;
 
     /**
      * Obtient la valeur de la propriété arg0.
      * 
      * @return
      *     possible object is
-     *     {@link UserLightDTO }
+     *     {@link Long }
      *     
      */
-    public UserLightDTO getArg0() {
+    public Long getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class UpdateUser {
      * 
      * @param value
      *     allowed object is
-     *     {@link UserLightDTO }
+     *     {@link Long }
      *     
      */
-    public void setArg0(UserLightDTO value) {
+    public void setArg0(Long value) {
         this.arg0 = value;
     }
 

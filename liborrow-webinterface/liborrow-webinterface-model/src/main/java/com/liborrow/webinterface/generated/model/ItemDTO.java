@@ -56,8 +56,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "totalCount"
 })
 @XmlSeeAlso({
-    BookDTO.class,
-    MagazineDTO.class
+    MagazineDTO.class,
+    BookDTO.class
 })
 public class ItemDTO {
 

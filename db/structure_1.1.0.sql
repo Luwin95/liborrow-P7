@@ -90,6 +90,7 @@ CREATE TABLE public.borrow (
                 extended BOOLEAN NOT NULL,
                 user_id INTEGER NOT NULL,
                 item_id INTEGER NOT NULL,
+                recallDate DATE DEFAULT null,
                 CONSTRAINT borrow_pk PRIMARY KEY (borrow_id)
 );
 

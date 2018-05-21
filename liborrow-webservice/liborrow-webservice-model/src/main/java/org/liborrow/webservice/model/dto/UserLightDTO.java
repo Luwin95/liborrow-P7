@@ -24,6 +24,8 @@ public class UserLightDTO {
 	
 	private CitizenshipDTO citizenship;
 	
+	private boolean recall;
+	
 	private Set<BorrowDTO> borrows = new HashSet<>();
 	
 	private List<WaitingListDTO> reservations = new ArrayList<>();
@@ -118,6 +120,14 @@ public class UserLightDTO {
 
 	public void setReservations(List<WaitingListDTO> reservations) {
 		this.reservations = reservations;
+	}
+
+	public boolean isRecall() {
+		return recall;
+	}
+
+	public void setRecall(boolean recall) {
+		this.recall = recall;
 	}
 	
 }

@@ -38,6 +38,7 @@ public class BorrowTransformerImpl implements BorrowTransformer {
 		borrowTransformed.setGetBackDate(borrow.getGetBackDate());
 		borrowTransformed.setExtended(borrow.getExtended());
 		borrowTransformed.setStartDate(borrow.getStartDate());
+		borrowTransformed.setRecallDate(borrow.getRecallDate());
 		if(borrow.getItem() instanceof Book && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 			BookTransformer bookTransformer = new BookTransformerImpl();
@@ -73,6 +74,7 @@ public class BorrowTransformerImpl implements BorrowTransformer {
 		borrowTransformed.setGetBackDate(borrow.getGetBackDate());
 		borrowTransformed.setExtended(borrow.getExtended());
 		borrowTransformed.setStartDate(borrow.getStartDate());
+		borrowTransformed.setRecallDate(borrow.getRecallDate());
 		if(borrow.getBookDTO() !=null && (isParent||classParentName.equals(UserLight.class.getSimpleName())))
 		{
 			BookTransformer bookTransformer = new BookTransformerImpl();
