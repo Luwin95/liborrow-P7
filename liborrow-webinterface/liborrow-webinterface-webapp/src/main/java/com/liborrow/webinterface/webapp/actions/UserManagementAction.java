@@ -116,8 +116,8 @@ public class UserManagementAction extends AbstractAction implements SessionAware
 	public String editAccount() {
 		if(checkEditUserInformation("userEdit")) {
 			CitizenshipDTO citizenshipDTO = getManagerFactory().getUserManager().getCitizenshipByCountry(userEdit.getCitizenship().getCountryName());
-			user.setCitizenship(citizenshipDTO);
-			user.setRole("ROLE_USER");
+			userEdit.setCitizenship(citizenshipDTO);
+			userEdit.setRole("ROLE_USER");
 			getManagerFactory().getUserManager().editUser(userEdit);
 			return SUCCESS;
 		}else {
@@ -245,8 +245,8 @@ public class UserManagementAction extends AbstractAction implements SessionAware
 			response = false;
 		}
 		
-		if(null == citizenshipSelected || citizenshipSelected.equals("-1")) {
-			this.addFieldError("citizenshipSelected", "La nationalité est obligatoire");
+		if(null == userEdit.getCitizenship().getCountryName() || userEdit.getCitizenship().getCountryName().equals("-1")) {
+			this.addFieldError("userEdit.citizenship.countryName", "La nationalité est obligatoire");
 			response = false;
 		}
 		

@@ -92,4 +92,9 @@ public class BorrowService extends AbstractService {
 	public void saveReservations(List<WaitingListDTO> reservations) {
 		getManagerFactory().getBorrowManager().saveReservations(reservations);
 	}
+	
+	@WebMethod
+	public List<BorrowDTO> remindBorrows(){
+		return getManagerFactory().getBorrowManager().remindBorrows();
+	}
 }

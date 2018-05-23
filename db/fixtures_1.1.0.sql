@@ -318,6 +318,12 @@ INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
 INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
 	('2018-05-01', 'false', 2,7);
 	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-01', 'false', 2,7);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-04-27', 'false', 3,1);
+	
 INSERT INTO image(alt, path, title) VALUES
 	('Hello world cover', 'Atlas.jpg', 'Hello world cover');
 	

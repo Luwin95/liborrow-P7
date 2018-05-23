@@ -160,6 +160,18 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	}
 	
 	@Override
+	public List<BorrowDTO> remindBorrows() {
+		List<Borrow> borrowsEntities = getDaoFactory().getBorrowDao().remindBorrows();
+		Set<Borrow> borrowsEntitiesSet = new HashSet<Borrow>();
+		borrowsEntitiesSet.addAll(borrowsEntities);
+		Set<BorrowDTO> borrows = getTransformerFactory().getBorrowTransformer().toBorrowsDTO(borrowsEntitiesSet, true, Borrow.class.getSimpleName());
+		List<BorrowDTO> returnList = new ArrayList<>();
+		returnList.addAll(borrows);
+		return returnList;
+	}
+	
+	
+	@Override
 	public List<WaitingListDTO> getWaitingListAvailable() {
 		List<WaitingList> reservations = getDaoFactory().getWaitingListDao().getWaitingListAvailable();
 		Calendar now = Calendar.getInstance();

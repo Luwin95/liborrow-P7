@@ -76,4 +76,24 @@ public class BorrowDaoImpl extends AbstractDaoImpl implements BorrowDao {
 		return returnDate = minExtendedDate.compareTo(minNotExtendedDate) > 0 ? minNotExtendedDate : minExtendedDate;
 		
 	}
+	
+	@Override
+	public List<Borrow> remindBorrows() {
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT borrow FROM Borrow borrow LEFT JOIN FETCH borrow.item item LEFT JOIN FETCH borrow.borrower borrower WHERE ((borrow.startDate>=:now3 AND borrow.startDate<=:now AND borrow.extended=false)OR(borrow.startDate>=:now4 AND borrow.startDate<=:now2 AND borrow.extended=true)) AND borrow.getBackDate=null AND borrow.recallDate=null AND borrower.recall=true");
+		Query query = getEm().createQuery(queryString.toString());
+		Calendar cal1Month = Calendar.getInstance();
+		cal1Month.setTime(new Date());
+		cal1Month.add(Calendar.MONTH, -1);
+		query.setParameter("now3", cal1Month.getTime());
+		cal1Month.add(Calendar.HOUR, 120);
+		query.setParameter("now", cal1Month.getTime());
+		Calendar cal2Month = Calendar.getInstance();
+		cal2Month.setTime(new Date());
+		cal2Month.add(Calendar.MONTH, -2);
+		query.setParameter("now4", cal2Month.getTime());
+		cal2Month.add(Calendar.HOUR, 120);
+		query.setParameter("now2", cal2Month.getTime());
+		return (List<Borrow>) query.getResultList();
+	}
 }

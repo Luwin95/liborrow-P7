@@ -27,6 +27,7 @@
 								<s:textfield label="Téléphone" name="userEdit.phoneNumber" cssClass="form-control" />
 								<s:select label="Pays" headerKey="-1" headerValue="Sélectionner un pays" list="citizenships" name="userEdit.citizenship.countryName" />
 								<s:checkbox name="userEdit.recall" fieldValue="true" label="M'envoyer un rappel par mail 5 jours avant la fin de mes prêts"/>
+								<input type="hidden" name="userEdit.id" value="<s:property value="userEdit.id"/>"/>
 								<s:submit value="Modifier compte" cssClass="btn btn-warning"/>
 							</s:form>
 					</div>

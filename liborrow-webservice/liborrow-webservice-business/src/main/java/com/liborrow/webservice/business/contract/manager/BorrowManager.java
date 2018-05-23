@@ -23,4 +23,5 @@ public interface BorrowManager {
 	List<WaitingListDTO> getWaitingListAvailable();
 	void removeReservations(List<Long> reservations);
 	void saveReservations(List<WaitingListDTO> reservations);
+	List<BorrowDTO> remindBorrows();
 }
