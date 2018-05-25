@@ -1,5 +1,7 @@
 package com.liborrow.webinterface.business.contract.manager;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.liborrow.webinterface.generated.model.BorrowDTO;
@@ -13,5 +15,6 @@ public interface BorrowManager {
 	List<BorrowDTO> getAllOnGoingBorrowByUserLogged(UserLightDTO user);
 	boolean markBorrow(BorrowDTO borrow);
 	List<WaitingListDTO> getUserReservations(UserLightDTO user);
-	
+	Calendar getNextGetBackDate(Long itemId);
+	List<String> getNextGetbackDatesReservations(List<WaitingListDTO> reservations);
 }

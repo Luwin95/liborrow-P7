@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -41,6 +42,20 @@ public class BorrowDaoTest {
 		assertTrue(borrowsToRemind.size()>0);
 		assertTrue(borrowsToRemind.size()==1);
 		assertTrue(borrowsToRemind.get(0).getId() ==15);
+	}
+	
+	@Test
+	public void getNextGetBackDateExtendedTest() {
+		LOGGER.debug("[DEBUT] getNextGetBackDate() - Début du test");
+		Calendar date = daoFactory.getBorrowDao().getNextGetBackDateExtended(1L);
+		assertNotNull(date);
+	}
+	
+	@Test
+	public void getNextGetBackDateNotExtendedTest() {
+		LOGGER.debug("[DEBUT] getNextGetBackDate() - Début du test");
+		Calendar date = daoFactory.getBorrowDao().getNextGetBackDateNotExtended(1L);
+		assertNotNull(date);
 	}
 
 }

@@ -37,16 +37,6 @@ public interface BorrowDao {
 	Boolean checkItemForUser(Long itemId,Long userId);
 	
 	/**
-	 * Retourne la date de retour de prêt la plus proche pour un item (#ISSUE 1)
-	 * 
-	 * @param itemId
-	 * 		L'id de l'item
-	 * @return Calendar
-	 * 		La date de retour de prêt la plus proche pour l'item
-	 */
-	Calendar getNextGetBackDate(Long itemId);
-	
-	/**
 	 * Retourne laliste des prêts qui doivent être rappelés aux utilisateurs 
 	 * ayant sélectionné l'option de rappel(#ISSUE 3).
 	 * 
@@ -54,5 +44,25 @@ public interface BorrowDao {
 	 * 		La liste des prêts devant être rappelés
 	 */
 	List<Borrow> remindBorrows();
+	
+	/**
+	 * Retourne la date de retour de prêt la plus proche pour un item (#ISSUE 1)
+	 * 
+	 * @param itemId
+	 * 		L'id de l'item
+	 * @return Calendar
+	 * 		La date de retour de prêt non etendu la plus proche pour l'item
+	 */
+	Calendar getNextGetBackDateNotExtended(Long itemId);
+	
+	/**
+	 * Retourne la date de retour de prêt la plus proche pour un item (#ISSUE 1)
+	 * 
+	 * @param itemId
+	 * 		L'id de l'item
+	 * @return Calendar
+	 * 		La date de retour de prêt etendu la plus proche pour l'item
+	 */
+	Calendar getNextGetBackDateExtended(Long itemId);
 
 }

@@ -59,22 +59,34 @@ public class BorrowDaoImpl extends AbstractDaoImpl implements BorrowDao {
 	}
 	
 	@Override
-	public Calendar getNextGetBackDate(Long itemId) {
-		Calendar returnDate = null;
+	public Calendar getNextGetBackDateNotExtended(Long itemId) {
 		StringBuilder minNotExtendedDatequeryString = new StringBuilder();
-		minNotExtendedDatequeryString.append("SELECT min(borrow.startDate) FROM Borrow borrow JOIN borrow.item item JOIN borrow.borrower WHERE borrow.item.id=:item and borrow.extended = false");
+		minNotExtendedDatequeryString.append("SELECT min(startDate) FROM Borrow borrow WHERE borrow.item.id=:item and borrow.extended = false");
 		Query queryMinNotExtendedDate = getEm().createQuery(minNotExtendedDatequeryString.toString());
 		queryMinNotExtendedDate.setParameter("item", itemId);	
-		Calendar minNotExtendedDate = Calendar.getInstance(); 
-		minNotExtendedDate.setTime((Date) queryMinNotExtendedDate.getSingleResult());
+		Calendar minNotExtendedDate = Calendar.getInstance();
+		Date minDate = (Date) queryMinNotExtendedDate.getSingleResult();
+		if(null!=minDate) {
+			minNotExtendedDate.setTime((Date) queryMinNotExtendedDate.getSingleResult());
+		}else {
+			minNotExtendedDate= null;
+		}
+		return minNotExtendedDate;
+	}
+	
+	public Calendar getNextGetBackDateExtended(Long itemId) {
 		StringBuilder minExtendedDatequeryString = new StringBuilder();
-		minNotExtendedDatequeryString.append("SELECT min(borrow.startDate) FROM Borrow borrow JOIN borrow.item item JOIN borrow.borrower WHERE borrow.item.id=:item and borrow.extended = true");
+		minExtendedDatequeryString.append("SELECT min(startDate) FROM Borrow borrow WHERE borrow.item.id=:item and borrow.extended = true");
 		Query queryMinExtendedDate = getEm().createQuery(minExtendedDatequeryString.toString());
 		queryMinExtendedDate.setParameter("item", itemId);	
-		Calendar minExtendedDate = Calendar.getInstance(); 
-		minExtendedDate.setTime((Date) queryMinExtendedDate.getSingleResult());
-		return returnDate = minExtendedDate.compareTo(minNotExtendedDate) > 0 ? minNotExtendedDate : minExtendedDate;
-		
+		Calendar minExtendedDate = Calendar.getInstance();
+		Date minDate = (Date) queryMinExtendedDate.getSingleResult();
+		if(null!=minDate) {
+			minExtendedDate.setTime((Date) queryMinExtendedDate.getSingleResult());
+		}else {
+			minExtendedDate= null;
+		}
+		return minExtendedDate;
 	}
 	
 	@Override

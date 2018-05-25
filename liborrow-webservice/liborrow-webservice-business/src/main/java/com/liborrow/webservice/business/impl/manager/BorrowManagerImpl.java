@@ -211,6 +211,23 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	
 	@Override
 	public Calendar getNextGetBackDate(Long itemId) {
-		return getDaoFactory().getBorrowDao().getNextGetBackDate(itemId);
+		Calendar returnDate =null;
+		Calendar minExtendedDate = getDaoFactory().getBorrowDao().getNextGetBackDateExtended(itemId);
+		Calendar minNotExtendedDate = getDaoFactory().getBorrowDao().getNextGetBackDateNotExtended(itemId);
+		
+		if(null == minExtendedDate && null != minNotExtendedDate) {
+			minNotExtendedDate.add(Calendar.MONTH, 1);
+			returnDate = minNotExtendedDate;
+		}
+		if(null == minNotExtendedDate && null != minExtendedDate) {
+			minExtendedDate.add(Calendar.MONTH, 2);
+			returnDate = minExtendedDate;
+		}
+		if(null != minNotExtendedDate && null != minExtendedDate) {
+			minNotExtendedDate.add(Calendar.MONTH, 1);
+			minExtendedDate.add(Calendar.MONTH, 2);
+			returnDate = minExtendedDate.compareTo(minNotExtendedDate) > 0 ? minNotExtendedDate : minExtendedDate;
+		}
+		return returnDate;
 	}
 }

@@ -1,5 +1,7 @@
 package com.liborrow.webinterface.business.impl.manager;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -58,5 +60,23 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 	
 	public List<WaitingListDTO> getUserReservations(UserLightDTO user) {
 		return getDaoFactory().getBorrowDao().getUserReservations(user);
+	}
+	
+	public Calendar getNextGetBackDate(Long itemId) {
+		return getDaoFactory().getBorrowDao().getNextGetbackDate(itemId);
+	}
+	
+	
+	public List<String> getNextGetbackDatesReservations(List<WaitingListDTO> reservations){
+		List<String> getBackDates = new ArrayList<String>();
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		for(WaitingListDTO reservation : reservations) {
+			if(null!=reservation.getBookDTO()) {
+				getBackDates.add(df.format(getNextGetBackDate(reservation.getBookDTO().getId()).getTime()));
+			}else {
+				getBackDates.add(df.format(getNextGetBackDate(reservation.getMagazineDTO().getId()).getTime()));
+			}
+		}
+		return getBackDates;
 	}
 }

@@ -15,15 +15,17 @@
 	   		<s:if test="%{error!=null}"><li class="list-group-item"><div class="alert alert-danger">Une erreur s'est produite lors de la prolongation de votre prêt</div></li></s:if>
 		    <li class="list-group-item">
 		    	<s:if test="%{reservations!=null && reservations.size()!=0}">
-					<h2 class="card-title">Prêts en cours</h2>
+					<h2 class="card-title">Réservations en cours</h2>
 					<table class="table table-striped">
 					  <thead class="thead-inverse">
 					    <tr>
 					      <th>#</th>
 					      <th>Item</th>
 					      <th>Position dans la liste d'attente</th>
+					      <th>Prochain retour prévu</th>
 					      <th>Annuler</th>
 					      <th>Disponible</th>
+					      <th>Date de notification</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -39,6 +41,13 @@
 						      	</s:else>
 						      </td>
 						      <td><s:property value="position"/></td>
+						      <td>
+						      	<s:iterator value="reservationsNextGetBackDate" var="date" status="resStatus">
+						      			<s:if test="%{#status.index == #resStatus.index}">
+						      				<s:property value="date"/>
+						      			</s:if>
+						      	</s:iterator>
+						      </td>
 						      <s:if test="%{bookDTO!=null}">
 						      	     <s:url action="cancelReservationBook" namespace="/liborrow" var="urlCancel">
 								       <s:param name="itemId"><s:property value="bookDTO.id"/></s:param>
@@ -51,6 +60,7 @@
 					      	  </s:else>
 					      	  <td><a class="btn btn-danger" href="${urlCancel}">Annuler</a></td>
 					      	  <td><s:if test="notificationDate!=null">Oui</s:if><s:else>Non</s:else></td>
+					      	  <td><s:if test="notificationDate!=null"><s:property value="notificationDate.toGregorianCalendar().getTime()"/></s:if><s:else>N/A</s:else></td>
 					      	</tr>
 						</s:iterator>
 					  </tbody>

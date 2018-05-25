@@ -1,5 +1,8 @@
 package com.liborrow.webinterface.consumer.impl.dao;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.liborrow.webinterface.consumer.contract.dao.BorrowDao;
@@ -28,5 +31,9 @@ public class BorrowDaoImpl extends AbstractDao implements BorrowDao  {
 	
 	public List<WaitingListDTO> getUserReservations(UserLightDTO user){
 		return getBorrowSrv().findUserWaitingList(user);
+	}
+	
+	public Calendar getNextGetbackDate(Long itemId) {
+		return getBorrowSrv().getNextGetBackDate(itemId).toGregorianCalendar();
 	}
 }
