@@ -31,4 +31,12 @@ public class BorrowDaoImpl extends AbstractDaoImpl implements BorrowDao {
 	public void saveReservations(List<WaitingListDTO> reservations) {
 		getBorrowSrv().saveReservations(reservations);
 	}
+	
+	public List<BorrowDTO> remindBorrows() {
+		return getBorrowSrv().remindBorrows();
+	}
+	
+	public void saveBorrow(BorrowDTO borrow) {
+		getBorrowSrv().updateBorrow(borrow);
+	}
 }

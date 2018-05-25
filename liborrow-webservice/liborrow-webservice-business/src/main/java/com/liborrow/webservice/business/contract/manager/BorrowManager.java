@@ -1,5 +1,6 @@
 package com.liborrow.webservice.business.contract.manager;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.liborrow.webservice.model.dto.BorrowDTO;
@@ -23,5 +24,6 @@ public interface BorrowManager {
 	List<WaitingListDTO> getWaitingListAvailable();
 	void removeReservations(List<Long> reservations);
 	void saveReservations(List<WaitingListDTO> reservations);
+	Calendar getNextGetBackDate(Long itemId);
 	List<BorrowDTO> remindBorrows();
 }

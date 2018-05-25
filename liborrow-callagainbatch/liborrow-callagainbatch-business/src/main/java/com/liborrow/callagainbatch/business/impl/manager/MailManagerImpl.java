@@ -29,6 +29,9 @@ public class MailManagerImpl extends AbstractManagerImpl implements MailManager 
 			if(type == MailTypeEnum.MAIL_RESERVATION_AVAILABLE) {
 				createMailAvailableReservation(mimeMessage, objects);
 			}
+			if(type == MailTypeEnum.MAIL_REMIND_BORROW) {
+				createMailRemindBorrow(mimeMessage, objects);
+			}
 			getMailSender().send(mimeMessage);
 		}catch(Exception e)
 		{
@@ -193,6 +196,93 @@ public class MailManagerImpl extends AbstractManagerImpl implements MailManager 
 				content.append("<tr>\r\n");
 				content.append("<td align=\"center\">"+reservation+"</td>\r\n");
 				if(reservation.contains("°"))
+				{
+					content.append("<td align=\"center\">revue</td>\r\n");
+				}else {
+					content.append("<td align=\"center\">livre</td>\r\n");
+				}
+				content.append("</tr>\r\n");
+			}
+			
+			content.append("                                    </tbody>\r\n" + 
+					"                                </table>\r\n" + 
+					"                            </td>\r\n" + 
+					"                        </tr>\r\n" + 
+					"						<tr>\r\n" + 
+					"							<td align=\"center\"><p>Merci de votre compréhension et à bientôt dans votre bibliothèque !</p></td>\r\n" + 
+					"						</tr>\r\n" + 
+					"                    </table>\r\n" + 
+					"                </td>\r\n" + 
+					"            </tr>\r\n" + 
+					"            <tr>\r\n" + 
+					"                <td align=\"center\" bgcolor=\"#307fff\" style=\"color: #E6E6E6\">\r\n" + 
+					"                    <p class=\"text-center\">Liborrow ©  | Développé par Ben's Company</p>\r\n" + 
+					"                </td>\r\n" + 
+					"            </tr>\r\n" + 
+					"        </table>\r\n" + 
+					"    </tr>\r\n" + 
+					"</table>\r\n" + 
+					"</body>\r\n" + 
+					"</html>");
+			mimeMessage.setContent(content.toString(), "text/html; charset=utf-8");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void createMailRemindBorrow(MimeMessage mimeMessage, List<String> objects) {
+		try {
+			mimeMessage.setSubject("[Liborrow] Prêts arrivant à échéance");
+			StringBuilder content = new StringBuilder();
+			content.append(
+					"<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n" + 
+					"<head>\r\n" + 
+					"    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\r\n" + 
+					"    <title>Mail de confirmation</title>\r\n" + 
+					"    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\r\n" + 
+					"</head>\r\n" + 
+					"<body style=\"margin: 0; padding: 0;\">\r\n" + 
+					"<table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\r\n" + 
+					"    <tr>\r\n" + 
+					"        <table align=\"center\"  cellpadding=\"0\" cellspacing=\"0\" width=\"600\">\r\n" + 
+					"            <tr>\r\n" + 
+					"                <td align=\"center\" bgcolor=\"#307fff\" style=\"padding: 40px 0 30px 0; color: #E6E6E6;\">\r\n" + 
+					"					<h1>Liborrow</h1>\r\n" + 
+					"                </td>\r\n" + 
+					"            </tr>\r\n" + 
+					"            <tr>\r\n" + 
+					"                <td bgcolor=\"#ffffff\" cellspacing=\"0\" style=\"padding: 40px 30px 40px 30px;\">\r\n" + 
+					"                    <table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\r\n" + 
+					"                        <tr>\r\n" + 
+					"                            <td align=\"center\">\r\n" + 
+					"                                <h1>N'oubliez pas de ramener vos emprunts !</h1>\r\n" + 
+					"\r\n" + 
+					"                            </td>\r\n" + 
+					"                        </tr>\r\n" + 
+					"                        <tr>\r\n" + 
+					"                            <td align=\"center\">\r\n" + 
+					"                                <p>Bonjour les livres ou magazines dans la liste suivante doivent être ramenés dans 5 jours maximum .</p>\r\n" + 
+					"\r\n" + 
+					"                                <p>Après cette date vous serez dans l'incapacité de réaliser de nouveau prêt dans notr bibliothèque jusqu'à ce que vos emprunts soient rapportés.</p>\r\n" + 
+					"\r\n" + 
+					"                            </td>\r\n" + 
+					"                        </tr>\r\n" + 
+					"                        <tr>\r\n" + 
+					"                            <td align=\"center\">\r\n" + 
+					"                                <table border=\"1\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\r\n" + 
+					"                                    <thead>\r\n" + 
+					"                                        <tr bgcolor=\"#307fff\" style=\"color: #E6E6E6\">\r\n" + 
+					"                                            <th>Titre</th>\r\n" + 
+					"                                            <th>Type</th>\r\n" + 
+					"                                        </tr>\r\n" + 
+					"                                    </thead>\r\n" + 
+					"                                    <tbody>\r\n" );
+			
+			for(String borrow : objects)
+			{ 
+				content.append("<tr>\r\n");
+				content.append("<td align=\"center\">"+borrow+"</td>\r\n");
+				if(borrow.contains("°"))
 				{
 					content.append("<td align=\"center\">revue</td>\r\n");
 				}else {

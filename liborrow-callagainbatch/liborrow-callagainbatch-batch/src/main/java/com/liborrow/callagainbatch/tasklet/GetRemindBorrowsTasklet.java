@@ -13,25 +13,25 @@ import org.springframework.beans.factory.InitializingBean;
 
 import com.liborrow.callagainbatch.AbstractJob;
 import com.liborrow.webinterface.generated.model.BorrowDTO;
-import com.liborrow.webinterface.generated.model.UserLightDTO;
 
-public class BorrowTasklet extends AbstractJob implements Tasklet, InitializingBean {
-	
+public class GetRemindBorrowsTasklet extends AbstractJob implements Tasklet, InitializingBean {
+
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public RepeatStatus execute(StepContribution stepContribution, ChunkContext chunkContext) throws Exception {
+	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
 		List<BorrowDTO> borrows= new ArrayList<BorrowDTO>();
 		Map<String, List<String>> emailAndBorrows = new HashMap<String, List<String>>();
-		borrows = getManagerFactory().getBorrowManager().findLateBorrows();
+		borrows = getManagerFactory().getBorrowManager().remindBorrows();
+		
 		emailAndBorrows = getManagerFactory().getBorrowManager().createChunkContextMap(borrows);
 		if(emailAndBorrows.size()>=1)
 		{
 			chunkContext.getStepContext().getStepExecution().getJobExecution().getExecutionContext().put("emailAndBorrows", emailAndBorrows);
+			getManagerFactory().getBorrowManager().saveBorrowsRecallDate(borrows);
 		}
 		return RepeatStatus.FINISHED;
 	}
-
 }

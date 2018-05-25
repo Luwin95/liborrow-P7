@@ -27,6 +27,9 @@ public class ObjectFactory {
     private final static QName _MarkBorrowAsExtendedResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "markBorrowAsExtendedResponse");
     private final static QName _DeleteBorrow_QNAME = new QName("model.generated.webinterface.liborrow.com", "deleteBorrow");
     private final static QName _GetUserBorrowsResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "getUserBorrowsResponse");
+    private final static QName _RemindBorrowsResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "remindBorrowsResponse");
+    private final static QName _GetNextGetBackDate_QNAME = new QName("model.generated.webinterface.liborrow.com", "getNextGetBackDate");
+    private final static QName _GetNextGetBackDateResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "getNextGetBackDateResponse");
     private final static QName _FindLateBorrowsResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "findLateBorrowsResponse");
     private final static QName _FindUserWaitingListResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "findUserWaitingListResponse");
     private final static QName _GetUserBorrows_QNAME = new QName("model.generated.webinterface.liborrow.com", "getUserBorrows");
@@ -52,6 +55,7 @@ public class ObjectFactory {
     private final static QName _UpdateBorrowResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "updateBorrowResponse");
     private final static QName _RemoveReservationsResponse_QNAME = new QName("model.generated.webinterface.liborrow.com", "removeReservationsResponse");
     private final static QName _FindUserWaitingList_QNAME = new QName("model.generated.webinterface.liborrow.com", "findUserWaitingList");
+    private final static QName _RemindBorrows_QNAME = new QName("model.generated.webinterface.liborrow.com", "remindBorrows");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.liborrow.webinterface.generated.model
@@ -149,6 +153,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemindBorrows }
+     * 
+     */
+    public RemindBorrows createRemindBorrows() {
+        return new RemindBorrows();
+    }
+
+    /**
      * Create an instance of {@link MarkBorrowAsExtended }
      * 
      */
@@ -170,6 +182,14 @@ public class ObjectFactory {
      */
     public GetUserBorrowsResponse createGetUserBorrowsResponse() {
         return new GetUserBorrowsResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemindBorrowsResponse }
+     * 
+     */
+    public RemindBorrowsResponse createRemindBorrowsResponse() {
+        return new RemindBorrowsResponse();
     }
 
     /**
@@ -258,6 +278,22 @@ public class ObjectFactory {
      */
     public GetBorrowResponse createGetBorrowResponse() {
         return new GetBorrowResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetNextGetBackDate }
+     * 
+     */
+    public GetNextGetBackDate createGetNextGetBackDate() {
+        return new GetNextGetBackDate();
+    }
+
+    /**
+     * Create an instance of {@link GetNextGetBackDateResponse }
+     * 
+     */
+    public GetNextGetBackDateResponse createGetNextGetBackDateResponse() {
+        return new GetNextGetBackDateResponse();
     }
 
     /**
@@ -381,6 +417,33 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "getUserBorrowsResponse")
     public JAXBElement<GetUserBorrowsResponse> createGetUserBorrowsResponse(GetUserBorrowsResponse value) {
         return new JAXBElement<GetUserBorrowsResponse>(_GetUserBorrowsResponse_QNAME, GetUserBorrowsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemindBorrowsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "remindBorrowsResponse")
+    public JAXBElement<RemindBorrowsResponse> createRemindBorrowsResponse(RemindBorrowsResponse value) {
+        return new JAXBElement<RemindBorrowsResponse>(_RemindBorrowsResponse_QNAME, RemindBorrowsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetNextGetBackDate }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "getNextGetBackDate")
+    public JAXBElement<GetNextGetBackDate> createGetNextGetBackDate(GetNextGetBackDate value) {
+        return new JAXBElement<GetNextGetBackDate>(_GetNextGetBackDate_QNAME, GetNextGetBackDate.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetNextGetBackDateResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "getNextGetBackDateResponse")
+    public JAXBElement<GetNextGetBackDateResponse> createGetNextGetBackDateResponse(GetNextGetBackDateResponse value) {
+        return new JAXBElement<GetNextGetBackDateResponse>(_GetNextGetBackDateResponse_QNAME, GetNextGetBackDateResponse.class, null, value);
     }
 
     /**
@@ -606,6 +669,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "findUserWaitingList")
     public JAXBElement<FindUserWaitingList> createFindUserWaitingList(FindUserWaitingList value) {
         return new JAXBElement<FindUserWaitingList>(_FindUserWaitingList_QNAME, FindUserWaitingList.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RemindBorrows }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "model.generated.webinterface.liborrow.com", name = "remindBorrows")
+    public JAXBElement<RemindBorrows> createRemindBorrows(RemindBorrows value) {
+        return new JAXBElement<RemindBorrows>(_RemindBorrows_QNAME, RemindBorrows.class, null, value);
     }
 
 }

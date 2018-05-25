@@ -1,5 +1,6 @@
 package com.liborrow.webservice.services;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.jws.WebMethod;
@@ -91,6 +92,11 @@ public class BorrowService extends AbstractService {
 	@WebMethod
 	public void saveReservations(List<WaitingListDTO> reservations) {
 		getManagerFactory().getBorrowManager().saveReservations(reservations);
+	}
+	
+	@WebMethod
+	public Calendar getNextGetBackDate(Long itemId) {
+		return getManagerFactory().getBorrowManager().getNextGetBackDate(itemId);
 	}
 	
 	@WebMethod

@@ -1,10 +1,7 @@
 package com.liborrow.webservice.business.impl.manager;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -15,14 +12,12 @@ import org.liborrow.webservice.model.dto.BookDTO;
 import org.liborrow.webservice.model.dto.ItemDTO;
 import org.liborrow.webservice.model.dto.MagazineDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
-import org.liborrow.webservice.model.dto.WaitingListDTO;
 import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.entities.Citizenship;
 import org.liborrow.webservice.model.entities.Item;
 import org.liborrow.webservice.model.entities.Magazine;
-import org.liborrow.webservice.model.entities.UserLight;
 import org.liborrow.webservice.model.entities.WaitingList;
 import org.liborrow.webservice.model.utilsobject.AuthorDependenciesEnum;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
@@ -32,7 +27,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.liborrow.webservice.model.dto.BorrowDTO;
 import com.liborrow.webservice.business.contract.manager.ItemManager;
 import com.liborrow.webservice.consumer.repository.AuthorRepository;
 import com.liborrow.webservice.consumer.repository.BookRepository;

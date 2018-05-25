@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="phoneNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="recall" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="reservations" type="{model.generated.webinterface.liborrow.com}waitingListDTO" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -49,6 +50,7 @@ import javax.xml.bind.annotation.XmlType;
     "lastname",
     "phoneNumber",
     "postCode",
+    "recall",
     "reservations",
     "role"
 })
@@ -64,6 +66,7 @@ public class UserLightDTO {
     protected String lastname;
     protected String phoneNumber;
     protected String postCode;
+    protected boolean recall;
     @XmlElement(nillable = true)
     protected List<WaitingListDTO> reservations;
     protected String role;
@@ -279,6 +282,22 @@ public class UserLightDTO {
      */
     public void setPostCode(String value) {
         this.postCode = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété recall.
+     * 
+     */
+    public boolean isRecall() {
+        return recall;
+    }
+
+    /**
+     * Définit la valeur de la propriété recall.
+     * 
+     */
+    public void setRecall(boolean value) {
+        this.recall = value;
     }
 
     /**

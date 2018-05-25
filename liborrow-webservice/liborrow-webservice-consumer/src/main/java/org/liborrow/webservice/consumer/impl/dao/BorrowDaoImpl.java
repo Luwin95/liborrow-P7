@@ -96,4 +96,6 @@ public class BorrowDaoImpl extends AbstractDaoImpl implements BorrowDao {
 		query.setParameter("now2", cal2Month.getTime());
 		return (List<Borrow>) query.getResultList();
 	}
+	
+	
 }

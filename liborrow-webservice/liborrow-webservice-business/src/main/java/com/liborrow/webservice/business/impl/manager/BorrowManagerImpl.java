@@ -208,4 +208,9 @@ public class BorrowManagerImpl extends AbstractManagerImpl implements BorrowMana
 			waitingListRepository.save(reservation);
 		}
 	}
+	
+	@Override
+	public Calendar getNextGetBackDate(Long itemId) {
+		return getDaoFactory().getBorrowDao().getNextGetBackDate(itemId);
+	}
 }
