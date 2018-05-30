@@ -28,6 +28,36 @@ public interface UserClient {
     /**
      * 
      * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "createUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUser")
+    @ResponseWrapper(localName = "createUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/createUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/createUserResponse")
+    public void createUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        UserDTO arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "loginUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUser")
+    @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUserResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
+    public UserLightDTO loginUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
      * @return
      *     returns java.util.List<com.liborrow.webinterface.generated.model.UserLightDTO>
      */
@@ -39,21 +69,6 @@ public interface UserClient {
     public List<UserLightDTO> searchUser(
         @WebParam(name = "arg0", targetNamespace = "")
         UserCriterias arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "isInDatabase", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.IsInDatabase")
-    @ResponseWrapper(localName = "isInDatabaseResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.IsInDatabaseResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/isInDatabaseRequest", output = "model.generated.webinterface.liborrow.com/UserClient/isInDatabaseResponse")
-    public boolean isInDatabase(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
 
     /**
      * 
@@ -96,21 +111,15 @@ public interface UserClient {
 
     /**
      * 
-     * @param arg1
-     * @param arg0
      * @return
-     *     returns com.liborrow.webinterface.generated.model.UserLightDTO
+     *     returns java.util.List<java.lang.String>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "loginUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUser")
-    @ResponseWrapper(localName = "loginUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.LoginUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/loginUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/loginUserResponse")
-    public UserLightDTO loginUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
+    @RequestWrapper(localName = "getAllCitizenshipsNames", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllCitizenshipsNames")
+    @ResponseWrapper(localName = "getAllCitizenshipsNamesResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllCitizenshipsNamesResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/getAllCitizenshipsNamesRequest", output = "model.generated.webinterface.liborrow.com/UserClient/getAllCitizenshipsNamesResponse")
+    public List<String> getAllCitizenshipsNames();
 
     /**
      * 
@@ -127,30 +136,6 @@ public interface UserClient {
     /**
      * 
      * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "createUser", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUser")
-    @ResponseWrapper(localName = "createUserResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.CreateUserResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/createUserRequest", output = "model.generated.webinterface.liborrow.com/UserClient/createUserResponse")
-    public void createUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        UserDTO arg0);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<java.lang.String>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAllCitizenshipsNames", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllCitizenshipsNames")
-    @ResponseWrapper(localName = "getAllCitizenshipsNamesResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetAllCitizenshipsNamesResponse")
-    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/getAllCitizenshipsNamesRequest", output = "model.generated.webinterface.liborrow.com/UserClient/getAllCitizenshipsNamesResponse")
-    public List<String> getAllCitizenshipsNames();
-
-    /**
-     * 
-     * @param arg0
      * @return
      *     returns com.liborrow.webinterface.generated.model.CitizenshipDTO
      */
@@ -160,6 +145,21 @@ public interface UserClient {
     @ResponseWrapper(localName = "getCitizenshipByCountryResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.GetCitizenshipByCountryResponse")
     @Action(input = "model.generated.webinterface.liborrow.com/UserClient/getCitizenshipByCountryRequest", output = "model.generated.webinterface.liborrow.com/UserClient/getCitizenshipByCountryResponse")
     public CitizenshipDTO getCitizenshipByCountry(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "isInDatabase", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.IsInDatabase")
+    @ResponseWrapper(localName = "isInDatabaseResponse", targetNamespace = "model.generated.webinterface.liborrow.com", className = "com.liborrow.webinterface.generated.model.IsInDatabaseResponse")
+    @Action(input = "model.generated.webinterface.liborrow.com/UserClient/isInDatabaseRequest", output = "model.generated.webinterface.liborrow.com/UserClient/isInDatabaseResponse")
+    public boolean isInDatabase(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 

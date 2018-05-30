@@ -19,6 +19,7 @@ CREATE TABLE public.magazine (
                 editionNumber INTEGER,
                 name VARCHAR NOT NULL,
                 publishDate DATE,
+                type VARCHAR(1) NOT NULL,
                 itemRef VARCHAR NOT NULL,
                 totalCount INTEGER NOT NULL,
                 remainingCount INTEGER NOT NULL,
@@ -55,6 +56,7 @@ CREATE TABLE public.user_account (
                 phoneNumber VARCHAR NOT NULL,
                 citizenship_id INTEGER NOT NULL,
                 role VARCHAR NOT NULL,
+                recall BOOLEAN DEFAULT true NOT NULL,
                 CONSTRAINT user_account_pk PRIMARY KEY (user_id)
 );
 
@@ -65,6 +67,20 @@ CREATE UNIQUE INDEX user_idx
  ON public.user_account
  ( email );
 
+CREATE SEQUENCE public.waiting_list_waiting_list_id_seq;
+
+CREATE TABLE public.waiting_list (
+                waiting_list_id INTEGER NOT NULL DEFAULT nextval('public.waiting_list_waiting_list_id_seq'),
+                notificationDate TIMESTAMP,
+                position INTEGER NOT NULL,
+                item_id INTEGER NOT NULL,
+                user_id INTEGER NOT NULL,
+                CONSTRAINT waiting_list_pk PRIMARY KEY (waiting_list_id)
+);
+
+
+ALTER SEQUENCE public.waiting_list_waiting_list_id_seq OWNED BY public.waiting_list.waiting_list_id;
+
 CREATE SEQUENCE public.borrow_borrow_id_seq;
 
 CREATE TABLE public.borrow (
@@ -74,6 +90,7 @@ CREATE TABLE public.borrow (
                 extended BOOLEAN NOT NULL,
                 user_id INTEGER NOT NULL,
                 item_id INTEGER NOT NULL,
+                recallDate DATE DEFAULT null,
                 CONSTRAINT borrow_pk PRIMARY KEY (borrow_id)
 );
 
@@ -109,6 +126,7 @@ CREATE TABLE public.book (
                 item_id INTEGER NOT NULL DEFAULT nextval('public.book_item_id_seq'),
                 title VARCHAR NOT NULL,
                 language VARCHAR NOT NULL,
+                type VARCHAR(1) NOT NULL,
                 release DATE NOT NULL,
                 summary VARCHAR,
                 editor VARCHAR NOT NULL,
@@ -167,6 +185,13 @@ ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.borrow ADD CONSTRAINT user_borrow_fk
+FOREIGN KEY (user_id)
+REFERENCES public.user_account (user_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.waiting_list ADD CONSTRAINT user_account_waiting_list_fk
 FOREIGN KEY (user_id)
 REFERENCES public.user_account (user_id)
 ON DELETE NO ACTION
