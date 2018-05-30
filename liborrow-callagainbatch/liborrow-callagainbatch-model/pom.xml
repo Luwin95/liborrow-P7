@@ -51,7 +51,7 @@
   			<configuration>
   				<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
   				<wsdlUrls>
-  					<wsdlUrl>http://localhost:80/liborrow-webservice-webapp/borrow?wsdl</wsdlUrl>
+  					<wsdlUrl>http://liborrow:80/liborrow-webservice-webapp/borrow?wsdl</wsdlUrl>
   				</wsdlUrls>
   			</configuration>
   		</plugin>
