@@ -28,38 +28,22 @@
     		<dependency>
     			<groupId>com.liborrow.liborrow-webinterface</groupId>
     			<artifactId>liborrow-webinterface-model</artifactId>
-<<<<<<< HEAD
-    			<version>1.0.0-SNAPSHOT</version>
-=======
     			<version>${project.version}</version>
->>>>>>> evolutions
     		</dependency>
     		<dependency>
     			<groupId>com.liborrow.liborrow-webinterface</groupId>
     			<artifactId>liborrow-webinterface-business</artifactId>
-<<<<<<< HEAD
-    			<version>1.0.0-SNAPSHOT</version>
-=======
     			<version>${project.version}</version>
->>>>>>> evolutions
     		</dependency>
     		<dependency>
     			<groupId>com.liborrow.liborrow-webinterface</groupId>
     			<artifactId>liborrow-webinterface-consumer</artifactId>
-<<<<<<< HEAD
-    			<version>1.0.0-SNAPSHOT</version>
-=======
     			<version>${project.version}</version>
->>>>>>> evolutions
     		</dependency>
     		<dependency>
     			<groupId>com.liborrow.liborrow-webinterface</groupId>
     			<artifactId>liborrow-webinterface-webapp</artifactId>
-<<<<<<< HEAD
-    			<version>1.0.0-SNAPSHOT</version>
-=======
     			<version>${project.version}</version>
->>>>>>> evolutions
     		</dependency>
 			<!-- Junit -->
 			<dependency>
