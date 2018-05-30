@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{model.generated.webinterface.liborrow.com}userDTO" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{model.generated.webinterface.liborrow.com}userLightDTO" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UpdateUser {
 
-    protected UserDTO arg0;
+    protected UserLightDTO arg0;
 
     /**
      * Obtient la valeur de la propriété arg0.
      * 
      * @return
      *     possible object is
-     *     {@link UserDTO }
+     *     {@link UserLightDTO }
      *     
      */
-    public UserDTO getArg0() {
+    public UserLightDTO getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class UpdateUser {
      * 
      * @param value
      *     allowed object is
-     *     {@link UserDTO }
+     *     {@link UserLightDTO }
      *     
      */
-    public void setArg0(UserDTO value) {
+    public void setArg0(UserLightDTO value) {
         this.arg0 = value;
     }
 

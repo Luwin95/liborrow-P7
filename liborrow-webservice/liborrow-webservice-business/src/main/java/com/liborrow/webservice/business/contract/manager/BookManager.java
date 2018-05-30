@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.liborrow.webservice.model.dto.BookDTO;
+import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
 

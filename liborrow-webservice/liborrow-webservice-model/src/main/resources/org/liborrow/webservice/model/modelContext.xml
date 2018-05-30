@@ -14,6 +14,7 @@
 	 <bean id="userLightTransformer" class="org.liborrow.webservice.model.transformer.impl.UserLightTransformerImpl"/>
 	 <bean id="userAccountTransformer" class="org.liborrow.webservice.model.transformer.impl.UserAccountTransformerImpl"/>
 	 <bean id="borrowTransformer" class="org.liborrow.webservice.model.transformer.impl.BorrowTransformerImpl"/>
+	 <bean id="waitingListTransformer" class="org.liborrow.webservice.model.transformer.impl.WaitingListTransformerImpl"/>
 	 
 	 <!-- Déclaration TransformerFactory -->
 	 <bean id="transformerFactory" class="org.liborrow.webservice.model.transformer.impl.TransformerFactoryImpl">
@@ -25,6 +26,7 @@
 	 	<property name="imageTransformer" ref="imageTransformer"/>
 	 	<property name="userLightTransformer" ref="userLightTransformer"/>
 	 	<property name="userAccountTransformer" ref="userAccountTransformer"/>
+	 	<property name="waitingListTransformer" ref="waitingListTransformer"/>
 	 </bean>
 	 
 	 <!-- Déclaration Utils -->

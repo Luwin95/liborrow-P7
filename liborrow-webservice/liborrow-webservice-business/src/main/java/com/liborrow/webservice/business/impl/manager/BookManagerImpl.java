@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.hibernate.Hibernate;
 import org.liborrow.webservice.model.dto.BookDTO;
+import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.entities.Author;
 import org.liborrow.webservice.model.entities.Book;
 import org.liborrow.webservice.model.entities.Borrow;
@@ -61,6 +62,7 @@ public class BookManagerImpl extends AbstractManagerImpl implements BookManager 
 		{
 			books.addAll(getTransformerFactory().getBookTransformer().toBooksDTO(booksEntities,true, "org.liborrow.webservice.model.dto.BookDTO"));
 		}
+		formatBookResponse(books);
 		return books;
 	}
 	

@@ -24,6 +24,8 @@ public class UserDTO {
 	
 	private String role;
 	
+	private boolean recall;
+	
 	private Set<BorrowDTO> borrows = new HashSet<>();
 	
 	public UserDTO() {
@@ -116,5 +118,13 @@ public class UserDTO {
 
 	public void setBorrows(Set<BorrowDTO> borrows) {
 		this.borrows = borrows;
+	}
+
+	public boolean isRecall() {
+		return recall;
+	}
+
+	public void setRecall(boolean recall) {
+		this.recall = recall;
 	}
 }

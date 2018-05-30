@@ -49,6 +49,9 @@ public class UserAccount implements Serializable{
 	@Column(name="role")
 	private String role;
 	
+	@Column(name="recall")
+	private boolean recall;
+	
 	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name = "citizenship_id")
 	private Citizenship citizenship;
@@ -156,4 +159,13 @@ public class UserAccount implements Serializable{
 	public void setBorrows(Set<Borrow> borrows) {
 		this.borrows = borrows;
 	}
+
+	public boolean isRecall() {
+		return recall;
+	}
+
+	public void setRecall(boolean recall) {
+		this.recall = recall;
+	}
+	
 }

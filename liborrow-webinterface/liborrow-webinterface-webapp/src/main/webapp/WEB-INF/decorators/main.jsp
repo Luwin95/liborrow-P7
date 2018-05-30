@@ -36,13 +36,20 @@
 				  <!-- Navbar links -->
 				  <div class="collapse navbar-collapse" id="collapsibleNavbar">
 				    <ul class="navbar-nav mr-auto">
-				      <li class="nav-item">
-				        <a class="nav-link" href="<s:url action="search" namespace="/liborrow"/>">Rechercher</a>
-				      </li>
-				      <li class="nav-item">
-				        <a class="nav-link" href="<s:url action="currentBorrows" namespace="/liborrow"/>">Mes prêts en cours</a>
-				      </li>
-				   
+				      <s:if test="%{#session.sessionUser}">
+				      	  <li class="nav-item">
+					        <a class="nav-link" href="<s:url action="search" namespace="/liborrow"/>">Rechercher</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="<s:url action="currentBorrows" namespace="/liborrow"/>">Mes prêts en cours</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="<s:url action="userReservationsList" namespace="/liborrow"/>">Mes Réservations</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="<s:url action="editUserHome" namespace="/liborrow"/>">Mon compte</a>
+					      </li>
+				      </s:if>
 				    </ul>
 				    <ul class="navbar-nav ml-auto">
 						<s:if test='#session.sessionUser != null'>

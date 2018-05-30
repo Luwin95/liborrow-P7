@@ -1,4 +1,3 @@
-﻿
 CREATE SEQUENCE public.image_image_id_seq;
 
 CREATE TABLE public.image (
@@ -19,6 +18,7 @@ CREATE TABLE public.magazine (
                 editionNumber INTEGER,
                 name VARCHAR NOT NULL,
                 publishDate DATE,
+                type VARCHAR(1) NOT NULL,
                 itemRef VARCHAR NOT NULL,
                 totalCount INTEGER NOT NULL,
                 remainingCount INTEGER NOT NULL,
@@ -55,6 +55,7 @@ CREATE TABLE public.user_account (
                 phoneNumber VARCHAR NOT NULL,
                 citizenship_id INTEGER NOT NULL,
                 role VARCHAR NOT NULL,
+                recall BOOLEAN DEFAULT true NOT NULL,
                 CONSTRAINT user_account_pk PRIMARY KEY (user_id)
 );
 
@@ -65,6 +66,20 @@ CREATE UNIQUE INDEX user_idx
  ON public.user_account
  ( email );
 
+CREATE SEQUENCE public.waiting_list_waiting_list_id_seq;
+
+CREATE TABLE public.waiting_list (
+                waiting_list_id INTEGER NOT NULL DEFAULT nextval('public.waiting_list_waiting_list_id_seq'),
+                notificationDate TIMESTAMP,
+                position INTEGER NOT NULL,
+                item_id INTEGER NOT NULL,
+                user_id INTEGER NOT NULL,
+                CONSTRAINT waiting_list_pk PRIMARY KEY (waiting_list_id)
+);
+
+
+ALTER SEQUENCE public.waiting_list_waiting_list_id_seq OWNED BY public.waiting_list.waiting_list_id;
+
 CREATE SEQUENCE public.borrow_borrow_id_seq;
 
 CREATE TABLE public.borrow (
@@ -74,6 +89,7 @@ CREATE TABLE public.borrow (
                 extended BOOLEAN NOT NULL,
                 user_id INTEGER NOT NULL,
                 item_id INTEGER NOT NULL,
+                recallDate DATE DEFAULT null,
                 CONSTRAINT borrow_pk PRIMARY KEY (borrow_id)
 );
 
@@ -109,6 +125,7 @@ CREATE TABLE public.book (
                 item_id INTEGER NOT NULL DEFAULT nextval('public.book_item_id_seq'),
                 title VARCHAR NOT NULL,
                 language VARCHAR NOT NULL,
+                type VARCHAR(1) NOT NULL,
                 release DATE NOT NULL,
                 summary VARCHAR,
                 editor VARCHAR NOT NULL,
@@ -173,6 +190,13 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
+ALTER TABLE public.waiting_list ADD CONSTRAINT user_account_waiting_list_fk
+FOREIGN KEY (user_id)
+REFERENCES public.user_account (user_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
 ALTER TABLE public.author_citizenship ADD CONSTRAINT author_author_citizenship_fk
 FOREIGN KEY (author_id)
 REFERENCES public.author (author_id)
@@ -194,18 +218,22 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-INSERT INTO  book(item_id, title, language, release, summary, editor, itemref,totalcount, remainingcount, alley, place) VALUES
-	(1, 'Hello world', 'Français', '2001-09-28', 'Une chronique sur le monde', 'Galimard','sdhgfsgfvisd', 5, 1, 'A', '32E'),
-	(2, 'Hello world 2', 'Français', '2003-09-28', 'Le retour de la chronique sur le monde', 'Galimard','gsfdcqsghf', 7, 4, 'B', '41F');
+INSERT INTO  book(item_id, title, language, release, summary, editor, itemref,totalcount, remainingcount, alley, place, type) VALUES
+	(1, 'Hello world', 'Français', '2001-09-28', 'Une chronique sur le monde', 'Galimard','sdhgfsgfvisd', 5, 1, 'A', '32E', 'B'),
+	(2, 'Hello world 2', 'Français', '2003-09-28', 'Le retour de la chronique sur le monde', 'Galimard','gsfdcqsghf', 7, 4, 'B', '41F', 'B'),
+	(5, 'Les trois Mousquetaires', 'Français', '1993-07-06', E'Le plus grand classique de cape et d\'épée', 'Flammarion','gsdvcfze', 2, 0, 'C', '50G', 'B'),
+	(6, 'Vingt ans après', 'Français', '1987-06-06', E'La suite du plus grand classique de cape et d\'épée', 'Galimard','sgdvgzsed', 1, 0, 'D', '69H', 'B'),
+	(7, 'Le vicomte de Bragelonne', 'Français', '1987-06-06', E'Suite et fin du plus grand classique de cape et d\'épée', 'Galimard','gqzaeafdq', 2, 1, 'D', '69H', 'B');
 
-INSERT INTO magazine(item_id, editionnumber, name, publishdate,itemref,totalcount, remainingcount, alley, place) VALUES 
-	(3,15, 'Le petit spirou', '2017-10-15','gzefzefhgqzjgfq', 4, 3, 'C', '50G'),
-	(4,250, 'Le monde', '2015-12-21','escuhkfgvzeezcrvzf', 7, 5, 'D', '69H');
+INSERT INTO magazine(item_id, editionnumber, name, publishdate,itemref,totalcount, remainingcount, alley, place, type) VALUES 
+	(3,15, 'Le petit spirou', '2017-10-15','gzefzefhgqzjgfq', 4, 3, 'C', '50G', 'M'),
+	(4,250, 'Le monde', '2015-12-21','escuhkfgvzeezcrvzf', 7, 5, 'D', '69H', 'M');
 	
 INSERT INTO author(author_id, name, firstname, birth, death, biography) VALUES
 	(1, 'Proust', 'Marcel', 1871, 1922, E'Ecrivain d\'origine française'),
-	(2, 'Test', 'test', 1900, 1990, 'Ecrivain Franco-allemand');
-	
+	(2, 'Test', 'test', 1900, 1990, 'Ecrivain Franco-allemand'),
+	(3, 'Dumas', 'Alexandre', 1802, 1870, E'Ecrivain d\'origine française');
+
 INSERT INTO citizenship(citizenship_id, countryname) VALUES
 (1, 'Afghanistan'),
 (2, 'Albanie'),
@@ -452,12 +480,16 @@ INSERT INTO citizenship(citizenship_id, countryname) VALUES
 
 INSERT INTO author_citizenship(author_id, citizenship_id) VALUES
 	(1,75),
-	(2,84);
+	(2,84),
+	(3,75);
 	
 INSERT INTO author_book(author_id, item_id) VALUES
 	(1,1),
 	(2,1),
-	(1,2);
+	(1,2),
+	(3,5),
+	(3,6),
+	(3,7);
 	
 INSERT INTO user_account(email, password, firstname, lastname, address, postcode, phonenumber, citizenship_id, role) VALUES
 	('test@gmail.com', '$2a$10$FQcevRJdVVqyrtM7fVV8JuIbTpeNpJ26C7LbwLZTXOV8PSvxInSX.', 'test', 'test', '10 Avenue du test', '95600', '0123456789', 75, 'ROLE_USER'),
@@ -494,9 +526,35 @@ INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
 INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
 	('2017-10-15', 'true', 3,4);
 	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-09', 'true', 2,5);
+
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-08', 'false', 2,6);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-10', 'false', 2,5);
+
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-01', 'false', 2,7);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-05-01', 'false', 2,7);
+	
+INSERT INTO borrow(startDate, extended, user_id,item_id) VALUES
+	('2018-04-27', 'false', 3,1);
+	
 INSERT INTO image(alt, path, title) VALUES
 	('Hello world cover', 'Atlas.jpg', 'Hello world cover');
 	
 INSERT INTO image(alt, path, title) VALUES
 	('spirou', 'spirou.jpg', 'spirou');
 	
+INSERT INTO waiting_list(user_id,item_id,position) VALUES
+	(3,5,1),
+	(3,6,1),
+	(3,7,2);
+	
+INSERT INTO waiting_list(user_id,item_id,position,notificationdate) VALUES
+	(1,7,1,'2018-05-01');
+

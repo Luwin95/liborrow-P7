@@ -10,6 +10,7 @@ import org.liborrow.webservice.model.entities.UserLight;
 import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
 import org.liborrow.webservice.model.transformer.contract.CitizenshipTransformer;
 import org.liborrow.webservice.model.transformer.contract.UserLightTransformer;
+import org.liborrow.webservice.model.transformer.contract.WaitingListTransformer;
 
 public class UserLightTransformerImpl implements UserLightTransformer {
 
@@ -24,6 +25,7 @@ public class UserLightTransformerImpl implements UserLightTransformer {
 		userTransformed.setPostCode(user.getPostCode());
 		userTransformed.setAddress(user.getAddress());
 		userTransformed.setRole(user.getRole());
+		userTransformed.setRecall(user.isRecall());
 		
 		if(user.getBorrows()!=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.CitizenshipDTO")))
 		{
@@ -34,6 +36,10 @@ public class UserLightTransformerImpl implements UserLightTransformer {
 		{
 			CitizenshipTransformer citizenshipTransformer= new CitizenshipTransformerImpl();
 			userTransformed.setCitizenship(citizenshipTransformer.toCitizenshipDTO(user.getCitizenship(), false, userTransformed.getClass().getName()));
+		}
+		if(user.getReservations()!=null && (isParent||classParentName.equals(UserLight.class.getSimpleName()))) {
+			WaitingListTransformer waitingListTransformer = new WaitingListTransformerImpl();
+			userTransformed.setReservations(waitingListTransformer.toWaitingListsDTO(user.getReservations(), false, userTransformed.getClass().getSimpleName()));
 		}
 		return userTransformed;
 	}
@@ -59,6 +65,7 @@ public class UserLightTransformerImpl implements UserLightTransformer {
 		userTransformed.setPostCode(user.getPostCode());
 		userTransformed.setAddress(user.getAddress());
 		userTransformed.setRole(user.getRole());
+		userTransformed.setRecall(user.isRecall());
 		
 		if(user.getBorrows()!=null && (isParent||classParentName.equals(Citizenship.class.getSimpleName())))
 		{

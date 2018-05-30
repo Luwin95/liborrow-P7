@@ -25,6 +25,7 @@ public class UserAccountTransformerImpl extends AbstractTransformerImpl implemen
 		userTransformed.setAddress(user.getAddress());
 		userTransformed.setRole(user.getRole());
 		userTransformed.setPassword(user.getPassword());
+		userTransformed.setRecall(user.isRecall());
 		
 		if(user.getBorrows()!=null && (isParent||classParentName.equals(Citizenship.class.getSimpleName())))
 		{
@@ -62,6 +63,7 @@ public class UserAccountTransformerImpl extends AbstractTransformerImpl implemen
 		userTransformed.setAddress(user.getAddress());
 		userTransformed.setRole(user.getRole());
 		userTransformed.setPassword(user.getPassword());
+		userTransformed.setRecall(user.isRecall());
 		
 		if(user.getBorrows()!=null && (isParent||classParentName.equals("org.liborrow.webservice.model.dto.CitizenshipDTO")))
 		{

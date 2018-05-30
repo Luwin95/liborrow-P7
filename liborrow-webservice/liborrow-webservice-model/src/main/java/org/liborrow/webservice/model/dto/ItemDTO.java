@@ -1,7 +1,12 @@
 package org.liborrow.webservice.model.dto;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import org.liborrow.webservice.model.entities.WaitingList;
 
 public class ItemDTO {
 
@@ -20,6 +25,12 @@ public class ItemDTO {
 	private Set<BorrowDTO> borrows = new HashSet<>();
 	
 	private String itemType;
+	
+	private List<WaitingListDTO> reservations = new ArrayList<>();
+	
+	private Calendar nextReturn;
+	
+	private Long reservationsNumber;
 	
 	public ItemDTO() {
 		// TODO Auto-generated constructor stub
@@ -87,5 +98,29 @@ public class ItemDTO {
 
 	public void setItemType(String itemType) {
 		this.itemType = itemType;
+	}
+
+	public List<WaitingListDTO> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<WaitingListDTO> reservations) {
+		this.reservations = reservations;
+	}
+	
+	public Calendar getNextReturn() {
+		return nextReturn;
+	}
+
+	public void setNextReturn(Calendar nextReturn) {
+		this.nextReturn = nextReturn;
+	}
+
+	public Long getReservationsNumber() {
+		return reservationsNumber;
+	}
+
+	public void setReservationsNumber(Long reservationsNumber) {
+		this.reservationsNumber = reservationsNumber;
 	}
 }

@@ -42,13 +42,24 @@
     <bean id="mailTasklet" class="com.liborrow.callagainbatch.tasklet.MailTasklet"/>
     <bean id="borrowTasklet" class="com.liborrow.callagainbatch.tasklet.BorrowTasklet"/>
     <bean id="callagainJobTasklet" class="com.liborrow.callagainbatch.tasklet.CallagainJobTasklet"/>
+    <bean id="getWaitingListObsoleteTasklet" class="com.liborrow.callagainbatch.tasklet.GetWaitingListObsoleteTasklet"/>
+    <bean id="deleteWaitingListObsoleteTasklet" class="com.liborrow.callagainbatch.tasklet.DeleteWaitingListObsoleteTasklet"/>
+    <bean id="reorganizePositionInWaitingListTasklet" class="com.liborrow.callagainbatch.tasklet.ReorganizePositionInWaitingListTasklet"/>
+    <bean id="getReservationAvailableTasklet" class="com.liborrow.callagainbatch.tasklet.GetReservationAvailableTasklet"/>
+    <bean id="notifyReservationAvailableTasklet" class="com.liborrow.callagainbatch.tasklet.NotifyReservationAvailableTasklet"/>
+    <bean id="getRemindBorrowsTasklet" class="com.liborrow.callagainbatch.tasklet.GetRemindBorrowsTasklet"/>
+    <bean id="remindBorrowsTasklet" class="com.liborrow.callagainbatch.tasklet.RemindBorrowsTasklet"/>
     
     <!-- Decider -->
     <bean id="userToRecallDecider" class="com.liborrow.callagainbatch.decider.UserToRecallDecider"/>
+    <bean id="waitingListToDeleteDecider" class="com.liborrow.callagainbatch.decider.WaitingListToDeleteDecider"/>
+    <bean id="userToNotifyReservationAvailableDecider" class="com.liborrow.callagainbatch.decider.UserToNotifyReservationAvailableDecider"/>
     
     <!-- Jobs -->
     <import resource="classpath:/com/liborrow/callagainbatch/jobTest.xml" /> 
     <import resource="classpath:/com/liborrow/callagainbatch/callagainJob.xml" /> 
+    <import resource="classpath:/com/liborrow/callagainbatch/reservationJob.xml" />
+    <import resource="classpath:/com/liborrow/callagainbatch/remindJob.xml" />  
     
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
 	    <property name="targetClass" value="com.liborrow.callagainbatch.AbstractJob"/>
@@ -72,8 +83,12 @@
 	
 	<!-- Scheduler -->
 	<bean id="callagainBatchScheduler" class="com.liborrow.callagainbatch.application.scheduler.CallagainBatchScheduler"/>
+	<bean id="reservationScheduler" class="com.liborrow.callagainbatch.application.scheduler.ReservationScheduler"/>
+	<bean id="remindScheduler" class="com.liborrow.callagainbatch.application.scheduler.RemindScheduler"/>
 	
 	<task:scheduled-tasks>
-	  <task:scheduled ref="callagainBatchScheduler" method="run" cron="${com.liborrow.scheduler.delayProd}" />
+	  <task:scheduled ref="callagainBatchScheduler" method="run" cron="${com.liborrow.scheduler.callagainjob.delayProd}" />
+	  <task:scheduled ref="reservationScheduler" method="run" cron="${com.liborrow.scheduler.reservationjob.delayProd}" />
+	  <task:scheduled ref="remindScheduler" method="run" cron="${com.liborrow.scheduler.remindjob.delayDev}" />
 	</task:scheduled-tasks>
 </beans>

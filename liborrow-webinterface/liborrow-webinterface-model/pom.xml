@@ -5,21 +5,36 @@
   <parent>
     <groupId>com.liborrow.liborrow-webinterface</groupId>
     <artifactId>liborrow-webinterface</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
   </parent>
   <artifactId>liborrow-webinterface-model</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
   <name>liborrow-webinterface-model</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
+    <!-- Junit -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-engine</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.platform</groupId>
+	    <artifactId>junit-platform-launcher</artifactId>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.platform</groupId>
+	    <artifactId>junit-platform-runner</artifactId>
+	    <scope>test</scope>
+	</dependency>
   </dependencies>
   <build>
   	<plugins>
@@ -36,9 +51,9 @@
   			<configuration>
   				<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
   				<wsdlUrls>
-  					<wsdlUrl>http://localhost:80/liborrow-webservice-webapp/item?wsdl</wsdlUrl>
-  					<wsdlUrl>http://localhost:80/liborrow-webservice-webapp/borrow?wsdl</wsdlUrl>
-  					<wsdlUrl>http://localhost:80/liborrow-webservice-webapp/user?wsdl</wsdlUrl>
+  					<wsdlUrl>http://liborrow:80/liborrow-webservice-webapp/item?wsdl</wsdlUrl>
+  					<wsdlUrl>http://liborrow:80/liborrow-webservice-webapp/borrow?wsdl</wsdlUrl>
+  					<wsdlUrl>http://liborrow:80/liborrow-webservice-webapp/user?wsdl</wsdlUrl>
   				</wsdlUrls>
   			</configuration>
   		</plugin>

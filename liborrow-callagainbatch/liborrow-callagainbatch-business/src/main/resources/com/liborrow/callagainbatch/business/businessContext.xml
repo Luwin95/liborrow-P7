@@ -9,10 +9,12 @@
     
     <bean id="borrowManager" class="com.liborrow.callagainbatch.business.impl.manager.BorrowManagerImpl" parent="abstractManager"/>
     <bean id="mailManager" class="com.liborrow.callagainbatch.business.impl.manager.MailManagerImpl" parent="abstractManager"/>
+    <bean id="reservationManager" class="com.liborrow.callagainbatch.business.impl.manager.ReservationManagerImpl" parent="abstractManager"/>
     
     <bean id="managerFactory" class="com.liborrow.callagainbatch.business.impl.ManagerFactoryImpl">
     	<property name="borrowManager" ref="borrowManager"/>
     	<property name="mailManager" ref="mailManager"/>
+    	<property name="reservationManager" ref="reservationManager"/>
     </bean> 
     
 </beans>

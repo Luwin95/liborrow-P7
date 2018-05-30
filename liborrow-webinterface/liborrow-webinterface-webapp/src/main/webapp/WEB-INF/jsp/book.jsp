@@ -12,6 +12,14 @@
 <body>
 	<div class="row justify-content-sm-center">
 		<div class="col-sm-4">
+			<s:if test="%{reservationResponse!=null}">
+				<s:if test="%{reservationResponse.responseType == 'success'}">
+					<div class="alert alert-success"><s:property value="reservationResponse.message"/></div>
+				</s:if>
+				<s:if test="%{reservationResponse.responseType == 'error'}">
+					<div class="alert alert-danger"><s:property value="reservationResponse.message"/></div>
+				</s:if>
+			</s:if>
 			<div class="card">
 				<s:if test="book.image !=null">
 					<img class="card-img-top item-image" src="/resources/<s:property value="book.image.path"/>" alt="Card image cap">
@@ -33,6 +41,14 @@
 					<li>Nombre d'exemplaires : <s:property value="book.totalCount"/></li>
 					<li>Nombre d'exemplaires disponibles : <s:property value="book.remainingCount"/></li>
 				</ul>
+				<s:if test="book.remainingCount==0">
+					<div class="card-footer">
+						<s:url action="reserveBook" namespace="/liborrow" var="urlReservationItem">
+					      <s:param name="itemId"><s:property value="book.id"/></s:param>
+					    </s:url>
+						<a class="btn btn-info" href="${urlReservationItem}">Réserver</a>
+					</div>
+				</s:if>
 			</div>
 		</div>
 	</div>

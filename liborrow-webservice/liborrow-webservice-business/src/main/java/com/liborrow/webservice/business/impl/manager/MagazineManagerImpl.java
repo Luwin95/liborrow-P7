@@ -61,6 +61,7 @@ public class MagazineManagerImpl extends AbstractManagerImpl implements Magazine
 		{
 			magazinesDTO.addAll(getTransformerFactory().getMagazineTransformer().toMagazinesDTO(magazines, true, "org.liborrow.webservice.model.dto.MagazineDTO"));
 		}
+		formatMagazineResponse(magazinesDTO);
 		return magazinesDTO;
 	}
 	

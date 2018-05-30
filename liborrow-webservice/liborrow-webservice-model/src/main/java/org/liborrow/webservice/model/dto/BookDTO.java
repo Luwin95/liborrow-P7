@@ -1,5 +1,6 @@
 package org.liborrow.webservice.model.dto;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +15,7 @@ public class BookDTO extends ItemDTO{
 	private Set<AuthorDTO> authors = new HashSet<>();
 	private Set<BorrowDTO> borrows = new HashSet<>();
 	private ImageDTO image;
+
 
 	public BookDTO() {
 		// TODO Auto-generated constructor stub

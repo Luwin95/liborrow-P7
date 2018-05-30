@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.liborrow.liborrow-webinterface</groupId>
   <artifactId>liborrow-webinterface</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.1.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>liborrow-webinterface</name>
   <description>Library information system web interface aim to provide client borrow system and user authentication.</description>
@@ -18,6 +18,8 @@
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <dwr.version>1.1-beta-3</dwr.version>
         <commons-validator.version>1.6</commons-validator.version>
+        <junit-jupiter.version>5.1.0</junit-jupiter.version>
+   		<junit-platform.version>1.1.0</junit-platform.version>
     </properties>
     
     <dependencyManagement>
@@ -26,29 +28,63 @@
     		<dependency>
     			<groupId>com.liborrow.liborrow-webinterface</groupId>
     			<artifactId>liborrow-webinterface-model</artifactId>
+<<<<<<< HEAD
     			<version>1.0.0-SNAPSHOT</version>
+=======
+    			<version>${project.version}</version>
+>>>>>>> evolutions
     		</dependency>
     		<dependency>
     			<groupId>com.liborrow.liborrow-webinterface</groupId>
     			<artifactId>liborrow-webinterface-business</artifactId>
+<<<<<<< HEAD
     			<version>1.0.0-SNAPSHOT</version>
+=======
+    			<version>${project.version}</version>
+>>>>>>> evolutions
     		</dependency>
     		<dependency>
     			<groupId>com.liborrow.liborrow-webinterface</groupId>
     			<artifactId>liborrow-webinterface-consumer</artifactId>
+<<<<<<< HEAD
     			<version>1.0.0-SNAPSHOT</version>
+=======
+    			<version>${project.version}</version>
+>>>>>>> evolutions
     		</dependency>
     		<dependency>
     			<groupId>com.liborrow.liborrow-webinterface</groupId>
     			<artifactId>liborrow-webinterface-webapp</artifactId>
+<<<<<<< HEAD
     			<version>1.0.0-SNAPSHOT</version>
+=======
+    			<version>${project.version}</version>
+>>>>>>> evolutions
     		</dependency>
 			<!-- Junit -->
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
+			    <groupId>org.junit.jupiter</groupId>
+			    <artifactId>junit-jupiter-api</artifactId>
+			    <version>${junit-jupiter.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>org.junit.jupiter</groupId>
+			    <artifactId>junit-jupiter-engine</artifactId>
+			    <version>${junit-jupiter.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>org.junit.platform</groupId>
+			    <artifactId>junit-platform-launcher</artifactId>
+			    <version>${junit-platform.version}</version>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>org.junit.platform</groupId>
+			    <artifactId>junit-platform-runner</artifactId>
+			    <version>${junit-platform.version}</version>
+			    <scope>test</scope>
 			</dependency>
 	
 			<!--  Struts 2 -->

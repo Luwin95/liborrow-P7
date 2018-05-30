@@ -13,6 +13,9 @@
 		<div class="row justify-content-sm-center">
 			<div class="col-sm-4">
 				<div class="card">
+					<div class="card-header">
+				    	<h4>Se connecter</h4>
+					</div>
 					<div class="card-block">
 							<s:if test="%{message!=null}"><div class="alert alert-danger"><s:property value="message"/></div></s:if>
 							<s:form action="login" cssClass="justify-content-sm-center">
@@ -20,7 +23,9 @@
 								<s:password label="Password" name="plainPassword" cssClass="form-control"/>
 								<s:submit value="Se connecter" cssClass="btn btn-warning"/>
 							</s:form>
-						<div class="col-sm-2"></div>
+					</div>
+					<div class="card-footer">
+						Pas de compte ? <a href="<s:url action="signinHome" namespace="/"/>">S'inscrire</a>
 					</div>
 				</div>
 			</div>

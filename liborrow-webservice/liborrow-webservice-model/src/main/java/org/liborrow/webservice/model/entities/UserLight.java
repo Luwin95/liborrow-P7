@@ -1,7 +1,9 @@
 package org.liborrow.webservice.model.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -46,12 +48,18 @@ public class UserLight implements Serializable{
 	@Column(name="role")
 	private String role;
 	
+	@Column(name="recall")
+	private boolean recall;
+	
 	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinColumn(name = "citizenship_id")
 	private Citizenship citizenship;
 	
 	@OneToMany(mappedBy="borrower")
 	private Set<Borrow> borrows = new HashSet<>();
+	
+	@OneToMany(mappedBy="borrower")
+	private List<WaitingList> reservations = new ArrayList<>();
 
 	public UserLight() {}
 	
@@ -145,5 +153,21 @@ public class UserLight implements Serializable{
 
 	public void setBorrows(Set<Borrow> borrows) {
 		this.borrows = borrows;
+	}
+
+	public List<WaitingList> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<WaitingList> reservations) {
+		this.reservations = reservations;
+	}
+
+	public boolean isRecall() {
+		return recall;
+	}
+
+	public void setRecall(boolean recall) {
+		this.recall = recall;
 	}
 }

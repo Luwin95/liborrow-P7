@@ -6,8 +6,11 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import org.liborrow.webservice.model.dto.BookDTO;
+import org.liborrow.webservice.model.dto.ItemDTO;
 import org.liborrow.webservice.model.dto.MagazineDTO;
+import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.utilsobject.ItemCriterias;
+import org.liborrow.webservice.model.utilsobject.ReservationResponse;
 import org.liborrow.webservice.model.utilsobject.SearchResponse;
 
 import com.liborrow.webservice.AbstractService;
@@ -125,5 +128,20 @@ public class ItemService extends AbstractService{
 	public void deleteMagazine(MagazineDTO magazine)
 	{
 		getManagerFactory().getMagazineManager().deleteMagazine(magazine);
+	}
+	
+	@WebMethod
+	public ReservationResponse reserveItem(ItemDTO item, UserLightDTO user) {
+		return getManagerFactory().getItemManager().reserveItem(item, user);
+	}
+	
+	@WebMethod
+	public ReservationResponse cancelReservation(Long itemId, UserLightDTO user) {
+		return getManagerFactory().getItemManager().cancelItemReservation(itemId, user);
+	}
+	
+	@WebMethod
+	public ItemDTO getItem(Long id) {
+		return getManagerFactory().getItemManager().findItemById(id);
 	}
 }

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.liborrow.liborrow-callagainbatch</groupId>
   <artifactId>liborrow-callagainbatch</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.1.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>liborrow-callagainbatch</name>
   <description>Library information</description>
@@ -18,6 +18,8 @@
       <java.version>1.8</java.version>
       <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
       <spring.version>5.0.3.RELEASE</spring.version>
+      <junit-jupiter.version>5.1.0</junit-jupiter.version>
+   	  <junit-platform.version>1.1.0</junit-platform.version>
   </properties>
   
   <dependencyManagement>
@@ -27,29 +29,62 @@
   		<dependency>
   			<groupId>com.liborrow.liborrow-callagainbatch</groupId>
   			<artifactId>liborrow-callagainbatch-business</artifactId>
+<<<<<<< HEAD
   			<version>1.0.0-SNAPSHOT</version>
+=======
+  			<version>${project.version}</version>
+>>>>>>> evolutions
   		</dependency>
   		<dependency>
   			<groupId>com.liborrow.liborrow-callagainbatch</groupId>
   			<artifactId>liborrow-callagainbatch-model</artifactId>
+<<<<<<< HEAD
   			<version>1.0.0-SNAPSHOT</version>
+=======
+  			<version>${project.version}</version>
+>>>>>>> evolutions
   		</dependency>
   		<dependency>
   			<groupId>com.liborrow.liborrow-callagainbatch</groupId>
   			<artifactId>liborrow-callagainbatch-consumer</artifactId>
+<<<<<<< HEAD
   			<version>1.0.0-SNAPSHOT</version>
+=======
+  			<version>${project.version}</version>
+>>>>>>> evolutions
   		</dependency>
   		<dependency>
   			<groupId>com.liborrow.liborrow-callagainbatch</groupId>
   			<artifactId>liborrow-callagainbatch-batch</artifactId>
+<<<<<<< HEAD
   			<version>1.0.0-SNAPSHOT</version>
+=======
+  			<version>${project.version}</version>
+>>>>>>> evolutions
   		</dependency>
-  		<!-- Junit -->
   		<dependency>
-	     <groupId>junit</groupId>
-	     <artifactId>junit</artifactId>
-	     <version>3.8.1</version>
-	     <scope>test</scope>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-api</artifactId>
+		    <version>${junit-jupiter.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-engine</artifactId>
+		    <version>${junit-jupiter.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.junit.platform</groupId>
+		    <artifactId>junit-platform-launcher</artifactId>
+		    <version>${junit-platform.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.junit.platform</groupId>
+		    <artifactId>junit-platform-runner</artifactId>
+		    <version>${junit-platform.version}</version>
+		    <scope>test</scope>
 		</dependency>
 		<dependency>
 	        <groupId>org.springframework.batch</groupId>

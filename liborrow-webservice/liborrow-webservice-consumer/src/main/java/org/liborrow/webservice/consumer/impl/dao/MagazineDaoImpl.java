@@ -18,7 +18,7 @@ public class MagazineDaoImpl implements MagazineDao {
 	@Override
 	public Set<Magazine> searchMagazine(ItemCriterias itemCriterias) {
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct magazine FROM Magazine AS magazine JOIN FETCH magazine.borrows WHERE 1=1");
+		queryString.append("SELECT distinct magazine FROM Magazine AS magazine LEFT JOIN FETCH magazine.borrows LEFT JOIN FETCH magazine.reservations WHERE 1=1");
 		if(itemCriterias.getMagazineCriterias().getName()!=null && !itemCriterias.getMagazineCriterias().getName().equals(""))
 		{
 			queryString.append("AND (magazine.name LIKE :name ");
@@ -76,7 +76,7 @@ public class MagazineDaoImpl implements MagazineDao {
 	public Set<Magazine> searchWithSimpleStringMagazine(ItemCriterias itemCriterias, String[] simpleStringSplited) {
 		
 		StringBuilder queryString = new StringBuilder();
-		queryString.append("SELECT distinct magazine FROM Magazine AS magazine JOIN FETCH magazine.borrows WHERE 1=0");
+		queryString.append("SELECT distinct magazine FROM Magazine AS magazine LEFT JOIN FETCH magazine.borrows LEFT JOIN FETCH magazine.reservations WHERE 1=0");
 		
 		for(String string : simpleStringSplited)
 		{

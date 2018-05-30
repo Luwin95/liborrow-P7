@@ -14,6 +14,7 @@ import org.springframework.mail.SimpleMailMessage;
 
 import com.liborrow.callagainbatch.AbstractJob;
 import com.liborrow.webinterface.generated.model.BorrowDTO;
+import com.liborrow.webinterface.utils.enums.MailTypeEnum;
 
 public class CallagainJobTasklet extends AbstractJob implements Tasklet, InitializingBean  {
 
@@ -29,7 +30,7 @@ public class CallagainJobTasklet extends AbstractJob implements Tasklet, Initial
 		while(it.hasNext()) {
 			String email = (String) it.next();
 			List<String> borrows = (List<String>) emailAndBorrows.get(email);
-			getManagerFactory().getMailManager().createAndSendMail(email, borrows);
+			getManagerFactory().getMailManager().createAndSendMail(email, borrows, MailTypeEnum.MAIL_LATE_BORROW);
 		}
 		return RepeatStatus.FINISHED;
 	}

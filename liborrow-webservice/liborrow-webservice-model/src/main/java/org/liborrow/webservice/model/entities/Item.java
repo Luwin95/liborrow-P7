@@ -2,6 +2,7 @@ package org.liborrow.webservice.model.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -45,8 +46,14 @@ public abstract class Item implements Serializable{
 	@Column(name="place")
 	private String place;
 	
+	@Column(name="type")
+	private String type;
+	
 	@OneToMany(mappedBy="item")
 	private Set<Borrow> borrows;
+	
+	@OneToMany(mappedBy="item")
+	private List<WaitingList> reservations;
 
 	public Item() {}
 	
@@ -114,4 +121,21 @@ public abstract class Item implements Serializable{
 	public void setBorrows(Set<Borrow> borrows) {
 		this.borrows = borrows;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public List<WaitingList> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<WaitingList> reservations) {
+		this.reservations = reservations;
+	}
+	
 }

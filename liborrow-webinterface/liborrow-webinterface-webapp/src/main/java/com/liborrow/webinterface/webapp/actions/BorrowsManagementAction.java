@@ -1,5 +1,7 @@
 package com.liborrow.webinterface.webapp.actions;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +10,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.liborrow.webinterface.generated.model.BorrowDTO;
 import com.liborrow.webinterface.generated.model.UserLightDTO;
+import com.liborrow.webinterface.generated.model.WaitingListDTO;
 import com.liborrow.webinterface.webapp.AbstractAction;
 
 public class BorrowsManagementAction extends AbstractAction implements SessionAware{
@@ -21,7 +24,9 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 	
 	// ----- Eléments en sortie
 	private BorrowDTO borrow;
-	private  List<BorrowDTO> borrows;
+	private List<BorrowDTO> borrows;
+	private List<WaitingListDTO> reservations;
+	private List<String> reservationsNextGetBackDate;
 	
 	// ==================== Getters/Setters ====================
 	public void setSession(Map<String, Object> session) {
@@ -57,6 +62,14 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 	public void setError(String error) {
 		this.error = error;
 	}
+	
+	public List<WaitingListDTO> getReservations() {
+		return reservations;
+	}
+	
+	public List<String> getReservationsNextGetBackDate() {
+		return reservationsNextGetBackDate;
+	}
 
 	// ==================== Méthodes ====================
 	/**
@@ -88,5 +101,16 @@ public class BorrowsManagementAction extends AbstractAction implements SessionAw
 		}else {
 			return "error";
 		}
+	}
+	
+	/**
+	 * Récupère la liste des réservations de l'utilisateur loggé
+	 * 
+	 * @return success
+	 */
+	public String doListReservations() {
+		reservations = getManagerFactory().getBorrowManager().getUserReservations((UserLightDTO) session.get("sessionUser"));
+		reservationsNextGetBackDate = getManagerFactory().getBorrowManager().getNextGetbackDatesReservations(reservations);
+		return SUCCESS;
 	}
 }

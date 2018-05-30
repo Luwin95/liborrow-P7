@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Query;
 
 import org.liborrow.webservice.consumer.contract.dao.UserDao;
+import org.liborrow.webservice.model.dto.CitizenshipDTO;
+import org.liborrow.webservice.model.entities.Citizenship;
 import org.liborrow.webservice.model.entities.UserLight;
 import org.liborrow.webservice.model.utilsobject.UserCriterias;
 
@@ -93,6 +95,21 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao{
 		Set <UserLight> users = new HashSet<>();
 		users.addAll(query.getResultList());
 		return users;
+	}
+	
+	public List<String> getAllCitizenshipNames(){
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT citizenship.countryName FROM Citizenship citizenship ORDER BY citizenship.countryName ASC");
+		Query query = getEm().createQuery(queryString.toString());
+		return query.getResultList();
+	}
+	
+	public Citizenship getCitizenshipDTO(String country) {
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("SELECT citizenship FROM Citizenship citizenship LEFT JOIN FETCH citizenship.authors author LEFT JOIN FETCH author.books book LEFT JOIN FETCH book.borrows borrow LEFT JOIN FETCH borrow.borrower LEFT JOIN FETCH book.reservations reservation LEFT JOIN FETCH reservation.borrower  WHERE citizenship.countryName=:country");
+		Query query = getEm().createQuery(queryString.toString());
+		query.setParameter("country", country);
+		return (Citizenship) query.getSingleResult();
 	}
 
 }

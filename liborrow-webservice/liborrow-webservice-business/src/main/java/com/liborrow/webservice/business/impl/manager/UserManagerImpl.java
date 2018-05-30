@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.liborrow.webservice.model.dto.CitizenshipDTO;
 import org.liborrow.webservice.model.dto.UserDTO;
 import org.liborrow.webservice.model.dto.UserLightDTO;
 import org.liborrow.webservice.model.entities.Borrow;
+import org.liborrow.webservice.model.entities.Citizenship;
 import org.liborrow.webservice.model.entities.UserAccount;
 import org.liborrow.webservice.model.entities.UserLight;
+import org.liborrow.webservice.model.entities.WaitingList;
 import org.liborrow.webservice.model.utilsobject.UserCriterias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -77,6 +80,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 		}
 	}
 	
+	
 	@Override
 	@Transactional(readOnly = true)
 	public List<UserLightDTO> searchUser(UserCriterias userCriterias) {
@@ -103,9 +107,9 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	
 	@Override
 	@Transactional
-	public void updateUser(UserDTO user) {
-		UserAccount userEntity = getTransformerFactory().getUserAccountTransformer().toUserAccountEntity(user, true, UserAccount.class.getSimpleName());
-		userAccountRepository.save(userEntity);
+	public void updateUser(UserLightDTO user) {
+		UserLight userEntity = getTransformerFactory().getUserLightTransformer().toUserLightEntity(user, true, UserLight.class.getSimpleName());
+		userLightRepository.save(userEntity);
 	}
 	
 	@Override
@@ -113,6 +117,23 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	public void deleteUser(UserDTO user) {
 		UserAccount userEntity = getTransformerFactory().getUserAccountTransformer().toUserAccountEntity(user, true, UserAccount.class.getSimpleName());
 		userAccountRepository.delete(userEntity);
+	}
+	
+	@Override
+	@Transactional
+	public void saveNewUser(UserDTO user) {
+		user.setPassword(hashPassword(user.getPassword()));
+		createUser(user);
+	}
+	
+	@Override
+	public List<String> getAllCitizenshipsName(){
+		return getDaoFactory().getUserDao().getAllCitizenshipNames();
+	}
+	
+	@Override
+	public CitizenshipDTO getCitizenshipByCountry(String country) {
+		return getTransformerFactory().getCitizenshipTransformer().toCitizenshipDTO(getDaoFactory().getUserDao().getCitizenshipDTO(country), true, Citizenship.class.getSimpleName());
 	}
 	
 	@Override
@@ -126,10 +147,23 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager{
 	{
 		Hibernate.initialize(user.getCitizenship());
 		Hibernate.initialize(user.getBorrows());
+		Hibernate.initialize(user.getReservations());
 		for(Borrow borrow : user.getBorrows())
 		{
 			Hibernate.initialize(borrow.getItem());
 			Hibernate.initialize(borrow.getBorrower());
 		}
+		for(WaitingList waitingList : user.getReservations())
+		{
+			Hibernate.initialize(waitingList.getItem());
+			Hibernate.initialize(waitingList.getBorrower());
+		}
 	}
+	
+    private String hashPassword(String password)
+    {
+        String salt = BCrypt.gensalt();
+        String passwordHash = BCrypt.hashpw(password, salt);
+        return passwordHash;
+    }
 }

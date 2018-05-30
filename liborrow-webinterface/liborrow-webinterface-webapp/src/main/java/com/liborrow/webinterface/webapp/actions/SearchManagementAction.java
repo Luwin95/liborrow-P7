@@ -1,5 +1,6 @@
 package com.liborrow.webinterface.webapp.actions;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.liborrow.webinterface.generated.model.AuthorDTO;
@@ -29,6 +30,8 @@ public class SearchManagementAction  extends AbstractAction{
 	private List<BookDTO> bookResponse;
 	private List<AuthorDTO> authorResponse;
 	private List<MagazineDTO> magazineResponse;
+	private Calendar nextReturn;
+	private Long reservationsNumber;
 	
 	
 	
@@ -72,9 +75,12 @@ public class SearchManagementAction  extends AbstractAction{
 	public String getError() {
 		return error;
 	}
-	
-	
-	
+	public Calendar getNextReturn() {
+		return nextReturn;
+	}
+	public Long getReservationsNumber() {
+		return reservationsNumber;
+	}
 	// ==================== Méthodes ====================
 	/**
 	 * Affiche la page d'accueil de recherche
@@ -82,7 +88,6 @@ public class SearchManagementAction  extends AbstractAction{
 	 * @return success
 	 */
 	public String searchHome() {
-		System.out.println("Hello world");
 		return SUCCESS;
 	}
 	

@@ -1,7 +1,7 @@
-FROM shinyay/docker-glassfish5
+FROM tomcat:9.0-jre8
 
 MAINTAINER luwin95
 
-COPY liborrow-webinterface.war $GLASSFISH_HOME/glassfish/domains/domain1/autodeploy/
+ADD liborrow-webinterface.war /usr/local/tomcat/webapps/
 
-EXPOSE 8080
+EXPOSE 80

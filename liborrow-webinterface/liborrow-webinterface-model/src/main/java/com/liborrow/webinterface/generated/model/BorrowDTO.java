@@ -26,6 +26,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="itemDTO" type="{model.generated.webinterface.liborrow.com}itemDTO" minOccurs="0"/>
  *         &lt;element name="magazineDTO" type="{model.generated.webinterface.liborrow.com}magazineDTO" minOccurs="0"/>
+ *         &lt;element name="recallDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -45,6 +46,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "id",
     "itemDTO",
     "magazineDTO",
+    "recallDate",
     "startDate"
 })
 public class BorrowDTO {
@@ -59,6 +61,8 @@ public class BorrowDTO {
     protected long id;
     protected ItemDTO itemDTO;
     protected MagazineDTO magazineDTO;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar recallDate;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar startDate;
 
@@ -244,6 +248,30 @@ public class BorrowDTO {
      */
     public void setMagazineDTO(MagazineDTO value) {
         this.magazineDTO = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété recallDate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getRecallDate() {
+        return recallDate;
+    }
+
+    /**
+     * Définit la valeur de la propriété recallDate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setRecallDate(XMLGregorianCalendar value) {
+        this.recallDate = value;
     }
 
     /**

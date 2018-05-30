@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "BorrowService", targetNamespace = "model.generated.webinterface.liborrow.com", wsdlLocation = "http://liborrow:8080/liborrow-webservice-webapp/BorrowService?wsdl")
+@WebServiceClient(name = "BorrowService", targetNamespace = "model.generated.webinterface.liborrow.com", wsdlLocation = "http://liborrow:80/liborrow-webservice-webapp/borrow?wsdl")
 public class BorrowService
     extends Service
 {
@@ -30,7 +30,7 @@ public class BorrowService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://liborrow:8080/liborrow-webservice-webapp/BorrowService?wsdl");
+            url = new URL("http://liborrow:80/liborrow-webservice-webapp/borrow?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

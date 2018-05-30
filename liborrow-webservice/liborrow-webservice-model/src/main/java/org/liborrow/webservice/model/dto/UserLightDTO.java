@@ -1,6 +1,8 @@
 package org.liborrow.webservice.model.dto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserLightDTO {
@@ -22,7 +24,11 @@ public class UserLightDTO {
 	
 	private CitizenshipDTO citizenship;
 	
+	private boolean recall;
+	
 	private Set<BorrowDTO> borrows = new HashSet<>();
+	
+	private List<WaitingListDTO> reservations = new ArrayList<>();
 	
 	public UserLightDTO() {
 		// TODO Auto-generated constructor stub
@@ -106,6 +112,22 @@ public class UserLightDTO {
 
 	public void setBorrows(Set<BorrowDTO> borrows) {
 		this.borrows = borrows;
+	}
+
+	public List<WaitingListDTO> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(List<WaitingListDTO> reservations) {
+		this.reservations = reservations;
+	}
+
+	public boolean isRecall() {
+		return recall;
+	}
+
+	public void setRecall(boolean recall) {
+		this.recall = recall;
 	}
 	
 }

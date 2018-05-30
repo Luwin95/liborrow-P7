@@ -11,6 +11,7 @@ import org.liborrow.webservice.model.entities.Borrow;
 import org.liborrow.webservice.model.transformer.contract.BookTransformer;
 import org.liborrow.webservice.model.transformer.contract.BorrowTransformer;
 import org.liborrow.webservice.model.transformer.contract.ImageTransformer;
+import org.liborrow.webservice.model.transformer.contract.WaitingListTransformer;
 import org.liborrow.webservice.model.utilsobject.AuthorDependenciesEnum;
 
 public class BookTransformerImpl extends AbstractTransformerImpl implements BookTransformer {
@@ -38,6 +39,11 @@ public class BookTransformerImpl extends AbstractTransformerImpl implements Book
 		{
 			BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
 			transformedBook.setBorrows(borrowTransformer.toBorrowsDTO(book.getBorrows(), true, transformedBook.getClass().getName()));
+		}
+		if(book.getReservations() !=null && (isParent|| classParentName.equals("org.liborrow.webservice.model.dto.AuthorDTO")))
+		{
+			WaitingListTransformer waitingListTransformer = new WaitingListTransformerImpl();
+			transformedBook.setReservations(waitingListTransformer.toWaitingListsDTO(book.getReservations(), false, transformedBook.getClass().getSimpleName()));
 		}
 		if(book.getEditor()!=null)
 		{
@@ -120,6 +126,11 @@ public class BookTransformerImpl extends AbstractTransformerImpl implements Book
 		{
 			BorrowTransformer borrowTransformer = new BorrowTransformerImpl();
 			transformedBook.setBorrows(borrowTransformer.toBorrowsEntities(book.getBorrows(), true, transformedBook.getClass().getSimpleName()));
+		}
+		if(book.getReservations() !=null && (isParent|| classParentName.equals("org.liborrow.webservice.model.dto.AuthorDTO")))
+		{
+			WaitingListTransformer waitingListTransformer = new WaitingListTransformerImpl();
+			transformedBook.setReservations(waitingListTransformer.toWaitingListEntities(book.getReservations(), false, transformedBook.getClass().getSimpleName()));
 		}
 		if(book.getEditor()!=null)
 		{
